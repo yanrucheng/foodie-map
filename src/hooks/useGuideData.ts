@@ -8,36 +8,9 @@ interface UseGuideDataResult {
 }
 
 /**
- * Normalizes raw JSON records into valid Restaurant objects.
- * Filters out records with missing geocode data (lat/lon) and
- * fills default values for optional fields.
- */
-function normalizeRecords(raw: Record<string, unknown>[]): Restaurant[] {
-  return raw
-    .filter((r) => typeof r.lat === "number" && typeof r.lon === "number")
-    .map((r) => ({
-      ...r,
-      venue_type: r.venue_type ?? "restaurant",
-      is_new: r.is_new ?? false,
-      name: r.name ?? `${r.name_zh ?? ""} / ${r.name_en ?? ""}`.trim(),
-      name_zh: r.name_zh ?? (r.name as string)?.split(" / ")[0] ?? "",
-      name_en: r.name_en ?? (r.name as string)?.split(" / ")[1] ?? "",
-      primary_area: r.primary_area ?? r.area ?? "",
-      major_region: r.major_region ?? r.city ?? "",
-      geo_source: r.geo_source ?? r.geocode_source ?? "",
-      address: r.address ?? r.address_en ?? "",
-      avg_price_hkd: r.avg_price_hkd ?? r.avg_price_cny ?? r.price_range ?? "",
-      signature_dishes: r.signature_dishes ?? "",
-      geocode_query: r.geocode_query ?? "",
-      geocode_display_name: r.geocode_display_name ?? "",
-      fallback_reason: r.fallback_reason ?? "",
-    })) as unknown as Restaurant[];
-}
-
-/**
  * Fetches restaurant data from a static JSON path (relative to public/).
  * Aborts in-flight requests when dataPath changes, preventing race conditions
- * during rapid segment switching. Normalizes raw data to handle schema variations.
+ * during rapid segment switching.
  */
 export function useGuideData(dataPath: string): UseGuideDataResult {
   const [data, setData] = useState<Restaurant[]>([]);
@@ -59,8 +32,8 @@ export function useGuideData(dataPath: string): UseGuideDataResult {
         const url = `${base}${dataPath.replace(/^\//, "")}`;
         const res = await fetch(url, { signal: controller.signal });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const json = await res.json();
-        if (!controller.signal.aborted) setData(normalizeRecords(json));
+        const json: Restaurant[] = await res.json();
+        if (!controller.signal.aborted) setData(json);
       } catch (err) {
         if (controller.signal.aborted) return;
         setError(err instanceof Error ? err.message : "Unknown error");

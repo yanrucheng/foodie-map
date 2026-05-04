@@ -50,13 +50,6 @@ export const cities: CityConfig[] = [
     zoom: 11,
     guides: [
       {
-        id: "michelin-starred",
-        label: "Michelin Starred 2026",
-        labelZh: "米其林星级",
-        year: 2026,
-        dataPath: "/data/beijing/michelin-starred.json",
-      },
-      {
         id: "michelin-bib-gourmand",
         label: "Michelin Bib Gourmand 2026",
         labelZh: "米其林必比登",
