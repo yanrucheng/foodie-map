@@ -1,4 +1,4 @@
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, lazy, Suspense } from "react";
 import { cities } from "@/config/cities";
 import { useGuideData } from "@/hooks/useGuideData";
 import { useFilters } from "@/hooks/useFilters";
@@ -8,8 +8,12 @@ import type { MapShellHandle } from "@/components/MapShell";
 import { Header } from "@/components/Header";
 import { SearchBar } from "@/components/SearchBar";
 import { Legend } from "@/components/Legend";
-import { MobileShell } from "@/components/MobileShell";
 import type { Restaurant } from "@/types/restaurant";
+
+/** Lazy-load MobileShell — only fetched on mobile viewports. */
+const MobileShell = lazy(() =>
+  import("@/components/MobileShell").then((m) => ({ default: m.MobileShell }))
+);
 
 /** Root application shell. Renders MobileShell on mobile, desktop layout otherwise. */
 function App() {
@@ -40,21 +44,23 @@ function App() {
 
   const geocodedCount = data.filter((r) => r.geocode_success).length;
 
-  // Mobile layout — full-screen map with bottom sheet panels
+  // Mobile layout — lazy-loaded full-screen map with bottom sheet panels
   if (isMobile) {
     return (
-      <MobileShell
-        title={title}
-        subtitle={subtitle}
-        restaurants={data}
-        activeGroups={activeGroups}
-        onToggle={toggle}
-        enableGroup={enableGroup}
-        totalCount={data.length}
-        geocodedCount={geocodedCount}
-        center={city.center}
-        zoom={city.zoom}
-      />
+      <Suspense fallback={<MobileLoadingShell />}>
+        <MobileShell
+          title={title}
+          subtitle={subtitle}
+          restaurants={data}
+          activeGroups={activeGroups}
+          onToggle={toggle}
+          enableGroup={enableGroup}
+          totalCount={data.length}
+          geocodedCount={geocodedCount}
+          center={city.center}
+          zoom={city.zoom}
+        />
+      </Suspense>
     );
   }
 
@@ -75,6 +81,15 @@ function App() {
         <Legend totalCount={data.length} geocodedCount={geocodedCount} />
       </main>
     </>
+  );
+}
+
+/** Minimal loading shell shown while MobileShell chunk is fetched. */
+function MobileLoadingShell() {
+  return (
+    <div className="mobile-shell" style={{ alignItems: "center", justifyContent: "center" }}>
+      <div style={{ color: "var(--muted)", fontSize: 14 }}>Loading...</div>
+    </div>
   );
 }
 
