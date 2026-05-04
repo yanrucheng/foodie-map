@@ -26,6 +26,7 @@ interface MapShellProps {
   dataGroups: Set<string>;
   activeGroups: Set<string>;
   onToggleGroup: (group: string) => void;
+  onToggleAll: () => void;
   venueFilter: VenueFilter;
   onVenueFilterChange: (filter: VenueFilter) => void;
   center: [number, number];
@@ -51,7 +52,7 @@ export interface MapShellHandle {
  */
 export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
   function MapShell(
-    { restaurants, dataGroups, activeGroups, onToggleGroup, venueFilter, onVenueFilterChange, center, zoom, hideControls, onModeChange, onMarkerTap },
+    { restaurants, dataGroups, activeGroups, onToggleGroup, onToggleAll, venueFilter, onVenueFilterChange, center, zoom, hideControls, onModeChange, onMarkerTap },
     ref,
   ) {
     const mapRef = useRef<LeafletMap | null>(null);
@@ -378,6 +379,7 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
               dataGroups={dataGroups}
               activeGroups={activeGroups}
               onToggle={onToggleGroup}
+              onToggleAll={onToggleAll}
               venueFilter={venueFilter}
               onVenueFilterChange={onVenueFilterChange}
               onModeToggle={handleModeToggle}

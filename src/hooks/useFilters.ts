@@ -9,6 +9,7 @@ interface UseFiltersResult {
   dataGroups: Set<string>;
   activeGroups: Set<string>;
   toggle: (group: string) => void;
+  toggleAll: () => void;
   enableGroup: (group: string) => void;
   venueFilter: VenueFilter;
   setVenueFilter: (filter: VenueFilter) => void;
@@ -27,16 +28,10 @@ export function useFilters(restaurants: Restaurant[]): UseFiltersResult {
   const [activeGroups, setActiveGroups] = useState<Set<string>>(() => new Set(allGroups));
   const [venueFilter, setVenueFilter] = useState<VenueFilter>("all");
 
-  // Sync activeGroups when allGroups changes (e.g., on data load)
+  // Sync activeGroups when allGroups changes (e.g., on data load).
+  // Activates all groups so the default state is always "all selected".
   useMemo(() => {
-    setActiveGroups((prev) => {
-      // Keep existing active groups that still exist in new data
-      const validGroups = allGroups.filter((g) => prev.has(g));
-      // If no valid groups remain, activate all
-      const newActive = validGroups.length > 0 ? validGroups : allGroups;
-      const next = new Set(newActive);
-      return prev.size === next.size && [...prev].every((g) => next.has(g)) ? prev : next;
-    });
+    setActiveGroups(new Set(allGroups));
   }, [allGroups]);
 
   const toggle = useCallback((group: string) => {
@@ -53,6 +48,19 @@ export function useFilters(restaurants: Restaurant[]): UseFiltersResult {
     });
   }, []);
 
+  /** Toggles between select-all and deselect-all (keeps at least one active). */
+  const toggleAll = useCallback(() => {
+    setActiveGroups((prev) => {
+      const allSet = new Set(allGroups);
+      // If all are already active, deselect all except the first
+      if (prev.size === allSet.size && [...allSet].every((g) => prev.has(g))) {
+        const first = allGroups[0];
+        return first ? new Set<string>([first]) : new Set<string>();
+      }
+      return allSet;
+    });
+  }, [allGroups]);
+
   const enableGroup = useCallback((group: string) => {
     setActiveGroups((prev) => {
       if (prev.has(group)) return prev;
@@ -62,5 +70,5 @@ export function useFilters(restaurants: Restaurant[]): UseFiltersResult {
     });
   }, []);
 
-  return { dataGroups: new Set(allGroups), activeGroups, toggle, enableGroup, venueFilter, setVenueFilter };
+  return { dataGroups: new Set(allGroups), activeGroups, toggle, toggleAll, enableGroup, venueFilter, setVenueFilter };
 }

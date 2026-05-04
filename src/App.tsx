@@ -22,7 +22,7 @@ function App() {
   const selection = useSelection();
   const { city, guide } = selection;
   const { data, loading, error } = useGuideData(guide.dataPath);
-  const { dataGroups, activeGroups, toggle, enableGroup, venueFilter, setVenueFilter } = useFilters(data);
+  const { dataGroups, activeGroups, toggle, toggleAll, enableGroup, venueFilter, setVenueFilter } = useFilters(data);
   const { isMobile } = useViewport();
   const mapRef = useRef<MapShellHandle>(null);
 
@@ -84,6 +84,7 @@ function App() {
           dataGroups={dataGroups}
           activeGroups={activeGroups}
           onToggle={toggle}
+          onToggleAll={toggleAll}
           enableGroup={enableGroup}
           venueFilter={venueFilter}
           onVenueFilterChange={setVenueFilter}
@@ -110,6 +111,7 @@ function App() {
           dataGroups={dataGroups}
           activeGroups={activeGroups}
           onToggleGroup={toggle}
+          onToggleAll={toggleAll}
           venueFilter={venueFilter}
           onVenueFilterChange={setVenueFilter}
           center={city.center}

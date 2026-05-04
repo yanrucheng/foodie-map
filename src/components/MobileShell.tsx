@@ -28,6 +28,7 @@ interface MobileShellProps {
   dataGroups: Set<string>;
   activeGroups: Set<string>;
   onToggle: (group: string) => void;
+  onToggleAll: () => void;
   enableGroup: (group: string) => void;
   venueFilter: VenueFilter;
   onVenueFilterChange: (filter: VenueFilter) => void;
@@ -49,6 +50,7 @@ export function MobileShell({
   dataGroups,
   activeGroups,
   onToggle,
+  onToggleAll,
   enableGroup,
   venueFilter,
   onVenueFilterChange,
@@ -125,6 +127,7 @@ export function MobileShell({
           dataGroups={dataGroups}
           activeGroups={activeGroups}
           onToggleGroup={onToggle}
+          onToggleAll={onToggleAll}
           venueFilter={venueFilter}
           onVenueFilterChange={onVenueFilterChange}
           center={center}
@@ -160,6 +163,7 @@ export function MobileShell({
             dataGroups={dataGroups}
             activeGroups={activeGroups}
             onToggle={onToggle}
+            onToggleAll={onToggleAll}
             venueFilter={venueFilter}
             onVenueFilterChange={onVenueFilterChange}
             onModeToggle={handleModeToggle}

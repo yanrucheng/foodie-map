@@ -14,6 +14,7 @@ interface FilterPanelProps {
   dataGroups: Set<string>;
   activeGroups: Set<string>;
   onToggle: (group: string) => void;
+  onToggleAll: () => void;
   venueFilter: VenueFilter;
   onVenueFilterChange: (filter: VenueFilter) => void;
   onModeToggle: () => void;
@@ -31,6 +32,7 @@ export function FilterPanel({
   dataGroups,
   activeGroups,
   onToggle,
+  onToggleAll,
   venueFilter,
   onVenueFilterChange,
   onModeToggle,
@@ -43,6 +45,8 @@ export function FilterPanel({
   const renderedGroups = cuisineRegistry
     .filter((g) => dataGroups.has(g.key))
     .sort((a, b) => a.sortOrder - b.sortOrder);
+
+  const allActive = renderedGroups.every((g) => activeGroups.has(g.key));
 
   return (
     <div className="floating-card control-block">
@@ -62,8 +66,22 @@ export function FilterPanel({
       </div>
 
       {/* Cuisine group filter */}
-      {!isPill && <div className="control-title" style={{ marginTop: 12 }}>菜系筛选</div>}
-      {isPill && <div className="filter-section-divider" />}
+      {!isPill && (
+        <div className="control-title-row" style={{ marginTop: 12 }}>
+          <span className="control-title">菜系筛选</span>
+          <button className={`toggle-all-btn ${allActive ? "toggle-all-btn--active" : ""}`} onClick={onToggleAll}>
+            全选
+          </button>
+        </div>
+      )}
+      {isPill && (
+        <div className="filter-section-divider-row">
+          <div className="filter-section-divider" />
+          <button className={`toggle-all-pill ${allActive ? "toggle-all-pill--active" : ""}`} onClick={onToggleAll}>
+            全选
+          </button>
+        </div>
+      )}
       <div className={isPill ? "filter-pills" : "filter-list"}>
         {renderedGroups.map((group) => {
           const style = getGroupStyle(group.key);
