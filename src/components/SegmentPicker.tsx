@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 import type { SegmentOption } from "@/hooks/useSelection";
 
 interface SegmentPickerProps {
@@ -14,19 +15,28 @@ interface SegmentPickerProps {
  * Desktop segment picker: renders as an inline pill/chip.
  * - Single option: renders as static text (no caret, not interactive).
  * - Multiple options: renders as a clickable chip with caret that opens a dropdown.
+ * - Dropdown is portaled to document.body to avoid z-index/stacking issues with the map.
  * - Supports Escape to close and click-outside dismiss.
  */
 export function SegmentPicker({ options, value, onChange }: SegmentPickerProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [dropdownPos, setDropdownPos] = useState<{ top: number; left: number } | null>(null);
+  const chipRef = useRef<HTMLButtonElement>(null);
+  const dropdownRef = useRef<HTMLUListElement>(null);
 
   const selectedLabel = options.find((o) => o.value === value)?.label ?? value;
   const isInteractive = options.length > 1;
 
-  /** Toggle dropdown visibility. */
+  /** Toggle dropdown visibility and compute position from chip rect. */
   const handleChipClick = useCallback(() => {
     if (!isInteractive) return;
-    setIsOpen((prev) => !prev);
+    setIsOpen((prev) => {
+      if (!prev && chipRef.current) {
+        const rect = chipRef.current.getBoundingClientRect();
+        setDropdownPos({ top: rect.bottom + 6, left: rect.left });
+      }
+      return !prev;
+    });
   }, [isInteractive]);
 
   /** Select an option and close the dropdown. */
@@ -48,11 +58,15 @@ export function SegmentPicker({ options, value, onChange }: SegmentPickerProps) 
     return () => document.removeEventListener("keydown", handleKey);
   }, [isOpen]);
 
-  /** Close on click outside. */
+  /** Close on click outside (check both chip and dropdown). */
   useEffect(() => {
     if (!isOpen) return;
     const handleClick = (e: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (
+        chipRef.current && !chipRef.current.contains(target) &&
+        dropdownRef.current && !dropdownRef.current.contains(target)
+      ) {
         setIsOpen(false);
       }
     };
@@ -61,8 +75,9 @@ export function SegmentPicker({ options, value, onChange }: SegmentPickerProps) 
   }, [isOpen]);
 
   return (
-    <div className="seg-picker" ref={containerRef}>
+    <div className="seg-picker">
       <button
+        ref={chipRef}
         className={`seg-chip ${isInteractive ? "seg-chip--interactive" : ""} ${isOpen ? "seg-chip--active" : ""}`}
         onClick={handleChipClick}
         aria-expanded={isInteractive ? isOpen : undefined}
@@ -74,8 +89,13 @@ export function SegmentPicker({ options, value, onChange }: SegmentPickerProps) 
         {isInteractive && <span className="seg-chip-caret" aria-hidden="true" />}
       </button>
 
-      {isOpen && (
-        <ul className="seg-dropdown" role="listbox">
+      {isOpen && dropdownPos && createPortal(
+        <ul
+          ref={dropdownRef}
+          className="seg-dropdown"
+          role="listbox"
+          style={{ top: dropdownPos.top, left: dropdownPos.left }}
+        >
           {options.map((opt) => (
             <li
               key={opt.value}
@@ -87,7 +107,8 @@ export function SegmentPicker({ options, value, onChange }: SegmentPickerProps) 
               {opt.label}
             </li>
           ))}
-        </ul>
+        </ul>,
+        document.body,
       )}
     </div>
   );

@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { BottomSheet } from "@/components/BottomSheet";
 import type { SegmentOption } from "@/hooks/useSelection";
 
@@ -15,7 +16,8 @@ interface SegmentPickerMobileProps {
  * Mobile segment picker: renders as a tappable inline chip.
  * - Single option: renders as static text (not tappable).
  * - Multiple options: tapping opens a bottom-sheet with the option list.
- * - Same data contract as the desktop SegmentPicker.
+ * - BottomSheet is portaled to document.body to escape the header's
+ *   backdrop-filter containing block (which traps position:fixed children).
  */
 export function SegmentPickerMobile({ options, value, onChange }: SegmentPickerMobileProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,22 +57,25 @@ export function SegmentPickerMobile({ options, value, onChange }: SegmentPickerM
         {isInteractive && <span className="seg-chip-caret" aria-hidden="true" />}
       </button>
 
-      <BottomSheet isOpen={isOpen} onClose={handleClose} initialSnap="half">
-        <ul className="seg-sheet-list" role="listbox">
-          {options.map((opt) => (
-            <li
-              key={opt.value}
-              className={`seg-sheet-item ${opt.value === value ? "seg-sheet-item--selected" : ""}`}
-              role="option"
-              aria-selected={opt.value === value}
-              onClick={() => handleSelect(opt.value)}
-            >
-              <span className="seg-sheet-item-label">{opt.label}</span>
-              {opt.value === value && <span className="seg-sheet-item-check" aria-hidden="true">✓</span>}
-            </li>
-          ))}
-        </ul>
-      </BottomSheet>
+      {createPortal(
+        <BottomSheet isOpen={isOpen} onClose={handleClose} initialSnap="half">
+          <ul className="seg-sheet-list" role="listbox">
+            {options.map((opt) => (
+              <li
+                key={opt.value}
+                className={`seg-sheet-item ${opt.value === value ? "seg-sheet-item--selected" : ""}`}
+                role="option"
+                aria-selected={opt.value === value}
+                onClick={() => handleSelect(opt.value)}
+              >
+                <span className="seg-sheet-item-label">{opt.label}</span>
+                {opt.value === value && <span className="seg-sheet-item-check" aria-hidden="true">✓</span>}
+              </li>
+            ))}
+          </ul>
+        </BottomSheet>,
+        document.body,
+      )}
     </>
   );
 }
