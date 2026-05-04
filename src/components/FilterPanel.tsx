@@ -1,4 +1,4 @@
-import { cuisineGroups } from "@/config/cuisineGroups";
+import { cuisineRegistry, getGroupStyle } from "@/config/cuisineRegistry";
 import type { VenueFilter } from "@/hooks/useFilters";
 
 /** Venue filter segment options with display labels. */
@@ -10,6 +10,8 @@ const VENUE_FILTER_OPTIONS: { value: VenueFilter; label: string }[] = [
 ];
 
 interface FilterPanelProps {
+  /** Distinct cuisine_group keys present in the loaded data — controls which groups to render. */
+  dataGroups: Set<string>;
   activeGroups: Set<string>;
   onToggle: (group: string) => void;
   venueFilter: VenueFilter;
@@ -22,9 +24,11 @@ interface FilterPanelProps {
 
 /**
  * React filter panel for cuisine group filtering, venue type isolation,
- * and display mode toggle.
+ * and display mode toggle. Groups are ordered by taxonomy sortOrder and
+ * only displayed if present in the active dataset.
  */
 export function FilterPanel({
+  dataGroups,
   activeGroups,
   onToggle,
   venueFilter,
@@ -34,6 +38,11 @@ export function FilterPanel({
   variant = "checkbox",
 }: FilterPanelProps) {
   const isPill = variant === "pill";
+
+  // Render only taxonomy groups that exist in the current dataset, sorted by sortOrder.
+  const renderedGroups = cuisineRegistry
+    .filter((g) => dataGroups.has(g.key))
+    .sort((a, b) => a.sortOrder - b.sortOrder);
 
   return (
     <div className="floating-card control-block">
@@ -56,19 +65,21 @@ export function FilterPanel({
       {!isPill && <div className="control-title" style={{ marginTop: 12 }}>菜系筛选</div>}
       {isPill && <div className="filter-section-divider" />}
       <div className={isPill ? "filter-pills" : "filter-list"}>
-        {Object.entries(cuisineGroups).map(([label, style]) => {
-          const active = activeGroups.has(label);
+        {renderedGroups.map((group) => {
+          const style = getGroupStyle(group.key);
+          const active = activeGroups.has(group.key);
+          const label = group.labelZh;
 
           if (isPill) {
             return (
               <button
-                key={label}
+                key={group.key}
                 className={`filter-pill ${active ? "filter-pill--active" : ""}`}
                 style={{
                   "--pill-color": style.color,
-                  "--pill-text": style.text,
+                  "--pill-text": style.textColor,
                 } as React.CSSProperties}
-                onClick={() => onToggle(label)}
+                onClick={() => onToggle(group.key)}
                 aria-pressed={active}
               >
                 <span className="filter-pill-dot" style={{ background: style.color }} />
@@ -78,11 +89,11 @@ export function FilterPanel({
           }
 
           return (
-            <label key={label} className="filter-item">
+            <label key={group.key} className="filter-item">
               <input
                 type="checkbox"
                 checked={active}
-                onChange={() => onToggle(label)}
+                onChange={() => onToggle(group.key)}
               />
               <span className="swatch" style={{ background: style.color }} />
               <span>{label}</span>

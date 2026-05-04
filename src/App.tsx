@@ -21,7 +21,7 @@ function App() {
   const selection = useSelection();
   const { city, guide } = selection;
   const { data, loading, error } = useGuideData(guide.dataPath);
-  const { activeGroups, toggle, enableGroup, venueFilter, setVenueFilter } = useFilters();
+  const { dataGroups, activeGroups, toggle, enableGroup, venueFilter, setVenueFilter } = useFilters(data);
   const { isMobile } = useViewport();
   const mapRef = useRef<MapShellHandle>(null);
 
@@ -73,6 +73,7 @@ function App() {
           headerContent={titleElement}
           subtitle={subtitle}
           restaurants={data}
+          dataGroups={dataGroups}
           activeGroups={activeGroups}
           onToggle={toggle}
           enableGroup={enableGroup}
@@ -98,6 +99,7 @@ function App() {
         <MapShell
           ref={mapRef}
           restaurants={data}
+          dataGroups={dataGroups}
           activeGroups={activeGroups}
           onToggleGroup={toggle}
           venueFilter={venueFilter}
@@ -105,7 +107,7 @@ function App() {
           center={city.center}
           zoom={city.zoom}
         />
-        <Legend totalCount={data.length} geocodedCount={geocodedCount} />
+        <Legend dataGroups={dataGroups} totalCount={data.length} geocodedCount={geocodedCount} />
       </main>
     </>
   );

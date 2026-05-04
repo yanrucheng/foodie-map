@@ -24,6 +24,8 @@ interface MobileShellProps {
   headerContent: React.ReactNode;
   subtitle: string;
   restaurants: Restaurant[];
+  /** Distinct cuisine_group keys present in the loaded data. */
+  dataGroups: Set<string>;
   activeGroups: Set<string>;
   onToggle: (group: string) => void;
   enableGroup: (group: string) => void;
@@ -44,6 +46,7 @@ export function MobileShell({
   headerContent,
   subtitle,
   restaurants,
+  dataGroups,
   activeGroups,
   onToggle,
   enableGroup,
@@ -119,6 +122,7 @@ export function MobileShell({
         <MapShell
           ref={mapRef}
           restaurants={restaurants}
+          dataGroups={dataGroups}
           activeGroups={activeGroups}
           onToggleGroup={onToggle}
           venueFilter={venueFilter}
@@ -153,6 +157,7 @@ export function MobileShell({
       >
         {activePanel === "filter" && (
           <FilterPanel
+            dataGroups={dataGroups}
             activeGroups={activeGroups}
             onToggle={onToggle}
             venueFilter={venueFilter}
@@ -166,7 +171,7 @@ export function MobileShell({
           <StatsPanelReact restaurants={visibleRestaurants} />
         )}
         {activePanel === "legend" && (
-          <Legend totalCount={totalCount} geocodedCount={geocodedCount} compact />
+          <Legend dataGroups={dataGroups} totalCount={totalCount} geocodedCount={geocodedCount} compact />
         )}
       </BottomSheet>
 

@@ -1,5 +1,5 @@
 import type { Restaurant } from "@/types/restaurant";
-import { cuisineGroups } from "@/config/cuisineGroups";
+import { getGroupStyle, getGroupLabel } from "@/config/cuisineRegistry";
 
 /** Escapes HTML entities for safe popup rendering. */
 function escapeHtml(value: unknown): string {
@@ -27,7 +27,7 @@ function popupHtml(item: Restaurant): string {
       <div class="en">${escapeHtml(item.name_en)}</div>
       <div class="tags">
         <span class="tag">${escapeHtml(item.cuisine)}</span>
-        <span class="tag">${escapeHtml(item.cuisine_group)}</span>
+        <span class="tag">${escapeHtml(getGroupLabel(item.cuisine_group))}</span>
         ${newTag}
       </div>
       <div class="line"><strong>区域：</strong>${escapeHtml(item.area)}</div>
@@ -53,7 +53,7 @@ export function createRestaurantMarker(
   item: Restaurant,
   options?: CreateMarkerOptions
 ): L.Marker {
-  const groupStyle = cuisineGroups[item.cuisine_group] ?? cuisineGroups["西餐 / 其他"]!;
+  const groupStyle = getGroupStyle(item.cuisine_group);
   const className = item.is_new ? "marker-dot new" : "marker-dot";
 
   const marker = L.marker([item.lat, item.lon], {

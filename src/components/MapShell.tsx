@@ -22,6 +22,8 @@ import { useDeviceOrientation } from "@/hooks/useDeviceOrientation";
 
 interface MapShellProps {
   restaurants: Restaurant[];
+  /** Set of distinct cuisine_group keys present in the loaded data (for FilterPanel). */
+  dataGroups: Set<string>;
   activeGroups: Set<string>;
   onToggleGroup: (group: string) => void;
   venueFilter: VenueFilter;
@@ -49,7 +51,7 @@ export interface MapShellHandle {
  */
 export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
   function MapShell(
-    { restaurants, activeGroups, onToggleGroup, venueFilter, onVenueFilterChange, center, zoom, hideControls, onModeChange, onMarkerTap },
+    { restaurants, dataGroups, activeGroups, onToggleGroup, venueFilter, onVenueFilterChange, center, zoom, hideControls, onModeChange, onMarkerTap },
     ref,
   ) {
     const mapRef = useRef<LeafletMap | null>(null);
@@ -369,6 +371,7 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
         {filterContainer &&
           createPortal(
             <FilterPanel
+              dataGroups={dataGroups}
               activeGroups={activeGroups}
               onToggle={onToggleGroup}
               venueFilter={venueFilter}

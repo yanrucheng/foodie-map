@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import type { Restaurant } from "@/types/restaurant";
-import { cuisineGroups } from "@/config/cuisineGroups";
+import { getGroupStyle, getGroupLabel } from "@/config/cuisineRegistry";
 
 interface MobilePopupCardProps {
   restaurant: Restaurant;
@@ -25,7 +25,8 @@ export function MobilePopupCard({ restaurant, onClose }: MobilePopupCardProps) {
     return () => document.removeEventListener("pointerdown", handler);
   }, [onClose]);
 
-  const groupStyle = cuisineGroups[restaurant.cuisine_group] ?? { color: "#8C8F96", text: "#fff" };
+  const groupStyle = getGroupStyle(restaurant.cuisine_group);
+  const groupLabel = getGroupLabel(restaurant.cuisine_group);
 
   return (
     <div className="mobile-popup-overlay">
@@ -45,9 +46,9 @@ export function MobilePopupCard({ restaurant, onClose }: MobilePopupCardProps) {
         <div className="mobile-popup-tags">
           <span
             className="mobile-popup-tag"
-            style={{ background: groupStyle.color, color: groupStyle.text }}
+            style={{ background: groupStyle.color, color: groupStyle.textColor }}
           >
-            {restaurant.cuisine_group}
+            {groupLabel}
           </span>
           <span className="mobile-popup-tag">{restaurant.cuisine}</span>
           {restaurant.is_new && (
