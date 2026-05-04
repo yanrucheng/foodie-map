@@ -9,6 +9,7 @@ import { Header } from "@/components/Header";
 import { DynamicTitle } from "@/components/DynamicTitle";
 import { SearchBar } from "@/components/SearchBar";
 import { Legend } from "@/components/Legend";
+import { markCurrentStateWorking } from "@/components/ErrorBoundary";
 import type { Restaurant } from "@/types/restaurant";
 
 /** Lazy-load MobileShell — only fetched on mobile viewports. */
@@ -35,6 +36,13 @@ function App() {
   useEffect(() => {
     document.title = `${selection.year} ${city.labelZh} · ${guide.labelZh}餐厅地图`;
   }, [selection.year, city.labelZh, guide.labelZh]);
+
+  /** Mark current URL params as "working" once data loads successfully. */
+  useEffect(() => {
+    if (!loading && !error && data.length > 0) {
+      markCurrentStateWorking();
+    }
+  }, [loading, error, data.length]);
 
   /** Handles search locate: enables group filter if needed, then flies to marker. */
   const handleLocate = useCallback(
