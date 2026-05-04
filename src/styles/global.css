@@ -318,7 +318,7 @@ body { display: flex; flex-direction: column; }
   .top-search { top: 18px; width: min(460px, calc(100vw - 32px)); }
   .control-block { min-width: 260px; }
   .stats-panel { min-width: 240px; }
-  .legend-card { width: min(920px, calc(100vw - 36px)); left: 18px; bottom: 18px; }
+  .legend-card { width: calc(100vw - 320px); left: 290px; bottom: 18px; }
   .leaflet-control-container .leaflet-top.leaflet-left { margin-top: 88px; }
   .leaflet-control-container .leaflet-top.leaflet-right { margin-top: 88px; }
 

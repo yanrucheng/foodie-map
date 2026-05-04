@@ -261,10 +261,14 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
         attribution: "&copy; OpenStreetMap contributors",
       }).addTo(map);
 
+      // Add scale bar
+      L.control.scale({ metric: true, imperial: false, position: "bottomleft" }).addTo(map);
+
       const cluster = L.markerClusterGroup({
         showCoverageOnHover: false,
         spiderfyOnMaxZoom: true,
         maxClusterRadius: 48,
+        disableClusteringAtZoom: 17,
         iconCreateFunction: (c) =>
           L.divIcon({
             html: `<div class="cluster-badge">${c.getChildCount()}</div>`,
