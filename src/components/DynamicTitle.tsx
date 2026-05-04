@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { SegmentPicker } from "@/components/SegmentPicker";
 import { SegmentPickerMobile } from "@/components/SegmentPickerMobile";
+import { APP_VERSION } from "@/version";
 import type { SegmentOption } from "@/hooks/useSelection";
 
 interface DynamicTitleProps {
@@ -60,6 +61,7 @@ export function DynamicTitle({
       <span className="dynamic-title-sep">·</span>
       <Picker options={guideOptions} value={guideId} onChange={onGuideChange} />
       <span className="dynamic-title-suffix">餐厅地图</span>
+      <span className="dynamic-title-version">v{APP_VERSION}</span>
     </h1>
   );
 }

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { cuisineGroups } from "@/config/cuisineGroups";
-import { APP_VERSION } from "@/version";
 
 interface LegendProps {
   totalCount: number;
@@ -43,7 +42,6 @@ export function Legend({ totalCount, geocodedCount, compact }: LegendProps) {
         {showNote && (
           <div className="legend-compact-note">
             地理编码成功 {geocodedCount} / {totalCount}（{coveragePercent}%）
-            <span className="legend-version">v{APP_VERSION}</span>
           </div>
         )}
       </section>
@@ -62,7 +60,6 @@ export function Legend({ totalCount, geocodedCount, compact }: LegendProps) {
       </div>
       <div className="coverage-note">
         地理编码成功 {geocodedCount} / {totalCount}（{coveragePercent}%），区域 fallback 0 家；fallback 餐厅会在弹窗中标注。
-        <span className="legend-version">v{APP_VERSION}</span>
       </div>
     </section>
   );

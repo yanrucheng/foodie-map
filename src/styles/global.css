@@ -351,6 +351,12 @@ body { display: flex; flex-direction: column; }
 .dynamic-title-suffix {
   white-space: nowrap;
 }
+.dynamic-title-version {
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: 8px;
+  font-weight: 400;
+}
 
 /* ─────────────────────────────────────────────────
    Segment Picker — Chip (Phase 2 — Track A/B)
