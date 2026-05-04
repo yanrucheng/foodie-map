@@ -1,5 +1,5 @@
 /** Service worker for offline shell caching. */
-const CACHE_NAME = "foodie-map-shell-v1";
+const CACHE_NAME = "foodie-map-shell-v2";
 
 /** App shell assets to pre-cache on install. */
 const SHELL_ASSETS = [
@@ -28,7 +28,27 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const { request } = event;
 
-  // Network-first for data files (JSON), cache-first for shell assets
+  // Skip non-GET requests and chrome-extension URLs
+  if (request.method !== "GET" || request.url.includes("chrome-extension")) {
+    return;
+  }
+
+  // Network-first for navigation requests (HTML pages)
+  // Ensures users always get fresh HTML with correct hashed asset references after deploys
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+          return response;
+        })
+        .catch(() => caches.match(request) || caches.match("/"))
+    );
+    return;
+  }
+
+  // Network-first for data files (JSON)
   if (request.url.includes("/data/")) {
     event.respondWith(
       fetch(request)
@@ -42,18 +62,19 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Cache-first for shell assets, fallback to network
+  // Cache-first for other assets (icons, fonts, etc.), fallback to network
   event.respondWith(
     caches.match(request).then((cached) => {
       if (cached) return cached;
-      return fetch(request).then((response) => {
-        // Cache successful GET responses for app shell
-        if (response.ok && request.method === "GET" && !request.url.includes("chrome-extension")) {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
-        }
-        return response;
-      });
+      return fetch(request)
+        .then((response) => {
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+          }
+          return response;
+        })
+        .catch(() => Response.error());
     })
   );
 });
