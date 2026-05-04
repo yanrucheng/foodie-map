@@ -1,15 +1,15 @@
 ---
-id: tech-dev-plan-260504-foodie-map-cuisine-taxonomy-candidate-4
-title: "Dev Plan — Unified Cuisine Taxonomy (Candidate 4)"
+id: tech-dev-plan-260504-cuisine-taxonomy
+title: "Dev Plan — Unified Cuisine Taxonomy"
 type: tech-dev-plan
-status: draft
+status: active
 created: 2026-05-04
 source: docs/prd/prd-260504-cuisine-taxonomy.md
 dev-unit-size: 0.5
 tags: [cuisine, taxonomy, data-pipeline, skill, filter, multi-guide]
 ---
 
-# Dev Plan — Unified Cuisine Taxonomy (Candidate 4)
+# Dev Plan — Unified Cuisine Taxonomy
 
 > Dev unit size: 0.5 developer-day
 
@@ -17,7 +17,7 @@ tags: [cuisine, taxonomy, data-pipeline, skill, filter, multi-guide]
 
 This plan implements the cuisine taxonomy PRD with a **skill-first** strategy: the reusable Python boarding script is built first, then used to produce the corrected data, then the frontend is adapted to consume canonical keys. This ensures the skill is the single source of truth for all data transformations — past and future.
 
-**Key design decisions for this candidate:**
+**Key design decisions:**
 
 | Decision | Rationale |
 |----------|-----------|
@@ -52,19 +52,25 @@ No ./skills/ directory               ./skills/ with reusable boarding tool
 | B — Mapping Rules | Data schema | Data | `public/data/taxonomy/hong-kong-mappings.json` covering all known raw labels from both guides | 1 | — |
 | C — Boarding Script | Pipeline tool | Script | `skills/cuisine-boarding/board.py` — Python CLI that reads taxonomy + mappings + raw data → outputs validated restaurant JSON with canonical `cuisine_group` | 1 | — |
 
-**Track A deliverable spec:**
+### Track A — Taxonomy Registry
+
+**Deliverable spec:**
 - JSON file matching PRD §2 (Taxonomy Registry File Format)
 - 13 groups with `key`, `labelZh`, `labelEn`, `sortOrder`
 - `fallbackGroup: "OTHER"`
 
-**Track B deliverable spec:**
+### Track B — Mapping Rules
+
+**Deliverable spec:**
 - JSON file matching PRD §3 (Mapping Rules)
 - Must cover ALL distinct raw `cuisine` values from both current datasets:
   - Bib-gourmand: ~30 unique raw labels
   - Starred: ~23 unique raw labels + empty string
 - Include `sources[]` metadata for auditability
 
-**Track C deliverable spec:**
+### Track C — Boarding Script
+
+**Deliverable spec:**
 - Single Python script (`board.py`) with CLI interface via `argparse`
 - Input: `--taxonomy <path>` `--mappings <path>` `--input <raw-json>` `--output <output-json>`
 - Logic: load taxonomy → load mappings → for each restaurant: resolve `cuisine` → set `cuisine_group`
@@ -83,12 +89,14 @@ No ./skills/ directory               ./skills/ with reusable boarding tool
 | A — Transform Bib-Gourmand | Data | Data | Updated `public/data/hong-kong/michelin-bib-gourmand.json` with canonical `cuisine_group` keys | 1 | Phase 1 Gate |
 | B — Transform Starred | Data | Data | Updated `public/data/hong-kong/michelin-starred.json` with canonical `cuisine_group` keys (from raw `cuisine`) | 1 | Phase 1 Gate |
 
-**Track A notes:**
+### Track A — Transform Bib-Gourmand
+
 - Bib-gourmand currently has Chinese meta-group labels in `cuisine_group` (e.g., `"粤菜 / 烧腊 / 港式小馆"`)
 - Must re-map using the raw `cuisine` field → canonical key via boarding script
 - All 70 restaurants must resolve to a canonical group
 
-**Track B notes:**
+### Track B — Transform Starred
+
 - Starred currently has `cuisine_group === cuisine` (no grouping applied)
 - Must map all 77 restaurants using the raw `cuisine` field
 - ~18 records have empty `cuisine` (due to missing detail URLs) → map to `OTHER`
@@ -106,7 +114,9 @@ No ./skills/ directory               ./skills/ with reusable boarding tool
 | B — Filter + Legend | `src/components/`, `src/hooks/` | FE | `useFilters.ts`, `FilterPanel.tsx`, `Legend.tsx` consume canonical registry. Dynamic group list derived from loaded data. | 1 | Track A |
 | C — Marker Styling | `src/components/` | FE | `RestaurantMarker.ts` looks up style by canonical key. Fallback to `OTHER` style for unknown keys. | 1 | Track A |
 
-**Track A deliverable spec:**
+### Track A — Taxonomy Config Module
+
+**Deliverable spec:**
 - Delete `cuisineGroups.ts`
 - New `cuisineRegistry.ts`:
   - Imports `public/data/taxonomy/hong-kong.json` (Vite JSON import)
@@ -114,12 +124,16 @@ No ./skills/ directory               ./skills/ with reusable boarding tool
   - Style assignments (hex colors) for each of the 13 canonical keys
   - Typed: `GroupKey` union type from registry keys
 
-**Track B deliverable spec:**
+### Track B — Filter + Legend
+
+**Deliverable spec:**
 - `useFilters.ts`: `allGroups` derived from loaded restaurant data's distinct `cuisine_group` values (not from static enum). Initial state = all active.
 - `FilterPanel.tsx`: Renders group chips from taxonomy registry (filtered to groups present in current dataset). Uses `labelZh` for display. Sorted by `sortOrder`.
 - `Legend.tsx`: Same derivation — only shows groups with ≥1 restaurant in active dataset.
 
-**Track C deliverable spec:**
+### Track C — Marker Styling
+
+**Deliverable spec:**
 - `RestaurantMarker.ts`: Lookup `cuisineStyleMap[restaurant.cuisine_group]` → apply color. Fallback to `cuisineStyleMap["OTHER"]`.
 
 **Gate 3:** `npm run build` succeeds. No TypeScript errors. Both guides render all restaurants with correct colors on the map. Filter panel shows appropriate groups per guide.
@@ -133,7 +147,9 @@ No ./skills/ directory               ./skills/ with reusable boarding tool
 | A — Skill Documentation | Skill | Ops | `skills/cuisine-boarding/SKILL.md` — usage instructions, input/output contract, example invocations for onboarding a new guide | 1 | Phase 3 Gate |
 | B — End-to-End Validation | QA | QA | Manual verification: switch between bib-gourmand and starred guides → all markers visible, filters functional, no blank map | 1 | Phase 3 Gate |
 
-**Track A deliverable spec:**
+### Track A — Skill Documentation
+
+**Deliverable spec:**
 - `SKILL.md` covers:
   - Purpose: onboard new Michelin guide data into the foodie-map system
   - Prerequisites: Python 3.11+, uv
@@ -142,7 +158,9 @@ No ./skills/ directory               ./skills/ with reusable boarding tool
   - How to extend taxonomy (add new group) vs. extend mappings (add new raw label)
   - Validation criteria (5% threshold, enum membership)
 
-**Track B validation criteria:**
+### Track B — End-to-End Validation
+
+**Validation criteria:**
 - Bib-gourmand: 70 restaurants rendered, filter chips match canonical groups present in data
 - Starred: 77 restaurants rendered (including `OTHER` for empty-cuisine records), filter chips match
 - Switching guides updates filter panel dynamically
@@ -212,6 +230,55 @@ Phase 1 (Foundation)  [3 dev units]
                           └─ Track B: E2E Validation
 ```
 
+---
+
+## File Impact Summary
+
+| Action | Path | Description |
+|--------|------|-------------|
+| **CREATE** | `public/data/taxonomy/hong-kong.json` | Canonical group registry (13 groups) |
+| **CREATE** | `public/data/taxonomy/hong-kong-mappings.json` | Raw→canonical mapping table |
+| **CREATE** | `skills/cuisine-boarding/SKILL.md` | Reusable boarding skill documentation |
+| **CREATE** | `skills/cuisine-boarding/board.py` | Data transformation pipeline script |
+| **CREATE** | `skills/cuisine-boarding/pyproject.toml` | Python project definition |
+| **CREATE** | `src/types/taxonomy.ts` | TypeScript types for taxonomy |
+| **MODIFY** | `public/data/hong-kong/michelin-bib-gourmand.json` | Rewrite `cuisine_group` to canonical keys |
+| **MODIFY** | `public/data/hong-kong/michelin-starred.json` | Rewrite `cuisine_group` to canonical keys |
+| **REPLACE** | `src/config/cuisineGroups.ts` | Static map → dynamic taxonomy loader (`cuisineRegistry.ts`) |
+| **MODIFY** | `src/hooks/useFilters.ts` | Init from taxonomy keys |
+| **MODIFY** | `src/components/FilterPanel.tsx` | Render from taxonomy groups |
+| **MODIFY** | `src/components/Legend.tsx` | Derive from taxonomy |
+| **MODIFY** | `src/components/RestaurantMarker.ts` | Lookup from taxonomy styleMap |
+| **MODIFY** | `src/components/MobilePopupCard.tsx` | Lookup from taxonomy styleMap |
+
+---
+
+## Risk Register
+
+| Risk | Probability | Impact | Mitigation |
+|------|-------------|--------|------------|
+| Starred data has raw labels not covered by PRD mapping table | Medium | High | Run Python script in dry-run first; log all unmapped labels; extend mappings before committing |
+| ~18 starred restaurants have empty `cuisine` + missing URLs | High | Medium | Acceptable per PRD (≤5% OTHER). These are placeholder records without Michelin detail pages. |
+| Compound cuisine labels (e.g., "时尚法国菜, 创新菜") | Medium | Low | PRD defines exact-match-first + first-token fallback. Boarding script implements this. |
+| Color assignments for new groups clash with existing palette | Low | Low | Assign complementary colors upfront; visual differentiation per cuisine type |
+| Frontend fetch of taxonomy JSON adds loading time | Low | Low | Taxonomy JSON is tiny (<2KB); static import at build time eliminates runtime cost |
+| `cuisineGroups.ts` imports in 8+ files | Medium | Medium | Systematic replacement in Phase 3 Track B; each consumer listed with specific change |
+
+---
+
+## Acceptance Criteria Mapping
+
+| AC | Description | Covered By |
+|----|-------------|------------|
+| AC-1 | Bib-gourmand: 100% mapped to canonical enum | P1-C validation + P2-A |
+| AC-2 | Starred: 100% mapped, ≤ 5% OTHER | P1-C validation + P2-B |
+| AC-3 | No zero-marker bug on guide switch | P3-B + P3-C + P4-B |
+| AC-4 | Unknown label → OTHER + warning | P1-C pipeline logic |
+| AC-5 | Invalid group → build fail | P1-C validation logic |
+| AC-6 | Filter chips match canonical labels | P3-B |
+
+---
+
 ## Implementation Wisdom Notes
 
 ### Why Skill-First?
@@ -238,6 +305,7 @@ The minimal change set:
 ### Skill Reusability Contract
 
 The `skills/cuisine-boarding/` directory is designed to be self-contained:
+
 ```
 skills/cuisine-boarding/
 ├── SKILL.md              # Human/AI readable usage guide
@@ -254,11 +322,20 @@ Any maintainer (or AI agent) can:
 
 ---
 
-## Blockers / Risks
+## Appendix: Color Assignment for New Groups
 
-| Risk | Mitigation |
-|------|-----------|
-| ~18 starred restaurants have empty `cuisine` + missing URLs → permanently `OTHER` | Acceptable per PRD (≤5%). These are placeholder records without Michelin detail pages. |
-| Compound cuisine labels (e.g., "时尚法国菜, 创新菜") | PRD defines exact-match-first + first-token fallback. Boarding script implements this. |
-| Unknown raw labels in future data refreshes | Script logs warnings + maps to OTHER. SKILL.md documents the review process. |
-| Frontend color assignment for new groups | `cuisineRegistry.ts` must assign a color for all 13 groups upfront. No runtime fallback needed. |
+| Group Key | Color (hex) | Text Color | Notes |
+|-----------|-------------|------------|-------|
+| CANTONESE | #D64C4C | #fff | Migrated from existing "粤菜" |
+| NOODLES_CONGEE | #E1B93A | #1a1a1a | Migrated from existing "面食" |
+| DIM_SUM | #43A36B | #fff | Migrated from existing "点心" |
+| REGIONAL_CHINESE | #8A57C9 | #fff | Merged from 潮州/客家/顺德 + 京沪/川菜 |
+| SOUTHEAST_ASIAN | #4386D6 | #fff | Migrated from existing "东南亚" |
+| JAPANESE | #2B2B2B | #fff | Migrated from existing "日料" |
+| KOREAN | #5C6BC0 | #fff | New — indigo, differentiates from Japanese |
+| FRENCH | #B8860B | #fff | New — dark gold, European elegance |
+| ITALIAN_EUROPEAN | #E0823F | #fff | New — warm orange |
+| WESTERN_OTHER | #8C8F96 | #fff | Migrated from existing "西餐" |
+| INNOVATIVE | #00897B | #fff | New — teal, modern cuisine |
+| STEAKHOUSE_GRILL | #6D4C41 | #fff | New — brown, meat/fire association |
+| OTHER | #BDBDBD | #1a1a1a | Neutral gray for fallback |
