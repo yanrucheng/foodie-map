@@ -19,7 +19,8 @@ const PANEL_TABS: { id: PanelId; icon: string; label: string }[] = [
 ];
 
 interface MobileShellProps {
-  title: string;
+  /** Header title area — accepts a ReactNode (e.g. DynamicTitle). */
+  headerContent: React.ReactNode;
   subtitle: string;
   restaurants: Restaurant[];
   activeGroups: Set<string>;
@@ -37,7 +38,7 @@ interface MobileShellProps {
  * Enforces single-panel-at-a-time constraint via usePanelState.
  */
 export function MobileShell({
-  title,
+  headerContent,
   subtitle,
   restaurants,
   activeGroups,
@@ -96,7 +97,9 @@ export function MobileShell({
   return (
     <div className="mobile-shell">
       {/* Compact header */}
-      <Header title={title} subtitle={subtitle} compact />
+      <Header subtitle={subtitle} compact>
+        {headerContent}
+      </Header>
 
       {/* Search bar */}
       <div className="mobile-search-area">
