@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, forwardRef, useImperativeHandle } from "react";
 import type { Restaurant } from "@/types/restaurant";
 import type { Map as LeafletMap, Marker, Control, MarkerClusterGroup } from "leaflet";
 import { createRestaurantMarker } from "./RestaurantMarker";
@@ -14,11 +14,16 @@ interface MapShellProps {
   zoom: number;
 }
 
+/** Imperative handle exposed by MapShell for external map interactions. */
+export interface MapShellHandle {
+  flyToRestaurant: (restaurant: Restaurant) => void;
+}
+
 /**
  * Main map component. Initializes Leaflet map imperatively and manages
  * marker cluster, heat layer, filter control, and stats panel.
  */
-export function MapShell({ restaurants, activeGroups, onToggleGroup, center, zoom }: MapShellProps) {
+export const MapShell = forwardRef<MapShellHandle, MapShellProps>(function MapShell({ restaurants, activeGroups, onToggleGroup, center, zoom }, ref) {
   const mapRef = useRef<LeafletMap | null>(null);
   const clusterRef = useRef<MarkerClusterGroup | null>(null);
   const heatRef = useRef<HeatLayerManager | null>(null);
@@ -145,5 +150,27 @@ export function MapShell({ restaurants, activeGroups, onToggleGroup, center, zoo
     refreshLayers();
   }, [activeGroups, rebuildFilterControl, refreshLayers]);
 
+  /** Exposes flyToRestaurant for search integration. Switches to marker mode, flies, and opens popup. */
+  useImperativeHandle(ref, () => ({
+    flyToRestaurant(restaurant: Restaurant) {
+      const map = mapRef.current;
+      const cluster = clusterRef.current;
+      if (!map || !cluster) return;
+
+      // Switch to marker mode if in heat mode
+      if (modeRef.current === "heat") {
+        modeRef.current = "marker";
+        rebuildFilterControl();
+        refreshLayers();
+      }
+
+      map.flyTo([restaurant.lat, restaurant.lon], 15, { duration: 0.8 });
+      const marker = markersRef.current.get(restaurant.id);
+      if (marker) {
+        setTimeout(() => marker.openPopup(), 400);
+      }
+    },
+  }), [rebuildFilterControl, refreshLayers]);
+
   return <div ref={containerRef} id="map" style={{ width: "100%", height: "100%" }} />;
-}
+});
