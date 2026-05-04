@@ -2,6 +2,7 @@
 export interface CityConfig {
   id: string;
   label: string;
+  labelZh: string;
   center: [number, number];
   zoom: number;
   guides: GuideConfig[];
@@ -11,6 +12,8 @@ export interface CityConfig {
 export interface GuideConfig {
   id: string;
   label: string;
+  labelZh: string;
+  year: number;
   dataPath: string;
 }
 
@@ -19,13 +22,23 @@ export const cities: CityConfig[] = [
   {
     id: "hong-kong",
     label: "Hong Kong",
+    labelZh: "香港",
     center: [22.302, 114.177],
     zoom: 11,
     guides: [
       {
         id: "michelin-bib-gourmand",
         label: "Michelin Bib Gourmand 2026",
+        labelZh: "米其林必比登",
+        year: 2026,
         dataPath: "/data/hong-kong/michelin-bib-gourmand.json",
+      },
+      {
+        id: "michelin-starred",
+        label: "Michelin Starred 2026",
+        labelZh: "米其林星级",
+        year: 2026,
+        dataPath: "/data/hong-kong/michelin-starred.json",
       },
     ],
   },
