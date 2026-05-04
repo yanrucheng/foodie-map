@@ -16,6 +16,13 @@
     { "raw": "浙菜", "groupKey": "JIANGZHE", "sources": ["bib-gourmand"] },
     { "raw": "闽菜", "groupKey": "FUJIAN_SEAFOOD", "sources": ["bib-gourmand"] },
     { "raw": "湖北菜", "groupKey": "HUBEI", "sources": ["bib-gourmand"] },
-    { "raw": "素食", "groupKey": "VEGETARIAN", "sources": ["bib-gourmand"] }
+    { "raw": "素食", "groupKey": "VEGETARIAN", "sources": ["bib-gourmand"] },
+    { "raw": "时尚法国菜", "groupKey": "FRENCH", "sources": ["michelin-starred"] },
+    { "raw": "意大利菜", "groupKey": "ITALIAN_EUROPEAN", "sources": ["michelin-starred"] },
+    { "raw": "欧陆菜", "groupKey": "ITALIAN_EUROPEAN", "sources": ["michelin-starred"] },
+    { "raw": "中式创意菜", "groupKey": "INNOVATIVE", "sources": ["michelin-starred"] },
+    { "raw": "潮州菜", "groupKey": "CANTONESE", "sources": ["michelin-starred"] },
+    { "raw": "东北菜", "groupKey": "SHANDONG", "sources": ["michelin-starred"] },
+    { "raw": "沪菜", "groupKey": "HUAIYANG_JIANGNAN", "sources": ["michelin-starred"] }
   ]
 }

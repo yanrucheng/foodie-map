@@ -15,6 +15,9 @@
     { "key": "FUJIAN_SEAFOOD", "labelZh": "闽菜 · 海鲜", "labelEn": "Fujian & Seafood", "sortOrder": 10 },
     { "key": "HUBEI", "labelZh": "湖北菜", "labelEn": "Hubei", "sortOrder": 11 },
     { "key": "VEGETARIAN", "labelZh": "素食", "labelEn": "Vegetarian", "sortOrder": 12 },
+    { "key": "FRENCH", "labelZh": "法国菜", "labelEn": "French", "sortOrder": 13 },
+    { "key": "ITALIAN_EUROPEAN", "labelZh": "意大利 · 欧陆菜", "labelEn": "Italian & European", "sortOrder": 14 },
+    { "key": "INNOVATIVE", "labelZh": "创新菜", "labelEn": "Innovative", "sortOrder": 15 },
     { "key": "OTHER", "labelZh": "其他", "labelEn": "Other", "sortOrder": 99 }
   ]
 }
