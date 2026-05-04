@@ -1,3 +1,6 @@
+/** Venue type for secondary filtering (street food / dessert vs. restaurant). */
+export type VenueType = "restaurant" | "street_food" | "dessert";
+
 /** A single restaurant entry from the guide data JSON. */
 export interface Restaurant {
   id: number;
@@ -7,6 +10,7 @@ export interface Restaurant {
   cuisine: string;
   cuisine_group: string;
   is_new: boolean;
+  venue_type: VenueType;
   area: string;
   primary_area: string;
   major_region: string;
