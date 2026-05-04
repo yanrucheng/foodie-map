@@ -208,6 +208,59 @@ body { display: flex; flex-direction: column; }
 .mobile-fab-group { bottom: calc(24px + env(safe-area-inset-bottom, 0px)); right: calc(12px + env(safe-area-inset-right, 0px)); }
 .bottom-sheet { padding-bottom: env(safe-area-inset-bottom, 0px); }
 
+/* ─────────────────────────────────────────────────
+   User Location Marker
+   ───────────────────────────────────────────────── */
+.user-loc-icon { background: none !important; border: none !important; }
+
+.user-loc-wrapper { position: relative; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; }
+
+/* Pulsing ring */
+.user-loc-pulse { position: absolute; width: 32px; height: 32px; border-radius: 50%; background: rgba(56, 152, 255, 0.18); animation: loc-pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite; will-change: transform, opacity; }
+
+/* Solid dot */
+.user-loc-dot { position: relative; width: 14px; height: 14px; border-radius: 50%; background: #3898ff; border: 2.5px solid #fff; box-shadow: 0 2px 8px rgba(56, 152, 255, 0.45), 0 0 0 1px rgba(56, 152, 255, 0.12); z-index: 2; }
+
+/* Heading cone */
+.user-loc-cone { position: absolute; top: 0; left: 50%; width: 0; height: 0; margin-left: -10px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 22px solid rgba(56, 152, 255, 0.35); transform-origin: center 24px; will-change: transform; z-index: 1; filter: blur(0.5px); }
+
+/* Accuracy circle */
+.user-loc-accuracy { fill: rgba(56, 152, 255, 0.08); stroke: rgba(56, 152, 255, 0.25); stroke-width: 1.5; }
+
+@keyframes loc-pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  70% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* ─────────────────────────────────────────────────
+   Location Button Control
+   ───────────────────────────────────────────────── */
+.loc-btn-container { border: none !important; background: none !important; box-shadow: none !important; }
+
+.loc-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: var(--panel); backdrop-filter: blur(10px); color: var(--muted); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.28); transition: all 0.2s ease; -webkit-tap-highlight-color: transparent; }
+.loc-btn:active { transform: scale(0.9); }
+.loc-btn:hover { background: var(--panel-soft); }
+
+/* Locating state — pulsing border */
+.loc-btn--locating { color: #3898ff; border-color: rgba(56, 152, 255, 0.5); animation: loc-btn-pulse 1.5s ease-in-out infinite; }
+
+/* Tracking state — solid active */
+.loc-btn--tracking { color: #3898ff; background: rgba(56, 152, 255, 0.12); border-color: #3898ff; box-shadow: 0 0 0 3px rgba(56, 152, 255, 0.15), 0 4px 16px rgba(0,0,0,0.28); }
+
+/* Spinner animation for locating state icon */
+.loc-btn-spin { animation: loc-spin 1.2s linear infinite; }
+
+@keyframes loc-btn-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(56, 152, 255, 0.3), 0 4px 16px rgba(0,0,0,0.28); }
+  50% { box-shadow: 0 0 0 6px rgba(56, 152, 255, 0), 0 4px 16px rgba(0,0,0,0.28); }
+}
+
+@keyframes loc-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* ═════════════════════════════════════════════════
    Tablet — min-width: 768px
    ═════════════════════════════════════════════════ */
