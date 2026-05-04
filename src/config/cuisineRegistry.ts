@@ -52,7 +52,7 @@ const COLOR_PALETTE: Record<string, CuisineStyle> = {
   NOODLES_CONGEE: { color: "#E1B93A", textColor: "#1a1a1a" },
   REGIONAL_CHINESE: { color: "#8A57C9", textColor: "#fff" },
   SOUTHEAST_ASIAN: { color: "#4386D6", textColor: "#fff" },
-  JAPANESE: { color: "#2B2B2B", textColor: "#fff" },
+  JAPANESE: { color: "#78909C", textColor: "#fff" },
   KOREAN: { color: "#5C6BC0", textColor: "#fff" },
   FRENCH: { color: "#B8860B", textColor: "#fff" },
   ITALIAN_EUROPEAN: { color: "#E0823F", textColor: "#fff" },
