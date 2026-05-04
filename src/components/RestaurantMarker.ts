@@ -39,8 +39,20 @@ function popupHtml(item: Restaurant): string {
     </div>`;
 }
 
-/** Creates a Leaflet marker with styled dot icon and popup for a restaurant. */
-export function createRestaurantMarker(item: Restaurant): L.Marker {
+interface CreateMarkerOptions {
+  /** If provided, marker click triggers this callback instead of popup. */
+  onClick?: (restaurant: Restaurant) => void;
+}
+
+/**
+ * Creates a Leaflet marker with styled dot icon.
+ * On desktop: binds popup HTML for marker tap.
+ * On mobile (when onClick provided): attaches click handler for custom card display.
+ */
+export function createRestaurantMarker(
+  item: Restaurant,
+  options?: CreateMarkerOptions
+): L.Marker {
   const groupStyle = cuisineGroups[item.cuisine_group] ?? cuisineGroups["西餐 / 其他"]!;
   const className = item.is_new ? "marker-dot new" : "marker-dot";
 
@@ -53,7 +65,18 @@ export function createRestaurantMarker(item: Restaurant): L.Marker {
       iconAnchor: [9, 9],
       popupAnchor: [0, -12],
     }),
-  }).bindPopup(popupHtml(item));
+  });
+
+  // Store restaurant reference on marker for event handlers
+  (marker as L.Marker & { __restaurant?: Restaurant }).__restaurant = item;
+
+  if (options?.onClick) {
+    // Mobile: use click handler instead of popup
+    marker.on("click", () => options.onClick!(item));
+  } else {
+    // Desktop: bind popup as before
+    marker.bindPopup(popupHtml(item));
+  }
 
   return marker;
 }

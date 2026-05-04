@@ -25,6 +25,8 @@ interface MapShellProps {
   hideControls?: boolean;
   /** Called whenever the display mode changes between marker and heat. */
   onModeChange?: (mode: "marker" | "heat") => void;
+  /** When provided (mobile), marker taps call this instead of opening Leaflet popup. */
+  onMarkerTap?: (restaurant: Restaurant) => void;
 }
 
 /** Imperative handle exposed by MapShell for external map interactions. */
@@ -40,7 +42,7 @@ export interface MapShellHandle {
  */
 export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
   function MapShell(
-    { restaurants, activeGroups, onToggleGroup, center, zoom, hideControls, onModeChange },
+    { restaurants, activeGroups, onToggleGroup, center, zoom, hideControls, onModeChange, onMarkerTap },
     ref,
   ) {
     const mapRef = useRef<LeafletMap | null>(null);
@@ -63,6 +65,8 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
     activeGroupsRef.current = activeGroups;
     const restaurantsRef = useRef(restaurants);
     restaurantsRef.current = restaurants;
+    const onMarkerTapRef = useRef(onMarkerTap);
+    onMarkerTapRef.current = onMarkerTap;
 
     /** Visible restaurants based on active cuisine group filters. */
     const visibleRestaurants = useMemo(
@@ -173,7 +177,10 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
     useEffect(() => {
       markersRef.current.clear();
       restaurants.forEach((item) => {
-        markersRef.current.set(item.id, createRestaurantMarker(item));
+        const opts = onMarkerTapRef.current
+          ? { onClick: onMarkerTapRef.current }
+          : undefined;
+        markersRef.current.set(item.id, createRestaurantMarker(item, opts));
       });
       refreshLayers();
     }, [restaurants, refreshLayers]);

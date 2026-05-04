@@ -7,6 +7,7 @@ import { Legend } from "@/components/Legend";
 import { Header } from "@/components/Header";
 import { SearchBar } from "@/components/SearchBar";
 import { MapShell } from "@/components/MapShell";
+import { MobilePopupCard } from "@/components/MobilePopupCard";
 import type { MapShellHandle } from "@/components/MapShell";
 import type { Restaurant } from "@/types/restaurant";
 
@@ -50,6 +51,17 @@ export function MobileShell({
   const mapRef = useRef<MapShellHandle>(null);
   const { activePanel, toggle, close } = usePanelState();
   const [displayMode, setDisplayMode] = useState<"marker" | "heat">("marker");
+  const [popupRestaurant, setPopupRestaurant] = useState<Restaurant | null>(null);
+
+  /** Handle marker tap on mobile: show full-width popup card. */
+  const handleMarkerTap = useCallback((restaurant: Restaurant) => {
+    setPopupRestaurant(restaurant);
+  }, []);
+
+  /** Close the mobile popup card. */
+  const handleClosePopup = useCallback(() => {
+    setPopupRestaurant(null);
+  }, []);
 
   /** Handle search locate: enable group filter if needed, then fly to marker. */
   const handleLocate = useCallback(
@@ -102,6 +114,7 @@ export function MobileShell({
           zoom={zoom}
           hideControls
           onModeChange={setDisplayMode}
+          onMarkerTap={handleMarkerTap}
         />
       </main>
 
@@ -131,15 +144,21 @@ export function MobileShell({
             onToggle={onToggle}
             onModeToggle={handleModeToggle}
             currentMode={displayMode}
+            variant="pill"
           />
         )}
         {activePanel === "stats" && (
           <StatsPanelReact restaurants={visibleRestaurants} />
         )}
         {activePanel === "legend" && (
-          <Legend totalCount={totalCount} geocodedCount={geocodedCount} />
+          <Legend totalCount={totalCount} geocodedCount={geocodedCount} compact />
         )}
       </BottomSheet>
+
+      {/* Mobile popup card — shown on marker tap */}
+      {popupRestaurant && (
+        <MobilePopupCard restaurant={popupRestaurant} onClose={handleClosePopup} />
+      )}
     </div>
   );
 }

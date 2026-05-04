@@ -122,7 +122,7 @@ body { display: flex; flex-direction: column; }
 /* ─────────────────────────────────────────────────
    Mobile Shell
    ───────────────────────────────────────────────── */
-.mobile-shell { display: flex; flex-direction: column; height: 100dvh; height: 100vh; position: relative; overflow: hidden; }
+.mobile-shell { display: flex; flex-direction: column; height: 100dvh; height: 100vh; position: relative; overflow: hidden; overscroll-behavior: none; touch-action: manipulation; }
 .mobile-search-area { position: relative; z-index: 1000; padding: 0 10px; }
 .mobile-search-area .top-search { position: relative; top: auto; left: auto; transform: none; width: 100%; margin-top: 8px; }
 .mobile-map-container { flex: 1; position: relative; min-height: 0; }
@@ -152,6 +152,61 @@ body { display: flex; flex-direction: column; }
 .bottom-sheet-content .legend-card { position: static; width: 100%; }
 
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* ─────────────────────────────────────────────────
+   Mobile Popup Card (Phase 3 — Track A)
+   ───────────────────────────────────────────────── */
+.mobile-popup-overlay { position: fixed; inset: 0; z-index: 2500; display: flex; align-items: flex-end; }
+.mobile-popup-card { position: relative; width: 100%; max-height: 70dvh; max-height: 70vh; background: var(--panel); border-radius: var(--radius-lg) var(--radius-lg) 0 0; border: 1px solid var(--border); border-bottom: none; box-shadow: 0 -12px 48px rgba(0,0,0,0.4); padding: 20px 18px calc(20px + env(safe-area-inset-bottom, 0px)); overflow-y: auto; overscroll-behavior: contain; animation: slide-up 0.3s cubic-bezier(0.32, 0.72, 0, 1); }
+.mobile-popup-close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: var(--panel-soft); color: var(--muted); font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.15s; }
+.mobile-popup-close:active { background: rgba(255,255,255,0.08); }
+.mobile-popup-name { margin: 0 0 4px; font-size: 20px; font-weight: 700; color: var(--text); padding-right: 44px; }
+.mobile-popup-en { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
+.mobile-popup-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.mobile-popup-tag { display: inline-flex; align-items: center; border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 500; background: rgba(255,255,255,0.08); color: var(--text); }
+.mobile-popup-tag--new { background: linear-gradient(135deg, #c89e39, #f5de9c); color: #3b2d00; font-weight: 700; }
+.mobile-popup-details { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.mobile-popup-row { display: flex; gap: 10px; font-size: 14px; line-height: 1.5; }
+.mobile-popup-row--note { padding-top: 4px; }
+.mobile-popup-label { flex-shrink: 0; width: 56px; color: var(--muted); font-size: 13px; font-weight: 500; }
+.mobile-popup-value { color: var(--text); flex: 1; word-break: break-word; }
+.mobile-popup-link { display: inline-flex; align-items: center; gap: 4px; color: #9fcbff; font-size: 14px; font-weight: 500; text-decoration: none; padding: 8px 0; }
+
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* ─────────────────────────────────────────────────
+   Filter Pills (Phase 3 — Track B)
+   ───────────────────────────────────────────────── */
+.filter-pills { display: flex; flex-wrap: wrap; gap: 10px; padding: 4px 0; }
+.filter-pill { display: inline-flex; align-items: center; gap: 8px; min-height: var(--tap-min); padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--border); background: rgba(255,255,255,0.04); color: var(--muted); font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.18s ease; -webkit-tap-highlight-color: transparent; }
+.filter-pill:active { transform: scale(0.95); }
+.filter-pill--active { background: color-mix(in srgb, var(--pill-color) 18%, transparent); border-color: var(--pill-color); color: var(--text); box-shadow: 0 0 0 1px color-mix(in srgb, var(--pill-color) 25%, transparent); }
+.filter-pill-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; opacity: 0.5; transition: opacity 0.18s; }
+.filter-pill--active .filter-pill-dot { opacity: 1; }
+.filter-pill-label { white-space: nowrap; }
+
+/* ─────────────────────────────────────────────────
+   Compact Legend (Phase 3 — Track C)
+   ───────────────────────────────────────────────── */
+.legend-card--compact { position: static; width: 100%; display: flex; flex-direction: column; gap: 8px; padding: 8px 0; }
+.legend-scroll { display: flex; gap: 10px; overflow-x: auto; overflow-y: hidden; padding: 8px 16px; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.legend-scroll::-webkit-scrollbar { display: none; }
+.legend-chip { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; scroll-snap-align: start; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); }
+.legend-chip-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.legend-chip-text { font-size: 12px; color: var(--text); white-space: nowrap; }
+.legend-info-btn { align-self: flex-end; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--border); background: var(--panel-soft); color: var(--muted); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 16px; transition: background 0.15s; }
+.legend-info-btn:active { background: rgba(255,255,255,0.08); }
+.legend-compact-note { padding: 4px 16px 8px; font-size: 12px; color: var(--muted); animation: fade-in 0.2s ease-out; }
+
+/* ─────────────────────────────────────────────────
+   Safe Area Support (Phase 3 — Track D)
+   ───────────────────────────────────────────────── */
+.mobile-shell { padding-top: env(safe-area-inset-top, 0px); }
+.mobile-fab-group { bottom: calc(24px + env(safe-area-inset-bottom, 0px)); right: calc(12px + env(safe-area-inset-right, 0px)); }
+.bottom-sheet { padding-bottom: env(safe-area-inset-bottom, 0px); }
 
 /* ═════════════════════════════════════════════════
    Tablet — min-width: 768px
