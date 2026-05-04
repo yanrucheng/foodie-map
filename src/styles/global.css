@@ -262,6 +262,31 @@ body { display: flex; flex-direction: column; }
 }
 
 /* ─────────────────────────────────────────────────
+   Location Error Toast
+   ───────────────────────────────────────────────── */
+.loc-error-toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  background: rgba(30, 30, 30, 0.88);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  pointer-events: none;
+  white-space: nowrap;
+  animation: loc-toast-in 0.2s ease-out;
+}
+
+@keyframes loc-toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ─────────────────────────────────────────────────
    Location Button — Mobile FAB clearance
    ───────────────────────────────────────────────── */
 .mobile-shell .leaflet-bottom.leaflet-right { margin-bottom: 190px; }

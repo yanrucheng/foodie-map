@@ -67,16 +67,33 @@ export function useGeolocation() {
     });
   }, []);
 
-  /** Handles geolocation errors. */
+  /** Handles geolocation errors. Clears the watch and stops tracking. */
   const onError = useCallback((err: GeolocationPositionError) => {
-    setState((prev) => ({ ...prev, error: err }));
+    // Clear the watch to prevent repeated error callbacks
+    if (watchIdRef.current !== null) {
+      navigator.geolocation.clearWatch(watchIdRef.current);
+      watchIdRef.current = null;
+    }
+    setState({
+      lat: null,
+      lon: null,
+      accuracy: null,
+      isActive: false,
+      error: err,
+    });
   }, []);
 
-  /** Starts the position watcher. No-op if already active or API unavailable. */
+  /** Starts the position watcher. Sets error if API unavailable. */
   const start = useCallback(() => {
     if (watchIdRef.current !== null) return;
     if (!isGeolocationSupported()) {
-      setState((prev) => ({ ...prev, error: null, isActive: false }));
+      setState({
+        lat: null,
+        lon: null,
+        accuracy: null,
+        isActive: false,
+        error: { code: 2, message: "Geolocation not supported", PERMISSION_DENIED: 1, POSITION_UNAVAILABLE: 2, TIMEOUT: 3 } as GeolocationPositionError,
+      });
       return;
     }
 

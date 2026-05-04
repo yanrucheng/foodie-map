@@ -112,6 +112,31 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
       }
     }, [geo, orientation]);
 
+    // State for location error feedback
+    const [locationError, setLocationError] = useState<string | null>(null);
+
+    // Handle geolocation errors — reset button and show feedback
+    useEffect(() => {
+      if (!geo.error) return;
+
+      // Map error codes to user-friendly messages
+      const messages: Record<number, string> = {
+        1: "Location permission denied",
+        2: "Location unavailable",
+        3: "Location request timed out",
+      };
+      const msg = messages[geo.error.code] ?? "Location error";
+
+      // Reset button to inactive
+      locationBtnRef.current?.setState("inactive");
+      // Stop orientation tracking as well
+      orientation.stop();
+      // Show brief error message
+      setLocationError(msg);
+      const timer = setTimeout(() => setLocationError(null), 3000);
+      return () => clearTimeout(timer);
+    }, [geo.error, orientation]);
+
     // Sync geolocation & orientation state → UserLocationMarker
     useEffect(() => {
       if (!mapRef.current) return;
@@ -347,6 +372,9 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
             <StatsPanelReact restaurants={visibleRestaurants} />,
             statsContainer,
           )}
+        {locationError && (
+          <div className="loc-error-toast">{locationError}</div>
+        )}
       </>
     );
   },
