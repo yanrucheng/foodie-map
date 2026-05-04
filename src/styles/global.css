@@ -261,6 +261,11 @@ body { display: flex; flex-direction: column; }
   to { transform: rotate(360deg); }
 }
 
+/* ─────────────────────────────────────────────────
+   Location Button — Mobile FAB clearance
+   ───────────────────────────────────────────────── */
+.mobile-shell .leaflet-bottom.leaflet-right { margin-bottom: 190px; }
+
 /* ═════════════════════════════════════════════════
    Tablet — min-width: 768px
    ═════════════════════════════════════════════════ */
