@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "city": "beijing",
+  "fallbackGroup": "OTHER",
+  "groups": [
+    { "key": "BEIJING_LOCAL", "labelZh": "京菜 · 老字号", "labelEn": "Beijing Cuisine", "sortOrder": 1 },
+    { "key": "SICHUAN", "labelZh": "川菜", "labelEn": "Sichuan", "sortOrder": 2 },
+    { "key": "HUAIYANG_JIANGNAN", "labelZh": "淮扬 · 江南菜", "labelEn": "Huaiyang & Jiangnan", "sortOrder": 3 },
+    { "key": "SHANDONG", "labelZh": "鲁菜", "labelEn": "Shandong", "sortOrder": 4 },
+    { "key": "HUNAN", "labelZh": "湘菜", "labelEn": "Hunan", "sortOrder": 5 },
+    { "key": "HOTPOT_BBQ", "labelZh": "火锅 · 烤串", "labelEn": "Hotpot & BBQ", "sortOrder": 6 },
+    { "key": "CANTONESE", "labelZh": "粤菜", "labelEn": "Cantonese", "sortOrder": 7 },
+    { "key": "NOODLES_SNACKS", "labelZh": "面食 · 小吃", "labelEn": "Noodles & Snacks", "sortOrder": 8 },
+    { "key": "JIANGZHE", "labelZh": "江浙菜", "labelEn": "Jiangsu & Zhejiang", "sortOrder": 9 },
+    { "key": "FUJIAN_SEAFOOD", "labelZh": "闽菜 · 海鲜", "labelEn": "Fujian & Seafood", "sortOrder": 10 },
+    { "key": "HUBEI", "labelZh": "湖北菜", "labelEn": "Hubei", "sortOrder": 11 },
+    { "key": "VEGETARIAN", "labelZh": "素食", "labelEn": "Vegetarian", "sortOrder": 12 },
+    { "key": "OTHER", "labelZh": "其他", "labelEn": "Other", "sortOrder": 99 }
+  ]
+}

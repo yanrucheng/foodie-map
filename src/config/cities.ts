@@ -42,4 +42,20 @@ export const cities: CityConfig[] = [
       },
     ],
   },
+  {
+    id: "beijing",
+    label: "Beijing",
+    labelZh: "北京",
+    center: [39.904, 116.407],
+    zoom: 11,
+    guides: [
+      {
+        id: "michelin-bib-gourmand",
+        label: "Michelin Bib Gourmand 2026",
+        labelZh: "米其林必比登",
+        year: 2026,
+        dataPath: "/data/beijing/michelin-bib-gourmand.json",
+      },
+    ],
+  },
 ];

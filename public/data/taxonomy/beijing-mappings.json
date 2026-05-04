@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "city": "beijing",
+  "mappings": [
+    { "raw": "京菜", "groupKey": "BEIJING_LOCAL", "sources": ["bib-gourmand"] },
+    { "raw": "川菜", "groupKey": "SICHUAN", "sources": ["bib-gourmand"] },
+    { "raw": "淮扬菜", "groupKey": "HUAIYANG_JIANGNAN", "sources": ["bib-gourmand"] },
+    { "raw": "鲁菜", "groupKey": "SHANDONG", "sources": ["bib-gourmand"] },
+    { "raw": "湘菜", "groupKey": "HUNAN", "sources": ["bib-gourmand"] },
+    { "raw": "火锅", "groupKey": "HOTPOT_BBQ", "sources": ["bib-gourmand"] },
+    { "raw": "粤菜", "groupKey": "CANTONESE", "sources": ["bib-gourmand"] },
+    { "raw": "面食", "groupKey": "NOODLES_SNACKS", "sources": ["bib-gourmand"] },
+    { "raw": "饺子", "groupKey": "NOODLES_SNACKS", "sources": ["bib-gourmand"] },
+    { "raw": "台州菜", "groupKey": "JIANGZHE", "sources": ["bib-gourmand"] },
+    { "raw": "宁波菜", "groupKey": "JIANGZHE", "sources": ["bib-gourmand"] },
+    { "raw": "浙菜", "groupKey": "JIANGZHE", "sources": ["bib-gourmand"] },
+    { "raw": "闽菜", "groupKey": "FUJIAN_SEAFOOD", "sources": ["bib-gourmand"] },
+    { "raw": "湖北菜", "groupKey": "HUBEI", "sources": ["bib-gourmand"] },
+    { "raw": "素食", "groupKey": "VEGETARIAN", "sources": ["bib-gourmand"] }
+  ]
+}

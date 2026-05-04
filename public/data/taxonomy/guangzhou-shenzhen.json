@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "city": "guangzhou-shenzhen",
+  "fallbackGroup": "OTHER",
+  "groups": [
+    { "key": "CANTONESE", "labelZh": "粤菜", "labelEn": "Cantonese", "sortOrder": 1 },
+    { "key": "DIM_SUM", "labelZh": "点心 · 茶楼", "labelEn": "Dim Sum", "sortOrder": 2 },
+    { "key": "NOODLES_CONGEE", "labelZh": "粉面 · 粥品", "labelEn": "Noodles & Congee", "sortOrder": 3 },
+    { "key": "CHAOZHOU", "labelZh": "潮州菜", "labelEn": "Chaozhou", "sortOrder": 4 },
+    { "key": "SICHUAN_HUNAN", "labelZh": "川湘菜", "labelEn": "Sichuan & Hunan", "sortOrder": 5 },
+    { "key": "REGIONAL_CHINESE", "labelZh": "地方菜系", "labelEn": "Regional Chinese", "sortOrder": 6 },
+    { "key": "SOUTHEAST_ASIAN", "labelZh": "东南亚", "labelEn": "Southeast Asian", "sortOrder": 7 },
+    { "key": "WESTERN_OTHER", "labelZh": "西餐 · 其他", "labelEn": "Western & Other", "sortOrder": 8 },
+    { "key": "INNOVATIVE", "labelZh": "创新菜", "labelEn": "Innovative", "sortOrder": 9 },
+    { "key": "VEGETARIAN", "labelZh": "素食", "labelEn": "Vegetarian", "sortOrder": 10 },
+    { "key": "OTHER", "labelZh": "其他", "labelEn": "Other", "sortOrder": 99 }
+  ]
+}

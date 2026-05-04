@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "city": "guangzhou-shenzhen",
+  "mappings": [
+    { "raw": "粤菜", "groupKey": "CANTONESE", "sources": ["bib-gourmand", "starred"] },
+    { "raw": "点心", "groupKey": "DIM_SUM", "sources": ["bib-gourmand"] },
+    { "raw": "粉面/粥", "groupKey": "NOODLES_CONGEE", "sources": ["bib-gourmand"] },
+    { "raw": "粥", "groupKey": "NOODLES_CONGEE", "sources": ["bib-gourmand"] },
+    { "raw": "面食", "groupKey": "NOODLES_CONGEE", "sources": ["bib-gourmand"] },
+    { "raw": "潮州菜", "groupKey": "CHAOZHOU", "sources": ["bib-gourmand", "starred"] },
+    { "raw": "川菜", "groupKey": "SICHUAN_HUNAN", "sources": ["bib-gourmand"] },
+    { "raw": "湘菜", "groupKey": "SICHUAN_HUNAN", "sources": ["bib-gourmand"] },
+    { "raw": "西北菜", "groupKey": "REGIONAL_CHINESE", "sources": ["bib-gourmand"] },
+    { "raw": "闽菜", "groupKey": "REGIONAL_CHINESE", "sources": ["bib-gourmand"] },
+    { "raw": "东南亚菜", "groupKey": "SOUTHEAST_ASIAN", "sources": ["bib-gourmand"] },
+    { "raw": "马来西亚菜", "groupKey": "SOUTHEAST_ASIAN", "sources": ["bib-gourmand"] },
+    { "raw": "西餐", "groupKey": "WESTERN_OTHER", "sources": ["bib-gourmand"] },
+    { "raw": "创新菜", "groupKey": "INNOVATIVE", "sources": ["bib-gourmand", "starred"] },
+    { "raw": "素食", "groupKey": "VEGETARIAN", "sources": ["bib-gourmand"] },
+    { "raw": "", "groupKey": "OTHER", "sources": ["starred"] }
+  ]
+}
