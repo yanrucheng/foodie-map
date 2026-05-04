@@ -188,6 +188,14 @@ body { display: flex; flex-direction: column; }
 .filter-pill-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; opacity: 0.5; transition: opacity 0.18s; }
 .filter-pill--active .filter-pill-dot { opacity: 1; }
 .filter-pill-label { white-space: nowrap; }
+.filter-section-divider { height: 1px; background: var(--border); margin: 12px 0; }
+
+/* Venue type segmented control */
+.venue-filter-segment { display: flex; gap: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 12px; }
+.venue-segment-btn { flex: 1; padding: 8px 4px; font-size: 12px; font-weight: 500; background: transparent; border: none; color: var(--muted); cursor: pointer; transition: all 0.18s ease; white-space: nowrap; }
+.venue-segment-btn:not(:last-child) { border-right: 1px solid var(--border); }
+.venue-segment-btn--active { background: var(--accent, #4386D6); color: #fff; }
+.venue-segment-btn:active { transform: scale(0.96); }
 
 /* ─────────────────────────────────────────────────
    Compact Legend (Phase 3 — Track C)

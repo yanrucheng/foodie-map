@@ -9,6 +9,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import type { Restaurant } from "@/types/restaurant";
+import type { VenueFilter } from "@/hooks/useFilters";
 import type { Map as LeafletMap, Marker, MarkerClusterGroup } from "leaflet";
 import { createRestaurantMarker } from "./RestaurantMarker";
 import { HeatLayerManager } from "./HeatLayer";
@@ -23,6 +24,8 @@ interface MapShellProps {
   restaurants: Restaurant[];
   activeGroups: Set<string>;
   onToggleGroup: (group: string) => void;
+  venueFilter: VenueFilter;
+  onVenueFilterChange: (filter: VenueFilter) => void;
   center: [number, number];
   zoom: number;
   /** When true, skips creating Leaflet control portal containers for FilterPanel/StatsPanel. */
@@ -46,7 +49,7 @@ export interface MapShellHandle {
  */
 export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
   function MapShell(
-    { restaurants, activeGroups, onToggleGroup, center, zoom, hideControls, onModeChange, onMarkerTap },
+    { restaurants, activeGroups, onToggleGroup, venueFilter, onVenueFilterChange, center, zoom, hideControls, onModeChange, onMarkerTap },
     ref,
   ) {
     const mapRef = useRef<LeafletMap | null>(null);
@@ -67,6 +70,8 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
     // Stable refs for callbacks that need current values without re-creation
     const activeGroupsRef = useRef(activeGroups);
     activeGroupsRef.current = activeGroups;
+    const venueFilterRef = useRef(venueFilter);
+    venueFilterRef.current = venueFilter;
     const restaurantsRef = useRef(restaurants);
     restaurantsRef.current = restaurants;
     const onMarkerTapRef = useRef(onMarkerTap);
@@ -194,10 +199,13 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
       };
     }, []);
 
-    /** Visible restaurants based on active cuisine group filters. */
+    /** Visible restaurants based on active cuisine group and venue type filters. */
     const visibleRestaurants = useMemo(
-      () => restaurants.filter((r) => activeGroups.has(r.cuisine_group)),
-      [restaurants, activeGroups],
+      () => restaurants.filter((r) =>
+        activeGroups.has(r.cuisine_group) &&
+        (venueFilter === "all" || r.venue_type === venueFilter)
+      ),
+      [restaurants, activeGroups, venueFilter],
     );
 
     /** Refreshes visible markers/heat based on current filter and mode. */
@@ -208,7 +216,8 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
       if (!map || !cluster || !heat) return;
 
       const visible = restaurantsRef.current.filter((r) =>
-        activeGroupsRef.current.has(r.cuisine_group),
+        activeGroupsRef.current.has(r.cuisine_group) &&
+        (venueFilterRef.current === "all" || r.venue_type === venueFilterRef.current),
       );
 
       if (modeRef.current === "marker") {
@@ -323,10 +332,10 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
       refreshLayers();
     }, [restaurants, refreshLayers]);
 
-    // Refresh layers when activeGroups change
+    // Refresh layers when activeGroups or venueFilter change
     useEffect(() => {
       refreshLayers();
-    }, [activeGroups, refreshLayers]);
+    }, [activeGroups, venueFilter, refreshLayers]);
 
     /** Exposes flyToRestaurant and toggleMode for external integration. */
     useImperativeHandle(
@@ -362,6 +371,8 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
             <FilterPanel
               activeGroups={activeGroups}
               onToggle={onToggleGroup}
+              venueFilter={venueFilter}
+              onVenueFilterChange={onVenueFilterChange}
               onModeToggle={handleModeToggle}
               currentMode={mode}
             />,

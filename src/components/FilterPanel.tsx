@@ -1,8 +1,19 @@
 import { cuisineGroups } from "@/config/cuisineGroups";
+import type { VenueFilter } from "@/hooks/useFilters";
+
+/** Venue filter segment options with display labels. */
+const VENUE_FILTER_OPTIONS: { value: VenueFilter; label: string }[] = [
+  { value: "all", label: "全部" },
+  { value: "restaurant", label: "仅餐厅" },
+  { value: "street_food", label: "仅街头小吃" },
+  { value: "dessert", label: "仅甜品" },
+];
 
 interface FilterPanelProps {
   activeGroups: Set<string>;
   onToggle: (group: string) => void;
+  venueFilter: VenueFilter;
+  onVenueFilterChange: (filter: VenueFilter) => void;
   onModeToggle: () => void;
   currentMode: "marker" | "heat";
   /** "pill" renders touch-optimized pill buttons (mobile). Default: "checkbox". */
@@ -10,14 +21,14 @@ interface FilterPanelProps {
 }
 
 /**
- * React filter panel for cuisine group filtering and display mode toggle.
- * Replaces the imperative L.Control FilterControl. On desktop, rendered via
- * createPortal into a Leaflet control container; on mobile, rendered
- * standalone for BottomSheet consumption with pill variant for touch targets.
+ * React filter panel for cuisine group filtering, venue type isolation,
+ * and display mode toggle.
  */
 export function FilterPanel({
   activeGroups,
   onToggle,
+  venueFilter,
+  onVenueFilterChange,
   onModeToggle,
   currentMode,
   variant = "checkbox",
@@ -26,7 +37,24 @@ export function FilterPanel({
 
   return (
     <div className="floating-card control-block">
-      {!isPill && <div className="control-title">菜系筛选</div>}
+      {/* Venue type segment control */}
+      {!isPill && <div className="control-title">类型筛选</div>}
+      <div className="venue-filter-segment">
+        {VENUE_FILTER_OPTIONS.map(({ value, label }) => (
+          <button
+            key={value}
+            className={`venue-segment-btn ${venueFilter === value ? "venue-segment-btn--active" : ""}`}
+            onClick={() => onVenueFilterChange(value)}
+            aria-pressed={venueFilter === value}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {/* Cuisine group filter */}
+      {!isPill && <div className="control-title" style={{ marginTop: 12 }}>菜系筛选</div>}
+      {isPill && <div className="filter-section-divider" />}
       <div className={isPill ? "filter-pills" : "filter-list"}>
         {Object.entries(cuisineGroups).map(([label, style]) => {
           const active = activeGroups.has(label);
@@ -62,6 +90,7 @@ export function FilterPanel({
           );
         })}
       </div>
+
       <button className="mode-btn" onClick={onModeToggle}>
         {currentMode === "marker" ? "切换到热力图" : "切换到标记模式"}
       </button>

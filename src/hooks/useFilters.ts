@@ -1,16 +1,23 @@
 import { useState, useCallback, useMemo } from "react";
 import { cuisineGroups } from "@/config/cuisineGroups";
+import type { VenueType } from "@/types/restaurant";
+
+/** Venue type filter mode: "all" shows everything, others isolate a specific type. */
+export type VenueFilter = "all" | VenueType;
 
 interface UseFiltersResult {
   activeGroups: Set<string>;
   toggle: (group: string) => void;
   enableGroup: (group: string) => void;
+  venueFilter: VenueFilter;
+  setVenueFilter: (filter: VenueFilter) => void;
 }
 
-/** Manages active cuisine group filter state. At least one group stays active. */
+/** Manages active cuisine group and venue type filter state. */
 export function useFilters(): UseFiltersResult {
   const allGroups = useMemo(() => Object.keys(cuisineGroups), []);
   const [activeGroups, setActiveGroups] = useState<Set<string>>(() => new Set(allGroups));
+  const [venueFilter, setVenueFilter] = useState<VenueFilter>("all");
 
   const toggle = useCallback((group: string) => {
     setActiveGroups((prev) => {
@@ -35,5 +42,5 @@ export function useFilters(): UseFiltersResult {
     });
   }, []);
 
-  return { activeGroups, toggle, enableGroup };
+  return { activeGroups, toggle, enableGroup, venueFilter, setVenueFilter };
 }

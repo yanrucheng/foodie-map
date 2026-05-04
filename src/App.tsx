@@ -21,7 +21,7 @@ function App() {
   const selection = useSelection();
   const { city, guide } = selection;
   const { data, loading, error } = useGuideData(guide.dataPath);
-  const { activeGroups, toggle, enableGroup } = useFilters();
+  const { activeGroups, toggle, enableGroup, venueFilter, setVenueFilter } = useFilters();
   const { isMobile } = useViewport();
   const mapRef = useRef<MapShellHandle>(null);
 
@@ -76,6 +76,8 @@ function App() {
           activeGroups={activeGroups}
           onToggle={toggle}
           enableGroup={enableGroup}
+          venueFilter={venueFilter}
+          onVenueFilterChange={setVenueFilter}
           totalCount={data.length}
           geocodedCount={geocodedCount}
           center={city.center}
@@ -98,6 +100,8 @@ function App() {
           restaurants={data}
           activeGroups={activeGroups}
           onToggleGroup={toggle}
+          venueFilter={venueFilter}
+          onVenueFilterChange={setVenueFilter}
           center={city.center}
           zoom={city.zoom}
         />

@@ -10,6 +10,7 @@ import { MapShell } from "@/components/MapShell";
 import { MobilePopupCard } from "@/components/MobilePopupCard";
 import type { MapShellHandle } from "@/components/MapShell";
 import type { Restaurant } from "@/types/restaurant";
+import type { VenueFilter } from "@/hooks/useFilters";
 
 /** Tab button config for the FAB menu. */
 const PANEL_TABS: { id: PanelId; icon: string; label: string }[] = [
@@ -26,6 +27,8 @@ interface MobileShellProps {
   activeGroups: Set<string>;
   onToggle: (group: string) => void;
   enableGroup: (group: string) => void;
+  venueFilter: VenueFilter;
+  onVenueFilterChange: (filter: VenueFilter) => void;
   totalCount: number;
   geocodedCount: number;
   center: [number, number];
@@ -44,6 +47,8 @@ export function MobileShell({
   activeGroups,
   onToggle,
   enableGroup,
+  venueFilter,
+  onVenueFilterChange,
   totalCount,
   geocodedCount,
   center,
@@ -81,15 +86,18 @@ export function MobileShell({
     mapRef.current?.toggleMode();
   }, []);
 
-  /** Visible restaurants filtered by active cuisine groups. */
+  /** Visible restaurants filtered by active cuisine groups and venue type. */
   const visibleRestaurants = useMemo(
-    () => restaurants.filter((r) => activeGroups.has(r.cuisine_group)),
-    [restaurants, activeGroups]
+    () => restaurants.filter((r) =>
+      activeGroups.has(r.cuisine_group) &&
+      (venueFilter === "all" || r.venue_type === venueFilter)
+    ),
+    [restaurants, activeGroups, venueFilter]
   );
 
   /** Panel titles for the bottom sheet header. */
   const panelTitles: Record<PanelId, string> = {
-    filter: "菜系筛选",
+    filter: "筛选",
     stats: "区域统计",
     legend: "图例",
   };
@@ -113,6 +121,8 @@ export function MobileShell({
           restaurants={restaurants}
           activeGroups={activeGroups}
           onToggleGroup={onToggle}
+          venueFilter={venueFilter}
+          onVenueFilterChange={onVenueFilterChange}
           center={center}
           zoom={zoom}
           hideControls
@@ -145,6 +155,8 @@ export function MobileShell({
           <FilterPanel
             activeGroups={activeGroups}
             onToggle={onToggle}
+            venueFilter={venueFilter}
+            onVenueFilterChange={onVenueFilterChange}
             onModeToggle={handleModeToggle}
             currentMode={displayMode}
             variant="pill"
