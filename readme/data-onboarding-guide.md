@@ -4,6 +4,44 @@ Operational guide for LLM agents contributing restaurant guide data to the Foodi
 
 ---
 
+## Agent Task Specification
+
+When you receive this guide alongside a task prompt, you MUST produce the following deliverables:
+
+### Input
+
+You will be told:
+- **City** (e.g., "Shanghai")
+- **Guide type** (e.g., "michelin-starred", "michelin-bib-gourmand", or "dianping-black-pearl")
+
+### Output Requirements
+
+1. **Primary deliverable — Restaurant data file**
+   - Return a **valid JSON array** of restaurant objects conforming to the schema in the "Target Data Schema" section below.
+   - The array must be complete (all restaurants for that city + guide type).
+   - File path: `public/data/{city-slug}/{guide-type}.json`
+
+2. **Secondary deliverable — Taxonomy files** (only if the city is new)
+   - `public/data/taxonomy/{city-slug}.json` — cuisine group definitions
+   - `public/data/taxonomy/{city-slug}-mappings.json` — raw label → group key mappings
+
+### Output Format Rules
+
+- Return **ONLY valid JSON**. Do NOT wrap in markdown code fences, do NOT return prose, analysis, or commentary alongside the data.
+- Each deliverable must be a separate, clearly labeled JSON block if returning multiple files.
+- If you cannot complete geocoding for some entries, set `geocode_success: false` and `lat: 0, lon: 0` — do NOT omit the entry.
+- If a field value is unavailable, use `""` (empty string) for strings or `null` for optional fields. Do NOT omit required fields.
+
+### Anti-Patterns (Do NOT do these)
+
+- ❌ Return a summary or analysis of the data instead of the actual JSON
+- ❌ Return partial data with "and so on..." or "..." placeholders
+- ❌ Wrap JSON inside markdown code blocks or explanatory text
+- ❌ Ask clarifying questions instead of producing output (use your best judgment from official sources)
+- ❌ Fabricate data — every value must come from an official source listed in "Official Data Sources"
+
+---
+
 ## Coverage Status
 
 > **This table is auto-generated.** Run `python scripts/render-coverage-table.py` to refresh.
