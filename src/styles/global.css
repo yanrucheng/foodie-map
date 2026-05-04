@@ -294,3 +294,206 @@ body { display: flex; flex-direction: column; }
   .search-wrap input { min-height: 0; }
   .search-wrap button, .mode-btn { min-height: 0; }
 }
+
+/* ─────────────────────────────────────────────────
+   Dynamic Title (Phase 2 — Track C)
+   ───────────────────────────────────────────────── */
+.dynamic-title {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.dynamic-title--compact {
+  font-size: 14px;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.dynamic-title-sep {
+  color: var(--muted);
+  margin: 0 2px;
+}
+
+.dynamic-title-suffix {
+  white-space: nowrap;
+}
+
+/* ─────────────────────────────────────────────────
+   Segment Picker — Chip (Phase 2 — Track A/B)
+   ───────────────────────────────────────────────── */
+.seg-picker {
+  position: relative;
+  display: inline-flex;
+}
+
+.seg-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font-size: inherit;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: default;
+  transition: all 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+
+.seg-chip--interactive {
+  cursor: pointer;
+  color: var(--text);
+}
+
+.seg-chip--interactive:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.seg-chip--interactive:active {
+  transform: scale(0.97);
+}
+
+.seg-chip--active {
+  background: rgba(198, 164, 100, 0.12);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.seg-chip-label {
+  line-height: 1.2;
+}
+
+/* Caret arrow indicator */
+.seg-chip-caret {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  opacity: 0.6;
+  margin-left: 2px;
+  transition: transform 0.18s ease;
+}
+
+.seg-chip--active .seg-chip-caret {
+  transform: rotate(180deg);
+}
+
+/* Mobile-specific chip sizing */
+.seg-chip--mobile {
+  padding: 3px 8px;
+  font-weight: 600;
+}
+
+/* ─────────────────────────────────────────────────
+   Segment Picker — Dropdown (Phase 2 — Track A)
+   ───────────────────────────────────────────────── */
+.seg-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 140px;
+  max-width: 280px;
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  z-index: 1500;
+  animation: seg-dropdown-in 0.18s ease-out;
+}
+
+.seg-dropdown-item {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.seg-dropdown-item:hover {
+  background: rgba(198, 164, 100, 0.1);
+}
+
+.seg-dropdown-item--selected {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@keyframes seg-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────────────
+   Segment Picker — Mobile Sheet List (Phase 2 — Track B)
+   ───────────────────────────────────────────────── */
+.seg-sheet-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.seg-sheet-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.12s;
+  min-height: var(--tap-min);
+  border-bottom: 1px solid var(--border);
+}
+
+.seg-sheet-item:last-child {
+  border-bottom: none;
+}
+
+.seg-sheet-item:active {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.seg-sheet-item--selected {
+  color: var(--accent);
+  font-weight: 600;
+  background: rgba(198, 164, 100, 0.08);
+}
+
+.seg-sheet-item-label {
+  flex: 1;
+}
+
+.seg-sheet-item-check {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--accent);
+}
