@@ -2,19 +2,22 @@ import { useRef, useCallback } from "react";
 import { cities } from "@/config/cities";
 import { useGuideData } from "@/hooks/useGuideData";
 import { useFilters } from "@/hooks/useFilters";
+import { useViewport } from "@/hooks/useViewport";
 import { MapShell } from "@/components/MapShell";
 import type { MapShellHandle } from "@/components/MapShell";
 import { Header } from "@/components/Header";
 import { SearchBar } from "@/components/SearchBar";
 import { Legend } from "@/components/Legend";
+import { MobileShell } from "@/components/MobileShell";
 import type { Restaurant } from "@/types/restaurant";
 
-/** Root application shell. Wires data fetching, filtering, and the map. */
+/** Root application shell. Renders MobileShell on mobile, desktop layout otherwise. */
 function App() {
   const city = cities[0]!;
   const guide = city.guides[0]!;
   const { data, loading, error } = useGuideData(guide.dataPath);
   const { activeGroups, toggle, enableGroup } = useFilters();
+  const { isMobile } = useViewport();
   const mapRef = useRef<MapShellHandle>(null);
 
   const title = `2026 香港米其林必比登餐厅地图 · ${data.length || "..."} 家高性价比美食`;
@@ -37,6 +40,25 @@ function App() {
 
   const geocodedCount = data.filter((r) => r.geocode_success).length;
 
+  // Mobile layout — full-screen map with bottom sheet panels
+  if (isMobile) {
+    return (
+      <MobileShell
+        title={title}
+        subtitle={subtitle}
+        restaurants={data}
+        activeGroups={activeGroups}
+        onToggle={toggle}
+        enableGroup={enableGroup}
+        totalCount={data.length}
+        geocodedCount={geocodedCount}
+        center={city.center}
+        zoom={city.zoom}
+      />
+    );
+  }
+
+  // Desktop layout — traditional sidebar panels via Leaflet portals
   return (
     <>
       <Header title={title} subtitle={subtitle} />

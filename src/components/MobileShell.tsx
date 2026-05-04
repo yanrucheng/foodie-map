@@ -1,0 +1,145 @@
+import { useRef, useState, useCallback, useMemo } from "react";
+import { usePanelState, type PanelId } from "@/hooks/usePanelState";
+import { BottomSheet } from "@/components/BottomSheet";
+import { FilterPanel } from "@/components/FilterPanel";
+import { StatsPanelReact } from "@/components/StatsPanelReact";
+import { Legend } from "@/components/Legend";
+import { Header } from "@/components/Header";
+import { SearchBar } from "@/components/SearchBar";
+import { MapShell } from "@/components/MapShell";
+import type { MapShellHandle } from "@/components/MapShell";
+import type { Restaurant } from "@/types/restaurant";
+
+/** Tab button config for the FAB menu. */
+const PANEL_TABS: { id: PanelId; icon: string; label: string }[] = [
+  { id: "filter", icon: "⚙", label: "筛选" },
+  { id: "stats", icon: "📊", label: "统计" },
+  { id: "legend", icon: "🎨", label: "图例" },
+];
+
+interface MobileShellProps {
+  title: string;
+  subtitle: string;
+  restaurants: Restaurant[];
+  activeGroups: Set<string>;
+  onToggle: (group: string) => void;
+  enableGroup: (group: string) => void;
+  totalCount: number;
+  geocodedCount: number;
+  center: [number, number];
+  zoom: number;
+}
+
+/**
+ * Mobile-only layout orchestrator. Renders compact header, full-bleed map,
+ * floating action button (FAB), and BottomSheet with tabbed panel content.
+ * Enforces single-panel-at-a-time constraint via usePanelState.
+ */
+export function MobileShell({
+  title,
+  subtitle,
+  restaurants,
+  activeGroups,
+  onToggle,
+  enableGroup,
+  totalCount,
+  geocodedCount,
+  center,
+  zoom,
+}: MobileShellProps) {
+  const mapRef = useRef<MapShellHandle>(null);
+  const { activePanel, toggle, close } = usePanelState();
+  const [displayMode, setDisplayMode] = useState<"marker" | "heat">("marker");
+
+  /** Handle search locate: enable group filter if needed, then fly to marker. */
+  const handleLocate = useCallback(
+    (restaurant: Restaurant) => {
+      if (!activeGroups.has(restaurant.cuisine_group)) {
+        enableGroup(restaurant.cuisine_group);
+      }
+      mapRef.current?.flyToRestaurant(restaurant);
+      close();
+    },
+    [activeGroups, enableGroup, close]
+  );
+
+  /** Toggle display mode via MapShell's imperative handle. */
+  const handleModeToggle = useCallback(() => {
+    mapRef.current?.toggleMode();
+  }, []);
+
+  /** Visible restaurants filtered by active cuisine groups. */
+  const visibleRestaurants = useMemo(
+    () => restaurants.filter((r) => activeGroups.has(r.cuisine_group)),
+    [restaurants, activeGroups]
+  );
+
+  /** Panel titles for the bottom sheet header. */
+  const panelTitles: Record<PanelId, string> = {
+    filter: "菜系筛选",
+    stats: "区域统计",
+    legend: "图例",
+  };
+
+  return (
+    <div className="mobile-shell">
+      {/* Compact header */}
+      <Header title={title} subtitle={subtitle} compact />
+
+      {/* Search bar */}
+      <div className="mobile-search-area">
+        <SearchBar restaurants={restaurants} onLocate={handleLocate} />
+      </div>
+
+      {/* Full-bleed map */}
+      <main className="mobile-map-container">
+        <MapShell
+          ref={mapRef}
+          restaurants={restaurants}
+          activeGroups={activeGroups}
+          onToggleGroup={onToggle}
+          center={center}
+          zoom={zoom}
+          hideControls
+          onModeChange={setDisplayMode}
+        />
+      </main>
+
+      {/* FAB - floating action buttons */}
+      <div className="mobile-fab-group">
+        {PANEL_TABS.map((tab) => (
+          <button
+            key={tab.id}
+            className={`mobile-fab-btn ${activePanel === tab.id ? "active" : ""}`}
+            onClick={() => toggle(tab.id)}
+            aria-label={tab.label}
+          >
+            <span className="fab-icon">{tab.icon}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Bottom Sheet */}
+      <BottomSheet
+        isOpen={activePanel !== null}
+        title={activePanel ? panelTitles[activePanel] : undefined}
+        onClose={close}
+      >
+        {activePanel === "filter" && (
+          <FilterPanel
+            activeGroups={activeGroups}
+            onToggle={onToggle}
+            onModeToggle={handleModeToggle}
+            currentMode={displayMode}
+          />
+        )}
+        {activePanel === "stats" && (
+          <StatsPanelReact restaurants={visibleRestaurants} />
+        )}
+        {activePanel === "legend" && (
+          <Legend totalCount={totalCount} geocodedCount={geocodedCount} />
+        )}
+      </BottomSheet>
+    </div>
+  );
+}

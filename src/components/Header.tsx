@@ -1,14 +1,19 @@
 interface HeaderProps {
   title: string;
   subtitle: string;
+  /** When true, renders compact single-line header for mobile. */
+  compact?: boolean;
 }
 
-/** Page header with title and subtitle. Renders dynamic city/guide metadata. */
-export function Header({ title, subtitle }: HeaderProps) {
+/**
+ * Page header with title and subtitle. On mobile (compact=true), renders
+ * a single-line truncated title with subtitle hidden by default.
+ */
+export function Header({ title, subtitle, compact }: HeaderProps) {
   return (
-    <header className="header">
+    <header className={`header ${compact ? "header--compact" : ""}`}>
       <h1 className="title">{title}</h1>
-      <p className="subtitle">{subtitle}</p>
+      {!compact && <p className="subtitle">{subtitle}</p>}
     </header>
   );
 }

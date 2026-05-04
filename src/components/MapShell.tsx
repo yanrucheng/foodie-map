@@ -21,11 +21,17 @@ interface MapShellProps {
   onToggleGroup: (group: string) => void;
   center: [number, number];
   zoom: number;
+  /** When true, skips creating Leaflet control portal containers for FilterPanel/StatsPanel. */
+  hideControls?: boolean;
+  /** Called whenever the display mode changes between marker and heat. */
+  onModeChange?: (mode: "marker" | "heat") => void;
 }
 
 /** Imperative handle exposed by MapShell for external map interactions. */
 export interface MapShellHandle {
   flyToRestaurant: (restaurant: Restaurant) => void;
+  /** Toggles between marker and heat display mode. */
+  toggleMode: () => void;
 }
 
 /**
@@ -34,7 +40,7 @@ export interface MapShellHandle {
  */
 export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
   function MapShell(
-    { restaurants, activeGroups, onToggleGroup, center, zoom },
+    { restaurants, activeGroups, onToggleGroup, center, zoom, hideControls, onModeChange },
     ref,
   ) {
     const mapRef = useRef<LeafletMap | null>(null);
@@ -95,7 +101,8 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
       modeRef.current = next;
       setMode(next);
       refreshLayers();
-    }, [refreshLayers]);
+      onModeChange?.(next);
+    }, [refreshLayers, onModeChange]);
 
     // Initialize map once
     useEffect(() => {
@@ -130,29 +137,31 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
       heatRef.current = new HeatLayerManager(map);
 
       // Create placeholder L.Controls whose DOM containers host React portals
-      const FilterPlaceholder = L.Control.extend({
-        options: { position: "topleft" as const },
-        onAdd() {
-          const el = L.DomUtil.create("div");
-          L.DomEvent.disableClickPropagation(el);
-          L.DomEvent.disableScrollPropagation(el);
-          setFilterContainer(el);
-          return el;
-        },
-      });
-      map.addControl(new FilterPlaceholder());
+      if (!hideControls) {
+        const FilterPlaceholder = L.Control.extend({
+          options: { position: "topleft" as const },
+          onAdd() {
+            const el = L.DomUtil.create("div");
+            L.DomEvent.disableClickPropagation(el);
+            L.DomEvent.disableScrollPropagation(el);
+            setFilterContainer(el);
+            return el;
+          },
+        });
+        map.addControl(new FilterPlaceholder());
 
-      const StatsPlaceholder = L.Control.extend({
-        options: { position: "topright" as const },
-        onAdd() {
-          const el = L.DomUtil.create("div");
-          L.DomEvent.disableClickPropagation(el);
-          L.DomEvent.disableScrollPropagation(el);
-          setStatsContainer(el);
-          return el;
-        },
-      });
-      map.addControl(new StatsPlaceholder());
+        const StatsPlaceholder = L.Control.extend({
+          options: { position: "topright" as const },
+          onAdd() {
+            const el = L.DomUtil.create("div");
+            L.DomEvent.disableClickPropagation(el);
+            L.DomEvent.disableScrollPropagation(el);
+            setStatsContainer(el);
+            return el;
+          },
+        });
+        map.addControl(new StatsPlaceholder());
+      }
 
       return () => {
         map.remove();
@@ -174,7 +183,7 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
       refreshLayers();
     }, [activeGroups, refreshLayers]);
 
-    /** Exposes flyToRestaurant for search integration. */
+    /** Exposes flyToRestaurant and toggleMode for external integration. */
     useImperativeHandle(
       ref,
       () => ({
@@ -195,8 +204,9 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
             setTimeout(() => marker.openPopup(), 400);
           }
         },
+        toggleMode: handleModeToggle,
       }),
-      [refreshLayers],
+      [refreshLayers, handleModeToggle],
     );
 
     return (

@@ -104,6 +104,55 @@ body { display: flex; flex-direction: column; }
    ───────────────────────────────────────────────── */
 .cluster-badge { background: rgba(27,38,54,0.92); color: #fff; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-weight: 700; box-shadow: 0 12px 24px rgba(0,0,0,0.22); }
 
+/* ─────────────────────────────────────────────────
+   Search Dropdown (custom replacement for datalist)
+   ───────────────────────────────────────────────── */
+.search-dropdown { list-style: none; margin: 0; padding: 4px 0; max-height: 260px; overflow-y: auto; border-top: 1px solid var(--border); }
+.search-dropdown-item { display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; cursor: pointer; min-height: var(--tap-min); justify-content: center; transition: background 0.12s; }
+.search-dropdown-item:hover, .search-dropdown-item.highlighted { background: rgba(198, 164, 100, 0.12); }
+.search-item-name { font-size: 14px; color: var(--text); font-weight: 500; }
+.search-item-en { font-size: 12px; color: var(--muted); }
+
+/* ─────────────────────────────────────────────────
+   Compact Header (mobile)
+   ───────────────────────────────────────────────── */
+.header--compact { padding: 10px 14px 8px; }
+.header--compact .title { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0; }
+
+/* ─────────────────────────────────────────────────
+   Mobile Shell
+   ───────────────────────────────────────────────── */
+.mobile-shell { display: flex; flex-direction: column; height: 100dvh; height: 100vh; position: relative; overflow: hidden; }
+.mobile-search-area { position: relative; z-index: 1000; padding: 0 10px; }
+.mobile-search-area .top-search { position: relative; top: auto; left: auto; transform: none; width: 100%; margin-top: 8px; }
+.mobile-map-container { flex: 1; position: relative; min-height: 0; }
+.mobile-map-container #map { width: 100%; height: 100%; }
+
+/* ─────────────────────────────────────────────────
+   Mobile FAB Group
+   ───────────────────────────────────────────────── */
+.mobile-fab-group { position: fixed; right: 12px; bottom: 24px; z-index: 1100; display: flex; flex-direction: column; gap: 10px; }
+.mobile-fab-btn { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--border); background: var(--panel); backdrop-filter: blur(10px); color: var(--text); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.3); transition: transform 0.15s, background 0.15s; }
+.mobile-fab-btn:active { transform: scale(0.92); }
+.mobile-fab-btn.active { background: rgba(198, 164, 100, 0.18); border-color: var(--accent); }
+.fab-icon { font-size: 18px; line-height: 1; }
+
+/* ─────────────────────────────────────────────────
+   Bottom Sheet
+   ───────────────────────────────────────────────── */
+.bottom-sheet-container { position: fixed; inset: 0; z-index: 2000; pointer-events: none; }
+.bottom-sheet-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.45); pointer-events: auto; animation: fade-in 0.2s ease-out; }
+.bottom-sheet { position: absolute; bottom: 0; left: 0; right: 0; height: 85dvh; height: 85vh; background: var(--panel); border-radius: var(--radius-lg) var(--radius-lg) 0 0; border: 1px solid var(--border); border-bottom: none; box-shadow: 0 -12px 48px rgba(0,0,0,0.35); pointer-events: auto; display: flex; flex-direction: column; will-change: transform; contain: layout; }
+.bottom-sheet-handle { padding: 12px 16px 8px; cursor: grab; touch-action: none; user-select: none; flex-shrink: 0; }
+.bottom-sheet-handle:active { cursor: grabbing; }
+.bottom-sheet-handle-bar { width: 36px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.25); margin: 0 auto 8px; }
+.bottom-sheet-title { font-size: 15px; font-weight: 600; color: var(--text); text-align: center; }
+.bottom-sheet-content { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 0 4px 16px; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.bottom-sheet-content .floating-card { border: none; box-shadow: none; background: transparent; backdrop-filter: none; border-radius: 0; }
+.bottom-sheet-content .legend-card { position: static; width: 100%; }
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
 /* ═════════════════════════════════════════════════
    Tablet — min-width: 768px
    ═════════════════════════════════════════════════ */
