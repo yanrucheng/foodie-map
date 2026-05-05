@@ -55,7 +55,7 @@ You will be told:
 | Beijing / 北京 | Michelin Bib Gourmand / 米其林必比登 | — | 26 |
 | Beijing / 北京 | Michelin Starred / 米其林星级 | 2026 | 32 |
 | Guangzhou & Shenzhen / 广州·深圳 | Michelin Bib Gourmand / 米其林必比登 | — | 44 |
-| Guangzhou & Shenzhen / 广州·深圳 | Michelin Starred / 米其林星级 | 2025 | 20 |
+| Guangzhou & Shenzhen / 广州·深圳 | Michelin Starred / 米其林星级 | 2026 | 20 |
 | Hong Kong / 香港 | Michelin Bib Gourmand / 米其林必比登 | — | 70 |
 | Hong Kong / 香港 | Michelin Starred / 米其林星级 | — | 77 |
 | **Total** | | | **269** |
