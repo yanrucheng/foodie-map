@@ -88,4 +88,43 @@ export const cities: CityConfig[] = [
       },
     ],
   },
+  {
+    id: "shanghai",
+    label: "Shanghai",
+    labelZh: "上海",
+    center: [31.2304, 121.4737],
+    zoom: 11,
+    guides: [
+      {
+        id: "michelin-starred",
+        label: "Michelin Starred 2026",
+        labelZh: "米其林星级",
+        year: 2026,
+        dataPath: "/data/shanghai/michelin-starred.json",
+      },
+      {
+        id: "michelin-bib-gourmand",
+        label: "Michelin Bib Gourmand 2026",
+        labelZh: "米其林必比登",
+        year: 2026,
+        dataPath: "/data/shanghai/michelin-bib-gourmand.json",
+      },
+    ],
+  },
+  {
+    id: "chengdu",
+    label: "Chengdu",
+    labelZh: "成都",
+    center: [30.572, 104.066],
+    zoom: 12,
+    guides: [
+      {
+        id: "michelin-starred",
+        label: "Michelin Starred 2026",
+        labelZh: "米其林星级",
+        year: 2026,
+        dataPath: "/data/chengdu/michelin-starred.json",
+      },
+    ],
+  },
 ];

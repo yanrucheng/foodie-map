@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "city": "chengdu",
+  "mappings": [
+    { "raw": "川菜", "groupKey": "SICHUANESE", "sources": ["michelin-starred"] },
+    { "raw": "福建菜", "groupKey": "FUJIAN", "sources": ["michelin-starred"] },
+    { "raw": "素食", "groupKey": "VEGETARIAN", "sources": ["michelin-starred"] },
+    { "raw": "欧洲现代菜", "groupKey": "EUROPEAN_CONTEMPORARY", "sources": ["michelin-starred"] },
+    { "raw": "创新菜", "groupKey": "INNOVATIVE", "sources": ["michelin-starred"] },
+    { "raw": "台州菜", "groupKey": "OTHER", "sources": ["michelin-starred"] }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "city": "chengdu",
+  "fallbackGroup": "OTHER",
+  "groups": [
+    { "key": "SICHUANESE", "labelZh": "川菜", "labelEn": "Sichuanese", "sortOrder": 1 },
+    { "key": "FUJIAN", "labelZh": "闽菜", "labelEn": "Fujian", "sortOrder": 2 },
+    { "key": "VEGETARIAN", "labelZh": "素食", "labelEn": "Vegetarian", "sortOrder": 3 },
+    { "key": "EUROPEAN_CONTEMPORARY", "labelZh": "欧洲现代菜", "labelEn": "European Contemporary", "sortOrder": 4 },
+    { "key": "INNOVATIVE", "labelZh": "创新菜", "labelEn": "Innovative", "sortOrder": 5 },
+    { "key": "OTHER", "labelZh": "其他", "labelEn": "Other", "sortOrder": 99 }
+  ]
+}
