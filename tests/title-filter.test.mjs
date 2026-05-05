@@ -39,18 +39,19 @@ async function testDesktopTitleFilter(browser) {
   const titleEl = await page.$(".dynamic-title");
   report("Desktop: DynamicTitle element exists", !!titleEl);
 
-  // Test 2: Verify year and city pickers are NOT interactive (single option)
+  // Test 2: Verify city and guide pickers are interactive (year is single-option static)
   const allChips = await page.$$(".seg-chip");
   const interactiveChips = await page.$$(".seg-chip--interactive");
   report(
-    "Desktop: Only guide picker is interactive (1 of 3 chips)",
-    interactiveChips.length === 1,
+    "Desktop: City and guide pickers are interactive (2 of 3 chips)",
+    interactiveChips.length === 2,
     `Found ${interactiveChips.length} interactive out of ${allChips.length} total chips`
   );
 
-  // Test 3: Click the interactive guide chip — dropdown should open
-  if (interactiveChips.length >= 1) {
-    await interactiveChips[0].click();
+  // Test 3: Click the guide chip (2nd interactive chip) — dropdown should open
+  const guideChip = interactiveChips[1]; // index 0 = city, index 1 = guide
+  if (guideChip) {
+    await guideChip.click();
     await delay(300);
 
     const dropdown = await page.$(".seg-dropdown");
@@ -99,8 +100,11 @@ async function testDesktopTitleFilter(browser) {
       const dropdownAfter = await page.$(".seg-dropdown");
       report("Desktop: Dropdown closes after selection", !dropdownAfter);
 
-      // Test 9: Verify chip label updated
-      const chipLabel = await page.$eval(".seg-chip--interactive .seg-chip-label", (el) => el.textContent);
+      // Test 9: Verify chip label updated (2nd interactive chip = guide)
+      const allInteractive = await page.$$(".seg-chip--interactive .seg-chip-label");
+      const chipLabel = allInteractive[1]
+        ? await page.evaluate((el) => el.textContent, allInteractive[1])
+        : null;
       report(
         "Desktop: Chip label updates to selected guide",
         chipLabel === targetText,
@@ -127,7 +131,7 @@ async function testDesktopTitleFilter(browser) {
       report("Desktop: Could not find non-selected item to click", false);
     }
   } else {
-    report("Desktop: Dropdown opens on chip click", false, "No interactive chip found");
+    report("Desktop: Dropdown opens on chip click", false, "No guide chip found");
   }
 
   await page.close();
@@ -147,17 +151,18 @@ async function testMobileTitleFilter(browser) {
   const titleEl = await page.$(".dynamic-title--compact");
   report("Mobile: DynamicTitle compact element exists", !!titleEl);
 
-  // Test 2: Check for mobile interactive chips
+  // Test 2: Check for mobile interactive chips (city + guide)
   const mobileInteractiveChips = await page.$$(".seg-chip--mobile.seg-chip--interactive");
   report(
-    "Mobile: Only guide picker is interactive (1 mobile chip)",
-    mobileInteractiveChips.length === 1,
+    "Mobile: City and guide pickers are interactive (2 mobile chips)",
+    mobileInteractiveChips.length === 2,
     `Found ${mobileInteractiveChips.length} interactive mobile chips`
   );
 
-  // Test 3: Tap the interactive mobile chip — bottom sheet should open
-  if (mobileInteractiveChips.length >= 1) {
-    await mobileInteractiveChips[0].click();
+  // Test 3: Tap the guide chip (2nd interactive chip) — bottom sheet should open
+  const mobileGuideChip = mobileInteractiveChips[1]; // index 0 = city, index 1 = guide
+  if (mobileGuideChip) {
+    await mobileGuideChip.click();
     await delay(500);
 
     const sheet = await page.$(".bottom-sheet-container");
@@ -200,11 +205,11 @@ async function testMobileTitleFilter(browser) {
       const sheetAfter = await page.$(".bottom-sheet-container");
       report("Mobile: Bottom sheet closes after selection", !sheetAfter);
 
-      // Test 8: Verify chip label updated
-      const chipLabel = await page.$eval(
-        ".seg-chip--mobile.seg-chip--interactive .seg-chip-label",
-        (el) => el.textContent
-      );
+      // Test 8: Verify chip label updated (2nd interactive chip = guide)
+      const allMobileInteractive = await page.$$(".seg-chip--mobile.seg-chip--interactive .seg-chip-label");
+      const chipLabel = allMobileInteractive[1]
+        ? await page.evaluate((el) => el.textContent, allMobileInteractive[1])
+        : null;
       report(
         "Mobile: Chip label updates to selected guide",
         chipLabel === targetSheetText,
@@ -231,7 +236,7 @@ async function testMobileTitleFilter(browser) {
       report("Mobile: Could not find non-selected sheet item to tap", false);
     }
   } else {
-    report("Mobile: Bottom sheet opens on chip tap", false, "No interactive mobile chip found");
+    report("Mobile: Bottom sheet opens on chip tap", false, "No guide chip found");
   }
 
   await page.close();
