@@ -17,8 +17,8 @@ function popupHtml(item: Restaurant): string {
       ? `<div class="line"><strong>定位方式：</strong>区域 fallback（地图位置为近似点）</div>`
       : "";
   const newTag = item.is_new ? '<span class="tag">2026 新晋</span>' : "";
-  const michelinLine = item.michelin_url
-    ? `<div class="line"><a href="${item.michelin_url}" target="_blank" rel="noreferrer">查看米其林官方页面</a></div>`
+  const michelinLine = item.guide_url
+    ? `<div class="line"><a href="${item.guide_url}" target="_blank" rel="noreferrer">查看米其林官方页面</a></div>`
     : "";
 
   return `
@@ -32,7 +32,7 @@ function popupHtml(item: Restaurant): string {
       </div>
       <div class="line"><strong>区域：</strong>${escapeHtml(item.area)}</div>
       <div class="line"><strong>地址：</strong>${escapeHtml(item.address || "未提供")}</div>
-      <div class="line"><strong>人均：</strong>${escapeHtml(item.avg_price_hkd || "未提供")}</div>
+      <div class="line"><strong>人均：</strong>${escapeHtml(item.avg_price_hkd || item.avg_price_cny || item.price_range || "未提供")}</div>
       <div class="line"><strong>招牌菜：</strong>${escapeHtml(item.signature_dishes || "未提供")}</div>
       ${fallbackNote}
       ${michelinLine}

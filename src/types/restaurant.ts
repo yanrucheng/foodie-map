@@ -15,15 +15,21 @@ export interface Restaurant {
   primary_area: string;
   major_region: string;
   address: string;
-  avg_price_hkd: string;
-  signature_dishes: string;
-  michelin_url: string;
+  address_en: string;
   lat: number;
   lon: number;
+  price_range: string;
+  avg_price_hkd?: string;
+  avg_price_cny?: string | null;
+  signature_dishes: string;
+  guide_url: string;
+  phone?: string;
+  website?: string;
   geo_source: string;
   geocode_success: boolean;
-  geocode_query: string;
-  geocode_display_name: string;
-  fallback_reason: string;
-  address_en: string;
+  status: string;
+  star_rating?: number;
+  edition_year?: number;
+  guide_type?: string;
+  city?: string;
 }

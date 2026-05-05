@@ -68,7 +68,7 @@ export function MobilePopupCard({ restaurant, onClose }: MobilePopupCardProps) {
           </div>
           <div className="mobile-popup-row">
             <span className="mobile-popup-label">人均</span>
-            <span className="mobile-popup-value">{restaurant.avg_price_hkd || "未提供"}</span>
+            <span className="mobile-popup-value">{restaurant.avg_price_hkd || restaurant.avg_price_cny || restaurant.price_range || "未提供"}</span>
           </div>
           <div className="mobile-popup-row">
             <span className="mobile-popup-label">招牌菜</span>
@@ -82,10 +82,10 @@ export function MobilePopupCard({ restaurant, onClose }: MobilePopupCardProps) {
         </div>
 
         {/* Michelin link */}
-        {restaurant.michelin_url && (
+        {restaurant.guide_url && (
           <a
             className="mobile-popup-link"
-            href={restaurant.michelin_url}
+            href={restaurant.guide_url}
             target="_blank"
             rel="noreferrer"
           >

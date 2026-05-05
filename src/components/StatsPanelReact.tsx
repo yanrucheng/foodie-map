@@ -1,42 +1,39 @@
 import { useMemo } from "react";
 import type { Restaurant } from "@/types/restaurant";
 
-/** Region keys used in stats display. */
-const REGIONS = ["港岛", "九龙", "新界", "离岛"] as const;
-
 interface StatsPanelProps {
   restaurants: Restaurant[];
 }
 
 /**
- * React stats panel showing visible restaurant counts by region.
- * Replaces the imperative L.Control StatsPanel. On desktop, rendered via
- * createPortal into a Leaflet control container; on mobile, rendered
- * standalone for BottomSheet consumption.
+ * React stats panel showing visible restaurant counts by district.
+ * Dynamically derives district distribution from the current dataset.
  */
 export function StatsPanelReact({ restaurants }: StatsPanelProps) {
-  /** Compute region counts from visible restaurants. */
-  const counts = useMemo(() => {
+  /** Derive district counts from visible restaurants, sorted by count descending. */
+  const districts = useMemo(() => {
     const c: Record<string, number> = {};
-    REGIONS.forEach((r) => {
-      c[r] = 0;
-    });
     restaurants.forEach((item) => {
-      if (item.major_region in c) {
-        c[item.major_region] = (c[item.major_region] ?? 0) + 1;
+      const key = item.primary_area;
+      if (key) {
+        c[key] = (c[key] ?? 0) + 1;
       }
     });
-    return c;
+    return Object.entries(c)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 8); // Show top 8 districts to keep the panel compact
   }, [restaurants]);
+
+  if (districts.length === 0) return null;
 
   return (
     <div className="floating-card stats-panel">
-      <div className="control-title">当前可见区域统计</div>
+      <div className="control-title">区域分布</div>
       <div className="stats-grid">
-        {REGIONS.map((region) => (
-          <div key={region} className="stat-item">
-            <div className="stat-label">{region}</div>
-            <div className="stat-value">{counts[region] ?? 0}</div>
+        {districts.map(([name, count]) => (
+          <div key={name} className="stat-item">
+            <div className="stat-label">{name}</div>
+            <div className="stat-value">{count}</div>
           </div>
         ))}
       </div>
