@@ -26,6 +26,7 @@ declare module "leaflet" {
     radius?: number;
     blur?: number;
     maxZoom?: number;
+    minOpacity?: number;
     gradient?: Record<number, string>;
   }
 
