@@ -56,6 +56,13 @@ export const cities: CityConfig[] = [
         year: 2026,
         dataPath: "/data/beijing/michelin-bib-gourmand.json",
       },
+      {
+        id: "michelin-starred",
+        label: "Michelin Starred 2026",
+        labelZh: "米其林星级",
+        year: 2026,
+        dataPath: "/data/beijing/michelin-starred.json",
+      },
     ],
   },
   {
