@@ -327,10 +327,11 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
       };
     }, [center, zoom]);
 
-    // Build markers when restaurants data changes
+    // Build markers when restaurants data changes (skip entries with null coordinates)
     useEffect(() => {
       markersRef.current.clear();
       restaurants.forEach((item) => {
+        if (item.lat == null || item.lon == null) return;
         const opts = onMarkerTapRef.current
           ? { onClick: onMarkerTapRef.current }
           : undefined;
@@ -352,6 +353,7 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
           const map = mapRef.current;
           const cluster = clusterRef.current;
           if (!map || !cluster) return;
+          if (restaurant.lat == null || restaurant.lon == null) return;
 
           if (modeRef.current === "heat") {
             modeRef.current = "marker";

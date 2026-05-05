@@ -10,14 +10,12 @@ export class HeatLayerManager {
     this.map = map;
   }
 
-  /** Shows the heat layer with the given restaurant data. */
+  /** Shows the heat layer with the given restaurant data (skips null coordinates). */
   show(restaurants: Restaurant[]): void {
     this.remove();
-    const points: [number, number, number][] = restaurants.map((r) => [
-      r.lat,
-      r.lon,
-      r.is_new ? 1.0 : 0.65,
-    ]);
+    const points: [number, number, number][] = restaurants
+      .filter((r) => r.lat != null && r.lon != null)
+      .map((r) => [r.lat, r.lon, r.is_new ? 1.0 : 0.65]);
     this.layer = L.heatLayer(points, {
       radius: 26,
       blur: 18,
