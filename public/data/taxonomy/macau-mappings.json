@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "city": "macau",
+  "mappings": [
+    {
+      "raw": "粵菜",
+      "groupKey": "CANTONESE",
+      "sources": ["starred", "bib-gourmand"]
+    },
+    {
+      "raw": "葡萄牙菜",
+      "groupKey": "PORTUGUESE_MACANESE",
+      "sources": ["bib-gourmand"]
+    },
+    {
+      "raw": "澳門菜",
+      "groupKey": "PORTUGUESE_MACANESE",
+      "sources": ["bib-gourmand"]
+    },
+    {
+      "raw": "淮揚菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": ["starred"]
+    },
+    {
+      "raw": "湘菜, 川菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": ["starred"]
+    },
+    {
+      "raw": "川菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": ["starred"]
+    },
+    {
+      "raw": "滬菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": ["bib-gourmand"]
+    },
+    {
+      "raw": "順德菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": ["bib-gourmand"]
+    },
+    {
+      "raw": "日本菜",
+      "groupKey": "JAPANESE",
+      "sources": ["starred"]
+    },
+    {
+      "raw": "壽司",
+      "groupKey": "JAPANESE",
+      "sources": ["starred"]
+    },
+    {
+      "raw": "時尚法國菜",
+      "groupKey": "FRENCH",
+      "sources": ["starred"]
+    },
+    {
+      "raw": "意大利菜",
+      "groupKey": "ITALIAN_EUROPEAN",
+      "sources": ["starred"]
+    },
+    {
+      "raw": "麵食",
+      "groupKey": "NOODLES_CONGEE",
+      "sources": ["bib-gourmand"]
+    },
+    {
+      "raw": "粥麵",
+      "groupKey": "NOODLES_CONGEE",
+      "sources": ["bib-gourmand"]
+    },
+    {
+      "raw": "印度菜",
+      "groupKey": "SOUTHEAST_ASIAN",
+      "sources": ["bib-gourmand"]
+    },
+    {
+      "raw": "泰國菜",
+      "groupKey": "SOUTHEAST_ASIAN",
+      "sources": ["bib-gourmand"]
+    },
+    {
+      "raw": "創新菜",
+      "groupKey": "INNOVATIVE",
+      "sources": ["starred"]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "city": "macau",
+  "fallbackGroup": "OTHER",
+  "groups": [
+    {
+      "key": "CANTONESE",
+      "labelZh": "粵菜",
+      "labelEn": "Cantonese",
+      "sortOrder": 1
+    },
+    {
+      "key": "PORTUGUESE_MACANESE",
+      "labelZh": "葡國菜 · 澳門菜",
+      "labelEn": "Portuguese & Macanese",
+      "sortOrder": 2
+    },
+    {
+      "key": "REGIONAL_CHINESE",
+      "labelZh": "地方菜系",
+      "labelEn": "Regional Chinese",
+      "sortOrder": 3
+    },
+    {
+      "key": "JAPANESE",
+      "labelZh": "日本料理",
+      "labelEn": "Japanese",
+      "sortOrder": 4
+    },
+    {
+      "key": "FRENCH",
+      "labelZh": "法國菜",
+      "labelEn": "French",
+      "sortOrder": 5
+    },
+    {
+      "key": "ITALIAN_EUROPEAN",
+      "labelZh": "意大利 · 歐陸菜",
+      "labelEn": "Italian & European",
+      "sortOrder": 6
+    },
+    {
+      "key": "NOODLES_CONGEE",
+      "labelZh": "麵食 · 粥品",
+      "labelEn": "Noodles & Congee",
+      "sortOrder": 7
+    },
+    {
+      "key": "SOUTHEAST_ASIAN",
+      "labelZh": "東南亞 · 南亞",
+      "labelEn": "Southeast & South Asian",
+      "sortOrder": 8
+    },
+    {
+      "key": "INNOVATIVE",
+      "labelZh": "創新菜",
+      "labelEn": "Innovative",
+      "sortOrder": 9
+    },
+    {
+      "key": "OTHER",
+      "labelZh": "其他",
+      "labelEn": "Other",
+      "sortOrder": 99
+    }
+  ]
+}
