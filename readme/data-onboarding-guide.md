@@ -54,11 +54,14 @@ You will be told:
 |------|-------|------|---------|
 | Beijing / 北京 | Michelin Bib Gourmand / 米其林必比登 | 2026 | 26 |
 | Beijing / 北京 | Michelin Starred / 米其林星级 | 2026 | 32 |
+| Chengdu / 成都 | Michelin Starred / 米其林星级 | 2026 | 13 |
 | Guangzhou & Shenzhen / 广州·深圳 | Michelin Bib Gourmand / 米其林必比登 | 2026 | 44 |
 | Guangzhou & Shenzhen / 广州·深圳 | Michelin Starred / 米其林星级 | 2026 | 20 |
 | Hong Kong / 香港 | Michelin Bib Gourmand / 米其林必比登 | 2026 | 70 |
 | Hong Kong / 香港 | Michelin Starred / 米其林星级 | 2026 | 77 |
-| **Total** | | | **269** |
+| Shanghai / 上海 | Michelin Bib Gourmand / 米其林必比登 | 2026 | 35 |
+| Shanghai / 上海 | Michelin Starred / 米其林星级 | 2026 | 51 |
+| **Total** | | | **368** |
 
 <!-- COVERAGE_TABLE_END -->
 

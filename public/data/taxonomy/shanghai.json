@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "city": "shanghai",
+  "fallbackGroup": "OTHER",
+  "groups": [
+    { "key": "CANTONESE", "labelZh": "粤菜", "labelEn": "Cantonese", "sortOrder": 1 },
+    { "key": "SHANGHAINESE", "labelZh": "本帮菜", "labelEn": "Shanghainese", "sortOrder": 2 },
+    { "key": "HUAIYANG", "labelZh": "淮扬菜", "labelEn": "Huaiyang", "sortOrder": 3 },
+    { "key": "ZHEJIANG", "labelZh": "江浙菜", "labelEn": "Jiangsu & Zhejiang", "sortOrder": 4 },
+    { "key": "NINGBO", "labelZh": "宁波菜", "labelEn": "Ningbo", "sortOrder": 5 },
+    { "key": "SICHUAN", "labelZh": "川菜", "labelEn": "Sichuan", "sortOrder": 6 },
+    { "key": "TEOCHEW", "labelZh": "潮州菜", "labelEn": "Teochew", "sortOrder": 7 },
+    { "key": "NOODLES", "labelZh": "面食", "labelEn": "Noodles", "sortOrder": 8 },
+    { "key": "FRENCH", "labelZh": "法国菜", "labelEn": "French", "sortOrder": 9 },
+    { "key": "ITALIAN", "labelZh": "意大利菜", "labelEn": "Italian", "sortOrder": 10 },
+    { "key": "JAPANESE", "labelZh": "日本料理", "labelEn": "Japanese", "sortOrder": 11 },
+    { "key": "THAI", "labelZh": "泰国菜", "labelEn": "Thai", "sortOrder": 12 },
+    { "key": "VEGETARIAN", "labelZh": "素食", "labelEn": "Vegetarian", "sortOrder": 13 },
+    { "key": "MEDITERRANEAN", "labelZh": "地中海菜", "labelEn": "Mediterranean", "sortOrder": 14 },
+    { "key": "INNOVATIVE", "labelZh": "创新菜", "labelEn": "Innovative", "sortOrder": 15 },
+    { "key": "BEIJING", "labelZh": "京菜", "labelEn": "Beijing cuisine", "sortOrder": 16 },
+    { "key": "SHANDONG", "labelZh": "鲁菜", "labelEn": "Shandong cuisine", "sortOrder": 17 },
+    { "key": "FUJIAN", "labelZh": "闽菜", "labelEn": "Fujian cuisine", "sortOrder": 18 },
+    { "key": "OTHER", "labelZh": "其他", "labelEn": "Other", "sortOrder": 99 }
+  ]
+}

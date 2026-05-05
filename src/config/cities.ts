@@ -127,4 +127,27 @@ export const cities: CityConfig[] = [
       },
     ],
   },
+  {
+    id: "macau",
+    label: "Macau",
+    labelZh: "澳門",
+    center: [22.166, 113.559],
+    zoom: 13,
+    guides: [
+      {
+        id: "michelin-starred",
+        label: "Michelin Starred 2026",
+        labelZh: "米其林星級",
+        year: 2026,
+        dataPath: "/data/macau/michelin-starred.json",
+      },
+      {
+        id: "michelin-bib-gourmand",
+        label: "Michelin Bib Gourmand 2026",
+        labelZh: "米其林必比登",
+        year: 2026,
+        dataPath: "/data/macau/michelin-bib-gourmand.json",
+      },
+    ],
+  },
 ];
