@@ -15,17 +15,19 @@ export class HeatLayerManager {
     this.remove();
     const points: [number, number, number][] = restaurants
       .filter((r) => r.lat != null && r.lon != null)
-      .map((r) => [r.lat, r.lon, r.is_new ? 1.0 : 0.65]);
+      .map((r) => [r.lat, r.lon, r.is_new ? 1.0 : 0.8]);
     this.layer = L.heatLayer(points, {
-      radius: 26,
-      blur: 18,
-      maxZoom: 16,
+      radius: 38,
+      blur: 14,
+      maxZoom: 13,
+      minOpacity: 0.25,
       gradient: {
-        0.2: "#234f7d",
-        0.45: "#2f8fd9",
-        0.65: "#45c07c",
-        0.82: "#f5c24d",
-        1.0: "#e46955",
+        0.05: "#4a90d9",
+        0.25: "#67b7dc",
+        0.45: "#6dd47e",
+        0.65: "#f5c24d",
+        0.82: "#f5874a",
+        1.0: "#e84d4d",
       },
     });
     this.layer.addTo(this.map);
