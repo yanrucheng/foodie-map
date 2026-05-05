@@ -2,49 +2,319 @@
   "version": 1,
   "city": "hong-kong",
   "mappings": [
-    { "raw": "粤菜", "groupKey": "CANTONESE", "sources": ["bib-gourmand", "starred"] },
-    { "raw": "粤式烧腊", "groupKey": "CANTONESE", "sources": ["bib-gourmand"] },
-    { "raw": "粤菜 / 火锅", "groupKey": "CANTONESE", "sources": ["bib-gourmand"] },
-    { "raw": "面食", "groupKey": "NOODLES_CONGEE", "sources": ["bib-gourmand"] },
-    { "raw": "粥粉面", "groupKey": "NOODLES_CONGEE", "sources": ["bib-gourmand"] },
-    { "raw": "粥面", "groupKey": "NOODLES_CONGEE", "sources": ["starred"] },
-    { "raw": "拉面", "groupKey": "NOODLES_CONGEE", "sources": ["bib-gourmand"] },
-    { "raw": "饺子", "groupKey": "NOODLES_CONGEE", "sources": ["bib-gourmand"] },
-    { "raw": "饺子 / 京味", "groupKey": "NOODLES_CONGEE", "sources": ["bib-gourmand"] },
-    { "raw": "点心", "groupKey": "DIM_SUM", "sources": ["bib-gourmand"] },
-    { "raw": "潮州菜", "groupKey": "REGIONAL_CHINESE", "sources": ["bib-gourmand", "starred"] },
-    { "raw": "顺德菜", "groupKey": "REGIONAL_CHINESE", "sources": ["bib-gourmand", "starred"] },
-    { "raw": "沪菜", "groupKey": "REGIONAL_CHINESE", "sources": ["bib-gourmand", "starred"] },
-    { "raw": "湘菜", "groupKey": "REGIONAL_CHINESE", "sources": ["bib-gourmand"] },
-    { "raw": "台湾菜", "groupKey": "REGIONAL_CHINESE", "sources": ["bib-gourmand"] },
-    { "raw": "新疆菜", "groupKey": "REGIONAL_CHINESE", "sources": ["bib-gourmand"] },
-    { "raw": "闽菜", "groupKey": "REGIONAL_CHINESE", "sources": ["bib-gourmand"] },
-    { "raw": "台州菜", "groupKey": "REGIONAL_CHINESE", "sources": ["starred"] },
-    { "raw": "宁波菜", "groupKey": "REGIONAL_CHINESE", "sources": ["starred"] },
-    { "raw": "泰国菜", "groupKey": "SOUTHEAST_ASIAN", "sources": ["bib-gourmand"] },
-    { "raw": "越南菜", "groupKey": "SOUTHEAST_ASIAN", "sources": ["bib-gourmand"] },
-    { "raw": "东南亚菜", "groupKey": "SOUTHEAST_ASIAN", "sources": ["bib-gourmand"] },
-    { "raw": "印尼菜", "groupKey": "SOUTHEAST_ASIAN", "sources": ["bib-gourmand"] },
-    { "raw": "印度菜", "groupKey": "SOUTHEAST_ASIAN", "sources": ["starred"] },
-    { "raw": "印度菜, 巴基斯坦菜", "groupKey": "SOUTHEAST_ASIAN", "sources": ["starred"] },
-    { "raw": "时尚亚洲菜", "groupKey": "SOUTHEAST_ASIAN", "sources": ["starred"] },
-    { "raw": "日本菜", "groupKey": "JAPANESE", "sources": ["bib-gourmand", "starred"] },
-    { "raw": "寿司", "groupKey": "JAPANESE", "sources": ["starred"] },
-    { "raw": "铁板烧", "groupKey": "JAPANESE", "sources": ["starred"] },
-    { "raw": "鸡肉串烧", "groupKey": "JAPANESE", "sources": ["starred"] },
-    { "raw": "韩国菜", "groupKey": "KOREAN", "sources": ["starred"] },
-    { "raw": "法国菜", "groupKey": "FRENCH", "sources": ["starred"] },
-    { "raw": "时尚法国菜", "groupKey": "FRENCH", "sources": ["starred"] },
-    { "raw": "时尚法国菜, 创新菜", "groupKey": "FRENCH", "sources": ["starred"] },
-    { "raw": "意大利菜", "groupKey": "ITALIAN_EUROPEAN", "sources": ["starred"] },
-    { "raw": "披萨", "groupKey": "ITALIAN_EUROPEAN", "sources": ["bib-gourmand"] },
-    { "raw": "时尚欧陆菜", "groupKey": "ITALIAN_EUROPEAN", "sources": ["starred"] },
-    { "raw": "地中海菜", "groupKey": "ITALIAN_EUROPEAN", "sources": ["bib-gourmand"] },
-    { "raw": "街头小吃", "groupKey": "WESTERN_OTHER", "sources": ["bib-gourmand"] },
-    { "raw": "海鲜", "groupKey": "WESTERN_OTHER", "sources": ["bib-gourmand", "starred"] },
-    { "raw": "拉丁美洲菜", "groupKey": "WESTERN_OTHER", "sources": ["starred"] },
-    { "raw": "创新菜", "groupKey": "INNOVATIVE", "sources": ["starred"] },
-    { "raw": "扒房", "groupKey": "STEAKHOUSE_GRILL", "sources": ["starred"] },
-    { "raw": "", "groupKey": "OTHER", "sources": ["starred"] }
+    {
+      "raw": "粵菜",
+      "groupKey": "CANTONESE",
+      "sources": [
+        "bib-gourmand",
+        "starred"
+      ]
+    },
+    {
+      "raw": "粵式燒臘",
+      "groupKey": "CANTONESE",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "粵菜 / 火鍋",
+      "groupKey": "CANTONESE",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "麵食",
+      "groupKey": "NOODLES_CONGEE",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "粥粉麵",
+      "groupKey": "NOODLES_CONGEE",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "粥麵",
+      "groupKey": "NOODLES_CONGEE",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "拉麵",
+      "groupKey": "NOODLES_CONGEE",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "餃子",
+      "groupKey": "NOODLES_CONGEE",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "餃子 / 京味",
+      "groupKey": "NOODLES_CONGEE",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "點心",
+      "groupKey": "DIM_SUM",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "潮州菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": [
+        "bib-gourmand",
+        "starred"
+      ]
+    },
+    {
+      "raw": "順德菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": [
+        "bib-gourmand",
+        "starred"
+      ]
+    },
+    {
+      "raw": "滬菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": [
+        "bib-gourmand",
+        "starred"
+      ]
+    },
+    {
+      "raw": "湘菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "台灣菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "新疆菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "閩菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "台州菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "寧波菜",
+      "groupKey": "REGIONAL_CHINESE",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "泰國菜",
+      "groupKey": "SOUTHEAST_ASIAN",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "越南菜",
+      "groupKey": "SOUTHEAST_ASIAN",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "東南亞菜",
+      "groupKey": "SOUTHEAST_ASIAN",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "印尼菜",
+      "groupKey": "SOUTHEAST_ASIAN",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "印度菜",
+      "groupKey": "SOUTHEAST_ASIAN",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "印度菜, 巴基斯坦菜",
+      "groupKey": "SOUTHEAST_ASIAN",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "時尚亞洲菜",
+      "groupKey": "SOUTHEAST_ASIAN",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "日本菜",
+      "groupKey": "JAPANESE",
+      "sources": [
+        "bib-gourmand",
+        "starred"
+      ]
+    },
+    {
+      "raw": "壽司",
+      "groupKey": "JAPANESE",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "鐵板燒",
+      "groupKey": "JAPANESE",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "雞肉串燒",
+      "groupKey": "JAPANESE",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "韓國菜",
+      "groupKey": "KOREAN",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "法國菜",
+      "groupKey": "FRENCH",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "時尚法國菜",
+      "groupKey": "FRENCH",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "時尚法國菜, 創新菜",
+      "groupKey": "FRENCH",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "意大利菜",
+      "groupKey": "ITALIAN_EUROPEAN",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "披薩",
+      "groupKey": "ITALIAN_EUROPEAN",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "時尚歐陸菜",
+      "groupKey": "ITALIAN_EUROPEAN",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "地中海菜",
+      "groupKey": "ITALIAN_EUROPEAN",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "街頭小吃",
+      "groupKey": "WESTERN_OTHER",
+      "sources": [
+        "bib-gourmand"
+      ]
+    },
+    {
+      "raw": "海鮮",
+      "groupKey": "WESTERN_OTHER",
+      "sources": [
+        "bib-gourmand",
+        "starred"
+      ]
+    },
+    {
+      "raw": "拉丁美洲菜",
+      "groupKey": "WESTERN_OTHER",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "創新菜",
+      "groupKey": "INNOVATIVE",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "扒房",
+      "groupKey": "STEAKHOUSE_GRILL",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "",
+      "groupKey": "OTHER",
+      "sources": [
+        "starred"
+      ]
+    }
   ]
 }

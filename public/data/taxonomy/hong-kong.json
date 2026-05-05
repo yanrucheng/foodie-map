@@ -3,18 +3,83 @@
   "city": "hong-kong",
   "fallbackGroup": "OTHER",
   "groups": [
-    { "key": "CANTONESE", "labelZh": "粤菜 · 港式", "labelEn": "Cantonese", "sortOrder": 1 },
-    { "key": "NOODLES_CONGEE", "labelZh": "面食 · 粥品", "labelEn": "Noodles & Congee", "sortOrder": 2 },
-    { "key": "DIM_SUM", "labelZh": "点心 · 茶楼", "labelEn": "Dim Sum", "sortOrder": 3 },
-    { "key": "REGIONAL_CHINESE", "labelZh": "地方菜系", "labelEn": "Regional Chinese", "sortOrder": 4 },
-    { "key": "SOUTHEAST_ASIAN", "labelZh": "东南亚 · 南亚", "labelEn": "Southeast & South Asian", "sortOrder": 5 },
-    { "key": "JAPANESE", "labelZh": "日本料理", "labelEn": "Japanese", "sortOrder": 6 },
-    { "key": "KOREAN", "labelZh": "韩国料理", "labelEn": "Korean", "sortOrder": 7 },
-    { "key": "FRENCH", "labelZh": "法国菜", "labelEn": "French", "sortOrder": 8 },
-    { "key": "ITALIAN_EUROPEAN", "labelZh": "意大利 · 欧陆菜", "labelEn": "Italian & European", "sortOrder": 9 },
-    { "key": "WESTERN_OTHER", "labelZh": "西餐 · 其他", "labelEn": "Western & Other", "sortOrder": 10 },
-    { "key": "INNOVATIVE", "labelZh": "创新菜", "labelEn": "Innovative", "sortOrder": 11 },
-    { "key": "STEAKHOUSE_GRILL", "labelZh": "扒房 · 烧烤", "labelEn": "Steakhouse & Grill", "sortOrder": 12 },
-    { "key": "OTHER", "labelZh": "其他", "labelEn": "Other", "sortOrder": 99 }
+    {
+      "key": "CANTONESE",
+      "labelZh": "粵菜 · 港式",
+      "labelEn": "Cantonese",
+      "sortOrder": 1
+    },
+    {
+      "key": "NOODLES_CONGEE",
+      "labelZh": "麵食 · 粥品",
+      "labelEn": "Noodles & Congee",
+      "sortOrder": 2
+    },
+    {
+      "key": "DIM_SUM",
+      "labelZh": "點心 · 茶樓",
+      "labelEn": "Dim Sum",
+      "sortOrder": 3
+    },
+    {
+      "key": "REGIONAL_CHINESE",
+      "labelZh": "地方菜系",
+      "labelEn": "Regional Chinese",
+      "sortOrder": 4
+    },
+    {
+      "key": "SOUTHEAST_ASIAN",
+      "labelZh": "東南亞 · 南亞",
+      "labelEn": "Southeast & South Asian",
+      "sortOrder": 5
+    },
+    {
+      "key": "JAPANESE",
+      "labelZh": "日本料理",
+      "labelEn": "Japanese",
+      "sortOrder": 6
+    },
+    {
+      "key": "KOREAN",
+      "labelZh": "韓國料理",
+      "labelEn": "Korean",
+      "sortOrder": 7
+    },
+    {
+      "key": "FRENCH",
+      "labelZh": "法國菜",
+      "labelEn": "French",
+      "sortOrder": 8
+    },
+    {
+      "key": "ITALIAN_EUROPEAN",
+      "labelZh": "意大利 · 歐陸菜",
+      "labelEn": "Italian & European",
+      "sortOrder": 9
+    },
+    {
+      "key": "WESTERN_OTHER",
+      "labelZh": "西餐 · 其他",
+      "labelEn": "Western & Other",
+      "sortOrder": 10
+    },
+    {
+      "key": "INNOVATIVE",
+      "labelZh": "創新菜",
+      "labelEn": "Innovative",
+      "sortOrder": 11
+    },
+    {
+      "key": "STEAKHOUSE_GRILL",
+      "labelZh": "扒房 · 燒烤",
+      "labelEn": "Steakhouse & Grill",
+      "sortOrder": 12
+    },
+    {
+      "key": "OTHER",
+      "labelZh": "其他",
+      "labelEn": "Other",
+      "sortOrder": 99
+    }
   ]
 }
