@@ -4,6 +4,7 @@ import { LocationButton } from "@/components/LocationButton";
 import { UserLocationMarker } from "@/components/UserLocationMarker";
 import { useGeolocation } from "./useGeolocation";
 import { useDeviceOrientation } from "./useDeviceOrientation";
+import { wgs84ToGcj02 } from "@/utils/gcj02";
 
 /** Auto-stop timeout duration (5 minutes). */
 const AUTO_STOP_MS = 5 * 60 * 1000;
@@ -80,7 +81,7 @@ export function useLocationTracking(mapRef: React.RefObject<LeafletMap | null>) 
     // Transition button from "locating" to "tracking" on first fix
     if (locationBtnRef.current?.getState() === "locating") {
       locationBtnRef.current.setState("tracking");
-      mapRef.current.flyTo([geo.lat, geo.lon], 15, { duration: 0.6 });
+      mapRef.current.flyTo(wgs84ToGcj02(geo.lat, geo.lon), 15, { duration: 0.6 });
     }
 
     // Create marker instance lazily

@@ -17,6 +17,7 @@ import { FilterPanel } from "./FilterPanel";
 import { StatsPanelReact } from "./StatsPanelReact";
 import { LocationButton } from "./LocationButton";
 import { useLocationTracking } from "@/hooks/useLocationTracking";
+import { wgs84ToGcj02 } from "@/utils/gcj02";
 
 interface MapShellProps {
   restaurants: Restaurant[];
@@ -131,15 +132,16 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
       if (!containerRef.current || mapRef.current) return;
 
       const map = L.map(containerRef.current, {
-        center,
+        center: wgs84ToGcj02(center[0], center[1]),
         zoom,
         zoomControl: true,
         preferCanvas: true,
       });
 
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "&copy; OpenStreetMap contributors",
+      L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}", {
+        maxZoom: 18,
+        subdomains: ["1", "2", "3", "4"],
+        attribution: "&copy; 高德地图",
       }).addTo(map);
 
       // Add scale bar
@@ -239,7 +241,7 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
             refreshLayers();
           }
 
-          map.flyTo([restaurant.lat, restaurant.lon], 15, { duration: 0.8 });
+          map.flyTo(wgs84ToGcj02(restaurant.lat, restaurant.lon), 15, { duration: 0.8 });
           const marker = markersRef.current.get(restaurant.id);
           if (marker) {
             setTimeout(() => marker.openPopup(), 400);

@@ -1,4 +1,5 @@
 import type { Map as LeafletMap, Marker, Circle } from "leaflet";
+import { wgs84ToGcj02 } from "@/utils/gcj02";
 
 /** Position data consumed by the location marker. */
 export interface UserLocationData {
@@ -42,7 +43,8 @@ export class UserLocationMarker {
   /** Updates the marker position and heading on the map. Creates if not present. */
   update(data: UserLocationData): void {
     const { lat, lon, accuracy, heading } = data;
-    const latlng = L.latLng(lat, lon);
+    const [gcjLat, gcjLon] = wgs84ToGcj02(lat, lon);
+    const latlng = L.latLng(gcjLat, gcjLon);
 
     if (!this.marker) {
       // Create marker with DivIcon

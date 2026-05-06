@@ -1,5 +1,6 @@
 import type { Restaurant } from "@/types/restaurant";
 import type { HeatLayer, Map as LeafletMap } from "leaflet";
+import { wgs84ToGcj02 } from "@/utils/gcj02";
 
 /** Manages the Leaflet heat layer overlay. */
 export class HeatLayerManager {
@@ -15,7 +16,10 @@ export class HeatLayerManager {
     this.remove();
     const points: [number, number, number][] = restaurants
       .filter((r) => r.lat != null && r.lon != null)
-      .map((r) => [r.lat, r.lon, r.is_new ? 1.0 : 0.8]);
+      .map((r) => {
+        const [lat, lng] = wgs84ToGcj02(r.lat, r.lon);
+        return [lat, lng, r.is_new ? 1.0 : 0.8];
+      });
     this.layer = L.heatLayer(points, {
       radius: 38,
       blur: 14,

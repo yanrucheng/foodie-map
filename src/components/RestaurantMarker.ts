@@ -1,5 +1,6 @@
 import type { Restaurant } from "@/types/restaurant";
 import { getGroupStyle, getGroupLabel } from "@/config/cuisineRegistry";
+import { wgs84ToGcj02 } from "@/utils/gcj02";
 
 /** Escapes HTML entities for safe popup rendering. */
 function escapeHtml(value: unknown): string {
@@ -55,8 +56,9 @@ export function createRestaurantMarker(
 ): L.Marker {
   const groupStyle = getGroupStyle(item.cuisine_group);
   const className = item.is_new ? "marker-dot new" : "marker-dot";
+  const [lat, lng] = wgs84ToGcj02(item.lat, item.lon);
 
-  const marker = L.marker([item.lat, item.lon], {
+  const marker = L.marker([lat, lng], {
     title: `${item.name_zh} / ${item.name_en}`,
     icon: L.divIcon({
       className: "",
