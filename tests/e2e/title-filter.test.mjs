@@ -4,7 +4,7 @@
  * Tests both desktop (dropdown) and mobile (bottom sheet) interactions
  * for the guide segment picker in the DynamicTitle component.
  *
- * Usage: node tests/title-filter.test.mjs
+ * Usage: node tests/e2e/title-filter.test.mjs
  * Requires: dev server running on http://localhost:5173
  */
 
@@ -13,9 +13,6 @@ import puppeteer from "puppeteer";
 const BASE_URL = "http://localhost:5173";
 const MOBILE_VIEWPORT = { width: 390, height: 844, isMobile: true, hasTouch: true };
 const DESKTOP_VIEWPORT = { width: 1280, height: 800, isMobile: false, hasTouch: false };
-
-/** Helper: wait a bit for animations and re-renders. */
-const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /** Collects test results. */
 const results = [];
@@ -32,8 +29,10 @@ function report(name, passed, detail = "") {
 async function testDesktopTitleFilter(browser) {
   const page = await browser.newPage();
   await page.setViewport(DESKTOP_VIEWPORT);
-  await page.goto(BASE_URL, { waitUntil: "networkidle0" });
-  await delay(500);
+  await page.goto(BASE_URL, { waitUntil: "domcontentloaded" });
+
+  // Wait for dynamic title to render
+  await page.waitForSelector(".dynamic-title", { visible: true });
 
   // Test 1: Verify the dynamic title is rendered
   const titleEl = await page.$(".dynamic-title");
@@ -52,7 +51,7 @@ async function testDesktopTitleFilter(browser) {
   const guideChip = interactiveChips[1]; // index 0 = city, index 1 = guide
   if (guideChip) {
     await guideChip.click();
-    await delay(300);
+    await page.waitForSelector(".seg-dropdown", { visible: true });
 
     const dropdown = await page.$(".seg-dropdown");
     report("Desktop: Dropdown opens on chip click", !!dropdown);
@@ -94,7 +93,8 @@ async function testDesktopTitleFilter(browser) {
 
     if (nonSelectedItem) {
       await nonSelectedItem.click();
-      await delay(500);
+      // Wait for dropdown to close
+      await page.waitForFunction(() => !document.querySelector(".seg-dropdown"));
 
       // Test 8: Verify dropdown closes after selection
       const dropdownAfter = await page.$(".seg-dropdown");
@@ -144,8 +144,10 @@ async function testDesktopTitleFilter(browser) {
 async function testMobileTitleFilter(browser) {
   const page = await browser.newPage();
   await page.setViewport(MOBILE_VIEWPORT);
-  await page.goto(BASE_URL, { waitUntil: "networkidle0" });
-  await delay(1000); // extra wait for lazy-loaded MobileShell
+  await page.goto(BASE_URL, { waitUntil: "domcontentloaded" });
+
+  // Wait for mobile compact title to render
+  await page.waitForSelector(".dynamic-title--compact", { visible: true });
 
   // Test 1: Verify mobile title rendered (compact mode)
   const titleEl = await page.$(".dynamic-title--compact");
@@ -163,7 +165,7 @@ async function testMobileTitleFilter(browser) {
   const mobileGuideChip = mobileInteractiveChips[1]; // index 0 = city, index 1 = guide
   if (mobileGuideChip) {
     await mobileGuideChip.click();
-    await delay(500);
+    await page.waitForSelector(".bottom-sheet-container", { visible: true });
 
     const sheet = await page.$(".bottom-sheet-container");
     report("Mobile: Bottom sheet opens on chip tap", !!sheet);
@@ -199,7 +201,8 @@ async function testMobileTitleFilter(browser) {
         const item = document.querySelector(".seg-sheet-item:not(.seg-sheet-item--selected)");
         if (item) item.click();
       });
-      await delay(500);
+      // Wait for bottom sheet to close
+      await page.waitForFunction(() => !document.querySelector(".bottom-sheet-container"));
 
       // Test 7: Verify bottom sheet closes after selection
       const sheetAfter = await page.$(".bottom-sheet-container");
@@ -256,13 +259,8 @@ async function main() {
   });
 
   try {
-    console.log("\n📺 Desktop Tests:");
-    console.log("-".repeat(40));
-    await testDesktopTitleFilter(browser);
-
-    console.log("\n📱 Mobile Tests:");
-    console.log("-".repeat(40));
-    await testMobileTitleFilter(browser);
+    // Run desktop and mobile tests in parallel using the same browser instance
+    await Promise.all([testDesktopTitleFilter(browser), testMobileTitleFilter(browser)]);
   } finally {
     await browser.close();
   }
