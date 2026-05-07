@@ -24,7 +24,7 @@
     "guide_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/8½-otto-e-mezzo-bombana",
     "signature_dishes": "",
     "geo_source": "michelin_exact",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
@@ -52,7 +52,7 @@
     "guide_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/amber569032",
     "signature_dishes": "",
     "geo_source": "michelin_exact",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
@@ -220,7 +220,7 @@
     "guide_url": "",
     "signature_dishes": "",
     "geo_source": "nominatim",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
@@ -276,7 +276,7 @@
     "guide_url": "",
     "signature_dishes": "",
     "geo_source": "nominatim",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
@@ -304,7 +304,7 @@
     "guide_url": "",
     "signature_dishes": "",
     "geo_source": "manual_web_lookup",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
@@ -332,7 +332,7 @@
     "guide_url": "",
     "signature_dishes": "",
     "geo_source": "nominatim",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
@@ -360,7 +360,7 @@
     "guide_url": "",
     "signature_dishes": "",
     "geo_source": "nominatim",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
@@ -388,7 +388,7 @@
     "guide_url": "",
     "signature_dishes": "",
     "geo_source": "nominatim",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
@@ -416,7 +416,7 @@
     "guide_url": "",
     "signature_dishes": "",
     "geo_source": "nominatim",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
@@ -444,7 +444,7 @@
     "guide_url": "",
     "signature_dishes": "",
     "geo_source": "nominatim",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
@@ -472,7 +472,7 @@
     "guide_url": "",
     "signature_dishes": "",
     "geo_source": "nominatim",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
@@ -500,7 +500,7 @@
     "guide_url": "",
     "signature_dishes": "",
     "geo_source": "manual_web_lookup",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
@@ -528,7 +528,7 @@
     "guide_url": "",
     "signature_dishes": "",
     "geo_source": "nominatim",
-    "geocode_success": true,
+    "geocode_success": false,
     "status": "active"
   },
   {
