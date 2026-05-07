@@ -1,6 +1,9 @@
 import hongKongTaxonomy from "../../public/data/taxonomy/hong-kong.json";
 import beijingTaxonomy from "../../public/data/taxonomy/beijing.json";
 import guangzhouShenzhenTaxonomy from "../../public/data/taxonomy/guangzhou-shenzhen.json";
+import shanghaiTaxonomy from "../../public/data/taxonomy/shanghai.json";
+import chengduTaxonomy from "../../public/data/taxonomy/chengdu.json";
+import macauTaxonomy from "../../public/data/taxonomy/macau.json";
 
 /** A single cuisine group entry from the taxonomy registry. */
 export interface CuisineGroup {
@@ -38,7 +41,10 @@ function mergeTaxonomies(...sources: CuisineGroup[][]): CuisineGroup[] {
 export const cuisineRegistry: CuisineGroup[] = mergeTaxonomies(
   hongKongTaxonomy.groups,
   beijingTaxonomy.groups,
-  guangzhouShenzhenTaxonomy.groups
+  guangzhouShenzhenTaxonomy.groups,
+  shanghaiTaxonomy.groups,
+  chengduTaxonomy.groups,
+  macauTaxonomy.groups,
 );
 
 /** The fallback group key for unknown/unmapped cuisine values. */
@@ -77,6 +83,26 @@ const COLOR_PALETTE: Record<string, CuisineStyle> = {
   // Guangzhou/Shenzhen-specific groups
   CHAOZHOU: { color: "#0097A7", textColor: "#fff" },
   SICHUAN_HUNAN: { color: "#E57373", textColor: "#fff" },
+
+  // Shanghai-specific groups
+  SHANGHAINESE: { color: "#A1887F", textColor: "#fff" },
+  HUAIYANG: { color: "#FFB300", textColor: "#1a1a1a" },
+  ZHEJIANG: { color: "#66BB6A", textColor: "#fff" },
+  NINGBO: { color: "#26A69A", textColor: "#fff" },
+  NOODLES: { color: "#FDD835", textColor: "#1a1a1a" },
+  TEOCHEW: { color: "#0097A7", textColor: "#fff" },
+  ITALIAN: { color: "#FF8A65", textColor: "#fff" },
+  THAI: { color: "#9CCC65", textColor: "#1a1a1a" },
+  MEDITERRANEAN: { color: "#42A5F5", textColor: "#fff" },
+  BEIJING: { color: "#C62828", textColor: "#fff" },
+  FUJIAN: { color: "#00ACC1", textColor: "#fff" },
+
+  // Chengdu-specific groups
+  SICHUANESE: { color: "#E53935", textColor: "#fff" },
+  EUROPEAN_CONTEMPORARY: { color: "#AB47BC", textColor: "#fff" },
+
+  // Macau-specific groups
+  PORTUGUESE_MACANESE: { color: "#FF8F00", textColor: "#fff" },
 };
 
 /** Style map: group key → visual properties (color, text contrast). */
