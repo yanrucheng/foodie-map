@@ -197,7 +197,7 @@
   },
   {
     "id": 8,
-    "name_zh": "",
+    "name_zh": "Arbor",
     "name_en": "Arbor",
     "name": "Arbor",
     "guide_type": "michelin-starred",
@@ -225,7 +225,7 @@
   },
   {
     "id": 9,
-    "name_zh": "",
+    "name_zh": "廚魔",
     "name_en": "Bo Innovation",
     "name": "Bo Innovation",
     "guide_type": "michelin-starred",
@@ -253,7 +253,7 @@
   },
   {
     "id": 10,
-    "name_zh": "",
+    "name_zh": "Cristal Room by Anne-Sophie Pic",
     "name_en": "Cristal Room by Anne-Sophie Pic",
     "name": "Cristal Room by Anne-Sophie Pic",
     "guide_type": "michelin-starred",
@@ -281,7 +281,7 @@
   },
   {
     "id": 11,
-    "name_zh": "",
+    "name_zh": "L'Atelier de Joël Robuchon",
     "name_en": "L'Atelier de Joël Robuchon",
     "name": "L'Atelier de Joël Robuchon",
     "guide_type": "michelin-starred",
@@ -309,7 +309,7 @@
   },
   {
     "id": 12,
-    "name_zh": "",
+    "name_zh": "L'Envol",
     "name_en": "L'Envol",
     "name": "L'Envol",
     "guide_type": "michelin-starred",
@@ -337,7 +337,7 @@
   },
   {
     "id": 13,
-    "name_zh": "",
+    "name_zh": "麗晶軒",
     "name_en": "Lai Ching Heen",
     "name": "Lai Ching Heen",
     "guide_type": "michelin-starred",
@@ -365,7 +365,7 @@
   },
   {
     "id": 14,
-    "name_zh": "",
+    "name_zh": "龍景軒",
     "name_en": "Lung King Heen",
     "name": "Lung King Heen",
     "guide_type": "michelin-starred",
@@ -393,7 +393,7 @@
   },
   {
     "id": 15,
-    "name_zh": "",
+    "name_zh": "Noi by Paulo Airaudo",
     "name_en": "Noi by Paulo Airaudo",
     "name": "Noi by Paulo Airaudo",
     "guide_type": "michelin-starred",
@@ -421,7 +421,7 @@
   },
   {
     "id": 16,
-    "name_zh": "",
+    "name_zh": "Octavium",
     "name_en": "Octavium",
     "name": "Octavium",
     "guide_type": "michelin-starred",
@@ -449,7 +449,7 @@
   },
   {
     "id": 17,
-    "name_zh": "",
+    "name_zh": "潤",
     "name_en": "Rùn",
     "name": "Rùn",
     "guide_type": "michelin-starred",
@@ -477,7 +477,7 @@
   },
   {
     "id": 18,
-    "name_zh": "",
+    "name_zh": "Tate",
     "name_en": "Tate",
     "name": "Tate",
     "guide_type": "michelin-starred",
@@ -505,7 +505,7 @@
   },
   {
     "id": 19,
-    "name_zh": "",
+    "name_zh": "天龍軒",
     "name_en": "Tin Lung Heen",
     "name": "Tin Lung Heen",
     "guide_type": "michelin-starred",
@@ -533,7 +533,7 @@
   },
   {
     "id": 20,
-    "name_zh": "",
+    "name_zh": "營致會館",
     "name_en": "Ying Jee Club",
     "name": "Ying Jee Club",
     "guide_type": "michelin-starred",
@@ -561,7 +561,7 @@
   },
   {
     "id": 21,
-    "name_zh": "",
+    "name_zh": "Ami",
     "name_en": "Ami",
     "name": "Ami",
     "guide_type": "michelin-starred",
@@ -1065,7 +1065,7 @@
   },
   {
     "id": 39,
-    "name_zh": "",
+    "name_zh": "甘牌燒鵝",
     "name_en": "Kam's Roast Goose",
     "name": "Kam's Roast Goose",
     "guide_type": "michelin-starred",
@@ -1345,7 +1345,7 @@
   },
   {
     "id": 49,
-    "name_zh": "",
+    "name_zh": "Neighborhood",
     "name_en": "Neighborhood",
     "name": "Neighborhood",
     "guide_type": "michelin-starred",
@@ -1513,7 +1513,7 @@
   },
   {
     "id": 55,
-    "name_zh": "",
+    "name_zh": "Roganic",
     "name_en": "Roganic",
     "name": "Roganic",
     "guide_type": "michelin-starred",
@@ -1989,7 +1989,7 @@
   },
   {
     "id": 72,
-    "name_zh": "",
+    "name_zh": "一樂燒鵝 (中環)",
     "name_en": "Yat Lok (Central)",
     "name": "Yat Lok (Central)",
     "guide_type": "michelin-starred",
@@ -2101,7 +2101,7 @@
   },
   {
     "id": 76,
-    "name_zh": "",
+    "name_zh": "浙江軒",
     "name_en": "Zhejiang Heen",
     "name": "Zhejiang Heen",
     "guide_type": "michelin-starred",
