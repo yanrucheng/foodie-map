@@ -276,7 +276,7 @@
     },
     {
       "raw": "街頭小吃",
-      "groupKey": "WESTERN_OTHER",
+      "groupKey": "OTHER",
       "sources": [
         "bib-gourmand"
       ]
