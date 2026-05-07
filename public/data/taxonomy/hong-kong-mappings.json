@@ -14,7 +14,8 @@
       "raw": "粵式燒臘",
       "groupKey": "CANTONESE",
       "sources": [
-        "bib-gourmand"
+        "bib-gourmand",
+        "starred"
       ]
     },
     {
@@ -312,6 +313,13 @@
     {
       "raw": "",
       "groupKey": "OTHER",
+      "sources": [
+        "starred"
+      ]
+    },
+    {
+      "raw": "浙江菜",
+      "groupKey": "REGIONAL_CHINESE",
       "sources": [
         "starred"
       ]
