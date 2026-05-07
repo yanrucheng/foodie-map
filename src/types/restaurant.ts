@@ -19,9 +19,10 @@ export interface Restaurant {
   lat: number;
   lon: number;
   price_range: string;
+  avg_price?: number | null;
   avg_price_hkd?: string;
   avg_price_cny?: string | null;
-  signature_dishes: string;
+  signature_dishes: string | null;
   guide_url: string;
   phone?: string;
   website?: string;

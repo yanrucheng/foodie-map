@@ -7,6 +7,17 @@ interface MobilePopupCardProps {
   onClose: () => void;
 }
 
+/** Formats the most specific available spend value for the mobile detail card. */
+function formatAvgPrice(restaurant: Restaurant): string {
+  return String(
+    restaurant.avg_price ??
+      restaurant.avg_price_hkd ??
+      restaurant.avg_price_cny ??
+      restaurant.price_range ??
+      "未提供"
+  );
+}
+
 /**
  * Full-width detail card that slides up from the bottom on mobile marker tap.
  * Replaces Leaflet's built-in popup for a touch-friendly, spacious layout.
@@ -68,7 +79,7 @@ export function MobilePopupCard({ restaurant, onClose }: MobilePopupCardProps) {
           </div>
           <div className="mobile-popup-row">
             <span className="mobile-popup-label">人均</span>
-            <span className="mobile-popup-value">{restaurant.avg_price_hkd || restaurant.avg_price_cny || restaurant.price_range || "未提供"}</span>
+            <span className="mobile-popup-value">{formatAvgPrice(restaurant)}</span>
           </div>
           <div className="mobile-popup-row">
             <span className="mobile-popup-label">招牌菜</span>

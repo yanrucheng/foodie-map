@@ -11,6 +11,11 @@ function escapeHtml(value: unknown): string {
     .replace(/"/g, "&quot;");
 }
 
+/** Formats the most specific available spend value for popup display. */
+function formatAvgPrice(item: Restaurant): string {
+  return String(item.avg_price ?? item.avg_price_hkd ?? item.avg_price_cny ?? item.price_range ?? "未提供");
+}
+
 /** Generates popup HTML for a restaurant marker. */
 function popupHtml(item: Restaurant): string {
   const fallbackNote =
@@ -33,7 +38,7 @@ function popupHtml(item: Restaurant): string {
       </div>
       <div class="line"><strong>区域：</strong>${escapeHtml(item.area)}</div>
       <div class="line"><strong>地址：</strong>${escapeHtml(item.address || "未提供")}</div>
-      <div class="line"><strong>人均：</strong>${escapeHtml(item.avg_price_hkd || item.avg_price_cny || item.price_range || "未提供")}</div>
+      <div class="line"><strong>人均：</strong>${escapeHtml(formatAvgPrice(item))}</div>
       <div class="line"><strong>招牌菜：</strong>${escapeHtml(item.signature_dishes || "未提供")}</div>
       ${fallbackNote}
       ${michelinLine}
