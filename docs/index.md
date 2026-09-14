@@ -30,5 +30,6 @@ This index is the entry point for project documentation stored under `docs/`.
 
 | ID | Title | Status | Summary |
 |----|-------|--------|---------|
+| [plan-260914-2209-restaurant-visual-encoding](plan/plan-260914-2209-restaurant-visual-encoding.md) | 餐厅自动配色与四类图标：设计定稿与开发交接 | active | P08 设计已定稿、业务待开发；自动颜色、形式图标、接入语义和验收入口 |
 | [plan-260913-0040-frontend-professionalization](plan/plan-260913-0040-frontend-professionalization.md) | Foodie Map 专业前端建设：目标、Packet 与验收基线 | review | OpenSpec 开发包、依赖、分层验收与 Agent 交接入口 |
 | [runbook-260507-1013-valid-data-source-guide](runbook/runbook-260507-1013-valid-data-source-guide.md) | Operational Guide - Finding Valid Restaurant Data Sources | active | Source selection, field ownership, validation workflow, and anti-patterns for restaurant data onboarding and repair |

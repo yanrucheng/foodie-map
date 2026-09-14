@@ -32,14 +32,14 @@
 - `scripts/release-build.ts` 读取 `public/data/catalog.json`，调用 P03 `validateCatalogRoot`/`catalogCities` 及 P02 `validateDataset`/taxonomy 合同。生成 `/_foodie/data/<sha256>/data/...`、`release.json` 和 Worker 常量。旧 JSON 地址固定派生自各自年度源，目录扫描只找遗漏，身份始终归 catalog。
 - `ReleaseDiscovery` 只提供可选 dataRoot。隔离重放将原始 catalog/年度/taxonomy/证据文件写入临时目录，经过与正式产物相同的 parser、adapter、校验和构建；不新增登记或替换城市适配器。正式候选直接使用实际 catalog 与年度文件。
 - 源码身份纳入 readme 覆盖文档、catalog 的递归本地来源引用及快速集实际执行的 boarding 工具，既有 Python 虚拟环境不属于输入。故障副本复用这份输入清单，解压后的候选无需 Git 即可重放四种故障及健康管线；不会出现只有在原仓库才找到来源文件的假干净验证。
-- 构建标识包含 VERSION、源码输入摘要和发现/数据摘要；最终 JS/CSS/HTML 摘要在 `writeBundle` 从磁盘读取。Vite 会在早期 generateBundle 之后改写异步预加载引用，提前散列会使 Worker 安装拒绝有效构建；该首次失败已保存。完整产物摘要位于验证凭据，避免凭据自身形成散列循环。
+- 构建标识包含 VERSION、源码输入摘要和发现/数据摘要；最终 JS/CSS/HTML 摘要在 `writeBundle` 从磁盘读取。Vite 会在早期 generateBundle 之后改写异步预加载引用，提前散列会使 Worker 安装拒绝有效构建；该历史失败现场已清理。完整产物摘要位于验证凭据，避免凭据自身形成散列循环。
 - Finder 的 `.DS_Store` 不参与源码身份，Vite 从 public 复制出的同名文件在封存产物前移除。源码归档与干净重建因此不依赖本机隐藏元数据；产物核对仍覆盖封存后的全部文件，新增任意文件会使核对失败。
 - Worker 使用 `foodie-map:v3:shell:<build>`、`data:<build>` 和 history；安装先验证所有壳文件，再写入。激活保留当前/上一构建，仅清理明确属于 Foodie Map 的缓存和已知 v2 缓存。旧页面关闭前不 skipWaiting；页面路由导航固定返回活动 Worker 的壳，JSON/资源导航保留相应响应，避免破坏旧 JSON 地址。全部真实延迟 JS 随壳缓存。
-- 网络读取包含响应体完成在内设4秒上限；到期中止请求，已访问数据只回退到匹配摘要的缓存，未缓存项返回明确不可用，不无限等待。旧WebKit冷启动有一次停留loading的失败被保留，确定性HTTP头/体悬挂场景在两引擎验证这条边界。
+- 网络读取包含响应体完成在内设4秒上限；到期中止请求，已访问数据只回退到匹配摘要的缓存，未缓存项返回明确不可用，不无限等待。旧WebKit冷启动有一次停留loading的失败现场已清理，确定性HTTP头/体悬挂场景在两引擎验证这条边界。
 - 餐厅数据采用网络优先，只接纳成功 JSON 且摘要匹配的响应。摘要输入已通过 P02 合同/身份校验；匹配的旧缓存可回退，坏缓存也会重新验摘要。所有写入由 install/activate/fetch 的 waitUntil 等待。页面再次验摘要，保护被旧 v2 Worker 控制的新页面；P04 仍负责成对提交数据/taxonomy和选择代次。
 - 离线状态来自 OS 事件及实际响应的缓存/网络信息。连接失败而 navigator.onLine 仍为 true 时，仍显示离线缓存，提供重试。没有预取未来城市/年度。底图错误沿用 P05 的独立状态。
 - 干净安装揭示 P03 catalog 场景曾直接寻找完整 Chrome，现统一由已有 createBrowserHarness 启动锁定的 Headless Shell，再连接 Playwright；清理/进程诊断也复用同一路径。完整浏览器安装入口仅需它声明的两个引擎。
-- 源码快照包含当前候选与来源证据，但不递归嵌套旧 candidate-source.tar.gz；旧档保留可查，历史回滚 dist 包仍随源码提供。
+- 源码快照包含当前候选与来源证据，但不递归嵌套旧 candidate-source.tar.gz；快照仅用于当次检查，完成后可清理；历史回滚包不再随源码提供。
 - 沿用 node:test/Puppeteer/Playwright 双引擎。一份 test:e2e 入口运行 P01–P06 场景及 P07 真实 Worker 场景；UI 的发现/HTTP fixture 与严格发布 fixture 分工明确。后者由可切换根目录的本地 HTTP 服务提供真实文件。WebKit 自动全局 offline 标志的导航内部错误保留；等价 origin 连接中断和真实 Safari 本地断连均实际重载缓存。
 - `release-candidate-replay.mjs` 只编排现有 harness 对两份完整产物做迁移，不构建、不部署。上轮留存的真实 A 与本轮检查后的 B 保留旧页面、Worker 和缓存，覆盖 A 离线、未缓存选择/联网重试、B 正式 catalog/年度路径、旧异步模块、B 离线及恢复原 A。旧 v2 与合成同年度修订/新增年度场景继续由既有测试覆盖。
 - 首次失败截图、浏览器错误、数据集和构建信息在 finally 关闭页面前捕获。axe 4.13.0 保留；执行异常、未知 incomplete 均失败。底图使用普通合成，阅读面板不透明；完整执行审计后发现并修复空统计提示对比度。每个 incomplete 再核对 ARIA 引用或保守 sRGB 对比度下界，报告与原始 axe 输出共同保存，不把 incomplete 当成零问题。
@@ -50,7 +50,7 @@ P03 缺失与正式发现联调阻塞已解决。当前来源仍如实标为 11 
 
 Safari 26.4 历史桌面抽检只对应其旧构建和列明步骤，不代表当前正式 catalog 候选完整 Safari 流程通过。远端 CI 未执行，不能由本地门禁推定。开发者提供 G1–G4 自测和干净重放环境，独立重放、4.2 判定及 4.3 归档交给验收负责人。
 
-发布、回滚、故障注入、快照和干净重放的操作入口统一放在[开发与运行](../../../readme/development.md)，本包的实际候选与逐要求结果放在 [tasks](tasks.md) 和 evidence。
+发布、回滚、故障注入、快照和干净重放的操作入口统一放在[开发与运行](../../../readme/development.md)，本包的状态放在 [tasks](tasks.md)，本轮运行输出写入 test-results/ 或临时目录。
 
 ## Performance protocol
 

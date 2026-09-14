@@ -11,7 +11,7 @@ const output = process.env.P05_COVERAGE_DIR;
 if (!output) throw new Error("Set P05_COVERAGE_DIR; this is an online provider coverage probe.");
 await mkdir(output, { recursive: true });
 const catalog = JSON.parse(await readFile("public/data/catalog.json", "utf8"));
-const anchors = JSON.parse(await readFile(process.env.P05_ANCHORS_FILE ?? "openspec/changes/p05-map-location-correctness/evidence/supplement-260914/anchors.json", "utf8"));
+const anchors = JSON.parse(await readFile(process.env.P05_ANCHORS_FILE ?? "tests/fixtures/map-anchors.json", "utf8"));
 const browser = await puppeteer.launch({ headless: "shell" });
 const rows = [];
 try {

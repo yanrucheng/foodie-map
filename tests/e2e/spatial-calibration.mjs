@@ -9,7 +9,7 @@ import { createBrowserHarness } from "./helpers.mjs";
 const output = process.env.P05_CALIBRATION_DIR;
 if (!output) throw new Error("Set P05_CALIBRATION_DIR to a new evidence directory; this script uses real external provider tiles.");
 await mkdir(join(output, "tiles"), { recursive: true });
-const anchorsFile = process.env.P05_ANCHORS_FILE ?? "openspec/changes/p05-map-location-correctness/evidence/supplement-260914/anchors.json";
+const anchorsFile = process.env.P05_ANCHORS_FILE ?? "tests/fixtures/map-anchors.json";
 const anchors = JSON.parse(await readFile(anchorsFile, "utf8")).filter((anchor) => !process.env.P05_CITY || anchor.city === process.env.P05_CITY);
 const catalog = JSON.parse(await readFile("public/data/catalog.json", "utf8"));
 const temporary = await mkdtemp(join(tmpdir(), "foodie-p05-online-"));

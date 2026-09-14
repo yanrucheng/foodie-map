@@ -6,7 +6,7 @@ import { wgs84ToGcj02 } from "../../src/utils/gcj02.ts";
 const key = process.env.AMAP_WEB_SERVICE_KEY;
 const output = process.env.P05_PROVIDER_REFERENCE_DIR;
 if (!key || !output) throw new Error("Provide an authorized AMAP_WEB_SERVICE_KEY via environment and P05_PROVIDER_REFERENCE_DIR; no provider request was sent.");
-const anchors = JSON.parse(await readFile("openspec/changes/p05-map-location-correctness/evidence/supplement-260914/anchors.json", "utf8"))
+const anchors = JSON.parse(await readFile("tests/fixtures/map-anchors.json", "utf8"))
   .filter((a) => a.city !== "tokyo");
 await mkdir(output, { recursive: true });
 const results = [];

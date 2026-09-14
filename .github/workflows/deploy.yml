@@ -18,11 +18,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: npm
+
+      - run: npm run check:repository
+        env:
+          REPOSITORY_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
 
       - run: npm ci
       - run: npx playwright install-deps chromium webkit
@@ -35,6 +41,7 @@ jobs:
         with:
           name: release-evidence-${{ github.sha }}
           path: test-results/release
+          retention-days: 7
           if-no-files-found: error
 
       - uses: actions/upload-pages-artifact@v3

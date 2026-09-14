@@ -1,6 +1,6 @@
 ## Implementation status and authority
 
-本包在既有 P01/P02/P04–P07 工作树上完成实现与开发者验证；最终验收由另一 Agent 负责。实际起点为 13 名单、671 记录、652 合同可定位（含东京和 JPY），不是总计划中的旧 402 基线。起始逐文件清单及哈希见 evidence/workspace-start.json。
+本包在既有 P01/P02/P04–P07 工作树上完成实现与开发者验证；最终验收由另一 Agent 负责。实际起点为 13 名单、671 记录、652 合同可定位（含东京和 JPY），不是总计划中的旧 402 基线。历史工作区清单已清理，当前输入以 Git 和正式 catalog 为准。
 
 稳定目的：让一个地域/榜单/年度能够独立发现、核验与回滚。唯一登记为 `public/data/catalog.json`；年度文件拥有餐厅事实，P02 合同拥有字段/分类/位置语义，P04/P05/P06 拥有界面及空间生命周期，P07 拥有构建/缓存摘要。不建立第二个发布登记或复杂历史数据库。采集工具、证据获取及人工调查方法可替换。
 
@@ -22,7 +22,7 @@
 
 ## Annual migration and revisions
 
-13 份名单逐字节复制到 `/data/<city>/<year>/<guide>.json`。evidence/migration.json 逐文件保存原/新哈希，每条记录保存 id/guide_url 及完整对象前后哈希；新增/删除/字段变化均为空。名称、评级、年度、菜系、地址、价格/JPY、状态、候选坐标与无位置 KIBUN 全部保留。移除前的输入哈希可和起始清单、保留的旧地址核对。
+13 份名单逐字节复制到 `/data/<city>/<year>/<guide>.json`。初次迁移按字节复制，当前别名一致性由校验器检查；历史逐记录迁移日志已清理。名称、评级、年度、菜系、地址、价格/JPY、状态、候选坐标与无位置 KIBUN 全部保留。旧地址与年度源的一致性可重新运行 validate:data 核对。
 
 year 是官方版次；collectedAt 是实际采集时间；verifiedAt 是完整性核验时间；revision.id/reason/evidence 是同版修订。旧历史时间均 null，不用迁移日填充。东京 collectedAt=2026-09-14，完整年度尚未核验所以 verifiedAt=null。当前营业 closed/relocated、官网变化不决定历史退出，不删除原年度入选；同版修订记录理由及旧值证据，结合 Git/任务材料和 P07 内容哈希追溯。
 
@@ -30,7 +30,7 @@ year 是官方版次；collectedAt 是实际采集时间；verifiedAt 是完整�
 
 状态为 not-collected / partial / unverified / verified，名单完整度与 counts.locatable 分离。正式旧 11 份名单 unverified；东京两份 partial。已有可定位资格不因缺历史完整性材料而被伪造或降级。
 
-provenance.sources 含 kind=edition/scope/membership/gap、ref、note；引用允许安全 HTTP(S)、`/data/*.json` 或 `repo:相对文件`。校验检查所有本地引用可读，生成覆盖指纹包含其字节。repo: 材料归原任务/文档位置，不复制东京采集库；缺原始网页时明确材料限度。生产来源缺口见 evidence/provenance.md。
+provenance.sources 含 kind=edition/scope/membership/gap、ref、note；引用允许安全 HTTP(S)、`/data/*.json` 或 `repo:相对文件`。校验检查所有本地引用可读，生成覆盖指纹包含其字节。repo: 材料归原任务/文档位置，不复制东京采集库；缺原始网页时明确材料限度。生产来源缺口见[来源 runbook](../../../docs/runbook/runbook-260507-1013-valid-data-source-guide.md)。
 
 verified 必须有核验日期、年度/范围/名单来源、所有 scope.members 的核验声明以及 reconciliationPath；对账材料含 dataset、完整官方集合标识 complete、identities、sources、aliases。校验按真实身份集合报告 missing/extra/unresolved/ambiguous，不能由数量相同推导完整。证据完整但坐标缺失可以名单完整/部分不可定位；官方空集合与本地空集合一致且证据满足要求才允许 verified 零条。
 
@@ -38,7 +38,7 @@ verified 必须有核验日期、年度/范围/名单来源、所有 scope.membe
 
 ## Explainable annual reconciliation
 
-`src/data/reconciliation.ts` 以官方 listing URL 归一化匹配；保留地域/分店，只去 locale、查询参数、fragment、尾斜杠。官方稳定 ID 可通过有证据的 URL→ID 对应使用。aliases.from/to/evidence/reason 是直接一对一的人工例外，不靠数字 id 或同名合并。
+`src/data/reconciliation.ts` 以官方 listing URL 归一化匹配；保留地域/分店，只去 locale、查询参数、fragment、尾斜杠。官方稳定 ID 可通过有证据的 URL→ID 对应使用。aliases.from/to/已清理的历史输出 是直接一对一的人工例外，不靠数字 id 或同名合并。
 
 `npm run data:diff -- --root … --before city/year/guide --after city/year/guide` 先校验真实 catalog/文件，输出输入哈希、官方材料、匹配依据、改名/评级/URL/营业状态等变化。完整新年度官方名单无对象才标 annual-exit；官方仍有但没采到标 capture-gap；官方集合不全则 pending；本地出现对象先标 observed-addition-pending-prior-coverage，避免把旧年漏采误报首次入选。重复/无 listing 身份待核实，当前停业单列 changes.status。生产只有一版，跨年结果只在清楚标记的隔离夹具生成，不捏造真实下一版。
 

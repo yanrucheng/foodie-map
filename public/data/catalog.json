@@ -31,14 +31,14 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               }
             ],
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         },
@@ -62,14 +62,14 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               }
             ],
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         }
@@ -116,14 +116,14 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               }
             ],
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         },
@@ -147,14 +147,14 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               }
             ],
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         }
@@ -201,14 +201,14 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               }
             ],
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         },
@@ -232,14 +232,14 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               }
             ],
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         }
@@ -287,14 +287,14 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               }
             ],
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         },
@@ -318,14 +318,14 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               }
             ],
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         }
@@ -372,14 +372,14 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               }
             ],
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         }
@@ -426,14 +426,14 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               }
             ],
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         },
@@ -457,14 +457,14 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               }
             ],
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         }
@@ -512,7 +512,7 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               },
               {
@@ -539,7 +539,7 @@
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         },
@@ -563,7 +563,7 @@
             "sources": [
               {
                 "kind": "gap",
-                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
               },
               {
@@ -590,7 +590,7 @@
             "revision": {
               "id": "p03-annual-path-migration",
               "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
             }
           }
         }

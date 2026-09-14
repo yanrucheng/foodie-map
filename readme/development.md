@@ -47,6 +47,7 @@ npm run preview -- --host 127.0.0.1 --port 4173
 
 | npm 入口 | Make 入口 | 职责与失败语义 |
 |---|---|---|
+| `npm run check:repository` | npm 直接运行 | 检查当前工作区/暂存内容的 1,000,000 字节上限与输出目录；CI 另检查本次新增历史对象。 |
 | `npm run check` | `make check` | 顺序执行类型、规范与数据检查；任一步失败即非零退出。 |
 | `npm run check:types` | 经 `make check` | 检查应用、数据工具、快速测试和 Vite/Vitest 配置，不生成 JS、声明或 tsbuildinfo。 |
 | `npm run check:lint` | 经 `make check` | ESLint 的 JS/TS 规则、Hooks 调用与依赖规则；警告也失败。 |
@@ -93,7 +94,7 @@ Chrome Headless Shell 保存在 `node_modules/.cache/puppeteer/`。采用官方�
 
 浏览器集复用 `node:test` 和生产构建 harness。早期显示/状态场景仍隔离发现模块与 HTTP，以便分别测试坏 JSON、长文本等边界。`catalog.test.mjs`、P07 的 `release-cache`、`release-flow`、`release-rollout` 通过原始 catalog → 正式 parser → adapter/P04/P05 → releaseBuild，并启用真实 Worker。新城和两版只在隔离数据目录中构造；不替换 cities.ts 来证明扩展。正式 `dist` 冒烟及 P05 全名单联调直接读取实际年度数据，后者单独隔离传感器和外部瓦片。
 
-Worker 场景通过本地 HTTP 服务控制坏响应与 A/B 产物切换，不拦截 Worker 内部请求。CSP 在浏览器边界阻断外部瓦片/字体。WebKit 的全局 `setOffline` 开关会产生导航内部错误，因此其离线场景使用本地 origin 连接中断；Chromium 同时启用浏览器离线开关。两者都实际从 CacheStorage 重载应用，Safari 实际操作范围另见 P07 证据。
+Worker 场景通过本地 HTTP 服务控制坏响应与 A/B 产物切换，不拦截 Worker 内部请求。CSP 在浏览器边界阻断外部瓦片/字体。WebKit 的全局 `setOffline` 开关会产生导航内部错误，因此其离线场景使用本地 origin 连接中断；Chromium 同时启用浏览器离线开关。两者都实际从 CacheStorage 重载应用；需要当前 Safari 或真机结论时另做实测。
 
 可将机器可读结果与标记/热力图截图写入自选目录：
 
@@ -140,7 +141,7 @@ python3 skills/cuisine-boarding/board.py --help
 
 ```sh
 npm run browser:install
-E2E_ARTIFACT_DIR=openspec/changes/p06-accessible-responsive-interface/evidence/browser npm run test:e2e
+E2E_ARTIFACT_DIR=test-results/accessibility npm run test:e2e
 ```
 
 定向调试（该文件自行构建隔离 fixture，不依赖事先运行 dev server）：
@@ -191,7 +192,7 @@ E2E_ARTIFACT_DIR=/tmp/foodie-p07-replay node --test tests/e2e/release-cache.test
 
 离线只支持已缓存应用壳和访问过的匹配数据集。首次安装会缓存全部应用 JS/CSS（含延迟加载模块），不会预取所有城市/年度。不可变数据地址由 P02/P03 校验通过的正式 catalog、年度数据和 taxonomy/mappings 生成；同一 catalog 同时随应用构建，Worker 和页面复核资源摘要，防止旧载荷进入新上下文。缺失瓦片与餐厅数据缺失分别显示。HTTP 不可达但 OS 仍报告联网时，也显示真实缓存/离线状态。网络请求及响应体完成最多等待4秒，随后中止并尝试匹配缓存；未缓存项明确失败，恢复联网后可重试。
 
-P03 年度迁移与 P04/P05 正式发现联调已完成，旧 JSON 地址固定派生自 catalog 指定的年度，校验会拒绝不一致的副本。BC-01 退役政策仍待决，不承诺永久兼容。当前内容的 11 份历史名单为 unverified，东京两份为 partial；这是如实记录的资料边界，不因门禁成功改成名单完整。P05 新增按 catalog 选择底图，东京已从高德切到 GSI 标准图，并补充实际有地物的瓦片、3 点数值参考及有限地图参考误差预算。大陆/香港/澳门独立数值与物理精度仍缺证据，东京地图参考也不等于全部餐厅或实地 GPS 精度通过。P06 剩余人工范围、远端 CI 与独立 G1–G4 判定必须另外完成。
+P03 年度迁移与 P04/P05 正式发现联调已完成，旧 JSON 地址固定派生自 catalog 指定的年度，校验会拒绝不一致的副本。BC-01 退役政策仍待决，不承诺永久兼容。当前内容的 11 份历史名单为 unverified，东京两份为 partial；这是如实记录的资料边界，不因门禁成功改成名单完整。P05 新增按 catalog 选择底图，东京已从高德切到 GSI 标准图；历史在线取证已清理，当前覆盖和精度需按数据接入指南重新抽检。大陆/香港/澳门独立数值与物理精度仍缺证据，东京地图参考也不等于全部餐厅或实地 GPS 精度通过。P06 剩余人工范围、远端 CI 与独立 G1–G4 判定必须另外完成。
 
 ## 性能与故障演练
 
@@ -206,52 +207,26 @@ npm run test:gates -- --positive --output /tmp/foodie-gate-complete
 
 性能使用锁定 Chromium、390×844、4× CPU、10 Mbps/40 ms；外部瓦片/字体是固定响应。自动发现当前最大数据集，与种子 `7042026` 的 1000 条合法 fixture 分别冷导航 5 次；Worker 正常安装，JS gzip 包括页面、异步模块与实际请求的 Worker/预缓存代码。原始 LCP/CLS、资源和 20 次输入/筛选样本全部保留；交互完成由目标可见结果和地图点数决定，再跨两个动画帧，p95 用 nearest rank。报告是实验室结果，不是用户 INP/p75。
 
-故障脚本按同一源码输入清单创建隔离副本，包含递归来源引用和测试工具，不依赖 Git。副本仅共享当前 checkout 的 node_modules；正式 catalog 和 `check:coverage` 原样运行。`--positive` 跑完整健康管线，再改写已验证 JS 证明 verify 失败，恢复原字节后通过。干净安装另按下述完整快照验证，不能以共享依赖的故障副本代替。
+故障脚本按同一源码输入清单创建隔离副本，包含递归来源引用和测试工具，不依赖 Git。副本仅共享当前 checkout 的 node_modules；正式 catalog 和 `check:coverage` 原样运行。`--positive` 跑完整健康管线，再改写已验证 JS 证明 verify 失败，恢复原字节后通过。干净安装按本文开头从当前 checkout 执行，不能以共享依赖的故障副本代替。
 
-## 未提交候选的干净重放
+## 源码、数据输入与临时输出
+
+持续开发使用当前 Git 版本；新增覆盖按[数据接入指南](data-onboarding-guide.md)和[来源 runbook](../docs/runbook/runbook-260507-1013-valid-data-source-guide.md)执行。P01–P07 历史日志、截图、迁移现场和候选压缩包已清理，接手时不需要恢复这些材料。旧测试次数或截图不证明当前版本通过；运行本轮所需检查即可。
+
+- 当前数据所引用的来源材料和校准夹具是正式输入，随源码维护。地图抽检夹具为 [map-anchors.json](../tests/fixtures/map-anchors.json)，不包含旧地图截图或测量结果。
+- E2E、发布检查和性能结果默认写入 `test-results/`；采集任务原始输出放入被忽略的 `eval/sessions/<session>/outputs/` 或临时目录。完成本轮排障后可删除，下一次检查会重新生成。
+- `openspec/changes/*/evidence/` 已退役并被忽略；规格目录保存要求和任务状态。不要把历史输出写回规格目录，也不要把候选源码重复打包进 Git。
+- GitHub Actions 的运行 artifacts 保留 7 天，供本轮排障；无长期归档要求。`verified.json` 仅用于核对同次检查的产物，清理它之后再次发布需要重新运行检查。
+- 入库单文件上限为 **1,000,000 字节**。`npm run check:repository` 检查工作区、暂存内容；`npm run check:repository -- --staged` 可用于提交前检查。CI 还检查本次新增历史对象，防止“大文件先提交、随后删除”留在 Git 历史。被忽略的原始输出也不能通过强制添加入库。
+
+临时需要把尚未提交的当前源码放到隔离目录检查时，可使用现有 `release:snapshot`；完成当次检查后删除快照，不维护历史候选库：
 
 ```sh
 npm run release:snapshot -- --output /tmp/foodie-source
 mkdir /tmp/foodie-clean-replay
 tar -xzf /tmp/foodie-source/candidate-source.tar.gz -C /tmp/foodie-clean-replay
 cd /tmp/foodie-clean-replay
-# 使用 .nvmrc 对应 Node，再按“从干净 checkout 开始”安装、检查、构建和验证。
+# 使用 .nvmrc 对应 Node，按本文开头安装和检查当前源码。
 ```
 
-快照包含当前跟踪及未跟踪的候选文件，排除 Git 元数据、忽略的依赖/构建输出、快照自身及其他旧源码归档（避免递归打包；旧档独立保留）；旁边的 `candidate-source.json` 给出压缩包及逐文件 SHA-256。当前完整候选、安装记录、哈希和逐要求证据见 [P07 交接记录](../openspec/changes/p07-release-quality-gates/tasks.md)与[当前重放入口](../openspec/changes/p07-release-quality-gates/evidence/README.md)。候选使用工作区哈希，HEAD 不代表全部实现。
-
-验收 Agent 在空目录解压后，先比较压缩包及逐文件 SHA，确认没有 node_modules/dist，再按以下顺序运行。所有输出放在 checkout 外的绝对目录，避免把新证据变成源码输入。变量均为当前验收者自己的临时路径：
-
-```sh
-nvm install
-nvm use
-node --version
-npm --version
-python3 --version
-npm ci
-# Linux 首次运行：npx playwright install-deps chromium webkit
-npm run browser:install
-P07_REPLAY_OUTPUT=$(mktemp -d)
-npm run release:check -- --output "$P07_REPLAY_OUTPUT/release"
-npm run release:verify -- --output "$P07_REPLAY_OUTPUT/release"
-npm run rehearse:catalog -- --output "$P07_REPLAY_OUTPUT/catalog"
-npm run test:gates -- --positive --output "$P07_REPLAY_OUTPUT/gates"
-```
-
-| 综合链路 | 重放入口与应检查结果 |
-|---|---|
-| G1 新城／两版 | catalog 重放输出可编辑原始 catalog/年度文件；`release:check` 内的 catalog 浏览器场景核对两端，src 前后哈希相同。不得改选择器、地图或卡片来增加城市。 |
-| G2 身份／来源／覆盖 | `catalog/summary.json`、annual-diff.json、同数异集负例、覆盖只读漂移与恢复；旧年度 SHA 不变。实际名单缺口继续从正式 catalog 逐条核对。 |
-| G3 两端／错误／离线／定位 | release/browser 内的 p03-catalog-browser、p07-core-matrix、p07-cache、p07-rollout、spatial-catalog 和 p06-browser；自动 WebKit 不等于真实 Safari，坐标一致性不等于独立精度。 |
-| G4 安装／发布／回滚 | 全新 npm ci/browser:install、六阶段回执、verify、真实故障管线和下述原产物 A→B→A；输入/锁/产物逐文件摘要对应。 |
-
-为复核从上轮已安装 Worker 到正式 catalog 的迁移，完整源码归档内保留了历史 A 的生产预览包。使用该包与刚检查的 dist（B），不重建或拼接产物：
-
-```sh
-P07_PREVIOUS_DIST=$(mktemp -d)
-tar -xzf openspec/changes/p07-release-quality-gates/evidence/candidate-dist.tar.gz -C "$P07_PREVIOUS_DIST"
-node tests/e2e/release-candidate-replay.mjs --before "$P07_PREVIOUS_DIST" --after dist --output "$P07_REPLAY_OUTPUT/candidate-rollout"
-npm run release:verify -- --output "$P07_REPLAY_OUTPUT/release"
-```
-
-先以相邻 candidate-dist.json 核对 A 的归档和逐文件 SHA。该历史 A 在 P03 接入前仅作为开发预览留存；它用于验证已有客户端升级能力，不是生产回退许可。脚本复用现有浏览器 harness，保留旧 Worker／页面／缓存，验证 A 离线、新 B 的正式 catalog／年度路径、旧异步资源、B 离线以及恢复原 A；无清缓存或 skipWaiting。最终独立判定、4.2 和 4.3 由验收负责人填写，开发演练不得代签。
+常规升级/回滚测试由 `release-rollout.test.mjs` 自行构建隔离 A/B fixture，不依赖已删除的开发预览包。确有两份当前待检查的完整产物时，`release-candidate-replay.mjs --before <A目录> --after <B目录> --output <临时目录>` 可按需使用；不要求保留旧候选才能继续开发。

@@ -19,4 +19,4 @@ Operational guides for repeatable maintenance and data operations.
 
 | ID | Title | Status | Created | Summary |
 |----|-------|--------|---------|---------|
-| [runbook-260507-1013-valid-data-source-guide](runbook-260507-1013-valid-data-source-guide.md) | Operational Guide - Finding Valid Restaurant Data Sources | active | 2026-05-07 | 年度/地域证据、字段来源、身份对账、覆盖缺口与回滚；执行入口链接数据接入指南 |
+| [runbook-260507-1013-valid-data-source-guide](runbook-260507-1013-valid-data-source-guide.md) | Operational Guide - Finding Valid Restaurant Data Sources | active | 2026-05-07 | 年度/地域证据、字段来源、身份对账与回滚；含 P08 消费形式/细分类别标注定稿，工具待实现 |

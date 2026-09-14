@@ -11,7 +11,7 @@ import { createBrowserHarness } from "./helpers.mjs";
 import { buildReleaseFixture } from "./release.helpers.mjs";
 
 const { values } = parseArgs({ options: { output: { type: "string" }, dist: { type: "string", default: "dist" } } });
-const output = resolve(values.output ?? "openspec/changes/p07-release-quality-gates/evidence/performance.json");
+const output = resolve(values.output ?? "test-results/performance.json");
 const digest = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const seed = 7042026;
 let randomState = seed;

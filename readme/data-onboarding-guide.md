@@ -4,6 +4,8 @@
 
 ## 权威入口与输入
 
+P08 [自动配色与四类图标设计](../docs/plan/plan-260914-2209-restaurant-visual-encoding.md)已定稿、尚待开发。新的消费形式标注规则见[来源 runbook](../docs/runbook/runbook-260507-1013-valid-data-source-guide.md#p08-labeling)；当前命令/合同尚未实现 serving_form，正式数据补标须在实现后进行。原 cuisine_group、taxonomy/mappings 和以下接入命令继续有效。
+
 - [public/data/catalog.json](../public/data/catalog.json) 是城市/范围、榜单、年度、文件路径、展示和 taxonomy/mappings 的唯一登记。[cities.ts](../src/config/cities.ts) 只适配它。release.json 是 P07 构建摘要，不编辑。
 - 餐厅字段、空值、价格/币种、位置资格只以 [P02 合同](../src/data/contract.ts)、[taxonomy 合同](../src/data/taxonomy.ts)、[校验](../src/data/validation.ts) 为准；含 JPY，金额保留原文，不推算均价。
 - 准备输入：明确地域与年度的官方公告/名单或保存材料、每个餐厅的稳定 listing 身份、采集记录、现有 taxonomy/mappings，以及需要解释的人工对应关系。工具可以替换；证据要求见[来源 runbook](../docs/runbook/runbook-260507-1013-valid-data-source-guide.md)。
@@ -23,7 +25,7 @@
 | partial | 已采部分或年度身份集合未恢复；说明缺口。officialCount 可以已知，数量一致仍不代表完整。 |
 | verified | 完整年度身份集合逐项对账、无缺少/额外/歧义/无身份记录；有年度、范围、成员证据及 verifiedAt；每个 scope member 都在 verifiedMembers。可以是有依据的零条名单。 |
 
-provenance.sources 使用 kind=edition/scope/membership/gap、ref、note；ref 可以是 HTTP(S)、`/data/…json` 或 `repo:仓库相对路径`。本地引用缺失会失败。collectedAt 表示实际采集；verifiedAt 表示完整性核验；year 表示官方版次；revision 表示同版修订，四者不得混用。线上可见覆盖提示，详细证据从 catalog 追溯。旧名单缺口和东京 partial 说明见 [P03 来源记录](../openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md)。
+provenance.sources 使用 kind=edition/scope/membership/gap、ref、note；ref 可以是 HTTP(S)、`/data/…json` 或 `repo:仓库相对路径`。本地引用缺失会失败。collectedAt 表示实际采集；verifiedAt 表示完整性核验；year 表示官方版次；revision 表示同版修订，四者不得混用。线上可见覆盖提示，详细证据从 catalog 追溯。旧名单缺口和东京 partial 说明见 [来源 runbook](../docs/runbook/runbook-260507-1013-valid-data-source-guide.md#当前名单来源边界)。
 
 ## 官方身份与年度差异
 
@@ -80,13 +82,13 @@ rtk proxy node --test tests/e2e/catalog.test.mjs tests/e2e/release-cache.test.mj
 
 首命令创建完整可检查输入、summary.json、annual-diff.json、每个命令日志。包括新城、两版、部分/未核验空/官方零/未采集、重复身份、混合年度、坏引用、同数异集、数据与登记漂移、旧版不变及回滚；src 逐文件前后哈希相同。故障只在 output 内注入并恢复。浏览器从相同正式 schema/文件发现链构建隔离产物，真实页面/Worker 检查选版、搜索/详情、离线和缓存升级回滚。模拟名单不进入正式 public/data。
 
-独立维护者可编辑该隔离目录的 catalog、数据和证据后运行相同命令，不需改业务源码。开发者结果在 [P03 交付](../openspec/changes/p03-versioned-guide-coverage/tasks.md)，独立重放及最终判定留给验收负责人。
+独立维护者可编辑该隔离目录的 catalog、数据和证据后运行相同命令，不需改业务源码。当前结果由本次命令产生；历史开发输出已清理，不作为新城接入的前置条件。
 
 ## 自动生成的覆盖
 
 <!-- COVERAGE_TABLE_START -->
 
-<!-- catalog-and-inputs-sha256: dbd7e2d0dc97d71b545bd65788e9161361b2891d97deb3b62ad86c2d36a57997 -->
+<!-- catalog-and-inputs-sha256: a40d8020475244574c78bb06fc87a4eabad03397abc6ee971c8350a3b6a43723 -->
 
 | 城市 / 实际范围 | 榜单 | 年度 | 收录 | 可定位 | 名单状态 | 官方总数 |
 |---|---|---:|---:|---:|---|---:|
@@ -126,6 +128,6 @@ rtk proxy env P05_CITY=tokyo P05_COVERAGE_DIR=/tmp/p05-coverage node tests/e2e/b
 rtk proxy env P05_CITY=tokyo P05_CALIBRATION_DIR=/tmp/p05-application node tests/e2e/spatial-calibration.mjs
 ```
 
-后者运行真实应用/正式catalog/真实瓦片，但注入公开来源位置，不是实地GPS；需人工核对同一物理地物。自备锚点文件可用 `P05_ANCHORS_FILE`，结构参照P05证据。不要在没精度依据时把注入accuracy常量当作来源精度。
+后者运行真实应用/正式catalog/真实瓦片，但注入公开来源位置，不是实地GPS；需人工核对同一物理地物。自备锚点文件可用 `P05_ANCHORS_FILE`，结构参照 [map-anchors.json](../tests/fixtures/map-anchors.json)。不要在没精度依据时把注入accuracy常量当作来源精度。
 
-数值10m比较使用独立转换参考（例如供应商响应），200m比较使用有精度依据的物理点；分别保存结果。P05最新[GSI底图与精度证据](../openspec/changes/p05-map-location-correctness/evidence/basemap-260914/README.md)区分已测、统计精度预算及未核验范围。P07发布交接复核这些材料，不用模拟瓦片浏览器回归替代真实覆盖。
+数值10m比较使用独立转换参考（例如供应商响应），200m比较使用有精度依据的物理点；分别保存结果。当前源点的参考精度在夹具中保留为未知；旧开发取证已经清理，需要判断当前覆盖或精度时按以上流程重新抽检。模拟瓦片的浏览器回归不证明真实地图精度。

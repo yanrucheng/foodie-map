@@ -1,0 +1,184 @@
+[
+  {
+    "id": "bj-tiananmen",
+    "city": "beijing",
+    "name": "天安门",
+    "source_url": "https://en.wikipedia.org/wiki/Tiananmen",
+    "source_revision_id": "1373486433",
+    "retrieved_utc": "2026-09-13T15:05:31.895281+00:00",
+    "input_crs": "WGS84 (Wikipedia Coord convention, independently surveyed accuracy unknown)",
+    "input_lat_lon": [
+      39.907333,
+      116.391083
+    ],
+    "reference_accuracy_m": null
+  },
+  {
+    "id": "sh-pearl",
+    "city": "shanghai",
+    "name": "东方明珠",
+    "source_url": "https://en.wikipedia.org/wiki/Oriental_Pearl_Tower",
+    "source_revision_id": "1357282250",
+    "retrieved_utc": "2026-09-13T15:05:31.897527+00:00",
+    "input_crs": "WGS84 (Wikipedia Coord convention, independently surveyed accuracy unknown)",
+    "input_lat_lon": [
+      31.2416694,
+      121.4947167
+    ],
+    "reference_accuracy_m": null
+  },
+  {
+    "id": "gz-tower",
+    "city": "guangzhou-shenzhen",
+    "name": "广州塔",
+    "source_url": "https://en.wikipedia.org/wiki/Canton_Tower",
+    "source_revision_id": "1364678212",
+    "retrieved_utc": "2026-09-13T15:05:31.899292+00:00",
+    "input_crs": "WGS84 (Wikipedia Coord convention, independently surveyed accuracy unknown)",
+    "input_lat_lon": [
+      23.10889,
+      113.31889
+    ],
+    "reference_accuracy_m": null
+  },
+  {
+    "id": "cd-cottage",
+    "city": "chengdu",
+    "name": "杜甫草堂",
+    "source_url": "https://en.wikipedia.org/wiki/Du_Fu_Thatched_Cottage",
+    "source_revision_id": "1363485980",
+    "retrieved_utc": "2026-09-13T15:05:31.900709+00:00",
+    "input_crs": "WGS84 (Wikipedia Coord convention, independently surveyed accuracy unknown)",
+    "input_lat_lon": [
+      30.66278,
+      104.02611
+    ],
+    "reference_accuracy_m": null
+  },
+  {
+    "id": "hk-buddha",
+    "city": "hong-kong",
+    "name": "天坛大佛",
+    "source_url": "https://en.wikipedia.org/wiki/Tian_Tan_Buddha",
+    "source_revision_id": "1353815488",
+    "retrieved_utc": "2026-09-13T15:05:31.901805+00:00",
+    "input_crs": "WGS84 (Wikipedia Coord convention, independently surveyed accuracy unknown)",
+    "input_lat_lon": [
+      22.254106,
+      113.905144
+    ],
+    "reference_accuracy_m": null
+  },
+  {
+    "id": "hk-yuenlong",
+    "city": "hong-kong",
+    "name": "元朗大球场",
+    "source_url": "https://en.wikipedia.org/wiki/Yuen_Long_Stadium",
+    "source_revision_id": "1372266386",
+    "retrieved_utc": "2026-09-13T15:05:31.903195+00:00",
+    "input_crs": "WGS84 (Wikipedia Coord convention, independently surveyed accuracy unknown)",
+    "input_lat_lon": [
+      22.4428,
+      114.0211
+    ],
+    "reference_accuracy_m": null
+  },
+  {
+    "id": "hk-saikung",
+    "city": "hong-kong",
+    "name": "西贡邓肇坚运动场",
+    "source_url": "https://en.wikipedia.org/wiki/Sai_Kung_Tang_Shiu_Kin_Sports_Ground",
+    "source_revision_id": "1372227542",
+    "retrieved_utc": "2026-09-13T15:05:31.904320+00:00",
+    "input_crs": "WGS84 (Wikipedia Coord convention, independently surveyed accuracy unknown)",
+    "input_lat_lon": [
+      22.3835,
+      114.2734
+    ],
+    "reference_accuracy_m": null
+  },
+  {
+    "id": "mo-paul",
+    "city": "macau",
+    "name": "大三巴",
+    "source_url": "https://en.wikipedia.org/wiki/Ruins_of_Saint_Paul%27s",
+    "source_revision_id": "1364978213",
+    "retrieved_utc": "2026-09-13T15:05:31.908682+00:00",
+    "input_crs": "WGS84 (Wikipedia Coord convention, independently surveyed accuracy unknown)",
+    "input_lat_lon": [
+      22.1975,
+      113.54056
+    ],
+    "reference_accuracy_m": null
+  },
+  {
+    "id": "mo-taipa",
+    "city": "macau",
+    "name": "龙环葡韵住宅式博物馆",
+    "source_url": "https://en.wikipedia.org/wiki/Taipa_Houses%E2%80%93Museum",
+    "source_revision_id": "1342002027",
+    "retrieved_utc": "2026-09-13T15:05:31.910628+00:00",
+    "input_crs": "WGS84 (Wikipedia Coord convention, independently surveyed accuracy unknown)",
+    "input_lat_lon": [
+      22.15388,
+      113.559615
+    ],
+    "reference_accuracy_m": null
+  },
+  {
+    "id": "mo-coloane",
+    "city": "macau",
+    "name": "圣方济各圣堂",
+    "source_url": "https://en.wikipedia.org/wiki/Chapel_of_St._Francis_Xavier",
+    "source_revision_id": "1324277802",
+    "retrieved_utc": "2026-09-13T15:05:31.913116+00:00",
+    "input_crs": "WGS84 (Wikipedia Coord convention, independently surveyed accuracy unknown)",
+    "input_lat_lon": [
+      22.116917,
+      113.551444
+    ],
+    "reference_accuracy_m": null
+  },
+  {
+    "id": "jp-tokyo-tower",
+    "city": "tokyo",
+    "name": "Tokyo Tower",
+    "source_url": "https://en.wikipedia.org/wiki/Tokyo_Tower",
+    "source_revision_id": "1366287162",
+    "retrieved_utc": "2026-09-14T06:53:32.180848+00:00",
+    "input_crs": "WGS84 by Wikipedia Coord convention, not surveyed here",
+    "input_lat_lon": [
+      35.65861,
+      139.74556
+    ],
+    "reference_accuracy_m": null
+  },
+  {
+    "id": "jp-skytree",
+    "city": "tokyo",
+    "name": "Tokyo Skytree",
+    "source_url": "https://en.wikipedia.org/wiki/Tokyo_Skytree",
+    "source_revision_id": "1368486705",
+    "retrieved_utc": "2026-09-14T06:53:32.186801+00:00",
+    "input_crs": "WGS84 by Wikipedia Coord convention, not surveyed here",
+    "input_lat_lon": [
+      35.7101,
+      139.8107
+    ],
+    "reference_accuracy_m": null
+  },
+  {
+    "id": "jp-shinjuku",
+    "city": "tokyo",
+    "name": "Shinjuku Station",
+    "source_url": "https://en.wikipedia.org/wiki/Shinjuku_Station",
+    "source_revision_id": "1371884231",
+    "retrieved_utc": "2026-09-14T06:53:32.190800+00:00",
+    "input_crs": "WGS84 by Wikipedia Coord convention, not surveyed here",
+    "input_lat_lon": [
+      35.69056,
+      139.69944
+    ],
+    "reference_accuracy_m": null
+  }
+]

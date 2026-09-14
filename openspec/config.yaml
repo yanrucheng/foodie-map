@@ -11,6 +11,9 @@ context: |
   Keep static hosting; anchor purpose, authoritative data homes and real invariants.
   Implementation methods can change if the observable acceptance contract holds.
   Planning/acceptance owner is the primary agent; implementation agents submit evidence.
+  Historical run outputs are disposable. Use test-results/ or temporary directories, never changes/*/evidence/.
+  Current code and data onboarding runbooks must work without historical candidate archives.
+  Track required data provenance and fixtures; keep individual Git files within 1,000,000 bytes.
   Proposal/spec/design/task artifacts being present does not mean implementation passed.
   Public-use and legacy data URL compatibility are tracked as decision BC-01 in the plan.
   Read its current state before implementing any migration.

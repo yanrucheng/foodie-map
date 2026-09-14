@@ -84,7 +84,7 @@ async function snapshot() {
     const staged = join(temporary, "source");
     await mkdir(staged);
     for (const path of [...new Set(listing.stdout.split("\0").filter(Boolean))].sort()) {
-      // Older source archives are retained beside their manifests, not nested in every successor.
+      // Source archives are disposable outputs and must never nest in a successor.
       if (excluded.has(path) || path.endsWith("/candidate-source.tar.gz")) continue;
       let body;
       try { body = await readFile(path); } catch (error) { if (error.code === "ENOENT") continue; throw error; }
@@ -100,7 +100,7 @@ async function snapshot() {
     if (result.status !== 0) throw new Error(result.stderr);
     const descriptor = { capturedAt: new Date().toISOString(), head: git("rev-parse", "HEAD").stdout.trim(), source,
       archive: relative(process.cwd(), archive), archiveSha256: sha256(await readFile(archive)), filesSha256: sha256(JSON.stringify(files)), files,
-      exclusions: ["Git metadata", "ignored dependencies/build/test-results", "this snapshot archive and its descriptor", "other candidate-source.tar.gz archives (retained separately, not nested)"], note: "Contains tracked and untracked current candidate files, including upstream work; not a claim that HEAD contains them." };
+      exclusions: ["Git metadata", "ignored dependencies/build/test-results", "this snapshot archive and its descriptor", "other candidate-source.tar.gz archives"], note: "Temporary snapshot of current tracked and untracked source; discard after the current verification." };
     await writeFile(record, JSON.stringify(descriptor, null, 2) + "\n");
     console.log(JSON.stringify({ archive, archiveSha256: descriptor.archiveSha256, sourceSha256: descriptor.source.sha256, files: Object.keys(files).length }));
   } finally { await rm(temporary, { recursive: true, force: true }); }
