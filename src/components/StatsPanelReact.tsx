@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import type { Restaurant } from "@/types/restaurant";
+import { hasText } from "@/data/contract";
 
 interface StatsPanelProps {
   restaurants: Restaurant[];
@@ -12,19 +13,19 @@ interface StatsPanelProps {
 export function StatsPanelReact({ restaurants }: StatsPanelProps) {
   /** Derive district counts from visible restaurants, sorted by count descending. */
   const districts = useMemo(() => {
-    const c: Record<string, number> = {};
+    const counts = new Map<string, number>();
     restaurants.forEach((item) => {
       const key = item.primary_area;
-      if (key) {
-        c[key] = (c[key] ?? 0) + 1;
+      if (hasText(key)) {
+        counts.set(key, (counts.get(key) ?? 0) + 1);
       }
     });
-    return Object.entries(c)
+    return [...counts]
       .sort((a, b) => b[1] - a[1])
       .slice(0, 8); // Show top 8 districts to keep the panel compact
   }, [restaurants]);
 
-  if (districts.length === 0) return null;
+  if (districts.length === 0) return <p className="stats-empty floating-card stats-panel">暂无区域统计，可调整筛选或查看餐厅详情。</p>;
 
   return (
     <div className="floating-card stats-panel">

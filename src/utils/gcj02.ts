@@ -1,15 +1,17 @@
 /**
  * WGS-84 to GCJ-02 coordinate conversion.
- * GCJ-02 is the coordinate system mandated for maps in mainland China.
- * Hong Kong, Macau, and Taiwan are NOT affected.
+ * Numerical approximation retained for the configured Amap raster tiles.
+ * The broad algorithm guard is not an administrative boundary. Current HK/Macau
+ * samples support conversion; exact domain/accuracy limits remain in P05 evidence.
+ * Application consumers must use projectMapPosition, which applies P02 eligibility.
  */
 
 const PI = Math.PI;
 const A = 6378245.0; // Semi-major axis
-const EE = 0.00669342162296594323; // Eccentricity squared
+const EE = 0.006693421622965943; // Eccentricity squared (same IEEE-754 value)
 
-/** Checks whether a coordinate falls within mainland China's boundary. */
-function isInMainlandChina(lng: number, lat: number): boolean {
+/** Historical algorithm guard, not proof of a tile provider's regional policy. */
+function isInTransformRange(lng: number, lat: number): boolean {
   return lng > 73.66 && lng < 135.05 && lat > 3.86 && lat < 53.55;
 }
 
@@ -31,10 +33,10 @@ function transformLng(x: number, y: number): number {
 
 /**
  * Converts WGS-84 coordinates to GCJ-02.
- * Returns original coordinates unchanged if outside mainland China.
+ * Returns original coordinates outside the approximation's historical range.
  */
 export function wgs84ToGcj02(lat: number, lng: number): [number, number] {
-  if (!isInMainlandChina(lng, lat)) {
+  if (!isInTransformRange(lng, lat)) {
     return [lat, lng];
   }
 

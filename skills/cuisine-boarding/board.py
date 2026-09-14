@@ -1,163 +1,96 @@
 #!/usr/bin/env python3
-"""Cuisine boarding script — transforms raw external restaurant JSON into
-validated output with canonical cuisine_group keys.
-
-Usage:
-    python board.py --taxonomy <path> --mappings <path> --input <raw.json> --output <out.json>
-"""
+"""Derive cuisine_group using the shared Node contract; preserve every other fact."""
 
 import argparse
 import json
-import sys
+import os
 from pathlib import Path
+import subprocess
+import sys
+import tempfile
+
+CONTRACT_CLI = Path(__file__).resolve().parents[2] / "scripts" / "data-contract.ts"
 
 
-def load_json(path: Path) -> dict | list:
-    """Load and parse a JSON file."""
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def build_mapping_table(mappings_data: dict) -> dict[str, str]:
-    """Build a raw cuisine label → canonical groupKey lookup table."""
-    table: dict[str, str] = {}
-    for entry in mappings_data["mappings"]:
-        table[entry["raw"]] = entry["groupKey"]
-    return table
-
-
-def get_valid_keys(taxonomy_data: dict) -> set[str]:
-    """Extract the set of valid canonical group keys from taxonomy."""
-    return {g["key"] for g in taxonomy_data["groups"]}
-
-
-def resolve_cuisine_group(
-    cuisine: str,
-    mapping_table: dict[str, str],
-    fallback: str,
-) -> tuple[str, bool]:
-    """Resolve a raw cuisine label to a canonical group key.
-
-    Returns (group_key, is_fallback).
-    """
-    if not cuisine:
-        return fallback, True
-
-    # Exact match
-    if cuisine in mapping_table:
-        return mapping_table[cuisine], False
-
-    # First-token fallback for compound labels (e.g., "川菜, 火锅")
-    first_token = cuisine.split(",")[0].strip()
-    if first_token in mapping_table:
-        return mapping_table[first_token], False
-
-    return fallback, True
-
-
-def transform_restaurant(
-    restaurant: dict,
-    mapping_table: dict[str, str],
-    fallback: str,
-) -> tuple[dict, bool]:
-    """Transform a single restaurant entry.
-
-    Returns (transformed_entry, used_fallback).
-    """
-    cuisine = restaurant.get("cuisine", "")
-    group_key, is_fallback = resolve_cuisine_group(cuisine, mapping_table, fallback)
-
-    out = dict(restaurant)
-    out["cuisine_group"] = group_key
-
-    # Remove venue_type if present (not part of Beijing schema)
-    out.pop("venue_type", None)
-
-    # Normalize avg_price field: keep avg_price_cny, drop avg_price_hkd if present
-    if "avg_price_hkd" in out and "avg_price_cny" not in out:
-        out["avg_price_cny"] = out.pop("avg_price_hkd")
-    elif "avg_price_hkd" in out:
-        out.pop("avg_price_hkd")
-
-    return out, is_fallback
-
-
-def main():
-    """Entry point for the cuisine boarding pipeline."""
-    parser = argparse.ArgumentParser(
-        description="Transform raw restaurant JSON with canonical cuisine_group keys."
+def derive_groups(input_text: str, taxonomy_text: str, mappings_text: str) -> list[dict]:
+    """Batch through the same rule implementation as TypeScript and validate:data."""
+    result = subprocess.run(
+        [os.environ.get("FOODIE_NODE", "node"), str(CONTRACT_CLI), "board"],
+        input=json.dumps({"input": input_text, "taxonomy": taxonomy_text, "mappings": mappings_text}),
+        text=True, capture_output=True, check=False,
     )
-    parser.add_argument("--taxonomy", required=True, help="Path to taxonomy registry JSON")
-    parser.add_argument("--mappings", required=True, help="Path to mappings JSON")
-    parser.add_argument("--input", required=True, help="Path to raw restaurant JSON")
-    parser.add_argument("--output", required=True, help="Path to write transformed JSON")
-    parser.add_argument("--dry-run", action="store_true", help="Validate only, don't write output")
+    if result.returncode:
+        try:
+            diagnostic = json.loads(result.stderr)
+        except ValueError:
+            diagnostic = {}
+        if result.returncode == 1 and isinstance(diagnostic, dict) and diagnostic.get("kind") == "data":
+            raise ValueError(result.stderr.strip())
+        raise OSError(result.stderr.strip() or "Cannot run the shared contract")
+    return json.loads(result.stdout)["resolutions"]
+
+
+def atomic_write(path: Path, content: str) -> None:
+    """Preserve the existing destination until a complete replacement is ready."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent,
+                                         prefix=f".{path.name}.", suffix=".tmp", delete=False) as stream:
+            temporary = Path(stream.name)
+            stream.write(content)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--taxonomy", type=Path, required=True)
+    parser.add_argument("--mappings", type=Path, required=True)
+    parser.add_argument("--input", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--dry-run", action="store_true", help="Check without creating files or directories")
     args = parser.parse_args()
-
-    # Load inputs
-    taxonomy = load_json(Path(args.taxonomy))
-    mappings = load_json(Path(args.mappings))
-    raw_data = load_json(Path(args.input))
-
-    valid_keys = get_valid_keys(taxonomy)
-    fallback = taxonomy.get("fallbackGroup", "OTHER")
-    mapping_table = build_mapping_table(mappings)
-
-    # Transform
-    results = []
-    fallback_count = 0
-    unmapped_labels: set[str] = set()
-
-    for restaurant in raw_data:
-        transformed, used_fallback = transform_restaurant(restaurant, mapping_table, fallback)
-
-        # Validate output group key is in taxonomy
-        if transformed["cuisine_group"] not in valid_keys:
-            print(
-                f"ERROR: cuisine_group '{transformed['cuisine_group']}' not in taxonomy "
-                f"(restaurant: {restaurant.get('name_en', 'unknown')})",
-                file=sys.stderr,
-            )
-            sys.exit(1)
-
-        if used_fallback:
-            fallback_count += 1
-            unmapped_labels.add(restaurant.get("cuisine", ""))
-            print(
-                f"WARNING: unmapped cuisine '{restaurant.get('cuisine', '')}' "
-                f"→ {fallback} (restaurant: {restaurant.get('name_en', 'unknown')})",
-                file=sys.stderr,
-            )
-
-        results.append(transformed)
-
-    # Report
-    total = len(results)
-    fallback_rate = (fallback_count / total * 100) if total > 0 else 0
-    print(f"\n--- Boarding Summary ---", file=sys.stderr)
-    print(f"Total restaurants: {total}", file=sys.stderr)
-    print(f"Fallback count:   {fallback_count} ({fallback_rate:.1f}%)", file=sys.stderr)
-
-    if unmapped_labels:
-        print(f"Unmapped labels:  {sorted(unmapped_labels)}", file=sys.stderr)
-
-    # Validate fallback rate threshold (≤5%)
-    if fallback_rate > 5:
-        print(f"ERROR: Fallback rate {fallback_rate:.1f}% exceeds 5% threshold.", file=sys.stderr)
-        sys.exit(1)
-
-    # Write output
-    if args.dry_run:
-        print("Dry-run mode — no output written.", file=sys.stderr)
-    else:
-        output_path = Path(args.output)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(results, f, ensure_ascii=False, indent=2)
-        print(f"Output written to: {output_path}", file=sys.stderr)
-
-    sys.exit(0)
+    try:
+        inputs = [args.input, args.taxonomy, args.mappings]
+        if args.output.resolve() in {item.resolve() for item in inputs} or (
+            args.output.exists() and any(args.output.samefile(item) for item in inputs if item.exists())
+        ):
+            raise ValueError("Output must differ from the input, taxonomy and mappings")
+        source = args.input.read_text(encoding="utf-8")
+        resolutions = derive_groups(source, args.taxonomy.read_text(encoding="utf-8"),
+                                    args.mappings.read_text(encoding="utf-8"))
+        records = json.loads(source)
+        if len(records) != len(resolutions):
+            raise ValueError("Shared contract returned an incomplete result")
+        counts = dict.fromkeys(("mapped", "explicit-other", "missing", "unmapped"), 0)
+        for record, resolution in zip(records, resolutions, strict=True):
+            if record["id"] != resolution["id"]:
+                raise ValueError("Shared contract returned a mismatched record ID")
+            record["cuisine_group"] = resolution["groupKey"]
+            counts[resolution["reason"]] += 1
+            if resolution["reason"] == "unmapped":
+                print(json.dumps({"severity": "warning", "code": "UNMAPPED_CUISINE", "file": str(args.input),
+                                  "record_id": record["id"], "field": "/cuisine", "raw": record.get("cuisine"),
+                                  "reason": "Using OTHER for this exact raw label"}, ensure_ascii=False), file=sys.stderr)
+        # Serialization also completes during dry-run so unsupported raw values fail without writing.
+        content = json.dumps(records, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
+        print(json.dumps({"file": str(args.input), "total": len(records), **counts, "dry_run": args.dry_run},
+                         ensure_ascii=False), file=sys.stderr)
+        if not args.dry_run:
+            atomic_write(args.output, content)
+        return 0
+    except ValueError as error:
+        print(f"ERROR: input={args.input} taxonomy={args.taxonomy} mappings={args.mappings}: {error}", file=sys.stderr)
+        return 1
+    except (OSError, subprocess.SubprocessError) as error:
+        print(f"ERROR: {error}. Use the project Node runtime and npm ci.", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

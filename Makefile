@@ -1,22 +1,46 @@
-.PHONY: help dev test test\:e2e test\:all readme build
+.PHONY: help dev check test test\:e2e test\:all test\:performance test\:gates browser\:install release\:check release\:verify release\:snapshot readme build preview
 
 help: ## Show this help
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}'
+	@awk '/^[a-zA-Z_\\:-]+:.*## / {target=$$0; sub(/[[:space:]]*##.*/, "", target); sub(/:[[:space:]]*$$/, "", target); gsub(/\\/, "", target); description=$$0; sub(/^.*## /, "", description); printf "  %-16s %s\n", target, description}' $(MAKEFILE_LIST)
 
 dev: ## Start Vite dev server
-	npx vite
+	npm run dev
+
+check: ## Check types, code rules and data
+	npm run check
 
 test: ## Run unit tests (vitest)
-	npx vitest run
+	npm test
 
-test\:e2e: ## Run E2E tests (puppeteer)
-	node tests/e2e/title-filter.test.mjs
+test\:e2e: ## Run production browser tests (Chromium and WebKit)
+	npm run test:e2e
 
 test\:all: ## Run all tests (unit + e2e)
-	npx vitest run && node tests/e2e/title-filter.test.mjs
+	npm run test:all
+
+browser\:install: ## Install the locked Chromium and WebKit browsers
+	npm run browser:install
+
+test\:performance: ## Measure production laboratory budgets
+	npm run test:performance
+
+test\:gates: ## Rehearse release failures in isolated source copies
+	npm run test:gates
+
+release\:check: ## Run required gates and seal the tested artifact
+	npm run release:check
+
+release\:verify: ## Verify that checked source and artifact are unchanged
+	npm run release:verify
+
+release\:snapshot: ## Export the full uncommitted source candidate
+	npm run release:snapshot
 
 readme: ## Auto-render coverage table in readme/
-	python3 scripts/render-coverage-table.py
+	npm run readme
 
-build: ## Production build (tsc + vite)
-	npx tsc -b && npx vite build
+build: ## Build production assets (run check and test separately)
+	npm run build
+
+preview: ## Serve production assets locally
+	npm run preview

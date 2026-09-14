@@ -1,12 +1,15 @@
+// @vitest-environment jsdom
 /**
  * Unit tests for useFilters hook.
  * Tests toggle, toggleAll, and enableGroup functionality.
  */
 
-import { describe, it, expect } from "vitest";
-import { renderHook, act } from "@testing-library/react";
+import { afterEach, describe, it, expect } from "vitest";
+import { renderHook, act, cleanup } from "@testing-library/react";
 import { useFilters } from "@/hooks/useFilters";
 import type { Restaurant } from "@/types/restaurant";
+
+afterEach(cleanup);
 
 /** Create a minimal mock restaurant with given cuisine_group. */
 function mockRestaurant(cuisineGroup: string): Restaurant {
@@ -15,6 +18,9 @@ function mockRestaurant(cuisineGroup: string): Restaurant {
     name: "Test Restaurant",
     name_zh: "测试餐厅",
     name_en: "Test Restaurant",
+    city: "test-city",
+    guide_type: "michelin-bib-gourmand",
+    edition_year: 2026,
     cuisine: "Test Cuisine",
     cuisine_group: cuisineGroup,
     is_new: false,
@@ -24,13 +30,13 @@ function mockRestaurant(cuisineGroup: string): Restaurant {
     major_region: "Test Region",
     address: "Test Address",
     address_en: "Test Address",
-    lat: 0,
-    lon: 0,
+    lat: null,
+    lon: null,
     price_range: "$$",
     signature_dishes: "Test Dish",
-    guide_url: "https://example.com",
+    guide_url: null,
     geo_source: "test",
-    geocode_success: true,
+    geocode_success: false,
     status: "active",
   };
 }

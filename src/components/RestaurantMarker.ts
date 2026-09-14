@@ -1,6 +1,10 @@
+import type { BasemapId } from "@/config/basemaps";
 import type { Restaurant } from "@/types/restaurant";
-import { getGroupStyle, getGroupLabel } from "@/config/cuisineRegistry";
-import { wgs84ToGcj02 } from "@/utils/gcj02";
+import L from "@/lib/leaflet";
+import { getGroupStyle, getGroupLabel, type CuisineGroup } from "@/config/cuisineRegistry";
+import { projectMapPosition } from "@/utils/mapPosition";
+import { type SpatialContext } from "@/data/contract";
+import { restaurantFacts } from "@/data/display";
 
 /** Escapes HTML entities for safe popup rendering. */
 function escapeHtml(value: unknown): string {
@@ -11,41 +15,23 @@ function escapeHtml(value: unknown): string {
     .replace(/"/g, "&quot;");
 }
 
-/** Formats the most specific available spend value for popup display. */
-function formatAvgPrice(item: Restaurant): string {
-  return String(item.avg_price ?? item.avg_price_hkd ?? item.avg_price_cny ?? item.price_range ?? "未提供");
-}
-
-/** Generates popup HTML for a restaurant marker. */
-function popupHtml(item: Restaurant): string {
-  const fallbackNote =
-    item.geo_source === "district_fallback"
-      ? `<div class="line"><strong>定位方式：</strong>区域 fallback（地图位置为近似点）</div>`
-      : "";
-  const newTag = item.is_new ? '<span class="tag">2026 新晋</span>' : "";
-  const michelinLine = item.guide_url
-    ? `<div class="line"><a href="${item.guide_url}" target="_blank" rel="noreferrer">查看米其林官方页面</a></div>`
-    : "";
-
+/** External facts are escaped as text; only the shared URL rule can create a link. */
+export function popupHtml(item: Restaurant, groups?: CuisineGroup[], spatialContext?: SpatialContext): string {
+  const facts = restaurantFacts(item, getGroupLabel(item.cuisine_group, groups), spatialContext);
   return `
-    <div class="popup">
-      <h3>${escapeHtml(item.name_zh)}</h3>
-      <div class="en">${escapeHtml(item.name_en)}</div>
-      <div class="tags">
-        <span class="tag">${escapeHtml(item.cuisine)}</span>
-        <span class="tag">${escapeHtml(getGroupLabel(item.cuisine_group))}</span>
-        ${newTag}
-      </div>
-      <div class="line"><strong>区域：</strong>${escapeHtml(item.area)}</div>
-      <div class="line"><strong>地址：</strong>${escapeHtml(item.address || "未提供")}</div>
-      <div class="line"><strong>人均：</strong>${escapeHtml(formatAvgPrice(item))}</div>
-      <div class="line"><strong>招牌菜：</strong>${escapeHtml(item.signature_dishes || "未提供")}</div>
-      ${fallbackNote}
-      ${michelinLine}
+    <div class="popup" role="region" aria-label="餐厅详情">
+      <h2>${escapeHtml(facts.name)}</h2>
+      ${facts.secondaryName ? `<div class="en">${escapeHtml(facts.secondaryName)}</div>` : ""}
+      <div class="tags">${facts.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
+      ${facts.details.map(([label, value]) => `<div class="line"><strong>${escapeHtml(label)}：</strong>${escapeHtml(value)}</div>`).join("")}
+      ${facts.guideUrl ? `<div class="line"><a href="${escapeHtml(facts.guideUrl)}" target="_blank" rel="noopener noreferrer">查看米其林官方页面</a></div>` : ""}
     </div>`;
 }
 
 interface CreateMarkerOptions {
+  basemap?: BasemapId;
+  groups?: CuisineGroup[];
+  spatialContext?: SpatialContext;
   /** If provided, marker click triggers this callback instead of popup. */
   onClick?: (restaurant: Restaurant) => void;
 }
@@ -58,13 +44,15 @@ interface CreateMarkerOptions {
 export function createRestaurantMarker(
   item: Restaurant,
   options?: CreateMarkerOptions
-): L.Marker {
+): L.Marker | null {
+  const position = projectMapPosition(item, options?.spatialContext, options?.basemap);
+  if (!position) return null;
   const groupStyle = getGroupStyle(item.cuisine_group);
   const className = item.is_new ? "marker-dot new" : "marker-dot";
-  const [lat, lng] = wgs84ToGcj02(item.lat, item.lon);
+  const [lat, lng] = position;
 
   const marker = L.marker([lat, lng], {
-    title: `${item.name_zh} / ${item.name_en}`,
+    title: item.name,
     icon: L.divIcon({
       className: "",
       html: `<div class="${className}" style="background:${groupStyle.color}"></div>`,
@@ -82,7 +70,7 @@ export function createRestaurantMarker(
     marker.on("click", () => options.onClick!(item));
   } else {
     // Desktop: bind popup as before
-    marker.bindPopup(popupHtml(item));
+    marker.bindPopup(popupHtml(item, options?.groups, options?.spatialContext));
   }
 
   return marker;

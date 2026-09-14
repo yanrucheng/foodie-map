@@ -25,6 +25,6 @@ export function writeSelectionParams(
   params.set("year", String(year));
   params.set("city", cityId);
   params.set("guide", guideId);
-  const url = `${window.location.pathname}?${params.toString()}`;
+  const url = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
   window.history.replaceState(null, "", url);
 }

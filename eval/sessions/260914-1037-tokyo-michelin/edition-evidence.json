@@ -1,0 +1,93 @@
+{
+  "edition_year": 2026,
+  "release_date": "2025-09-25",
+  "online_release_time": "2025-09-25T14:30:00+09:00",
+  "next_announced_release_date": "2027-02-16",
+  "official_annual_counts": {
+    "three_stars": 12,
+    "two_stars": 26,
+    "one_star": 122,
+    "bib_gourmand": 114
+  },
+  "sources": [
+    {
+      "url": "https://guide.michelin.com/jp/ja/article/michelin-guide-ceremony/michelin-guide-tokyo-2026-stars-reveal",
+      "captured_at": "2026-09-14T02:43:50.104Z",
+      "file": "outputs/ja-stars-reveal.json",
+      "sha256": "5d314af820b67ef0f5a7b6c8e34306a1be91b99a7390bf4dd228415dde8f688e",
+      "quote": "9月25日（木）、「ミシュランガイド東京2026」の全セレクションを発表しました。"
+    },
+    {
+      "url": "https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-tokyo-2026-stars-reveal",
+      "captured_at": "2026-09-14T02:42:43.956Z",
+      "file": "outputs/stars-reveal.json",
+      "sha256": "acb1dafbd98fb716519dbabf5346a8f35a640f1560fe4455fedc00e2af5ee4b5",
+      "quote": "Three MICHELIN Stars: 12 (including one promoted)"
+    },
+    {
+      "url": "https://guide.michelin.com/en/article/news-and-views/michelin-guide-ceremony-tokyo-kyoto-osaka-nara-2027-selection-save-the-date",
+      "captured_at": "2026-09-14T02:42:46.299Z",
+      "file": "outputs/save-the-date.json",
+      "sha256": "398f2addae61c22ca97807d769b7bf983eac31bfe6ea3cbbcae2de797080687d",
+      "quote": "On Feb. 16, 2027, the 2027 selections for Tokyo, Kyoto-Osaka and Nara will be unveiled together in Tokyo for the first time in Japan."
+    },
+    {
+      "url": "https://news.michelin.co.jp/articles/20250925-michelin-guide-tokyo-2026-selection-release",
+      "captured_at": "2026-09-14T02:48:27.552429+00:00",
+      "file": "outputs/japan-release.html",
+      "sha256": "4f4d09910dbf98a3780b2a400a9b50c43fcb73cb68288b8767ecd015a8152f08"
+    },
+    {
+      "url": "https://www.michelin.com/en/publications/products-and-services/the-michelin-guide-tokyo-2026",
+      "captured_at": "2026-09-14T02:46:52.219626+00:00",
+      "file": "outputs/corporate-release.html",
+      "sha256": "66ba96d65454ea040942e1ea830b88d5aac937a77a6f60e2a967c8c9cebb24cd"
+    }
+  ],
+  "scope": {
+    "basis": "Official Tokyo selection / tokyo-region restaurant result pages, not a proximity search.",
+    "observed": "All 268 addresses belong to 19 Tokyo special wards. No Yokohama, Chiba, Saitama or western municipalities were added. KIBUN has no recovered address.",
+    "exclusive_23_ward_definition": "Not confirmed in the opened 2026 official announcements. Do not infer exclusive annual scope from observed addresses or add a fabricated city bounds polygon."
+  },
+  "current_list_identity_reconciliation": {
+    "starred": {
+      "expected_current": 157,
+      "captured_unique": 157,
+      "by_rating": {
+        "3": 11,
+        "2": 26,
+        "1": 120
+      },
+      "complete_current_pagination": [
+        "rating-3-1",
+        "rating-2-1",
+        "rating-1-1",
+        "rating-1-2",
+        "rating-1-3"
+      ]
+    },
+    "bib": {
+      "expected_current": 111,
+      "captured_unique": 111,
+      "complete_current_pagination": [
+        "ja-bib-1",
+        "ja-bib-2",
+        "ja-bib-3"
+      ]
+    }
+  },
+  "annual_reconciliation": {
+    "status": "partial",
+    "recovered_annual_only": [
+      "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/kibun"
+    ],
+    "missing_counts": {
+      "three_stars": 1,
+      "two_stars": 0,
+      "one_star": 1,
+      "bib_gourmand": 3
+    },
+    "complete_official_annual_identity_set": "Not recovered. Counts and the current identity set must not be represented as a complete annual identity reconciliation.",
+    "sezanne_candidate": "Official detail unavailable; only 2025 award evidence recovered, so not added as a presumed 2026 entry."
+  }
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "guide": "michelin-starred",
+    "page_count": 5,
+    "unique_id_count": 157,
+    "duplicate_ids": [],
+    "missing_ids": [],
+    "extra_ids": []
+  },
+  {
+    "guide": "michelin-bib-gourmand",
+    "page_count": 3,
+    "unique_id_count": 111,
+    "duplicate_ids": [],
+    "missing_ids": [],
+    "extra_ids": []
+  }
+]

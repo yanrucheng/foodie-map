@@ -1,5 +1,6 @@
-import { useState, useCallback, useRef, useEffect, useMemo } from "react";
+import { useState, useCallback, useRef, useEffect, useMemo, useId } from "react";
 import type { Restaurant } from "@/types/restaurant";
+import { displayName, searchNames } from "@/data/display";
 
 interface SearchBarProps {
   restaurants: Restaurant[];
@@ -15,6 +16,10 @@ export function SearchBar({ restaurants, onLocate }: SearchBarProps) {
   const [query, setQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
+  const listId = useId();
+  const composing = useRef(false);
+  const pointerStart = useRef<{ x: number; y: number } | null>(null);
+  const moved = useRef(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,26 +29,19 @@ export function SearchBar({ restaurants, onLocate }: SearchBarProps) {
     const raw = query.trim().toLowerCase();
     if (!raw || raw.length < 1) return [];
     return restaurants
-      .filter((r) => {
-        const combined = `${r.name_zh} / ${r.name_en}`.toLowerCase();
-        return (
-          combined.includes(raw) ||
-          r.name_zh.toLowerCase().includes(raw) ||
-          r.name_en.toLowerCase().includes(raw) ||
-          r.name.toLowerCase().includes(raw)
-        );
-      })
+      .filter((r) => searchNames(r).some((name) => name.toLowerCase().includes(raw)))
       .slice(0, 20); // Limit for performance
   }, [query, restaurants]);
 
   /** Handles selecting a restaurant from the list. */
   const handleSelect = useCallback(
     (restaurant: Restaurant) => {
-      setQuery(`${restaurant.name_zh} / ${restaurant.name_en}`);
+      inputRef.current?.focus({ preventScroll: true });
+      setQuery(restaurant.name);
       setIsDropdownOpen(false);
       setHighlightIndex(-1);
       onLocate(restaurant);
-      inputRef.current?.blur();
+
     },
     [onLocate]
   );
@@ -54,15 +52,7 @@ export function SearchBar({ restaurants, onLocate }: SearchBarProps) {
     if (!raw) return;
 
     // Exact match first
-    const exact = restaurants.find((r) => {
-      const combined = `${r.name_zh} / ${r.name_en}`.toLowerCase();
-      return (
-        combined === raw ||
-        r.name_zh.toLowerCase() === raw ||
-        r.name_en.toLowerCase() === raw ||
-        r.name.toLowerCase() === raw
-      );
-    });
+    const exact = restaurants.find((r) => searchNames(r).some((name) => name.toLowerCase() === raw));
 
     if (exact) {
       handleSelect(exact);
@@ -78,6 +68,13 @@ export function SearchBar({ restaurants, onLocate }: SearchBarProps) {
   /** Keyboard navigation for the dropdown. */
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
+      if (composing.current || e.nativeEvent.isComposing || e.nativeEvent.keyCode === 229) return;
+      if (e.key === "Escape") {
+        e.preventDefault(); setIsDropdownOpen(false); setHighlightIndex(-1); return;
+      }
+      if ((e.key === "ArrowDown" || e.key === "ArrowUp") && suggestions.length > 0 && !isDropdownOpen) {
+        e.preventDefault(); setIsDropdownOpen(true); setHighlightIndex(0); return;
+      }
       if (!isDropdownOpen || suggestions.length === 0) {
         if (e.key === "Enter") handleLocate();
         return;
@@ -145,40 +142,58 @@ export function SearchBar({ restaurants, onLocate }: SearchBarProps) {
   }, [query]);
 
   return (
-    <div className="top-search floating-card" ref={containerRef}>
-      <div className="search-wrap" role="combobox" aria-expanded={isDropdownOpen} aria-haspopup="listbox">
+    <div className="top-search floating-card" ref={containerRef}
+      onBlur={(event) => {
+        if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget as Node)) {
+          setIsDropdownOpen(false); setHighlightIndex(-1);
+        }
+      }}>
+      <div className="search-wrap">
         <input
           ref={inputRef}
+          role="combobox" aria-label="搜索餐厅" data-focus-key="search"
+          aria-expanded={isDropdownOpen && suggestions.length > 0} aria-haspopup="listbox"
+          enterKeyHint="search" autoComplete="off"
+          onCompositionStart={() => { composing.current = true; }}
+          onCompositionEnd={() => { composing.current = false; }}
           placeholder="搜索餐厅名（中 / 英文）"
           value={query}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           onFocus={handleFocus}
           aria-autocomplete="list"
-          aria-controls="search-listbox"
-          aria-activedescendant={highlightIndex >= 0 ? `search-option-${highlightIndex}` : undefined}
+          aria-controls={isDropdownOpen && suggestions.length > 0 ? listId : undefined}
+          aria-activedescendant={isDropdownOpen && suggestions[highlightIndex] ? `${listId}-${highlightIndex}` : undefined}
         />
-        <button onClick={handleLocate} aria-label="定位餐厅">定位</button>
+        <button type="button" data-focus-key="search-submit" onClick={handleLocate} aria-label="查看餐厅详情并定位" disabled={!query.trim()}>查看</button>
       </div>
 
+      <div className={isDropdownOpen && query.trim() && suggestions.length === 0 ? "search-feedback" : "sr-only"} role="status" aria-atomic="true">
+        {isDropdownOpen && query.trim() ? suggestions.length === 0 ? "没有匹配的餐厅，请修改搜索词。" : `找到 ${suggestions.length}${suggestions.length === 20 ? " 条候选，最多显示 20" : " 家餐厅"}，使用上下方向键选择。` : ""}
+      </div>
       {/* Custom dropdown */}
       {isDropdownOpen && suggestions.length > 0 && (
         <ul
           ref={listRef}
-          id="search-listbox"
+          id={listId} aria-label="餐厅搜索结果"
           className="search-dropdown"
           role="listbox"
         >
           {suggestions.map((r, i) => (
             <li
               key={r.id}
-              id={`search-option-${i}`}
+              id={`${listId}-${i}`}
               className={`search-dropdown-item ${i === highlightIndex ? "highlighted" : ""}`}
               role="option"
               aria-selected={i === highlightIndex}
-              onPointerDown={() => handleSelect(r)}
+              onPointerDown={(event) => { pointerStart.current = { x: event.clientX, y: event.clientY }; moved.current = false; }}
+              onPointerMove={(event) => {
+                if (pointerStart.current && Math.hypot(event.clientX - pointerStart.current.x, event.clientY - pointerStart.current.y) > 8) moved.current = true;
+              }}
+              onPointerCancel={() => { moved.current = true; }}
+              onClick={() => { if (!moved.current) handleSelect(r); pointerStart.current = null; }}
             >
-              <span className="search-item-name">{r.name_zh}</span>
+              <span className="search-item-name">{displayName(r)}</span>
               <span className="search-item-en">{r.name_en}</span>
             </li>
           ))}

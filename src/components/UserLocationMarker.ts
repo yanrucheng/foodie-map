@@ -1,5 +1,8 @@
+import type { BasemapId } from "@/config/basemaps";
 import type { Map as LeafletMap, Marker, Circle } from "leaflet";
-import { wgs84ToGcj02 } from "@/utils/gcj02";
+import L from "@/lib/leaflet";
+import { projectMapPosition } from "@/utils/mapPosition";
+import type { SpatialContext } from "@/data/contract";
 
 /** Position data consumed by the location marker. */
 export interface UserLocationData {
@@ -18,6 +21,7 @@ export class UserLocationMarker {
   private map: LeafletMap;
   private marker: Marker | null = null;
   private accuracyCircle: Circle | null = null;
+  private accuracyRenderer: L.SVG | null = null;
   private lastHeading: number | null = null;
 
   constructor(map: LeafletMap) {
@@ -41,9 +45,11 @@ export class UserLocationMarker {
   }
 
   /** Updates the marker position and heading on the map. Creates if not present. */
-  update(data: UserLocationData): void {
+  update(data: UserLocationData, spatialContext?: SpatialContext, basemap?: BasemapId): void {
     const { lat, lon, accuracy, heading } = data;
-    const [gcjLat, gcjLon] = wgs84ToGcj02(lat, lon);
+    const position = projectMapPosition({ lat, lon }, spatialContext, basemap);
+    if (!position || !Number.isFinite(accuracy) || accuracy < 0) { this.remove(); return; }
+    const [gcjLat, gcjLon] = position;
     const latlng = L.latLng(gcjLat, gcjLon);
 
     if (!this.marker) {
@@ -61,7 +67,10 @@ export class UserLocationMarker {
       this.marker.addTo(this.map);
 
       // Create accuracy circle
+      // An owned SVG renderer has no queued Canvas redraw after rapid map disposal.
+      this.accuracyRenderer = L.svg();
       this.accuracyCircle = L.circle(latlng, {
+        renderer: this.accuracyRenderer,
         radius: accuracy,
         className: "user-loc-accuracy",
         interactive: false,
@@ -99,6 +108,8 @@ export class UserLocationMarker {
       this.map.removeLayer(this.accuracyCircle);
       this.accuracyCircle = null;
     }
+    this.accuracyRenderer?.remove();
+    this.accuracyRenderer = null;
     this.lastHeading = null;
   }
 

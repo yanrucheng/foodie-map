@@ -1,4 +1,4 @@
-import { cuisineRegistry, getGroupStyle } from "@/config/cuisineRegistry";
+import { type CuisineGroup, getGroupStyle } from "@/config/cuisineRegistry";
 import type { VenueFilter } from "@/hooks/useFilters";
 
 /** Venue filter segment options with display labels. */
@@ -12,6 +12,7 @@ const VENUE_FILTER_OPTIONS: { value: VenueFilter; label: string }[] = [
 interface FilterPanelProps {
   /** Distinct cuisine_group keys present in the loaded data — controls which groups to render. */
   dataGroups: Set<string>;
+  groups: CuisineGroup[];
   activeGroups: Set<string>;
   onToggle: (group: string) => void;
   onToggleAll: () => void;
@@ -30,6 +31,7 @@ interface FilterPanelProps {
  */
 export function FilterPanel({
   dataGroups,
+  groups,
   activeGroups,
   onToggle,
   onToggleAll,
@@ -42,7 +44,7 @@ export function FilterPanel({
   const isPill = variant === "pill";
 
   // Render only taxonomy groups that exist in the current dataset, sorted by sortOrder.
-  const renderedGroups = cuisineRegistry
+  const renderedGroups = groups
     .filter((g) => dataGroups.has(g.key))
     .sort((a, b) => a.sortOrder - b.sortOrder);
 
@@ -52,7 +54,7 @@ export function FilterPanel({
     <div className="floating-card control-block">
       {/* Venue type segment control */}
       {!isPill && <div className="control-title">类型筛选</div>}
-      <div className="venue-filter-segment">
+      <div className="venue-filter-segment" role="group" aria-label="类型筛选">
         {VENUE_FILTER_OPTIONS.map(({ value, label }) => (
           <button
             key={value}
@@ -70,7 +72,7 @@ export function FilterPanel({
         <div className="control-title-row" style={{ marginTop: 12 }}>
           <span className="control-title">菜系筛选</span>
           <button className={`toggle-all-btn ${allActive ? "toggle-all-btn--active" : ""}`} onClick={onToggleAll}>
-            全选
+            {allActive ? "仅保留首项" : "全选"}
           </button>
         </div>
       )}
@@ -78,11 +80,11 @@ export function FilterPanel({
         <div className="filter-section-divider-row">
           <div className="filter-section-divider" />
           <button className={`toggle-all-pill ${allActive ? "toggle-all-pill--active" : ""}`} onClick={onToggleAll}>
-            全选
+            {allActive ? "仅保留首项" : "全选"}
           </button>
         </div>
       )}
-      <div className={isPill ? "filter-pills" : "filter-list"}>
+      <div role="group" aria-label="菜系筛选" className={isPill ? "filter-pills" : "filter-list"}>
         {renderedGroups.map((group) => {
           const style = getGroupStyle(group.key);
           const active = activeGroups.has(group.key);
@@ -120,6 +122,7 @@ export function FilterPanel({
         })}
       </div>
 
+      <p className="mode-status" role="status">当前图层：{currentMode === "marker" ? "餐厅标记" : "热力图"}</p>
       <button className="mode-btn" onClick={onModeToggle}>
         {currentMode === "marker" ? "切换到热力图" : "切换到标记模式"}
       </button>

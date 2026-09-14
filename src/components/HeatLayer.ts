@@ -1,6 +1,9 @@
+import type { BasemapId } from "@/config/basemaps";
 import type { Restaurant } from "@/types/restaurant";
+import L from "@/lib/leaflet";
 import type { HeatLayer, Map as LeafletMap } from "leaflet";
-import { wgs84ToGcj02 } from "@/utils/gcj02";
+import { projectMapPosition } from "@/utils/mapPosition";
+import { type SpatialContext } from "@/data/contract";
 
 /** Manages the Leaflet heat layer overlay. */
 export class HeatLayerManager {
@@ -11,15 +14,16 @@ export class HeatLayerManager {
     this.map = map;
   }
 
-  /** Shows the heat layer with the given restaurant data (skips null coordinates). */
-  show(restaurants: Restaurant[]): void {
+  /** Uses the same usable positions as markers, flight and counts. */
+  show(restaurants: Restaurant[], spatialContext?: SpatialContext, basemap?: BasemapId): void {
     this.remove();
-    const points: [number, number, number][] = restaurants
-      .filter((r) => r.lat != null && r.lon != null)
-      .map((r) => {
-        const [lat, lng] = wgs84ToGcj02(r.lat, r.lon);
-        return [lat, lng, r.is_new ? 1.0 : 0.8];
-      });
+    const points: [number, number, number][] = [];
+    for (const record of restaurants) {
+      const position = projectMapPosition(record, spatialContext, basemap);
+      if (!position) continue;
+      const [lat, lng] = position;
+      points.push([lat, lng, record.is_new ? 1.0 : 0.8]);
+    }
     this.layer = L.heatLayer(points, {
       radius: 38,
       blur: 14,
@@ -40,6 +44,11 @@ export class HeatLayerManager {
   /** Removes the heat layer from the map. */
   remove(): void {
     if (this.layer) {
+      // leaflet.heat 0.2.0 does not cancel its pending redraw in onRemove.
+      // This resource belongs to the overlay, not to the global library adapter.
+      const pending = this.layer as HeatLayer & { _frame?: number | null };
+      if (pending._frame != null) L.Util.cancelAnimFrame(pending._frame);
+      pending._frame = null;
       this.map.removeLayer(this.layer);
       this.layer = null;
     }

@@ -1,7 +1,7 @@
 {
-  "name": "Foodie Map — 香港米其林必比登",
+  "name": "Foodie Map — 城市美食指南地图",
   "short_name": "Foodie Map",
-  "description": "2026 Hong Kong Michelin Bib Gourmand restaurant map with interactive cuisine filters and location search.",
+  "description": "按城市和年度探索美食指南，搜索餐厅、筛选菜系、查看详情与地图位置。已访问的匹配版次支持离线浏览。",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait-primary",

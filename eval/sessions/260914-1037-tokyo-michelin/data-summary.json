@@ -1,0 +1,90 @@
+{
+  "at": "2026-09-14T11:55:22.188500+08:00",
+  "existing_data_files_compared": 24,
+  "existing_data_changed": [],
+  "tokyo": {
+    "michelin-starred": {
+      "listed": 158,
+      "rating_distribution": {
+        "2": 26,
+        "3": 11,
+        "1": 121
+      },
+      "fields_present": {
+        "name": 158,
+        "name_en": 158,
+        "name_zh": 0,
+        "address": 157,
+        "cuisine": 158,
+        "price": 1,
+        "price_range": 157,
+        "currency": 157,
+        "guide_url": 158,
+        "lat": 157,
+        "lon": 157,
+        "phone": 154,
+        "website": 114,
+        "is_new": 11
+      },
+      "new_true": 11,
+      "city_wards": [
+        "世田谷区",
+        "中央区",
+        "千代田区",
+        "台東区",
+        "品川区",
+        "新宿区",
+        "渋谷区",
+        "港区",
+        "目黒区"
+      ],
+      "sha256": "d251f8e75a96b91d478ab3a4be68a2d78212eb9276ec0c4457de60b4376a0f8f"
+    },
+    "michelin-bib-gourmand": {
+      "listed": 111,
+      "rating_distribution": {
+        "0": 111
+      },
+      "fields_present": {
+        "name": 111,
+        "name_en": 111,
+        "name_zh": 0,
+        "address": 111,
+        "cuisine": 111,
+        "price": 0,
+        "price_range": 111,
+        "currency": 111,
+        "guide_url": 111,
+        "lat": 111,
+        "lon": 111,
+        "phone": 100,
+        "website": 54,
+        "is_new": 16
+      },
+      "new_true": 16,
+      "city_wards": [
+        "世田谷区",
+        "中央区",
+        "中野区",
+        "北区",
+        "千代田区",
+        "台東区",
+        "品川区",
+        "墨田区",
+        "大田区",
+        "文京区",
+        "新宿区",
+        "杉並区",
+        "江東区",
+        "渋谷区",
+        "港区",
+        "目黒区",
+        "練馬区",
+        "荒川区",
+        "豊島区"
+      ],
+      "sha256": "51b8a9d135813863bf278a403dfe270681746326ab541d6580a7aceb29f72e66"
+    }
+  },
+  "head": "fb7c22e50ea543a6d362092a2332aef9c78aebbe"
+}

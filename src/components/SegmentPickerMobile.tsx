@@ -1,81 +1,23 @@
-import { useState, useCallback } from "react";
-import { createPortal } from "react-dom";
-import { BottomSheet } from "@/components/BottomSheet";
-import type { SegmentOption } from "@/hooks/useSelection";
+import { useId, useState } from "react";
+import { BottomSheet } from "./BottomSheet";
+import { PickerOptions } from "./PickerOptions";
+import type { SegmentPickerProps } from "./SegmentPicker";
 
-interface SegmentPickerMobileProps {
-  /** Available options for this segment. */
-  options: SegmentOption[];
-  /** Currently selected value. */
-  value: string;
-  /** Called when user selects a new option. */
-  onChange: (value: string) => void;
-}
-
-/**
- * Mobile segment picker: renders as a tappable inline chip.
- * - Single option: renders as static text (not tappable).
- * - Multiple options: tapping opens a bottom-sheet with the option list.
- * - BottomSheet is portaled to document.body to escape the header's
- *   backdrop-filter containing block (which traps position:fixed children).
- */
-export function SegmentPickerMobile({ options, value, onChange }: SegmentPickerMobileProps) {
+export function SegmentPickerMobile({ options, value, onChange, label }: SegmentPickerProps) {
   const [isOpen, setIsOpen] = useState(false);
-
-  const selectedLabel = options.find((o) => o.value === value)?.label ?? value;
-  const isInteractive = options.length > 1;
-
-  /** Open the picker sheet. */
-  const handleTap = useCallback(() => {
-    if (!isInteractive) return;
-    setIsOpen(true);
-  }, [isInteractive]);
-
-  /** Select an option and close the sheet. */
-  const handleSelect = useCallback(
-    (optionValue: string) => {
-      onChange(optionValue);
-      setIsOpen(false);
-    },
-    [onChange],
-  );
-
-  /** Close the sheet without selecting. */
-  const handleClose = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
-  return (
-    <>
-      <button
-        className={`seg-chip seg-chip--mobile ${isInteractive ? "seg-chip--interactive" : ""} ${isOpen ? "seg-chip--active" : ""}`}
-        onClick={handleTap}
-        type="button"
-        tabIndex={isInteractive ? 0 : -1}
-      >
-        <span className="seg-chip-label">{selectedLabel}</span>
-        {isInteractive && <span className="seg-chip-caret" aria-hidden="true" />}
-      </button>
-
-      {createPortal(
-        <BottomSheet isOpen={isOpen} onClose={handleClose} initialSnap="half">
-          <ul className="seg-sheet-list" role="listbox">
-            {options.map((opt) => (
-              <li
-                key={opt.value}
-                className={`seg-sheet-item ${opt.value === value ? "seg-sheet-item--selected" : ""}`}
-                role="option"
-                aria-selected={opt.value === value}
-                onClick={() => handleSelect(opt.value)}
-              >
-                <span className="seg-sheet-item-label">{opt.label}</span>
-                {opt.value === value && <span className="seg-sheet-item-check" aria-hidden="true">✓</span>}
-              </li>
-            ))}
-          </ul>
-        </BottomSheet>,
-        document.body,
-      )}
-    </>
-  );
+  const id = useId();
+  const selectedLabel = options.find((option) => option.value === value)?.label ?? value;
+  if (options.length <= 1) return <span className="seg-chip seg-chip--mobile"><span className="sr-only">{label}：</span><span className="seg-chip-label">{selectedLabel || "暂无选项"}</span></span>;
+  return <>
+    <button type="button" data-focus-key={`picker-${label}`} aria-label={`${label}：${selectedLabel}`}
+      aria-haspopup="dialog" aria-expanded={isOpen} aria-controls={isOpen ? id : undefined}
+      className={`seg-chip seg-chip--mobile seg-chip--interactive ${isOpen ? "seg-chip--active" : ""}`}
+      onClick={(event) => { event.currentTarget.focus(); setIsOpen(true); }} onKeyDown={(event) => {
+        if (["ArrowDown", "ArrowUp"].includes(event.key)) { event.preventDefault(); setIsOpen(true); }
+      }}><span className="seg-chip-label">{selectedLabel}</span><span className="seg-chip-caret" aria-hidden="true" /></button>
+    <BottomSheet id={id} isOpen={isOpen} title={`选择${label}`} onClose={() => setIsOpen(false)}>
+      <PickerOptions id={`${id}-options`} label={label} options={options} value={value} mobile
+        onSelect={(next) => { setIsOpen(false); onChange(next); }} onDismiss={() => setIsOpen(false)} />
+    </BottomSheet>
+  </>;
 }

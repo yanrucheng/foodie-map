@@ -1,25 +1,34 @@
+import { getBasemap, type BasemapId } from "@/config/basemaps";
 import {
   useEffect,
+  useLayoutEffect,
+  useMemo,
   useRef,
   useCallback,
   useState,
-  useMemo,
   forwardRef,
   useImperativeHandle,
 } from "react";
 import { createPortal } from "react-dom";
+import { focusBookmark } from "@/utils/focus";
+import L from "@/lib/leaflet";
 import type { Restaurant } from "@/types/restaurant";
+import type { CuisineGroup } from "@/config/cuisineRegistry";
 import type { VenueFilter } from "@/hooks/useFilters";
 import type { Map as LeafletMap, Marker, MarkerClusterGroup } from "leaflet";
-import { createRestaurantMarker } from "./RestaurantMarker";
+import { createRestaurantMarker, popupHtml } from "./RestaurantMarker";
 import { HeatLayerManager } from "./HeatLayer";
 import { FilterPanel } from "./FilterPanel";
 import { StatsPanelReact } from "./StatsPanelReact";
-import { LocationButton } from "./LocationButton";
+import { TileService, type TileStatus } from "./TileService";
 import { useLocationTracking } from "@/hooks/useLocationTracking";
-import { wgs84ToGcj02 } from "@/utils/gcj02";
+import { projectMapPosition } from "@/utils/mapPosition";
+import { type SpatialContext } from "@/data/contract";
 
-interface MapShellProps {
+export interface MapShellProps {
+  /** Authoritative filtered list supplied by useFilters. */
+  visibleRestaurants: Restaurant[];
+  groups: CuisineGroup[];
   restaurants: Restaurant[];
   /** Set of distinct cuisine_group keys present in the loaded data (for FilterPanel). */
   dataGroups: Set<string>;
@@ -29,6 +38,8 @@ interface MapShellProps {
   venueFilter: VenueFilter;
   onVenueFilterChange: (filter: VenueFilter) => void;
   center: [number, number];
+  spatialContext?: SpatialContext;
+  basemap?: BasemapId;
   zoom: number;
   /** When true, skips creating Leaflet control portal containers for FilterPanel/StatsPanel. */
   hideControls?: boolean;
@@ -51,7 +62,7 @@ export interface MapShellHandle {
  */
 export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
   function MapShell(
-    { restaurants, dataGroups, activeGroups, onToggleGroup, onToggleAll, venueFilter, onVenueFilterChange, center, zoom, hideControls, onModeChange, onMarkerTap },
+    { restaurants, visibleRestaurants, groups, dataGroups, activeGroups, onToggleGroup, onToggleAll, venueFilter, onVenueFilterChange, center, zoom, spatialContext, basemap, hideControls, onModeChange, onMarkerTap },
     ref,
   ) {
     const mapRef = useRef<LeafletMap | null>(null);
@@ -70,27 +81,17 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
     const [statsContainer, setStatsContainer] = useState<HTMLDivElement | null>(null);
 
     // Stable refs for callbacks that need current values without re-creation
-    const activeGroupsRef = useRef(activeGroups);
-    activeGroupsRef.current = activeGroups;
-    const venueFilterRef = useRef(venueFilter);
-    venueFilterRef.current = venueFilter;
-    const restaurantsRef = useRef(restaurants);
-    restaurantsRef.current = restaurants;
+    const visibleRef = useRef(visibleRestaurants);
+    visibleRef.current = visibleRestaurants;
     const onMarkerTapRef = useRef(onMarkerTap);
     onMarkerTapRef.current = onMarkerTap;
 
-    // Live location tracking (extracted to custom hook)
-    const { locationBtnRef, handleLocationActivate, handleLocationDeactivate, locationError } =
-      useLocationTracking(mapRef);
-
-    /** Visible restaurants based on active cuisine group and venue type filters. */
-    const visibleRestaurants = useMemo(
-      () => restaurants.filter((r) =>
-        activeGroups.has(r.cuisine_group) &&
-        (venueFilter === "all" || r.venue_type === venueFilter)
-      ),
-      [restaurants, activeGroups, venueFilter],
-    );
+    const { attachTo, locationMessage } = useLocationTracking();
+    const tileRef = useRef<TileService | null>(null);
+    const [tileStatus, setTileStatus] = useState<TileStatus>("loading");
+    const context = spatialContext;
+    const centerLat = center[0], centerLon = center[1];
+    const projectedCenter = useMemo(() => projectMapPosition({ lat: centerLat, lon: centerLon }, context, basemap), [centerLat, centerLon, context, basemap]);
 
     /** Refreshes visible markers/heat based on current filter and mode. */
     const refreshLayers = useCallback(() => {
@@ -99,10 +100,7 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
       const heat = heatRef.current;
       if (!map || !cluster || !heat) return;
 
-      const visible = restaurantsRef.current.filter((r) =>
-        activeGroupsRef.current.has(r.cuisine_group) &&
-        (venueFilterRef.current === "all" || r.venue_type === venueFilterRef.current),
-      );
+      const visible = visibleRef.current;
 
       if (modeRef.current === "marker") {
         heat.remove();
@@ -114,9 +112,9 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
         if (!map.hasLayer(cluster)) map.addLayer(cluster);
       } else {
         if (map.hasLayer(cluster)) map.removeLayer(cluster);
-        heat.show(visible);
+        heat.show(visible, context, basemap);
       }
-    }, []);
+    }, [context, basemap]);
 
     /** Toggles between marker and heat display mode. */
     const handleModeToggle = useCallback(() => {
@@ -131,18 +129,44 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
     useEffect(() => {
       if (!containerRef.current || mapRef.current) return;
 
+      const provider = getBasemap(basemap);
       const map = L.map(containerRef.current, {
-        center: wgs84ToGcj02(center[0], center[1]),
-        zoom,
+        // No guessed city center for an unknown/invalid context; retain a neutral world view.
+        center: projectedCenter ?? [20, 0],
+        zoom: Math.max(provider.minZoom, Math.min(provider.maxZoom, projectedCenter ? zoom : provider.minZoom)),
+        minZoom: provider.minZoom, maxZoom: provider.maxZoom,
         zoomControl: true,
+        // Dataset withdrawal must remove old popup DOM synchronously, not after a fade timer.
+        fadeAnimation: false,
         preferCanvas: true,
       });
 
-      L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}", {
-        maxZoom: 18,
-        subdomains: ["1", "2", "3", "4"],
-        attribution: "&copy; 高德地图",
-      }).addTo(map);
+      let popupReturn: (() => void) | undefined;
+      let popupElement: HTMLElement | undefined;
+      const openPopup = (event: L.PopupEvent) => {
+        popupReturn = focusBookmark();
+        popupElement = event.popup.getElement();
+        const heading = popupElement?.querySelector<HTMLElement>("h2");
+        if (heading) { heading.tabIndex = -1; heading.focus(); }
+        const close = popupElement?.querySelector<HTMLElement>(".leaflet-popup-close-button");
+        close?.setAttribute("aria-label", "关闭餐厅详情");
+      };
+      const closePopup = () => {
+        const restore = popupReturn;
+        const ownedFocus = popupElement?.contains(document.activeElement) || document.activeElement === document.body;
+        popupReturn = undefined; popupElement = undefined;
+        if (ownedFocus) queueMicrotask(() => { if (!document.querySelector("dialog[open]")) restore?.(); });
+      };
+      const popupKey = (event: KeyboardEvent) => {
+        if (event.key === "Escape" && popupElement?.contains(event.target as Node)) {
+          event.preventDefault(); event.stopPropagation(); map.closePopup();
+        }
+      };
+      map.on("popupopen", openPopup); map.on("popupclose", closePopup);
+      map.getContainer().addEventListener("keydown", popupKey);
+
+      const tiles = new TileService(map, setTileStatus, basemap);
+      tileRef.current = tiles;
 
       // Add scale bar
       L.control.scale({ metric: true, imperial: false, position: "bottomleft" }).addTo(map);
@@ -191,39 +215,52 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
         map.addControl(new StatsPlaceholder());
       }
 
-      // Add location button control
-      const locBtn = new LocationButton({
-        onActivate: () => handleLocationActivate(),
-        onDeactivate: () => handleLocationDeactivate(),
-      });
-      locBtn.addTo(map, "bottomright");
-      locationBtnRef.current = locBtn;
-
+      const detachLocation = attachTo(map, context, basemap);
+      const markers = markersRef.current;
       return () => {
-        locBtn.remove(map);
-        locationBtnRef.current = null;
+        detachLocation();
+        tiles.remove();
+        tileRef.current = null;
+        heatRef.current?.remove();
+        cluster.clearLayers();
+        markers.clear();
+        map.stop();
+        map.closePopup();
+        map.off("popupopen", openPopup); map.off("popupclose", closePopup);
+        map.getContainer().removeEventListener("keydown", popupKey);
         map.remove();
         mapRef.current = null;
+        clusterRef.current = null;
+        heatRef.current = null;
+        setFilterContainer(null);
+        setStatsContainer(null);
       };
-    }, [center, zoom]);
+    }, [projectedCenter, zoom, hideControls, attachTo, context, basemap]);
 
-    // Build markers when restaurants data changes (skip entries with null coordinates)
+    // Withdraw old Leaflet content before a new title/data render can be painted.
+    useLayoutEffect(() => {
+      mapRef.current?.stop();
+      mapRef.current?.closePopup();
+      clusterRef.current?.clearLayers();
+      heatRef.current?.remove();
+    }, [restaurants]);
+
+    // Keep every restaurant in the list; create markers only for usable positions.
     useEffect(() => {
+      mapRef.current?.closePopup();
       markersRef.current.clear();
       restaurants.forEach((item) => {
-        if (item.lat == null || item.lon == null) return;
-        const opts = onMarkerTapRef.current
-          ? { onClick: onMarkerTapRef.current }
-          : undefined;
-        markersRef.current.set(item.id, createRestaurantMarker(item, opts));
+        const opts = { onClick: onMarkerTapRef.current, groups, spatialContext: context, basemap };
+        const marker = createRestaurantMarker(item, opts);
+        if (marker) markersRef.current.set(item.id, marker);
       });
       refreshLayers();
-    }, [restaurants, refreshLayers]);
+    }, [restaurants, groups, refreshLayers, projectedCenter, zoom, hideControls, context, basemap]);
 
-    // Refresh layers when activeGroups or venueFilter change
-    useEffect(() => {
+    // Apply the shared filtered list before painting changed counts.
+    useLayoutEffect(() => {
       refreshLayers();
-    }, [activeGroups, venueFilter, refreshLayers]);
+    }, [visibleRestaurants, refreshLayers]);
 
     /** Exposes flyToRestaurant and toggleMode for external integration. */
     useImperativeHandle(
@@ -232,32 +269,37 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
         flyToRestaurant(restaurant: Restaurant) {
           const map = mapRef.current;
           const cluster = clusterRef.current;
-          if (!map || !cluster) return;
-          if (restaurant.lat == null || restaurant.lon == null) return;
+          if (!map || !cluster || !visibleRef.current.includes(restaurant)) return;
+          const position = projectMapPosition(restaurant, context, basemap);
+          if (!position) return;
 
           if (modeRef.current === "heat") {
             modeRef.current = "marker";
             setMode("marker");
             refreshLayers();
+            onModeChange?.("marker");
           }
 
-          map.flyTo(wgs84ToGcj02(restaurant.lat, restaurant.lon), 15, { duration: 0.8 });
-          const marker = markersRef.current.get(restaurant.id);
-          if (marker) {
-            setTimeout(() => marker.openPopup(), 400);
+          map.flyTo(position, 15, { duration: 0.8 });
+          // P04 already selected the mobile detail. Desktop opens the selected fact at its
+          // coordinate without markercluster's uncancellable moveend/spiderfy continuation.
+          // This also works when several restaurants share one coordinate.
+          if (!onMarkerTapRef.current && visibleRef.current.includes(restaurant)) {
+            map.openPopup(popupHtml(restaurant, groups, context), position, { autoPan: false });
           }
         },
         toggleMode: handleModeToggle,
       }),
-      [refreshLayers, handleModeToggle],
+      [refreshLayers, handleModeToggle, context, onModeChange, groups, basemap],
     );
 
     return (
       <>
-        <div ref={containerRef} id="map" style={{ width: "100%", height: "100%" }} />
+        <div ref={containerRef} id="map" role="region" aria-label="餐厅地图，可使用搜索查看餐厅详情" style={{ width: "100%", height: "100%" }} />
         {filterContainer &&
           createPortal(
             <FilterPanel
+              groups={groups}
               dataGroups={dataGroups}
               activeGroups={activeGroups}
               onToggle={onToggleGroup}
@@ -274,9 +316,12 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
             <StatsPanelReact restaurants={visibleRestaurants} />,
             statsContainer,
           )}
-        {locationError && (
-          <div className="loc-error-toast">{locationError}</div>
-        )}
+        {locationMessage && <div className="loc-error-toast" role="status">{locationMessage} 仍可搜索和查看餐厅。</div>}
+        {tileStatus === "unavailable" && <div className="map-service-status" role="status">
+          地图服务暂不可用，餐厅信息仍可搜索和查看。
+          <button onClick={() => tileRef.current?.retry()}>重试地图</button>
+        </div>}
+        {!projectedCenter && <div className="map-spatial-status" role="status">此数据集的空间信息暂不可用，仍可搜索和查看餐厅。</div>}
       </>
     );
   },

@@ -1,34 +1,118 @@
 {
   "version": 1,
   "city": "shanghai",
-  "mappings": {
-    "粤菜": "CANTONESE",
-    "粤菜/湛江菜": "CANTONESE",
-    "粤菜/面食": "CANTONESE",
-    "本帮菜": "SHANGHAINESE",
-    "本帮菜/点心": "SHANGHAINESE",
-    "点心/小吃": "SHANGHAINESE",
-    "淮扬菜": "HUAIYANG",
-    "江浙菜": "ZHEJIANG",
-    "台州菜": "ZHEJIANG",
-    "温州菜": "ZHEJIANG",
-    "湖州菜/面食": "ZHEJIANG",
-    "宁波菜": "NINGBO",
-    "川菜": "SICHUAN",
-    "潮州菜": "TEOCHEW",
-    "面食": "NOODLES",
-    "面食/本帮菜": "SHANGHAINESE",
-    "法国菜": "FRENCH",
-    "意大利菜": "ITALIAN",
-    "日本料理": "JAPANESE",
-    "泰国菜": "THAI",
-    "素食": "VEGETARIAN",
-    "地中海菜": "MEDITERRANEAN",
-    "创新菜": "INNOVATIVE",
-    "京菜": "BEIJING",
-    "鲁菜": "SHANDONG",
-    "闽菜": "FUJIAN",
-    "江西菜": "OTHER",
-    "点心": "CANTONESE"
-  }
+  "mappings": [
+    {
+      "raw": "粤菜",
+      "groupKey": "CANTONESE"
+    },
+    {
+      "raw": "粤菜/湛江菜",
+      "groupKey": "CANTONESE"
+    },
+    {
+      "raw": "粤菜/面食",
+      "groupKey": "CANTONESE"
+    },
+    {
+      "raw": "本帮菜",
+      "groupKey": "SHANGHAINESE"
+    },
+    {
+      "raw": "本帮菜/点心",
+      "groupKey": "SHANGHAINESE"
+    },
+    {
+      "raw": "点心/小吃",
+      "groupKey": "SHANGHAINESE"
+    },
+    {
+      "raw": "淮扬菜",
+      "groupKey": "HUAIYANG"
+    },
+    {
+      "raw": "江浙菜",
+      "groupKey": "ZHEJIANG"
+    },
+    {
+      "raw": "台州菜",
+      "groupKey": "ZHEJIANG"
+    },
+    {
+      "raw": "温州菜",
+      "groupKey": "ZHEJIANG"
+    },
+    {
+      "raw": "湖州菜/面食",
+      "groupKey": "ZHEJIANG"
+    },
+    {
+      "raw": "宁波菜",
+      "groupKey": "NINGBO"
+    },
+    {
+      "raw": "川菜",
+      "groupKey": "SICHUAN"
+    },
+    {
+      "raw": "潮州菜",
+      "groupKey": "TEOCHEW"
+    },
+    {
+      "raw": "面食",
+      "groupKey": "NOODLES"
+    },
+    {
+      "raw": "面食/本帮菜",
+      "groupKey": "SHANGHAINESE"
+    },
+    {
+      "raw": "法国菜",
+      "groupKey": "FRENCH"
+    },
+    {
+      "raw": "意大利菜",
+      "groupKey": "ITALIAN"
+    },
+    {
+      "raw": "日本料理",
+      "groupKey": "JAPANESE"
+    },
+    {
+      "raw": "泰国菜",
+      "groupKey": "THAI"
+    },
+    {
+      "raw": "素食",
+      "groupKey": "VEGETARIAN"
+    },
+    {
+      "raw": "地中海菜",
+      "groupKey": "MEDITERRANEAN"
+    },
+    {
+      "raw": "创新菜",
+      "groupKey": "INNOVATIVE"
+    },
+    {
+      "raw": "京菜",
+      "groupKey": "BEIJING"
+    },
+    {
+      "raw": "鲁菜",
+      "groupKey": "SHANDONG"
+    },
+    {
+      "raw": "闽菜",
+      "groupKey": "FUJIAN"
+    },
+    {
+      "raw": "江西菜",
+      "groupKey": "OTHER"
+    },
+    {
+      "raw": "点心",
+      "groupKey": "CANTONESE"
+    }
+  ]
 }

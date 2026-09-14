@@ -56,10 +56,10 @@ export function DynamicTitle({
 
   return (
     <h1 className={`dynamic-title ${compact ? "dynamic-title--compact" : ""}`}>
-      <Picker options={years} value={String(year)} onChange={handleYearChange} />
-      <Picker options={cityOptions} value={cityId} onChange={onCityChange} />
+      <Picker label="年份" options={years} value={String(year)} onChange={handleYearChange} />
+      <Picker label="城市" options={cityOptions} value={cityId} onChange={onCityChange} />
       <span className="dynamic-title-sep">·</span>
-      <Picker options={guideOptions} value={guideId} onChange={onGuideChange} />
+      <Picker label="榜单" options={guideOptions} value={guideId} onChange={onGuideChange} />
       <span className="dynamic-title-suffix">餐厅地图</span>
       <span className="dynamic-title-version">v{APP_VERSION}</span>
     </h1>

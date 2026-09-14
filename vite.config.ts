@@ -2,12 +2,13 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { fileURLToPath, URL } from "node:url";
 import { readFileSync } from "node:fs";
+import { releaseBuild } from "./scripts/release-build.ts";
 
 /** Read VERSION file — single source of truth for app version. */
 const version = readFileSync("VERSION", "utf-8").trim();
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), releaseBuild()],
   base: "/",
   define: {
     __APP_VERSION__: JSON.stringify(version),
@@ -17,18 +18,5 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          /** Keep mobile-specific components in a separate chunk. */
-          mobile: [
-            "./src/components/MobileShell.tsx",
-            "./src/components/BottomSheet.tsx",
-            "./src/components/MobilePopupCard.tsx",
-          ],
-        },
-      },
-    },
-  },
+  // Let the actual dynamic MobileShell import own its chunk. Shared imports stay shared.
 });

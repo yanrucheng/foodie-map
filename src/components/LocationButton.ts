@@ -1,4 +1,5 @@
 import type { Map as LeafletMap, Control } from "leaflet";
+import L from "@/lib/leaflet";
 
 /** Tracking state for the location button. */
 export type LocationButtonState = "inactive" | "locating" | "tracking";
@@ -15,6 +16,7 @@ export interface LocationButtonCallbacks {
  * Emits onActivate when user taps to start, onDeactivate when tapped again to stop.
  */
 export class LocationButton {
+  private readonly onClick = () => this.handleClick();
   private control: Control | null = null;
   private button: HTMLButtonElement | null = null;
   private state: LocationButtonState = "inactive";
@@ -60,17 +62,20 @@ export class LocationButton {
     this.button.innerHTML = this.getIcon();
     this.button.className = `loc-btn loc-btn--${this.state}`;
     this.button.setAttribute("aria-label", this.getAriaLabel());
+    this.button.setAttribute("aria-pressed", String(this.state !== "inactive"));
+    this.button.dataset.focusKey = "location";
+    this.button.title = this.getAriaLabel();
   }
 
   /** Descriptive label for accessibility. */
   private getAriaLabel(): string {
     switch (this.state) {
       case "inactive":
-        return "Show my location";
+        return "显示我的位置";
       case "locating":
-        return "Acquiring location…";
+        return "正在获取位置，点击停止定位";
       case "tracking":
-        return "Stop location tracking";
+        return "停止位置追踪";
     }
   }
 
@@ -87,8 +92,11 @@ export class LocationButton {
         this.button.type = "button";
         this.button.innerHTML = this.getIcon();
         this.button.setAttribute("aria-label", this.getAriaLabel());
+    this.button.setAttribute("aria-pressed", String(this.state !== "inactive"));
+    this.button.dataset.focusKey = "location";
+    this.button.title = this.getAriaLabel();
 
-        this.button.addEventListener("click", () => this.handleClick());
+        this.button.addEventListener("click", this.onClick);
 
         return container;
       },
@@ -122,6 +130,7 @@ export class LocationButton {
 
   /** Removes the control from the map. */
   remove(map: LeafletMap): void {
+    this.button?.removeEventListener("click", this.onClick);
     if (this.control) {
       map.removeControl(this.control);
       this.control = null;

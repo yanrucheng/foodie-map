@@ -1,0 +1,460 @@
+{
+  "cities": [
+    {
+      "id": "fixture-city",
+      "label": "fixture-city",
+      "labelZh": "测试城",
+      "center": [
+        22.302,
+        114.177
+      ],
+      "zoom": 11,
+      "taxonomyPath": "/data/taxonomy/fixture-city.json",
+      "guides": [
+        {
+          "id": "michelin-bib-gourmand",
+          "label": "michelin-bib-gourmand",
+          "labelZh": "米其林必比登",
+          "year": 2027,
+          "dataPath": "/data/fixture-city/2027/michelin-bib-gourmand.json"
+        },
+        {
+          "id": "michelin-bib-gourmand",
+          "label": "michelin-bib-gourmand",
+          "labelZh": "米其林必比登",
+          "year": 2026,
+          "dataPath": "/data/fixture-city/2026/michelin-bib-gourmand.json"
+        }
+      ]
+    },
+    {
+      "id": "new-city",
+      "label": "new-city",
+      "labelZh": "新城",
+      "center": [
+        22.302,
+        114.177
+      ],
+      "zoom": 11,
+      "taxonomyPath": "/data/taxonomy/new-city.json",
+      "guides": [
+        {
+          "id": "michelin-starred",
+          "label": "michelin-starred",
+          "labelZh": "米其林星级",
+          "year": 2027,
+          "dataPath": "/data/new-city/2027/michelin-starred.json"
+        }
+      ]
+    },
+    {
+      "id": "third-city",
+      "label": "third-city",
+      "labelZh": "第三城",
+      "center": [
+        22.302,
+        114.177
+      ],
+      "zoom": 11,
+      "taxonomyPath": "/data/taxonomy/third-city.json",
+      "guides": [
+        {
+          "id": "michelin-starred",
+          "label": "michelin-starred",
+          "labelZh": "米其林星级",
+          "year": 2027,
+          "dataPath": "/data/third-city/2027/michelin-starred.json"
+        }
+      ]
+    },
+    {
+      "id": "old-only",
+      "label": "old-only",
+      "labelZh": "旧版城",
+      "center": [
+        22.302,
+        114.177
+      ],
+      "zoom": 11,
+      "taxonomyPath": "/data/taxonomy/old-only.json",
+      "guides": [
+        {
+          "id": "michelin-bib-gourmand",
+          "label": "michelin-bib-gourmand",
+          "labelZh": "米其林必比登",
+          "year": 2026,
+          "dataPath": "/data/old-only/2026/michelin-bib-gourmand.json"
+        }
+      ]
+    }
+  ],
+  "taxonomies": {
+    "/data/taxonomy/fixture-city.json": {
+      "version": 1,
+      "city": "fixture-city",
+      "fallbackGroup": "OTHER",
+      "groups": [
+        {
+          "key": "CANTONESE",
+          "labelZh": "测试城粤菜",
+          "labelEn": "Cantonese",
+          "sortOrder": 2
+        },
+        {
+          "key": "NEW_GROUP",
+          "labelZh": "测试城新菜系",
+          "labelEn": "New",
+          "sortOrder": 1
+        },
+        {
+          "key": "OTHER",
+          "labelZh": "其他",
+          "labelEn": "Other",
+          "sortOrder": 99
+        }
+      ]
+    },
+    "/data/taxonomy/new-city.json": {
+      "version": 1,
+      "city": "new-city",
+      "fallbackGroup": "OTHER",
+      "groups": [
+        {
+          "key": "CANTONESE",
+          "labelZh": "新城粤菜",
+          "labelEn": "Cantonese",
+          "sortOrder": 2
+        },
+        {
+          "key": "NEW_GROUP",
+          "labelZh": "新城新菜系",
+          "labelEn": "New",
+          "sortOrder": 1
+        },
+        {
+          "key": "OTHER",
+          "labelZh": "其他",
+          "labelEn": "Other",
+          "sortOrder": 99
+        }
+      ]
+    },
+    "/data/taxonomy/third-city.json": {
+      "version": 1,
+      "city": "third-city",
+      "fallbackGroup": "OTHER",
+      "groups": [
+        {
+          "key": "CANTONESE",
+          "labelZh": "第三城粤菜",
+          "labelEn": "Cantonese",
+          "sortOrder": 2
+        },
+        {
+          "key": "NEW_GROUP",
+          "labelZh": "第三城新菜系",
+          "labelEn": "New",
+          "sortOrder": 1
+        },
+        {
+          "key": "OTHER",
+          "labelZh": "其他",
+          "labelEn": "Other",
+          "sortOrder": 99
+        }
+      ]
+    },
+    "/data/taxonomy/old-only.json": {
+      "version": 1,
+      "city": "old-only",
+      "fallbackGroup": "OTHER",
+      "groups": [
+        {
+          "key": "CANTONESE",
+          "labelZh": "旧版城粤菜",
+          "labelEn": "Cantonese",
+          "sortOrder": 2
+        },
+        {
+          "key": "NEW_GROUP",
+          "labelZh": "旧版城新菜系",
+          "labelEn": "New",
+          "sortOrder": 1
+        },
+        {
+          "key": "OTHER",
+          "labelZh": "其他",
+          "labelEn": "Other",
+          "sortOrder": 99
+        }
+      ]
+    }
+  },
+  "datasets": {
+    "/data/fixture-city/2027/michelin-bib-gourmand.json": [
+      {
+        "city": "fixture-city",
+        "guide_type": "michelin-bib-gourmand",
+        "edition_year": 2027,
+        "cuisine_group": "CANTONESE",
+        "id": 1,
+        "name": "测试城 2027 A",
+        "price": "約 200–400",
+        "currency": "HKD",
+        "venue_type": "restaurant",
+        "lat": 22.302,
+        "lon": 114.177,
+        "is_new": true,
+        "primary_area": "测试城区域",
+        "guide_url": "https://guide.michelin.com/en/fixture/restaurant/example"
+      },
+      {
+        "city": "fixture-city",
+        "guide_type": "michelin-bib-gourmand",
+        "edition_year": 2027,
+        "cuisine_group": "NEW_GROUP",
+        "id": 2,
+        "name": "测试城 2027 B",
+        "price": "100 起",
+        "currency": "CNY",
+        "venue_type": "dessert",
+        "lat": 22.31,
+        "lon": 114.18
+      },
+      {
+        "city": "fixture-city",
+        "guide_type": "michelin-bib-gourmand",
+        "edition_year": 2027,
+        "cuisine_group": "NEW_GROUP",
+        "id": 3,
+        "name": "测试城 2027 无坐标",
+        "price": " 80–120 ",
+        "currency": "MOP",
+        "geocode_success": false
+      },
+      {
+        "city": "fixture-city",
+        "guide_type": "michelin-bib-gourmand",
+        "edition_year": 2027,
+        "cuisine_group": "OTHER",
+        "id": 4,
+        "name": "<img src=x onerror=\"window.p04Injected=true\">",
+        "address": "<script>window.p04Injected=true</script>",
+        "lat": 22.32,
+        "lon": 114.19
+      }
+    ],
+    "/data/fixture-city/2026/michelin-bib-gourmand.json": [
+      {
+        "city": "fixture-city",
+        "guide_type": "michelin-bib-gourmand",
+        "edition_year": 2026,
+        "cuisine_group": "CANTONESE",
+        "id": 1,
+        "name": "测试城 2026 A",
+        "price": "約 200–400",
+        "currency": "HKD",
+        "venue_type": "restaurant",
+        "lat": 22.302,
+        "lon": 114.177,
+        "is_new": true,
+        "primary_area": "测试城区域",
+        "guide_url": "https://guide.michelin.com/en/fixture/restaurant/example"
+      },
+      {
+        "city": "fixture-city",
+        "guide_type": "michelin-bib-gourmand",
+        "edition_year": 2026,
+        "cuisine_group": "NEW_GROUP",
+        "id": 2,
+        "name": "测试城 2026 B",
+        "price": "100 起",
+        "currency": "CNY",
+        "venue_type": "dessert",
+        "lat": 22.31,
+        "lon": 114.18
+      },
+      {
+        "city": "fixture-city",
+        "guide_type": "michelin-bib-gourmand",
+        "edition_year": 2026,
+        "cuisine_group": "NEW_GROUP",
+        "id": 3,
+        "name": "测试城 2026 无坐标",
+        "price": " 80–120 ",
+        "currency": "MOP",
+        "geocode_success": false
+      },
+      {
+        "city": "fixture-city",
+        "guide_type": "michelin-bib-gourmand",
+        "edition_year": 2026,
+        "cuisine_group": "OTHER",
+        "id": 4,
+        "name": "<img src=x onerror=\"window.p04Injected=true\">",
+        "address": "<script>window.p04Injected=true</script>",
+        "lat": 22.32,
+        "lon": 114.19
+      }
+    ],
+    "/data/new-city/2027/michelin-starred.json": [
+      {
+        "city": "new-city",
+        "guide_type": "michelin-starred",
+        "edition_year": 2027,
+        "cuisine_group": "CANTONESE",
+        "id": 1,
+        "name": "新城 2027 A",
+        "price": "約 200–400",
+        "currency": "HKD",
+        "venue_type": "restaurant",
+        "lat": 22.302,
+        "lon": 114.177,
+        "is_new": true,
+        "primary_area": "新城区域",
+        "guide_url": "https://guide.michelin.com/en/fixture/restaurant/example"
+      },
+      {
+        "city": "new-city",
+        "guide_type": "michelin-starred",
+        "edition_year": 2027,
+        "cuisine_group": "NEW_GROUP",
+        "id": 2,
+        "name": "新城 2027 B",
+        "price": "100 起",
+        "currency": "CNY",
+        "venue_type": "dessert",
+        "lat": 22.31,
+        "lon": 114.18
+      },
+      {
+        "city": "new-city",
+        "guide_type": "michelin-starred",
+        "edition_year": 2027,
+        "cuisine_group": "NEW_GROUP",
+        "id": 3,
+        "name": "新城 2027 无坐标",
+        "price": " 80–120 ",
+        "currency": "MOP",
+        "geocode_success": false
+      },
+      {
+        "city": "new-city",
+        "guide_type": "michelin-starred",
+        "edition_year": 2027,
+        "cuisine_group": "OTHER",
+        "id": 4,
+        "name": "<img src=x onerror=\"window.p04Injected=true\">",
+        "address": "<script>window.p04Injected=true</script>",
+        "lat": 22.32,
+        "lon": 114.19
+      }
+    ],
+    "/data/third-city/2027/michelin-starred.json": [
+      {
+        "city": "third-city",
+        "guide_type": "michelin-starred",
+        "edition_year": 2027,
+        "cuisine_group": "CANTONESE",
+        "id": 1,
+        "name": "第三城 2027 A",
+        "price": "約 200–400",
+        "currency": "HKD",
+        "venue_type": "restaurant",
+        "lat": 22.302,
+        "lon": 114.177,
+        "is_new": true,
+        "primary_area": "第三城区域",
+        "guide_url": "https://guide.michelin.com/en/fixture/restaurant/example"
+      },
+      {
+        "city": "third-city",
+        "guide_type": "michelin-starred",
+        "edition_year": 2027,
+        "cuisine_group": "NEW_GROUP",
+        "id": 2,
+        "name": "第三城 2027 B",
+        "price": "100 起",
+        "currency": "CNY",
+        "venue_type": "dessert",
+        "lat": 22.31,
+        "lon": 114.18
+      },
+      {
+        "city": "third-city",
+        "guide_type": "michelin-starred",
+        "edition_year": 2027,
+        "cuisine_group": "NEW_GROUP",
+        "id": 3,
+        "name": "第三城 2027 无坐标",
+        "price": " 80–120 ",
+        "currency": "MOP",
+        "geocode_success": false
+      },
+      {
+        "city": "third-city",
+        "guide_type": "michelin-starred",
+        "edition_year": 2027,
+        "cuisine_group": "OTHER",
+        "id": 4,
+        "name": "<img src=x onerror=\"window.p04Injected=true\">",
+        "address": "<script>window.p04Injected=true</script>",
+        "lat": 22.32,
+        "lon": 114.19
+      }
+    ],
+    "/data/old-only/2026/michelin-bib-gourmand.json": [
+      {
+        "city": "old-only",
+        "guide_type": "michelin-bib-gourmand",
+        "edition_year": 2026,
+        "cuisine_group": "CANTONESE",
+        "id": 1,
+        "name": "旧版城 2026 A",
+        "price": "約 200–400",
+        "currency": "HKD",
+        "venue_type": "restaurant",
+        "lat": 22.302,
+        "lon": 114.177,
+        "is_new": true,
+        "primary_area": "旧版城区域",
+        "guide_url": "https://guide.michelin.com/en/fixture/restaurant/example"
+      },
+      {
+        "city": "old-only",
+        "guide_type": "michelin-bib-gourmand",
+        "edition_year": 2026,
+        "cuisine_group": "NEW_GROUP",
+        "id": 2,
+        "name": "旧版城 2026 B",
+        "price": "100 起",
+        "currency": "CNY",
+        "venue_type": "dessert",
+        "lat": 22.31,
+        "lon": 114.18
+      },
+      {
+        "city": "old-only",
+        "guide_type": "michelin-bib-gourmand",
+        "edition_year": 2026,
+        "cuisine_group": "NEW_GROUP",
+        "id": 3,
+        "name": "旧版城 2026 无坐标",
+        "price": " 80–120 ",
+        "currency": "MOP",
+        "geocode_success": false
+      },
+      {
+        "city": "old-only",
+        "guide_type": "michelin-bib-gourmand",
+        "edition_year": 2026,
+        "cuisine_group": "OTHER",
+        "id": 4,
+        "name": "<img src=x onerror=\"window.p04Injected=true\">",
+        "address": "<script>window.p04Injected=true</script>",
+        "lat": 22.32,
+        "lon": 114.19
+      }
+    ]
+  }
+}

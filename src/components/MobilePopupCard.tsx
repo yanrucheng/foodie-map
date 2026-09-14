@@ -1,109 +1,72 @@
-import { useEffect, useRef } from "react";
+import { DialogSurface } from "./DialogSurface";
 import type { Restaurant } from "@/types/restaurant";
-import { getGroupStyle, getGroupLabel } from "@/config/cuisineRegistry";
+import { getGroupStyle, getGroupLabel, type CuisineGroup } from "@/config/cuisineRegistry";
+import { type SpatialContext } from "@/data/contract";
+import { restaurantFacts } from "@/data/display";
 
 interface MobilePopupCardProps {
   restaurant: Restaurant;
+  groups?: CuisineGroup[];
+  spatialContext?: SpatialContext;
   onClose: () => void;
-}
-
-/** Formats the most specific available spend value for the mobile detail card. */
-function formatAvgPrice(restaurant: Restaurant): string {
-  return String(
-    restaurant.avg_price ??
-      restaurant.avg_price_hkd ??
-      restaurant.avg_price_cny ??
-      restaurant.price_range ??
-      "未提供"
-  );
+  modal?: boolean;
 }
 
 /**
  * Full-width detail card that slides up from the bottom on mobile marker tap.
  * Replaces Leaflet's built-in popup for a touch-friendly, spacious layout.
  */
-export function MobilePopupCard({ restaurant, onClose }: MobilePopupCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  /* Close on outside tap (backdrop) */
-  useEffect(() => {
-    const handler = (e: PointerEvent) => {
-      if (cardRef.current && !cardRef.current.contains(e.target as Node)) {
-        onClose();
-      }
-    };
-    document.addEventListener("pointerdown", handler);
-    return () => document.removeEventListener("pointerdown", handler);
-  }, [onClose]);
-
+export function MobilePopupCard({ restaurant, onClose, groups, spatialContext, modal = true }: MobilePopupCardProps) {
   const groupStyle = getGroupStyle(restaurant.cuisine_group);
-  const groupLabel = getGroupLabel(restaurant.cuisine_group);
+  const facts = restaurantFacts(restaurant, getGroupLabel(restaurant.cuisine_group, groups), spatialContext);
 
   return (
-    <div className="mobile-popup-overlay">
-      <div className="mobile-popup-card" ref={cardRef}>
+    <DialogSurface label={`餐厅详情：${facts.name}`} className={`mobile-popup-overlay ${modal ? "" : "desktop-detail"}`} onClose={onClose} modal={modal}>
+      {modal && <div className="detail-backdrop" aria-hidden="true" onClick={onClose} />}
+      <div className="mobile-popup-card">
         {/* Close button */}
-        <button className="mobile-popup-close" onClick={onClose} aria-label="关闭">
+        <button className="mobile-popup-close" onClick={onClose} aria-label="关闭餐厅详情">
           ✕
         </button>
 
         {/* Restaurant name */}
-        <h3 className="mobile-popup-name">{restaurant.name_zh}</h3>
-        {restaurant.name_en && (
-          <p className="mobile-popup-en">{restaurant.name_en}</p>
+        <h2 className="mobile-popup-name">{facts.name}</h2>
+        {facts.secondaryName && (
+          <p className="mobile-popup-en">{facts.secondaryName}</p>
         )}
 
         {/* Tags row */}
         <div className="mobile-popup-tags">
-          <span
-            className="mobile-popup-tag"
-            style={{ background: groupStyle.color, color: groupStyle.textColor }}
-          >
-            {groupLabel}
-          </span>
-          <span className="mobile-popup-tag">{restaurant.cuisine}</span>
-          {restaurant.is_new && (
-            <span className="mobile-popup-tag mobile-popup-tag--new">2026 新晋</span>
-          )}
+          {facts.tags.map((tag, index) => (
+            <span key={index} className="mobile-popup-tag"
+              style={index === 0 ? { background: groupStyle.color, color: groupStyle.textColor } : undefined}>
+              {tag}
+            </span>
+          ))}
         </div>
 
         {/* Details grid */}
         <div className="mobile-popup-details">
-          <div className="mobile-popup-row">
-            <span className="mobile-popup-label">区域</span>
-            <span className="mobile-popup-value">{restaurant.area}</span>
-          </div>
-          <div className="mobile-popup-row">
-            <span className="mobile-popup-label">地址</span>
-            <span className="mobile-popup-value">{restaurant.address || "未提供"}</span>
-          </div>
-          <div className="mobile-popup-row">
-            <span className="mobile-popup-label">人均</span>
-            <span className="mobile-popup-value">{formatAvgPrice(restaurant)}</span>
-          </div>
-          <div className="mobile-popup-row">
-            <span className="mobile-popup-label">招牌菜</span>
-            <span className="mobile-popup-value">{restaurant.signature_dishes || "未提供"}</span>
-          </div>
-          {restaurant.geo_source === "district_fallback" && (
-            <div className="mobile-popup-row mobile-popup-row--note">
-              <span className="mobile-popup-value">⚠️ 区域 fallback（地图位置为近似点）</span>
+          {facts.details.map(([label, value]) => (
+            <div className="mobile-popup-row" key={label}>
+              <span className="mobile-popup-label">{label}</span>
+              <span className="mobile-popup-value">{value}</span>
             </div>
-          )}
+          ))}
         </div>
 
         {/* Michelin link */}
-        {restaurant.guide_url && (
+        {facts.guideUrl && (
           <a
             className="mobile-popup-link"
-            href={restaurant.guide_url}
+            href={facts.guideUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             查看米其林官方页面 →
           </a>
         )}
       </div>
-    </div>
+    </DialogSurface>
   );
 }

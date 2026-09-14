@@ -1,137 +1,127 @@
-import { useEffect, useRef, useCallback, useState } from "react";
+import type { BasemapId } from "@/config/basemaps";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { Map as LeafletMap } from "leaflet";
+import type { SpatialContext } from "@/data/contract";
 import { LocationButton } from "@/components/LocationButton";
 import { UserLocationMarker } from "@/components/UserLocationMarker";
-import { useGeolocation } from "./useGeolocation";
+import { projectMapPosition } from "@/utils/mapPosition";
+import { useGeolocation, type PositionFix, type LocationFailure } from "./useGeolocation";
 import { useDeviceOrientation } from "./useDeviceOrientation";
-import { wgs84ToGcj02 } from "@/utils/gcj02";
 
-/** Auto-stop timeout duration (5 minutes). */
-const AUTO_STOP_MS = 5 * 60 * 1000;
+export const LOCATION_SESSION_MS = 5 * 60 * 1000;
+interface Session { deadline: number; timer: ReturnType<typeof setTimeout>; firstFix: boolean }
+interface Binding { map: LeafletMap; marker: UserLocationMarker; button: LocationButton; spatialContext?: SpatialContext; basemap?: BasemapId }
 
-/**
- * Encapsulates all live location tracking logic: geolocation watching,
- * device orientation, auto-stop timer, visibility-change pause/resume,
- * and the UserLocationMarker lifecycle. Returns refs and handlers needed
- * by the parent MapShell component to wire up the LocationButton control.
- */
-export function useLocationTracking(mapRef: React.RefObject<LeafletMap | null>) {
-  const geo = useGeolocation();
-  const orientation = useDeviceOrientation();
-  const locationBtnRef = useRef<LocationButton | null>(null);
-  const locationMarkerRef = useRef<UserLocationMarker | null>(null);
-  const autoStopTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const wasTrackingRef = useRef(false);
+/** A user-started, fixed-deadline session. Background time counts; updates never extend it. */
+export function useLocationTracking() {
+  const { start: startGeo, stop: stopGeo } = useGeolocation();
+  const { start: startOrientation, stop: stopOrientation } = useDeviceOrientation();
+  const binding = useRef<Binding | null>(null);
+  const session = useRef<Session | null>(null);
+  const fix = useRef<PositionFix | null>(null);
+  const heading = useRef<number | null>(null);
+  const [locationMessage, setLocationMessage] = useState<string | null>(null);
 
-  /** Resets the auto-stop inactivity timer. */
-  const resetAutoStop = useCallback(() => {
-    if (autoStopTimerRef.current) clearTimeout(autoStopTimerRef.current);
-    autoStopTimerRef.current = setTimeout(() => {
-      geo.stop();
-      orientation.stop();
-      locationBtnRef.current?.setState("inactive");
-      locationMarkerRef.current?.remove();
-    }, AUTO_STOP_MS);
-  }, [geo, orientation]);
+  const stop = useCallback(() => {
+    const current = session.current;
+    session.current = null;
+    if (current) clearTimeout(current.timer);
+    stopGeo();
+    stopOrientation();
+    fix.current = null;
+    heading.current = null;
+    binding.current?.marker.remove();
+    binding.current?.button.setState("inactive");
+  }, [stopGeo, stopOrientation]);
 
-  /** Activate: starts geolocation + orientation from user gesture. */
-  const handleLocationActivate = useCallback(() => {
-    geo.start();
-    orientation.start();
-    resetAutoStop();
-  }, [geo, orientation, resetAutoStop]);
+  const expire = useCallback(() => {
+    stop();
+    setLocationMessage("本次定位已满 5 分钟，已停止。可点击定位按钮重新开启。");
+  }, [stop]);
 
-  /** Deactivate: stops all tracking, removes marker. */
-  const handleLocationDeactivate = useCallback(() => {
-    geo.stop();
-    orientation.stop();
-    locationMarkerRef.current?.remove();
-    if (autoStopTimerRef.current) {
-      clearTimeout(autoStopTimerRef.current);
-      autoStopTimerRef.current = null;
-    }
-  }, [geo, orientation]);
-
-  // State for location error feedback
-  const [locationError, setLocationError] = useState<string | null>(null);
-
-  // Handle geolocation errors — reset button and show feedback
-  useEffect(() => {
-    if (!geo.error) return;
-
-    const messages: Record<number, string> = {
-      1: "Location permission denied",
-      2: "Location unavailable",
-      3: "Location request timed out",
+  const sample = useCallback((current: Session, userGesture: boolean) => {
+    const valid = () => {
+      if (session.current !== current || !binding.current) return false;
+      if (Date.now() >= current.deadline) { expire(); return false; }
+      return !document.hidden;
     };
-    const msg = messages[geo.error.code] ?? "Location error";
-
-    locationBtnRef.current?.setState("inactive");
-    orientation.stop();
-    setLocationError(msg);
-    const timer = setTimeout(() => setLocationError(null), 3000);
-    return () => clearTimeout(timer);
-  }, [geo.error, orientation]);
-
-  // Sync geolocation & orientation state → UserLocationMarker
-  useEffect(() => {
-    if (!mapRef.current) return;
-    if (geo.lat === null || geo.lon === null || geo.accuracy === null) return;
-
-    // Transition button from "locating" to "tracking" on first fix
-    if (locationBtnRef.current?.getState() === "locating") {
-      locationBtnRef.current.setState("tracking");
-      mapRef.current.flyTo(wgs84ToGcj02(geo.lat, geo.lon), 15, { duration: 0.6 });
-    }
-
-    // Create marker instance lazily
-    if (!locationMarkerRef.current) {
-      locationMarkerRef.current = new UserLocationMarker(mapRef.current);
-    }
-
-    locationMarkerRef.current.update({
-      lat: geo.lat,
-      lon: geo.lon,
-      accuracy: geo.accuracy,
-      heading: orientation.heading,
-    });
-
-    resetAutoStop();
-  }, [geo.lat, geo.lon, geo.accuracy, orientation.heading, resetAutoStop]);
-
-  // Pause/resume on visibility change (battery preservation)
-  useEffect(() => {
-    const handleVisibility = () => {
-      if (document.hidden) {
-        if (geo.isActive) {
-          wasTrackingRef.current = true;
-          geo.stop();
-          orientation.stop();
-        }
-      } else {
-        if (wasTrackingRef.current) {
-          wasTrackingRef.current = false;
-          geo.start();
-          orientation.start();
-          resetAutoStop();
-        }
+    const fail = (error: LocationFailure) => {
+      if (session.current !== current) return;
+      stop();
+      const messages: Record<number, string> = {
+        0: "此浏览器不支持定位。", 1: "定位权限被拒绝，请在浏览器设置中允许后重试。",
+        2: "定位服务暂不可用，可点击定位按钮重试。", 3: "定位超时，可点击定位按钮重试。",
+      };
+      setLocationMessage(messages[error.code] ?? "定位失败，可点击定位按钮重试。");
+    };
+    // Request orientation permission synchronously within the initiating user gesture.
+    void startOrientation((value) => {
+      if (!valid()) return;
+      heading.current = value;
+      const target = binding.current;
+      if (target && fix.current) target.marker.update({ ...fix.current, heading: value }, target.spatialContext, target.basemap);
+    }, userGesture);
+    startGeo((value) => {
+      if (!valid()) return;
+      const target = binding.current!;
+      const position = projectMapPosition(value, target.spatialContext, target.basemap);
+      if (!position || !Number.isFinite(value.accuracy) || value.accuracy < 0) {
+        fail({ code: 2, message: "Invalid position" }); return;
       }
-    };
-    document.addEventListener("visibilitychange", handleVisibility);
-    return () => document.removeEventListener("visibilitychange", handleVisibility);
-  }, [geo, orientation, resetAutoStop]);
+      fix.current = value;
+      target.marker.update({ ...value, heading: heading.current }, target.spatialContext, target.basemap);
+      target.button.setState("tracking");
+      if (current.firstFix) {
+        current.firstFix = false;
+        target.map.flyTo(position, 15, { duration: 0.6 });
+      }
+    }, fail);
+  }, [expire, startGeo, startOrientation, stop]);
 
-  // Cleanup auto-stop timer on unmount
+  const start = useCallback(() => {
+    stop();
+    if (!binding.current) return;
+    setLocationMessage(null);
+    const current: Session = {
+      deadline: Date.now() + LOCATION_SESSION_MS,
+      timer: setTimeout(() => { if (session.current === current) expire(); }, LOCATION_SESSION_MS), firstFix: true,
+    };
+    session.current = current;
+    binding.current.button.setState("locating");
+    if (!document.hidden) sample(current, true);
+  }, [expire, sample, stop]);
+
   useEffect(() => {
-    return () => {
-      if (autoStopTimerRef.current) clearTimeout(autoStopTimerRef.current);
+    const visibility = () => {
+      const current = session.current;
+      if (!current) return;
+      if (Date.now() >= current.deadline) { expire(); return; }
+      if (document.hidden) {
+        stopGeo(); stopOrientation();
+        fix.current = null; heading.current = null;
+        binding.current?.marker.remove();
+        binding.current?.button.setState("locating");
+      } else sample(current, false);
     };
-  }, []);
+    document.addEventListener("visibilitychange", visibility);
+    return () => { document.removeEventListener("visibilitychange", visibility); stop(); };
+  }, [expire, sample, stop, stopGeo, stopOrientation]);
 
-  return {
-    locationBtnRef,
-    handleLocationActivate,
-    handleLocationDeactivate,
-    locationError,
-  };
+  /** Detach before map.remove(): no marker manager or button can retain a destroyed map. */
+  const attachTo = useCallback((map: LeafletMap, spatialContext?: SpatialContext, basemap?: BasemapId) => {
+    stop();
+    const button = new LocationButton({ onActivate: start, onDeactivate: () => { stop(); setLocationMessage(null); } });
+    const target: Binding = { map, button, marker: new UserLocationMarker(map), spatialContext, basemap };
+    binding.current = target;
+    button.addTo(map);
+    setLocationMessage(null);
+    return () => {
+      if (binding.current !== target) return;
+      stop();
+      button.remove(map);
+      binding.current = null;
+    };
+  }, [start, stop]);
+
+  return { attachTo, locationMessage };
 }

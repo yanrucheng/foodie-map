@@ -302,3 +302,27 @@
 .error-boundary-btn:active {
   transform: translateY(0);
 }
+
+/* P06: keep complete values readable and all interactive targets reachable. */
+.dynamic-title, .dynamic-title--compact { max-width: 100%; white-space: normal; overflow: visible; }
+.seg-picker { max-width: 100%; }
+.seg-chip { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.seg-chip--interactive { min-width: 44px; min-height: 44px; }
+.seg-chip-label { min-width: 0; }
+.seg-chip-caret { flex-shrink: 0; }
+.seg-dropdown { width: min(280px, calc(100vw - 16px)); overflow: auto; }
+.seg-dropdown-list { list-style: none; margin: 0; padding: 0; }
+.seg-dropdown-item, .seg-sheet-item { min-height: 44px; display: flex; gap: 12px; overflow-wrap: anywhere; }
+.seg-dropdown-item:focus-visible, .seg-sheet-item:focus-visible { outline-offset: -4px; }
+.seg-sheet-item-label { min-width: 0; }
+@media (min-width: 768px) {
+  .top-search { width: min(400px, calc(100vw - 32px)); }
+  .leaflet-control-container .leaflet-top.leaflet-left, .leaflet-control-container .leaflet-top.leaflet-right { margin-top: 88px; }
+  .leaflet-control-container .control-block { max-height: calc(100vh - 280px); max-width: 280px; overflow-y: auto; }
+  .leaflet-control-container .stats-panel { max-width: 240px; max-height: calc(100vh - 280px); overflow-y: auto; }
+  .search-wrap input, .search-wrap button, .mode-btn { min-height: 44px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .leaflet-control-container .control-block, .leaflet-control-container .stats-panel { min-width: 200px; max-width: 220px; }
+  .legend-card { width: calc(100vw - 320px); left: 240px; }
+}

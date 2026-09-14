@@ -8,9 +8,12 @@ export default defineConfig({
     },
   },
   test: {
-    environment: "jsdom",
-    include: ["tests/unit/**/*.test.ts"],
-    globals: true,
-    passWithNoTests: true,
+    environment: "node",
+    include: ["tests/unit/**/*.test.{ts,tsx}"],
+    setupFiles: ["tests/setup.ts"],
+    passWithNoTests: false,
+    restoreMocks: true,
+    unstubGlobals: true,
+    unstubEnvs: true,
   },
 });

@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback, useMemo } from "react";
+import { useState, useCallback, type RefObject, type ReactNode } from "react";
 import { usePanelState, type PanelId } from "@/hooks/usePanelState";
 import { BottomSheet } from "@/components/BottomSheet";
 import { FilterPanel } from "@/components/FilterPanel";
@@ -6,183 +6,68 @@ import { StatsPanelReact } from "@/components/StatsPanelReact";
 import { Legend } from "@/components/Legend";
 import { Header } from "@/components/Header";
 import { SearchBar } from "@/components/SearchBar";
-import { MapShell } from "@/components/MapShell";
+import { MapShell, type MapShellHandle, type MapShellProps } from "@/components/MapShell";
 import { MobilePopupCard } from "@/components/MobilePopupCard";
-import type { MapShellHandle } from "@/components/MapShell";
 import type { Restaurant } from "@/types/restaurant";
-import type { VenueFilter } from "@/hooks/useFilters";
 
-/** Tab button config for the FAB menu. */
 const PANEL_TABS: { id: PanelId; icon: string; label: string }[] = [
   { id: "filter", icon: "⚙", label: "筛选" },
   { id: "stats", icon: "📊", label: "统计" },
   { id: "legend", icon: "🎨", label: "图例" },
 ];
-
 interface MobileShellProps {
-  /** Header title area — accepts a ReactNode (e.g. DynamicTitle). */
-  headerContent: React.ReactNode;
-  subtitle: string;
-  restaurants: Restaurant[];
-  /** Distinct cuisine_group keys present in the loaded data. */
-  dataGroups: Set<string>;
-  activeGroups: Set<string>;
-  onToggle: (group: string) => void;
-  onToggleAll: () => void;
-  enableGroup: (group: string) => void;
-  venueFilter: VenueFilter;
-  onVenueFilterChange: (filter: VenueFilter) => void;
+  headerContent: ReactNode;
+  statusContent: ReactNode;
+  mapRef: RefObject<MapShellHandle | null>;
+  mapProps: MapShellProps;
+  onLocate: (restaurant: Restaurant) => void;
+  onMarkerTap: (restaurant: Restaurant) => void;
+  popupRestaurant: Restaurant | null;
+  onClosePopup: () => void;
+  searchKey: string;
   totalCount: number;
   geocodedCount: number;
-  center: [number, number];
-  zoom: number;
 }
 
-/**
- * Mobile-only layout orchestrator. Renders compact header, full-bleed map,
- * floating action button (FAB), and BottomSheet with tabbed panel content.
- * Enforces single-panel-at-a-time constraint via usePanelState.
- */
+/** Mobile layout consumes the same active dataset, filtered list and detail selection as desktop. */
 export function MobileShell({
-  headerContent,
-  subtitle,
-  restaurants,
-  dataGroups,
-  activeGroups,
-  onToggle,
-  onToggleAll,
-  enableGroup,
-  venueFilter,
-  onVenueFilterChange,
-  totalCount,
-  geocodedCount,
-  center,
-  zoom,
+  headerContent, statusContent, mapRef, mapProps, onLocate, onMarkerTap,
+  popupRestaurant, onClosePopup, searchKey, totalCount, geocodedCount,
 }: MobileShellProps) {
-  const mapRef = useRef<MapShellHandle>(null);
   const { activePanel, toggle, close } = usePanelState();
+  const [panelContext, setPanelContext] = useState(searchKey);
+  if (panelContext !== searchKey) { setPanelContext(searchKey); close(); }
   const [displayMode, setDisplayMode] = useState<"marker" | "heat">("marker");
-  const [popupRestaurant, setPopupRestaurant] = useState<Restaurant | null>(null);
+  const handleLocate = useCallback((restaurant: Restaurant) => {
+    onLocate(restaurant);
+    close();
+  }, [onLocate, close]);
+  const handleModeToggle = useCallback(() => { mapRef.current?.toggleMode(); }, [mapRef]);
+  const panelTitles: Record<PanelId, string> = { filter: "筛选", stats: "区域统计", legend: "图例" };
 
-  /** Handle marker tap on mobile: show full-width popup card. */
-  const handleMarkerTap = useCallback((restaurant: Restaurant) => {
-    setPopupRestaurant(restaurant);
-  }, []);
-
-  /** Close the mobile popup card. */
-  const handleClosePopup = useCallback(() => {
-    setPopupRestaurant(null);
-  }, []);
-
-  /** Handle search locate: enable group filter if needed, then fly to marker. */
-  const handleLocate = useCallback(
-    (restaurant: Restaurant) => {
-      if (!activeGroups.has(restaurant.cuisine_group)) {
-        enableGroup(restaurant.cuisine_group);
-      }
-      mapRef.current?.flyToRestaurant(restaurant);
-      close();
-    },
-    [activeGroups, enableGroup, close]
-  );
-
-  /** Toggle display mode via MapShell's imperative handle. */
-  const handleModeToggle = useCallback(() => {
-    mapRef.current?.toggleMode();
-  }, []);
-
-  /** Visible restaurants filtered by active cuisine groups and venue type. */
-  const visibleRestaurants = useMemo(
-    () => restaurants.filter((r) =>
-      activeGroups.has(r.cuisine_group) &&
-      (venueFilter === "all" || r.venue_type === venueFilter)
-    ),
-    [restaurants, activeGroups, venueFilter]
-  );
-
-  /** Panel titles for the bottom sheet header. */
-  const panelTitles: Record<PanelId, string> = {
-    filter: "筛选",
-    stats: "区域统计",
-    legend: "图例",
-  };
-
-  return (
-    <div className="mobile-shell">
-      {/* Compact header */}
-      <Header subtitle={subtitle} compact>
-        {headerContent}
-      </Header>
-
-      {/* Search bar */}
-      <div className="mobile-search-area">
-        <SearchBar restaurants={restaurants} onLocate={handleLocate} />
-      </div>
-
-      {/* Full-bleed map */}
-      <main className="mobile-map-container">
-        <MapShell
-          ref={mapRef}
-          restaurants={restaurants}
-          dataGroups={dataGroups}
-          activeGroups={activeGroups}
-          onToggleGroup={onToggle}
-          onToggleAll={onToggleAll}
-          venueFilter={venueFilter}
-          onVenueFilterChange={onVenueFilterChange}
-          center={center}
-          zoom={zoom}
-          hideControls
-          onModeChange={setDisplayMode}
-          onMarkerTap={handleMarkerTap}
-        />
-      </main>
-
-      {/* FAB - floating action buttons */}
-      <div className="mobile-fab-group">
-        {PANEL_TABS.map((tab) => (
-          <button
-            key={tab.id}
-            className={`mobile-fab-btn ${activePanel === tab.id ? "active" : ""}`}
-            onClick={() => toggle(tab.id)}
-            aria-label={tab.label}
-          >
-            <span className="fab-icon">{tab.icon}</span>
-          </button>
-        ))}
-      </div>
-
-      {/* Bottom Sheet */}
-      <BottomSheet
-        isOpen={activePanel !== null}
-        title={activePanel ? panelTitles[activePanel] : undefined}
-        onClose={close}
-      >
-        {activePanel === "filter" && (
-          <FilterPanel
-            dataGroups={dataGroups}
-            activeGroups={activeGroups}
-            onToggle={onToggle}
-            onToggleAll={onToggleAll}
-            venueFilter={venueFilter}
-            onVenueFilterChange={onVenueFilterChange}
-            onModeToggle={handleModeToggle}
-            currentMode={displayMode}
-            variant="pill"
-          />
-        )}
-        {activePanel === "stats" && (
-          <StatsPanelReact restaurants={visibleRestaurants} />
-        )}
-        {activePanel === "legend" && (
-          <Legend dataGroups={dataGroups} totalCount={totalCount} geocodedCount={geocodedCount} compact />
-        )}
-      </BottomSheet>
-
-      {/* Mobile popup card — shown on marker tap */}
-      {popupRestaurant && (
-        <MobilePopupCard restaurant={popupRestaurant} onClose={handleClosePopup} />
-      )}
+  return <div className="mobile-shell">
+    <Header subtitle="" compact>{headerContent}{statusContent}</Header>
+    <div className="mobile-search-area" role="search" aria-label="餐厅搜索">
+      <SearchBar key={searchKey} restaurants={mapProps.restaurants} onLocate={handleLocate} />
     </div>
-  );
+    <main className="mobile-map-container">
+      <MapShell ref={mapRef} {...mapProps} hideControls onModeChange={setDisplayMode} onMarkerTap={onMarkerTap} />
+    </main>
+    <div className="mobile-fab-group">
+      {PANEL_TABS.map((tab) => <button key={tab.id} className={`mobile-fab-btn ${activePanel === tab.id ? "active" : ""}`}
+        onClick={(event) => { event.currentTarget.focus(); toggle(tab.id); }} data-focus-key={`panel-${tab.id}`} aria-expanded={activePanel === tab.id} aria-controls={activePanel === tab.id ? "mobile-panel" : undefined} aria-haspopup="dialog" aria-label={tab.label}><span className="fab-icon">{tab.icon}</span></button>)}
+    </div>
+    <BottomSheet key={searchKey} id="mobile-panel" isOpen={activePanel !== null} title={activePanel ? panelTitles[activePanel] : undefined} onClose={close}>
+      {activePanel === "filter" && <FilterPanel
+        groups={mapProps.groups} dataGroups={mapProps.dataGroups} activeGroups={mapProps.activeGroups}
+        onToggle={mapProps.onToggleGroup} onToggleAll={mapProps.onToggleAll}
+        venueFilter={mapProps.venueFilter} onVenueFilterChange={mapProps.onVenueFilterChange}
+        onModeToggle={handleModeToggle} currentMode={displayMode} variant="pill"
+      />}
+      {activePanel === "stats" && <StatsPanelReact restaurants={mapProps.visibleRestaurants} />}
+      {activePanel === "legend" && <Legend groups={mapProps.groups} dataGroups={mapProps.dataGroups}
+        totalCount={totalCount} geocodedCount={geocodedCount} compact />}
+    </BottomSheet>
+    {popupRestaurant && <MobilePopupCard restaurant={popupRestaurant} groups={mapProps.groups} spatialContext={mapProps.spatialContext} onClose={onClosePopup} />}
+  </div>;
 }

@@ -1,134 +1,44 @@
-import { useState, useEffect, useCallback, useRef } from "react";
-import type { GeolocationState } from "../types/geolocation";
-import { isGeolocationSupported } from "../utils/permissions";
+import { useCallback, useEffect, useRef } from "react";
+import { isGeolocationSupported } from "@/utils/permissions";
 
-/** Minimum movement in meters before updating state (reduces jitter). */
-const MIN_MOVEMENT_THRESHOLD = 3;
+export interface PositionFix { lat: number; lon: number; accuracy: number }
+export interface LocationFailure { code: number; message: string }
+const WATCH_OPTIONS: PositionOptions = { enableHighAccuracy: true, maximumAge: 5_000, timeout: 15_000 };
 
-/** Options passed to watchPosition for high-accuracy GPS. */
-const WATCH_OPTIONS: PositionOptions = {
-  enableHighAccuracy: true,
-  maximumAge: 5_000,
-  timeout: 15_000,
-};
-
-/** Haversine distance between two coordinates in meters. */
-function haversineMeters(
-  lat1: number,
-  lon1: number,
-  lat2: number,
-  lon2: number,
-): number {
-  const R = 6_371_000;
-  const toRad = (d: number) => (d * Math.PI) / 180;
-  const dLat = toRad(lat2 - lat1);
-  const dLon = toRad(lon2 - lon1);
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-}
-
-/**
- * Reactive hook that wraps navigator.geolocation.watchPosition.
- * Exposes live position state with jitter filtering (minimum movement threshold).
- * Automatically cleans up the watcher on unmount or when stopped.
- */
+/** Owns one browser watch. Each start/stop invalidates even already-queued callbacks. */
 export function useGeolocation() {
-  const [state, setState] = useState<GeolocationState>({
-    lat: null,
-    lon: null,
-    accuracy: null,
-    isActive: false,
-    error: null,
-  });
-
-  const watchIdRef = useRef<number | null>(null);
-  const lastPosRef = useRef<{ lat: number; lon: number } | null>(null);
-
-  /** Handles incoming position updates with jitter filtering. */
-  const onPosition = useCallback((pos: GeolocationPosition) => {
-    const { latitude, longitude, accuracy } = pos.coords;
-    const last = lastPosRef.current;
-
-    // Skip update if movement is below threshold (reduces jittery re-renders)
-    if (last) {
-      const moved = haversineMeters(last.lat, last.lon, latitude, longitude);
-      if (moved < MIN_MOVEMENT_THRESHOLD) return;
-    }
-
-    lastPosRef.current = { lat: latitude, lon: longitude };
-    setState({
-      lat: latitude,
-      lon: longitude,
-      accuracy: accuracy,
-      isActive: true,
-      error: null,
-    });
+  const watch = useRef<number | null>(null);
+  const generation = useRef(0);
+  const stop = useCallback(() => {
+    generation.current++;
+    if (watch.current !== null) navigator.geolocation.clearWatch(watch.current);
+    watch.current = null;
   }, []);
-
-  /** Handles geolocation errors. Clears the watch and stops tracking. */
-  const onError = useCallback((err: GeolocationPositionError) => {
-    // Clear the watch to prevent repeated error callbacks
-    if (watchIdRef.current !== null) {
-      navigator.geolocation.clearWatch(watchIdRef.current);
-      watchIdRef.current = null;
-    }
-    setState({
-      lat: null,
-      lon: null,
-      accuracy: null,
-      isActive: false,
-      error: err,
-    });
-  }, []);
-
-  /** Starts the position watcher. Sets error if API unavailable. */
-  const start = useCallback(() => {
-    if (watchIdRef.current !== null) return;
+  const start = useCallback((onPosition: (fix: PositionFix) => void, onError: (error: LocationFailure) => void) => {
+    stop();
+    const token = generation.current;
     if (!isGeolocationSupported()) {
-      setState({
-        lat: null,
-        lon: null,
-        accuracy: null,
-        isActive: false,
-        error: { code: 2, message: "Geolocation not supported", PERMISSION_DENIED: 1, POSITION_UNAVAILABLE: 2, TIMEOUT: 3 } as GeolocationPositionError,
-      });
+      onError({ code: 0, message: "此浏览器不支持定位。" });
       return;
     }
-
-    setState((prev) => ({ ...prev, isActive: true, error: null }));
-    watchIdRef.current = navigator.geolocation.watchPosition(
-      onPosition,
-      onError,
-      WATCH_OPTIONS,
-    );
-  }, [onPosition, onError]);
-
-  /** Stops the position watcher and resets state. */
-  const stop = useCallback(() => {
-    if (watchIdRef.current !== null) {
-      navigator.geolocation.clearWatch(watchIdRef.current);
-      watchIdRef.current = null;
+    try {
+      const id = navigator.geolocation.watchPosition((position) => {
+        if (token !== generation.current) return;
+        const { latitude: lat, longitude: lon, accuracy } = position.coords;
+        // Keep accuracy-only updates. Rendering is cheap; dropping these preserves stale circles.
+        onPosition({ lat, lon, accuracy });
+      }, (error) => {
+        if (token !== generation.current) return;
+        stop();
+        onError(error);
+      }, WATCH_OPTIONS);
+      // Also safe with synchronous adapters in tests: a failure may already have stopped this watch.
+      if (token === generation.current) watch.current = id;
+      else navigator.geolocation.clearWatch(id);
+    } catch {
+      if (token === generation.current) { stop(); onError({ code: 2, message: "定位服务暂不可用。" }); }
     }
-    lastPosRef.current = null;
-    setState({
-      lat: null,
-      lon: null,
-      accuracy: null,
-      isActive: false,
-      error: null,
-    });
-  }, []);
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (watchIdRef.current !== null) {
-        navigator.geolocation.clearWatch(watchIdRef.current);
-      }
-    };
-  }, []);
-
-  return { ...state, start, stop };
+  }, [stop]);
+  useEffect(() => stop, [stop]);
+  return { start, stop };
 }

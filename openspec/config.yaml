@@ -1,0 +1,34 @@
+schema: spec-driven
+
+context: |
+  Foodie Map is a React 19 + Vite + TypeScript static restaurant map.
+  Existing data: public/data/<city>/<guide>.json; cuisine taxonomy and mappings:
+  public/data/taxonomy/. Map stack: Leaflet, marker clusters and heat layers.
+  Planning entry: docs/plan/plan-260913-0040-frontend-professionalization.md.
+  A Packet is a standard OpenSpec change. Use the default spec-driven schema.
+  This initiative defines goals, acceptance scenarios and developer handoffs.
+  Product code, restaurant data, deployment and implementation remain separate work.
+  Keep static hosting; anchor purpose, authoritative data homes and real invariants.
+  Implementation methods can change if the observable acceptance contract holds.
+  Planning/acceptance owner is the primary agent; implementation agents submit evidence.
+  Proposal/spec/design/task artifacts being present does not mean implementation passed.
+  Public-use and legacy data URL compatibility are tracked as decision BC-01 in the plan.
+  Read its current state before implementing any migration.
+
+rules:
+  proposal:
+    - State the packet outcome, boundary, dependencies and affected authoritative sources.
+    - List exactly the capabilities implemented by this change; do not create duplicate packet registries.
+  specs:
+    - Write normative requirements with SHALL or MUST and WHEN/THEN scenarios.
+    - Use stable IDs Pxx-Rn for requirements and Pxx-Rn-Sn for scenarios.
+    - Define evidence and failure behavior; do not claim official coverage from file counts alone.
+  design:
+    - Separate stable constraints from implementation choices delegated to the developer.
+    - Explain ownership, dependencies, compatibility, migration risks and unresolved evidence.
+    - Do not mandate additional services, frameworks or entities without a necessary responsibility.
+  tasks:
+    - Reference requirement IDs and specify a verifiable deliverable for each task.
+    - Leave implementation and acceptance checkboxes unchecked until the corresponding work is done.
+    - Keep developer evidence and the acceptance owner's decision in tasks.md.
+

@@ -1,9 +1,20 @@
+import catalog from "../../public/data/catalog.json" with { type: "json" };
+import { catalogCities } from "../data/catalog.ts";
+import type { SpatialContext } from "../data/contract.ts";
+import type { BasemapId } from "./basemaps.ts";
+
 /** Configuration for a supported city in the app. */
 export interface CityConfig {
   id: string;
   label: string;
   labelZh: string;
   center: [number, number];
+  /** Optional spatial metadata supplied by the discovery adapter. Omitted means WGS84. */
+  spatialContext?: SpatialContext;
+  basemap?: BasemapId;
+  taxonomyPath?: string;
+  mappingsPath?: string;
+  scope?: { description: string; members: string[] };
   zoom: number;
   guides: GuideConfig[];
 }
@@ -15,139 +26,9 @@ export interface GuideConfig {
   labelZh: string;
   year: number;
   dataPath: string;
+  coverage?: import("../data/catalog.ts").CatalogGuide["coverage"];
+  provenance?: import("../data/catalog.ts").CatalogGuide["provenance"];
 }
 
-/** Registry of all available cities. Add new cities here to expand coverage. */
-export const cities: CityConfig[] = [
-  {
-    id: "hong-kong",
-    label: "Hong Kong",
-    labelZh: "香港",
-    center: [22.302, 114.177],
-    zoom: 11,
-    guides: [
-      {
-        id: "michelin-bib-gourmand",
-        label: "Michelin Bib Gourmand 2026",
-        labelZh: "米其林必比登",
-        year: 2026,
-        dataPath: "/data/hong-kong/michelin-bib-gourmand.json",
-      },
-      {
-        id: "michelin-starred",
-        label: "Michelin Starred 2026",
-        labelZh: "米其林星级",
-        year: 2026,
-        dataPath: "/data/hong-kong/michelin-starred.json",
-      },
-    ],
-  },
-  {
-    id: "beijing",
-    label: "Beijing",
-    labelZh: "北京",
-    center: [39.904, 116.407],
-    zoom: 11,
-    guides: [
-      {
-        id: "michelin-bib-gourmand",
-        label: "Michelin Bib Gourmand 2026",
-        labelZh: "米其林必比登",
-        year: 2026,
-        dataPath: "/data/beijing/michelin-bib-gourmand.json",
-      },
-      {
-        id: "michelin-starred",
-        label: "Michelin Starred 2026",
-        labelZh: "米其林星级",
-        year: 2026,
-        dataPath: "/data/beijing/michelin-starred.json",
-      },
-    ],
-  },
-  {
-    id: "guangzhou-shenzhen",
-    label: "Guangzhou & Shenzhen",
-    labelZh: "广州 · 深圳",
-    center: [23.13, 113.26],
-    zoom: 10,
-    guides: [
-      {
-        id: "michelin-starred",
-        label: "Michelin Starred 2026",
-        labelZh: "米其林星级",
-        year: 2026,
-        dataPath: "/data/guangzhou-shenzhen/michelin-starred.json",
-      },
-      {
-        id: "michelin-bib-gourmand",
-        label: "Michelin Bib Gourmand 2026",
-        labelZh: "米其林必比登",
-        year: 2026,
-        dataPath: "/data/guangzhou-shenzhen/michelin-bib-gourmand.json",
-      },
-    ],
-  },
-  {
-    id: "shanghai",
-    label: "Shanghai",
-    labelZh: "上海",
-    center: [31.2304, 121.4737],
-    zoom: 11,
-    guides: [
-      {
-        id: "michelin-starred",
-        label: "Michelin Starred 2026",
-        labelZh: "米其林星级",
-        year: 2026,
-        dataPath: "/data/shanghai/michelin-starred.json",
-      },
-      {
-        id: "michelin-bib-gourmand",
-        label: "Michelin Bib Gourmand 2026",
-        labelZh: "米其林必比登",
-        year: 2026,
-        dataPath: "/data/shanghai/michelin-bib-gourmand.json",
-      },
-    ],
-  },
-  {
-    id: "chengdu",
-    label: "Chengdu",
-    labelZh: "成都",
-    center: [30.572, 104.066],
-    zoom: 12,
-    guides: [
-      {
-        id: "michelin-starred",
-        label: "Michelin Starred 2026",
-        labelZh: "米其林星级",
-        year: 2026,
-        dataPath: "/data/chengdu/michelin-starred.json",
-      },
-    ],
-  },
-  {
-    id: "macau",
-    label: "Macau",
-    labelZh: "澳門",
-    center: [22.166, 113.559],
-    zoom: 13,
-    guides: [
-      {
-        id: "michelin-starred",
-        label: "Michelin Starred 2026",
-        labelZh: "米其林星級",
-        year: 2026,
-        dataPath: "/data/macau/michelin-starred.json",
-      },
-      {
-        id: "michelin-bib-gourmand",
-        label: "Michelin Bib Gourmand 2026",
-        labelZh: "米其林必比登",
-        year: 2026,
-        dataPath: "/data/macau/michelin-bib-gourmand.json",
-      },
-    ],
-  },
-];
+/** Adapter only. All discovery facts belong to public/data/catalog.json. */
+export const cities: CityConfig[] = catalogCities(catalog);

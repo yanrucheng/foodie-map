@@ -1,12 +1,14 @@
 /* ─────────────────────────────────────────────────
    Markers & Popups
    ───────────────────────────────────────────────── */
+/* Standard tile compositing also lets contrast audits resolve map overlays reliably. */
+#map img.leaflet-tile { mix-blend-mode: normal; }
 .marker-dot { width: 18px; height: 18px; border-radius: 999px; border: 2px solid rgba(255,255,255,0.92); box-shadow: 0 8px 18px rgba(0,0,0,0.32); position: relative; }
 .marker-dot.new::after { content: 'NEW'; position: absolute; left: 50%; top: -13px; transform: translateX(-50%); font-size: 8px; font-weight: 700; background: linear-gradient(135deg, #c89e39, #f5de9c); color: #3b2d00; padding: 1px 4px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.55); }
 .marker-dot.new { border-color: #f5d77d; box-shadow: 0 0 0 3px rgba(232, 194, 81, 0.18), 0 8px 18px rgba(0,0,0,0.32); }
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #101821; color: var(--text); }
 .popup { min-width: 250px; }
-.popup h3 { margin: 0 0 6px; font-size: 16px; }
+.popup h2 { margin: 0 0 6px; font-size: 16px; }
 .popup .en { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
 .popup .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .popup .tag { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 4px 8px; font-size: 11px; background: rgba(255,255,255,0.08); color: var(--text); }
@@ -22,7 +24,7 @@
 /* ─────────────────────────────────────────────────
    Cluster Badge
    ───────────────────────────────────────────────── */
-.cluster-badge { background: rgba(27,38,54,0.92); color: #fff; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-weight: 700; box-shadow: 0 12px 24px rgba(0,0,0,0.22); }
+.cluster-badge { background: #1b2636; color: #fff; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-weight: 700; box-shadow: 0 12px 24px rgba(0,0,0,0.22); }
 
 /* ─────────────────────────────────────────────────
    User Location Marker
@@ -86,7 +88,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 10000;
-  background: rgba(30, 30, 30, 0.88);
+  background: #1e1e1e;
   color: #fff;
   font-size: 13px;
   font-weight: 500;
@@ -106,3 +108,15 @@
    Location Button — Mobile FAB clearance
    ───────────────────────────────────────────────── */
 .mobile-shell .leaflet-bottom.leaflet-right { margin-bottom: 190px; }
+
+/* P06: selected facts do not depend on the map's clipped popup viewport. */
+.leaflet-popup-content { max-height: min(55vh, 440px); overflow-y: auto; overflow-wrap: anywhere; }
+.popup { min-width: 0; }
+.popup a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; }
+.leaflet-container a.leaflet-popup-close-button { width: 44px; height: 44px; display: grid; place-items: center; color: #ecf1f7; background: #202e3f; border-radius: 8px; }
+.leaflet-popup-content-wrapper { padding-top: 32px; }
+.leaflet-touch .leaflet-bar a { min-width: 44px; min-height: 44px; }
+.loc-error-toast { white-space: normal; overflow-wrap: anywhere; width: max-content; max-width: calc(100vw - 24px); }
+
+.leaflet-control-attribution a { text-decoration: underline; }
+.leaflet-control-scale-line, .leaflet-container .leaflet-control-attribution { background: #fff; color: #333; text-shadow: none; }

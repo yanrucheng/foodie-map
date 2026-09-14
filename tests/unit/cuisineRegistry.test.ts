@@ -5,19 +5,21 @@
 
 import { describe, it, expect } from "vitest";
 import { getGroupStyle, getGroupLabel, FALLBACK_GROUP } from "@/config/cuisineRegistry";
+import hongKong from "../../public/data/taxonomy/hong-kong.json";
+import beijing from "../../public/data/taxonomy/beijing.json";
 
 describe("cuisineRegistry", () => {
   describe("getGroupStyle", () => {
     it("should return correct style for CANTONESE group", () => {
       const style = getGroupStyle("CANTONESE");
       expect(style.color).toBe("#D64C4C");
-      expect(style.textColor).toBe("#fff");
+      expect(style.textColor).toBe("#000");
     });
 
     it("should return correct style for DIM_SUM group", () => {
       const style = getGroupStyle("DIM_SUM");
       expect(style.color).toBe("#43A36B");
-      expect(style.textColor).toBe("#fff");
+      expect(style.textColor).toBe("#000");
     });
 
     it("should return fallback style for unknown group key", () => {
@@ -34,12 +36,12 @@ describe("cuisineRegistry", () => {
 
   describe("getGroupLabel", () => {
     it("should return Chinese label for CANTONESE", () => {
-      const label = getGroupLabel("CANTONESE");
+      const label = getGroupLabel("CANTONESE", hongKong.groups);
       expect(label).toBe("粵菜 · 港式");
     });
 
     it("should return Chinese label for DIM_SUM", () => {
-      const label = getGroupLabel("DIM_SUM");
+      const label = getGroupLabel("DIM_SUM", hongKong.groups);
       expect(label).toBe("點心 · 茶樓");
     });
 
@@ -58,5 +60,12 @@ describe("cuisineRegistry", () => {
     it("should be OTHER", () => {
       expect(FALLBACK_GROUP).toBe("OTHER");
     });
+  });
+
+  it("uses the current city's labels and accepts new groups without a city branch", () => {
+    expect(getGroupLabel("CANTONESE", beijing.groups)).toBe(beijing.groups.find((group) => group.key === "CANTONESE")?.labelZh);
+    expect(getGroupLabel("CANTONESE", beijing.groups)).not.toBe(getGroupLabel("CANTONESE", hongKong.groups));
+    expect(getGroupLabel("NEW_GROUP", [{ key: "NEW_GROUP", labelZh: "新菜系", labelEn: "New", sortOrder: 1 }])).toBe("新菜系");
+    expect(getGroupStyle("NEW_GROUP")).toEqual(getGroupStyle("OTHER"));
   });
 });

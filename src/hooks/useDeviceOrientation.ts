@@ -1,114 +1,46 @@
-import { useState, useEffect, useCallback, useRef } from "react";
-import type { OrientationState } from "../types/geolocation";
-import {
-  isOrientationSupported,
-  requestOrientationPermission,
-} from "../utils/permissions";
+import { useCallback, useEffect, useRef } from "react";
+import { isOrientationSupported, requestOrientationPermission } from "@/utils/permissions";
 
-/** Throttle interval for orientation updates (ms). */
-const THROTTLE_MS = 100;
+/** An absolute compass only; relative alpha is not a north-referenced heading. */
+export function absoluteHeading(event: DeviceOrientationEvent): number | null {
+  const ios = event as DeviceOrientationEvent & { webkitCompassHeading?: number; webkitCompassAccuracy?: number };
+  if (typeof ios.webkitCompassHeading === "number" && Number.isFinite(ios.webkitCompassHeading) && ios.webkitCompassHeading >= 0 &&
+    (ios.webkitCompassAccuracy === undefined || (Number.isFinite(ios.webkitCompassAccuracy) && ios.webkitCompassAccuracy >= 0))) {
+    return ios.webkitCompassHeading % 360;
+  }
+  return event.absolute && typeof event.alpha === "number" && Number.isFinite(event.alpha)
+    ? (360 - event.alpha % 360) % 360 : null;
+}
 
-/**
- * Reactive hook wrapping the DeviceOrientation API.
- * Exposes compass heading (degrees from north) with throttled updates.
- * Handles both Android (`deviceorientationabsolute`) and iOS (`webkitCompassHeading`).
- * Gracefully degrades to a no-op on desktop/unsupported browsers.
- */
+/** Permission continuations and event callbacks belong to the start that created them. */
 export function useDeviceOrientation() {
-  const [state, setState] = useState<OrientationState>({
-    heading: null,
-    isSupported: isOrientationSupported(),
-  });
-
-  const activeRef = useRef(false);
-  const lastUpdateRef = useRef(0);
-
-  /** Handles incoming orientation events with throttling. */
-  const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
-    const now = Date.now();
-    if (now - lastUpdateRef.current < THROTTLE_MS) return;
-    lastUpdateRef.current = now;
-
-    // iOS provides webkitCompassHeading (degrees from north, 0–360)
-    const iosHeading = (event as DeviceOrientationEvent & { webkitCompassHeading?: number })
-      .webkitCompassHeading;
-
-    // Android/Chrome provides event.alpha on `deviceorientationabsolute`
-    // alpha = rotation around z-axis; heading = 360 - alpha
-    let heading: number | null = null;
-
-    if (typeof iosHeading === "number" && iosHeading >= 0) {
-      heading = iosHeading;
-    } else if (event.absolute && typeof event.alpha === "number") {
-      heading = (360 - event.alpha) % 360;
-    } else if (typeof event.alpha === "number") {
-      // Fallback: non-absolute alpha (less accurate but usable)
-      heading = (360 - event.alpha) % 360;
-    }
-
-    if (heading !== null) {
-      setState({ heading: Math.round(heading), isSupported: true });
-    }
-  }, []);
-
-  /** Removes all orientation listeners. */
-  const cleanup = useCallback(() => {
-    window.removeEventListener(
-      "deviceorientationabsolute" as keyof WindowEventMap,
-      handleOrientation as EventListener,
-    );
-    window.removeEventListener("deviceorientation", handleOrientation);
-  }, [handleOrientation]);
-
-  /**
-   * Starts listening for device orientation.
-   * On iOS 13+, must be called from a user gesture handler (click/tap).
-   * Returns the permission result.
-   */
-  const start = useCallback(async (): Promise<"granted" | "denied" | "unavailable"> => {
-    if (!isOrientationSupported()) {
-      setState({ heading: null, isSupported: false });
-      return "unavailable";
-    }
-
-    // Request iOS permission (no-op on non-iOS)
-    const permission = await requestOrientationPermission();
-    if (permission === "denied") {
-      return "denied";
-    }
-
-    activeRef.current = true;
-
-    // Prefer `deviceorientationabsolute` (Android: gives true north heading)
-    const hasAbsolute = "ondeviceorientationabsolute" in window;
-    if (hasAbsolute) {
-      window.addEventListener(
-        "deviceorientationabsolute" as keyof WindowEventMap,
-        handleOrientation as EventListener,
-        { passive: true },
-      );
-    } else {
-      window.addEventListener("deviceorientation", handleOrientation, {
-        passive: true,
-      });
-    }
-
-    return "granted";
-  }, [handleOrientation]);
-
-  /** Stops orientation tracking and resets heading. */
+  const generation = useRef(0);
+  const cleanup = useRef<(() => void) | null>(null);
+  const granted = useRef(false);
   const stop = useCallback(() => {
-    activeRef.current = false;
-    cleanup();
-    setState((prev) => ({ ...prev, heading: null }));
-  }, [cleanup]);
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      cleanup();
+    generation.current++;
+    cleanup.current?.();
+    cleanup.current = null;
+  }, []);
+  const start = useCallback(async (onHeading: (heading: number | null) => void, userGesture: boolean) => {
+    stop();
+    const token = generation.current;
+    if (!isOrientationSupported()) return;
+    // Resuming in the foreground never asks for permission. A late initial grant is discarded.
+    if (!granted.current) {
+      if (!userGesture) return;
+      const permission = await requestOrientationPermission();
+      if (token !== generation.current || permission !== "granted") return;
+      granted.current = true;
+    }
+    if (token !== generation.current) return;
+    const type = "ondeviceorientationabsolute" in window ? "deviceorientationabsolute" : "deviceorientation";
+    const listener = (event: Event) => {
+      if (token === generation.current) onHeading(absoluteHeading(event as DeviceOrientationEvent));
     };
-  }, [cleanup]);
-
-  return { ...state, start, stop };
+    window.addEventListener(type, listener, { passive: true });
+    cleanup.current = () => window.removeEventListener(type, listener);
+  }, [stop]);
+  useEffect(() => stop, [stop]);
+  return { start, stop };
 }

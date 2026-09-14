@@ -1,0 +1,33 @@
+[
+  {
+    "guide": "michelin-starred",
+    "counts": {
+      "listed": 158,
+      "locatable": 157,
+      "missing_cuisine": 0,
+      "unmapped": 0,
+      "explicit_other": 0
+    },
+    "diagnostics": [
+      {
+        "severity": "warning",
+        "code": "DUPLICATE_COORDINATES",
+        "file": "eval/sessions/260914-1037-tokyo-michelin/outputs/michelin-starred-boarded.json",
+        "field": "/134/lat",
+        "reason": "Same coordinates as record 133; records are retained",
+        "record_id": 135
+      }
+    ]
+  },
+  {
+    "guide": "michelin-bib-gourmand",
+    "counts": {
+      "listed": 111,
+      "locatable": 111,
+      "missing_cuisine": 0,
+      "unmapped": 0,
+      "explicit_other": 0
+    },
+    "diagnostics": []
+  }
+]

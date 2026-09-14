@@ -1,0 +1,70 @@
+/** Developer replay; independent maintainer acceptance is deliberately not claimed. */
+import assert from "node:assert/strict";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { join, resolve, dirname } from "node:path";
+import { spawnSync } from "node:child_process";
+import { parseArgs } from "node:util";
+import { p03Fixture, oldPath, nextPath, url } from "../fixtures/p03Catalog.ts";
+import { validateCatalogRoot } from "../../scripts/catalog.ts";
+import { fileManifest, sha256 } from "../../scripts/release-artifact.ts";
+const { values } = parseArgs({ options: { output: { type: "string", default: "test-results/p03-rehearsal" } } });
+const output = resolve(values.output), root = join(output, "public/data"), document = join(output, "coverage.md");
+const businessBefore = await fileManifest(resolve("src"));
+const fixture = p03Fixture();
+const file = (ref) => join(root, ref.replace(/^\/data\//u, ""));
+const put = async (ref, value) => { await mkdir(dirname(file(ref)), { recursive: true }); await writeFile(file(ref), JSON.stringify(value, null, 2) + "\n"); };
+await mkdir(output, { recursive: true });
+for (const [ref, value] of Object.entries(fixture.payloads)) await put(ref, value);
+await put("/data/catalog.json", fixture.catalog);
+await writeFile(document, "<!-- COVERAGE_TABLE_START -->\n<!-- COVERAGE_TABLE_END -->\n");
+const result = { developerReplay: true, independentAcceptance: false, node: process.version, root, commands: [], faults: [], businessBefore };
+const run = async (name, args, expected) => {
+  const command = args[0], argv = args.slice(1);
+  const execution = spawnSync(command, argv, { encoding: "utf8", env: { ...process.env, FOODIE_NODE: process.execPath } });
+  await writeFile(join(output, name + ".log"), execution.stdout + execution.stderr);
+  result.commands.push({ name, command: args, exitCode: execution.status });
+  assert.equal(execution.status, expected, execution.stdout + execution.stderr);
+  return execution;
+};
+const coverage = (check) => ["python3", "scripts/render-coverage-table.py", "--root", root, "--document", document, ...(check ? ["--check"] : [])];
+await run("validate", [process.execPath, "scripts/data-contract.ts", "--root", root, "--json"], 0);
+await run("missing-coverage", coverage(true), 1);
+await run("render", coverage(false), 0); await run("fresh-coverage", coverage(true), 0);
+const initial = validateCatalogRoot(root); assert.equal(initial.valid, true);
+result.coverage = initial.datasets;
+const oldBytes = await readFile(file(oldPath));
+await put(nextPath, fixture.payloads[nextPath].map((row) => ({ ...row, name: row.name + " · revision B" })));
+const revisedCatalog = structuredClone(fixture.catalog);
+revisedCatalog.cities[0].guides[1].provenance.revision = { id: "rehearsal-name-correction-B", reason: "Synthetic same-edition name correction; previous edition remains unchanged", evidence: "/data/evidence/annual-source.json" };
+await put("/data/catalog.json", revisedCatalog);
+result.sameEditionRevision = revisedCatalog.cities[0].guides[1].provenance.revision;
+assert.deepEqual(await readFile(file(oldPath)), oldBytes);
+await run("stale-data", coverage(true), 1);
+await run("rerender", coverage(false), 0); await run("refreshed", coverage(true), 0);
+await put(nextPath, fixture.payloads[nextPath]);
+await put("/data/catalog.json", fixture.catalog);
+assert.deepEqual(validateCatalogRoot(root).inputs, initial.inputs);
+const diff = await run("annual-diff", [process.execPath, "scripts/guide-operations.ts", "diff", "--root", root, "--before", "harbor-fixture/2026/michelin-starred", "--after", "harbor-fixture/2027/michelin-starred"], 0);
+await writeFile(join(output, "annual-diff.json"), diff.stdout);
+for (const failure of ["duplicate", "mixed-year", "bad-reference", "same-count-different-set", "catalog-drift"]) {
+  const catalog = structuredClone(fixture.catalog);
+  if (failure === "duplicate") catalog.cities[0].guides.push(catalog.cities[0].guides[0]);
+  if (failure === "bad-reference") catalog.cities[0].taxonomyPath = "/data/absent.json";
+  if (failure === "catalog-drift") catalog.cities[0].labelZh += " drift";
+  await put("/data/catalog.json", catalog);
+  if (failure === "mixed-year") await put(oldPath, fixture.payloads[oldPath].map((row, i) => i === 0 ? { ...row, edition_year: 2027 } : row));
+  if (failure === "same-count-different-set") await put(oldPath, fixture.payloads[oldPath].map((row, i) => i === 2 ? { ...row, guide_url: url("d") } : row));
+  if (failure === "catalog-drift") await run(failure, coverage(true), 1);
+  else {
+    await run(failure, [process.execPath, "scripts/data-contract.ts", "--root", root, "--json"], 1);
+    result.faults.push({ name: failure, diagnostics: validateCatalogRoot(root).diagnostics.filter((d) => d.severity === "error") });
+  }
+  await put(oldPath, fixture.payloads[oldPath]); await put("/data/catalog.json", fixture.catalog);
+}
+await run("rollback-render", coverage(false), 0); await run("rollback-check", coverage(true), 0);
+result.rollbackInputsEqual = JSON.stringify(validateCatalogRoot(root).inputs) === JSON.stringify(initial.inputs); assert.ok(result.rollbackInputsEqual);
+result.oldEditionSha256 = sha256(oldBytes);
+result.businessAfter = await fileManifest(resolve("src")); assert.deepEqual(result.businessAfter, businessBefore);
+result.passed = true;
+await writeFile(join(output, "summary.json"), JSON.stringify(result, null, 2) + "\n");
+console.log(`PASS: catalog rehearsal, fault checks, annual diff and rollback. Evidence: ${output}`);

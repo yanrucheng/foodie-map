@@ -1,0 +1,4727 @@
+[
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 1,
+    "upstream_id": "1193817",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/audace",
+    "address": "目黒区上目黒 3-8-1, 東京, 153-0051, 日本",
+    "name": "アウダチェ／AUDACE",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:27.542Z",
+    "source_file": "outputs/restaurant-1193817-ja.json",
+    "sha256": "5954b185de7ac1dc6d3db30419f77c88e852ea6794a04b610e0ef912f1c94cba"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 1,
+    "upstream_id": "1193820",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/akasaka-kikunoi",
+    "address": "港区赤坂 6-13-8, 東京, 107-0052, 日本",
+    "name": "赤坂 菊乃井／Akasaka Kikunoi",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:52:15.572Z",
+    "source_file": "outputs/restaurant-1193820-ja.json",
+    "sha256": "2f8e2a83f5e319db5e4c4b9d1f0dcd0e46b6a80f481c33089113272f11097d9a"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 2,
+    "upstream_id": "1193828",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/asahina-gastronome",
+    "address": "中央区日本橋兜町 1-4, 東京, 103-0026, 日本",
+    "name": "アサヒナガストロノーム／ASAHINA Gastronome",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-4",
+      "ja-stars-4",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:45.928Z",
+    "source_file": "outputs/restaurant-1193828-ja.json",
+    "sha256": "27411184b550c581185101aaf172365ccafacdb0214afc8d50f3419f7c52bea6"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 3,
+    "upstream_id": "1193830",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/azabu-kadowaki",
+    "address": "港区麻布十番 2-7-2, 東京, 106-0045, 日本",
+    "name": "麻布 かどわき／Azabu Kadowaki",
+    "award": "ミシュラン 三つ星: 卓越した料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "rating-3-1"
+    ],
+    "captured_at": "2026-09-14T02:51:36.049Z",
+    "source_file": "outputs/restaurant-1193830-ja.json",
+    "sha256": "1233b7f4c0a83a56ac7782173ac801d7571bb93301ff2a1a788b535155a97e3d"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 4,
+    "upstream_id": "1193831",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/azabujuban-fukuda",
+    "address": "港区麻布十番 3-7-5, 東京, 106-0045, 日本",
+    "name": "麻布十番 ふくだ／Azabujuban Fukuda",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:06.145Z",
+    "source_file": "outputs/restaurant-1193831-ja.json",
+    "sha256": "1ed97cd7014279ff8a65929096cfa388f7aa4b8d6bf0dc113cb81eca846e0570"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 5,
+    "upstream_id": "1193835",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/heritage-by-kei-kobayashi",
+    "address": "港区赤坂 9-7-1 ザ・リッツ・カールトン東京 45F, 東京, 107-6245, 日本",
+    "name": "エリタージュ バイ ケイ コバヤシ／Héritage by Kei Kobayashi",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:51:34.803Z",
+    "source_file": "outputs/restaurant-1193835-ja.json",
+    "sha256": "0750fb749fc64133a85d33ef53d6b4de949c7e954669a76998f33637419d0803"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 6,
+    "upstream_id": "1193840",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/abysse",
+    "address": "渋谷区恵比寿西 1-30-12, 東京, 150-0021, 日本",
+    "name": "アビス／abysse",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:48.156Z",
+    "source_file": "outputs/restaurant-1193840-ja.json",
+    "sha256": "b08aeae5e565674378b9d06a609dbb09626e572fd9dc6af30d6704167f79ce0f"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 2,
+    "upstream_id": "1193849",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/arroceria-sal-y-amor",
+    "address": "渋谷区代官山町 12-19 B1F, 東京, 150-0034, 日本",
+    "name": "アロセリア サル イ アモール／Arrocería Sal y Amor",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:54:02.344Z",
+    "source_file": "outputs/restaurant-1193849-ja.json",
+    "sha256": "94992e1f5574224a597dd9b527f39eb7e07a52d648b5fabce323453ac296c78e"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 3,
+    "upstream_id": "1193850",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/arroceria-la-panza",
+    "address": "中央区銀座 1-15-8, 東京, 104-0061, 日本",
+    "name": "アロセリア ラ パンサ／ARROCERÍA La Panza",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:39.565Z",
+    "source_file": "outputs/restaurant-1193850-ja.json",
+    "sha256": "549559d75fbe4ed2f2a0704cbc96c8d988f4dabe269da847aef37d094df3e8fa"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 7,
+    "upstream_id": "1193862",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/itsuka",
+    "address": "港区南青山 2-14-15 2F, 東京, 107-0062, 日本",
+    "name": "慈華／itsuka",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:06.085Z",
+    "source_file": "outputs/restaurant-1193862-ja.json",
+    "sha256": "3c9f287938d5325cc827955df46802969277f5646dcc0e63a1a1f99ce951d193"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 4,
+    "upstream_id": "1193863",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ittoan",
+    "address": "北区東十条 2-16-10, 東京, 114-0001, 日本",
+    "name": "一東菴／Ittoan",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-3",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:50.349Z",
+    "source_file": "outputs/restaurant-1193863-ja.json",
+    "sha256": "9b535833bcc6f2069dda78b89566f2664b02a4c5d1ee763605d02aca917e84ea"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 8,
+    "upstream_id": "1193869",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/esquisse",
+    "address": "中央区銀座 5-4-6 9F, 東京, 104-0061, 日本",
+    "name": "エスキス／ESqUISSE",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:49.737Z",
+    "source_file": "outputs/restaurant-1193869-ja.json",
+    "sha256": "ac2da78e76fbe88e5d52019929fd0bf4f291813cd980e5eff854475c2b10e253"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 9,
+    "upstream_id": "1193871",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/esterre-by-alain-ducasse",
+    "address": "千代田区丸の内 1-1-1 パレスホテル東京 6F, 東京, 100-0005, 日本",
+    "name": "エステール by アラン・デュカス／ESTERRE by Alain Ducasse",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:51:33.435Z",
+    "source_file": "outputs/restaurant-1193871-ja.json",
+    "sha256": "8fc105ad761a9d1bd22751f0de1b19fa194acdd55c92ba7305e34acce3c9491f"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 10,
+    "upstream_id": "1193872",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/edition-koji-shimomura",
+    "address": "港区六本木 3-1-1 六本木ティーキューブ 1F, 東京, 106-0032, 日本",
+    "name": "エディション・コウジ シモムラ／Édition Koji Shimomura",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:53:03.609Z",
+    "source_file": "outputs/restaurant-1193872-ja.json",
+    "sha256": "35cfa1053a9a4da9da819d591fa0831797be6c337fc608043434afe84905c208"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 5,
+    "upstream_id": "1193873",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/edosoba-hosokawa",
+    "address": "墨田区亀沢 1-6-5, 東京, 130-0014, 日本",
+    "name": "江戸蕎麦 ほそ川／Edosoba Hosokawa",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-3",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:48.701Z",
+    "source_file": "outputs/restaurant-1193873-ja.json",
+    "sha256": "0cdc4cb94e82d8d77a631e13658944289d6f74038ff2cee6053fa7f235ca5aae"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 11,
+    "upstream_id": "1193874",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/edomae-shinsaku",
+    "address": "中央区日本橋人形町 2-10-11 6F, 東京, 103-0013, 日本",
+    "name": "江戸前 晋作／Edomae Shinsaku",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-4",
+      "ja-stars-4",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:40.945Z",
+    "source_file": "outputs/restaurant-1193874-ja.json",
+    "sha256": "38b42c9b142d35152896299f937adf9bda60dce3aee337b6f2a5a49976241729"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 6,
+    "upstream_id": "1193882",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/osteria-da-k-kappa",
+    "address": "中央区銀座 8-7-2 5F, 東京, 104-0061, 日本",
+    "name": "オステリア ダ カッパ／Osteria da K. [káppa]",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:39.236Z",
+    "source_file": "outputs/restaurant-1193882-ja.json",
+    "sha256": "f4515b478b2b2ef2429515f3aaccf5b6f7f9af9a342516a8e934096214e109d7"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 12,
+    "upstream_id": "1193884",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/au-deco",
+    "address": "渋谷区恵比寿 2-23-3, 東京, 150-0013, 日本",
+    "name": "おでこ／au deco",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:49.433Z",
+    "source_file": "outputs/restaurant-1193884-ja.json",
+    "sha256": "c9017883c3cda4b1392b869abcbef7711344103ebdc0bb103015f9436e9a6fb7"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 7,
+    "upstream_id": "1193888",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/onigiri-asakusa-yadoroku",
+    "address": "台東区浅草 3-9-10, 東京, 111-0032, 日本",
+    "name": "おにぎり 浅草 宿六／Onigiri Asakusa Yadoroku",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-3",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:48.826Z",
+    "source_file": "outputs/restaurant-1193888-ja.json",
+    "sha256": "8b1184f6a6b30a3a3c983d1c244eab15d1c13a5e607b88c23ab0ae885a8435c9"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 13,
+    "upstream_id": "1193889",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/oniku-karyu",
+    "address": "中央区銀座 1-14-6 7F, 東京, 104-0061, 日本",
+    "name": "おにく 花柳／Oniku Karyu",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:28.946Z",
+    "source_file": "outputs/restaurant-1193889-ja.json",
+    "sha256": "319d4c9a2debe2c28f53e7fd16adb4a9d0750351816003ecf78d1e8730934dae"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 14,
+    "upstream_id": "1193890",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/hommage",
+    "address": "台東区浅草 4-10-5, 東京, 111-0032, 日本",
+    "name": "オマージュ／HOMMAGE",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-4",
+      "ja-stars-3",
+      "ja-stars-4",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:43.879Z",
+    "source_file": "outputs/restaurant-1193890-ja.json",
+    "sha256": "a8ca3fec3e02536621e08889a79aacf2f036703af69bb6c3405fbccaf48a4ff9"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 15,
+    "upstream_id": "1193892",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/oryori-tsuji",
+    "address": "港区東麻布 3-3-9 B1F, 東京, 106-0044, 日本",
+    "name": "御料理 辻／Oryori Tsuji",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:12.573Z",
+    "source_file": "outputs/restaurant-1193892-ja.json",
+    "sha256": "c2880ca8d3523827b0ecfc87bf9661c69f10b08ab845d9b23127aa796d85584c"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 16,
+    "upstream_id": "1193893",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/miyasaka",
+    "address": "港区南青山 5-4-30, 東京, 107-0062, 日本",
+    "name": "宮坂／Miyasaka",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:55.069Z",
+    "source_file": "outputs/restaurant-1193893-ja.json",
+    "sha256": "1c8ff1204b35107d227060ea8e01704fbfe36830ec4ca9fd7bac447a82a387b2"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 17,
+    "upstream_id": "1193898",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/kagurazaka-ishikawa",
+    "address": "新宿区神楽坂 5-37, 東京, 162-0825, 日本",
+    "name": "神楽坂 石かわ／Kagurazaka Ishikawa",
+    "award": "ミシュラン 三つ星: 卓越した料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-2",
+      "star-list-3",
+      "ja-stars-3",
+      "rating-3-1"
+    ],
+    "captured_at": "2026-09-14T02:51:40.558Z",
+    "source_file": "outputs/restaurant-1193898-ja.json",
+    "sha256": "2e93e14086a1ff05006f05239a5d4bf653754954b58a0ef44275467f214a99ea"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 8,
+    "upstream_id": "1193900",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/katsuyoshi",
+    "address": "中央区日本橋人形町 3-4-11, 東京, 103-0013, 日本",
+    "name": "かつ好／Katsuyoshi",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-3",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:45.516Z",
+    "source_file": "outputs/restaurant-1193900-ja.json",
+    "sha256": "68df706f36a72875d6f1156e4cd55a3235c8f0f76673b13ee802ddc82601b842"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 18,
+    "upstream_id": "1193906",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/kanda",
+    "address": "港区愛宕 1-1-1 虎ノ門ヒルズレジデンシャルタワー 1F, 東京, 105-0002, 日本",
+    "name": "かんだ／Kanda",
+    "award": "ミシュラン 三つ星: 卓越した料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-2",
+      "ja-stars-3",
+      "rating-3-1"
+    ],
+    "captured_at": "2026-09-14T02:51:35.132Z",
+    "source_file": "outputs/restaurant-1193906-ja.json",
+    "sha256": "03126fb7605dd307e32e1ea96c97070028680c1d9b3192e7ffa6a223635db36b"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 19,
+    "upstream_id": "1193907",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/quintessence-1193907",
+    "address": "品川区北品川 6-7-29 ガーデンシティ品川御殿山 1F, 東京, 141-0001, 日本",
+    "name": "カンテサンス／Quintessence",
+    "award": "ミシュラン 三つ星: 卓越した料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-3-1"
+    ],
+    "captured_at": "2026-09-14T02:51:40.555Z",
+    "source_file": "outputs/restaurant-1193907-ja.json",
+    "sha256": "c96bdff4e545e28586547ef76c2b72fc91e30ac09b49c41c5c4548469d66827b"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 20,
+    "upstream_id": "1193908",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/kioicho-fukudaya",
+    "address": "千代田区紀尾井町 1-13, 東京, 102-0094, 日本",
+    "name": "紀尾井町 福田家／Kioicho Fukudaya",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-2",
+      "ja-stars-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:50.283Z",
+    "source_file": "outputs/restaurant-1193908-ja.json",
+    "sha256": "b661c03913c3022d94c21248b4d680d11de5903dbd244b06aaded597aa2e77f3"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 21,
+    "upstream_id": "1193917",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/kyobashi-tempura-fukamachi",
+    "address": "中央区京橋 2-5-2, 東京, 104-0031, 日本",
+    "name": "京橋 てんぷら 深町／Kyobashi Tempura Fukamachi",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:24.049Z",
+    "source_file": "outputs/restaurant-1193917-ja.json",
+    "sha256": "95e67d0842da53a31b547422be342df6cc7a56c18ffb255512d17c20de5bea66"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 9,
+    "upstream_id": "1193918",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/kyorakutei",
+    "address": "新宿区神楽坂 3-6, 東京, 162-0825, 日本",
+    "name": "蕎楽亭／Kyorakutei",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:42.011Z",
+    "source_file": "outputs/restaurant-1193918-ja.json",
+    "sha256": "0f3c4d6ae0eb5d44530db2ea8a1961f58ed9c1072680ce2c9914e25e389b8b09"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 22,
+    "upstream_id": "1193923",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ginza-koju",
+    "address": "中央区銀座 5-4-8 4F, 東京, 104-0061, 日本",
+    "name": "銀座 小十／Ginza Kojyu",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "ja-stars-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:50.601Z",
+    "source_file": "outputs/restaurant-1193923-ja.json",
+    "sha256": "22378d7703fdb1723017df113df4b2fa57eb000a2213d4bfb857ddda166ff79f"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 23,
+    "upstream_id": "1193924",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ginza-shinohara",
+    "address": "中央区銀座 2-8-17 B1F, 東京, 104-0061, 日本",
+    "name": "銀座 しのはら／Ginza Shinohara",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "ja-stars-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:54.386Z",
+    "source_file": "outputs/restaurant-1193924-ja.json",
+    "sha256": "f00ff490aa615d9d6b82fe03a08af4fdf09fbead1439114d28cfa34affa877e5"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 24,
+    "upstream_id": "1193926",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ginza-fukuju",
+    "address": "中央区銀座 8-8-19 5F, 東京, 104-0061, 日本",
+    "name": "銀座 福樹／Ginza Fukuju",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "ja-stars-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:49.290Z",
+    "source_file": "outputs/restaurant-1193926-ja.json",
+    "sha256": "c034e0fab5219e0619bfe83d6ac3842d2fc621cb0794b879d62ed8045a9bbbbc"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 25,
+    "upstream_id": "1193933",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/kutan",
+    "address": "中央区新富 2-5-5, 東京, 104-0041, 日本",
+    "name": "久丹／Kutan",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "ja-stars-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:54.764Z",
+    "source_file": "outputs/restaurant-1193933-ja.json",
+    "sha256": "7f29cb7f7ba7a2750189626d258061138c2ba75652d0d3b45ee8cf2dba3eef7e"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 26,
+    "upstream_id": "1193934",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/craftale",
+    "address": "目黒区青葉台 1-16-11 2F, 東京, 153-0042, 日本",
+    "name": "クラフタル／CRAFTALE",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:46.165Z",
+    "source_file": "outputs/restaurant-1193934-ja.json",
+    "sha256": "3869cb98bf51fdf62cb9ef1e83e9b2bd6ab93acb3f28ff1ca0d6088f86eba252"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 10,
+    "upstream_id": "1193935",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/cristiano-s",
+    "address": "渋谷区富ヶ谷 1-51-10, 東京, 151-0063, 日本",
+    "name": "クリスチアノ／Cristiano's",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:54:02.612Z",
+    "source_file": "outputs/restaurant-1193935-ja.json",
+    "sha256": "55d2b9323970e05d197b80b8b92fb610713428debb9e6747284c71f604ec808f"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 27,
+    "upstream_id": "1193943",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/kohaku",
+    "address": "新宿区神楽坂 3-5-5, 東京, 162-0825, 日本",
+    "name": "虎白／Kohaku",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-2",
+      "star-list-3",
+      "ja-stars-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:43.754Z",
+    "source_file": "outputs/restaurant-1193943-ja.json",
+    "sha256": "3f9d1bfdc8a795935bce3cfef871a15600011385ecb652326208d8e8edc707ec"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 28,
+    "upstream_id": "1193950",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sazenka",
+    "address": "港区南麻布 4-7-5, 東京, 106-0047, 日本",
+    "name": "茶禅華／Sazenka",
+    "award": "ミシュラン 三つ星: 卓越した料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-3-1"
+    ],
+    "captured_at": "2026-09-14T02:51:40.033Z",
+    "source_file": "outputs/restaurant-1193950-ja.json",
+    "sha256": "a2f65ad0e0a22e8f77828954d0f03b16f2d7e687de87370f754ba583bbb0893d"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 29,
+    "upstream_id": "1193963",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/jizozushi",
+    "address": "港区白金台 3-18-5 2F, 東京, 108-0071, 日本",
+    "name": "地蔵鮓／Jizozushi",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:48.158Z",
+    "source_file": "outputs/restaurant-1193963-ja.json",
+    "sha256": "d0885bdd10d9a6879e411186f6601e798887c6bcfe75f12fc514c159de7a84e5"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 11,
+    "upstream_id": "1193965",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/jeeten",
+    "address": "渋谷区西原 3-2-3, 東京, 151-0066, 日本",
+    "name": "ジーテン／jeeten",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:54:01.112Z",
+    "source_file": "outputs/restaurant-1193965-ja.json",
+    "sha256": "965a6ce247063aaeeee63cf40b2eb35d4ad79c3438175ca696980fcd7cf9f7b6"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 30,
+    "upstream_id": "1193966",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/shinois",
+    "address": "港区白金台 4-2-7 2F, 東京, 108-0071, 日本",
+    "name": "シノワ／ShinoiS",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:12.206Z",
+    "source_file": "outputs/restaurant-1193966-ja.json",
+    "sha256": "5de27cd484cd578d0b9cedca39eb00e2b3f3be8bc7c2077285d0a2e2df8a3f92"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 31,
+    "upstream_id": "1193974",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/jushu",
+    "address": "港区西麻布 2-16-1, 東京, 106-0031, 日本",
+    "name": "壽修／Jushu",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:56.985Z",
+    "source_file": "outputs/restaurant-1193974-ja.json",
+    "sha256": "4446462a796203e85f25bb1ad54d341fdece20d3e1b59d4ff2453dbf43bb0c4f"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 32,
+    "upstream_id": "1193980",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/jo",
+    "address": "港区麻布十番 2-8-6 3F, 東京, 106-0045, 日本",
+    "name": "上／JO",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:11.375Z",
+    "source_file": "outputs/restaurant-1193980-ja.json",
+    "sha256": "86c8025232fb26f69722e5a1f7310b1050e1e157400bfe042179fed12d0d0d3b"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 33,
+    "upstream_id": "1193981",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/joel-robuchon-1193981",
+    "address": "目黒区三田 1-13-1 恵比寿ガーデンプレイス, 東京, 153-0062, 日本",
+    "name": "ジョエル・ロブション／Joël Robuchon",
+    "award": "ミシュラン 三つ星: 卓越した料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-3-1"
+    ],
+    "captured_at": "2026-09-14T02:51:38.443Z",
+    "source_file": "outputs/restaurant-1193981-ja.json",
+    "sha256": "9f79f766a1329e583d166d3872360d88a9b24049947ab90360a70b7fd87cbe37"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 34,
+    "upstream_id": "1193983",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/shokuzen-abe",
+    "address": "中央区銀座 5-6-10 4F, 東京, 104-0061, 日本",
+    "name": "喰善 あべ／Shokuzen Abe",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:25.314Z",
+    "source_file": "outputs/restaurant-1193983-ja.json",
+    "sha256": "5cab47962eca83da49244ab35362c23da1e4c4af17eb4d96f7be88996743aa8c"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 35,
+    "upstream_id": "1193985",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/series",
+    "address": "港区麻布台 3-4-11, 東京, 106-0041, 日本",
+    "name": "シリーズ／Series",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:53:02.406Z",
+    "source_file": "outputs/restaurant-1193985-ja.json",
+    "sha256": "a6e1f1fbaa69f9588e320180d8d64e0641696894250e048cfef536f0d8613295"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 36,
+    "upstream_id": "1193987",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sincere",
+    "address": "渋谷区千駄ヶ谷 3-7-13 B1F, 東京, 151-0051, 日本",
+    "name": "シンシア／Sincère",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:54.878Z",
+    "source_file": "outputs/restaurant-1193987-ja.json",
+    "sha256": "76bb672441f2ac704c5fe43547de3d8f0559c31243a170543965bcbaa4fb2a6f"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 12,
+    "upstream_id": "1193988",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/shinjiko-shijimi-chukasoba-kohaku",
+    "address": "大田区西六郷 2-1-3, 東京, 144-0056, 日本",
+    "name": "宍道湖しじみ中華蕎麦 琥珀／Shinjiko Shijimi Chukasoba Kohaku",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:27.507Z",
+    "source_file": "outputs/restaurant-1193988-ja.json",
+    "sha256": "dd9dec9dbbe36a64c8b12ab1f1b8871709d7136d6d18cb1c2be0e89ba7be4ed2"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 37,
+    "upstream_id": "1193991",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/shimbashi-sasada",
+    "address": "港区西新橋 1-23-7, 東京, 105-0003, 日本",
+    "name": "新ばし 笹田／Shimbashi Sasada",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:53:00.283Z",
+    "source_file": "outputs/restaurant-1193991-ja.json",
+    "sha256": "02d67cf1eb31f29523e84d58ec19bfb09c6cede46ee068802336904fd092db9d"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 13,
+    "upstream_id": "1193993",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sugita",
+    "address": "台東区寿 3-8-3, 東京, 111-0042, 日本",
+    "name": "すぎ田／Sugita",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-3",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:28.601Z",
+    "source_file": "outputs/restaurant-1193993-ja.json",
+    "sha256": "ece2713714be800f6c628d84ba1a9f442dcccfe93625d42a92194089ecc0f8a0"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 38,
+    "upstream_id": "1193994",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sukiyabashi-jiro-roppongiten",
+    "address": "港区六本木 6-12-2 六本木ヒルズ レジデンス B棟 3F, 東京, 106-0032, 日本",
+    "name": "すきやばし 次郎 六本木店／Sukiyabashi Jiro Roppongiten",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:52:14.566Z",
+    "source_file": "outputs/restaurant-1193994-ja.json",
+    "sha256": "f5746eabf2bd25dea306e323e7a50bf6212fb3780e3f21c9bba69fecc1592159"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 39,
+    "upstream_id": "1193997",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-kanesaka",
+    "address": "中央区銀座 8-10-3 B1F, 東京, 104-0061, 日本",
+    "name": "鮨 かねさか／Sushi Kanesaka",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "ja-stars-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:53.569Z",
+    "source_file": "outputs/restaurant-1193997-ja.json",
+    "sha256": "ed214d01e291835ae377982a920c40d84f30773c302e4a8c6929bf9c04278cc8"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 40,
+    "upstream_id": "1194000",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-keita",
+    "address": "中央区築地 6-6-4, 東京, 104-0045, 日本",
+    "name": "鮨 桂太／Sushi Keita",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:23.796Z",
+    "source_file": "outputs/restaurant-1194000-ja.json",
+    "sha256": "15c9f42d8e628c8e924170e3a236fc5b4aabfb567b5e3fecfc08d945483a1f8c"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 41,
+    "upstream_id": "1194004",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushidokoro-kiraku",
+    "address": "世田谷区経堂 1-12-12, 東京, 156-0052, 日本",
+    "name": "鮨処 喜楽／Sushidokoro Kiraku",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:44.781Z",
+    "source_file": "outputs/restaurant-1194004-ja.json",
+    "sha256": "1ce42de43d38526d1fa99c3692ad42ce0daab09c0b6a6dce852507593ee5e797"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 14,
+    "upstream_id": "1194005",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushidokoro-shigeru",
+    "address": "新宿区舟町 15, 東京, 160-0006, 日本",
+    "name": "すし処 志げる／Sushidokoro Shigeru",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:35.992Z",
+    "source_file": "outputs/restaurant-1194005-ja.json",
+    "sha256": "c0f366af4fdb704d8b8aecc572582f4c46ac66900bec269509a86445c9179d48"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 42,
+    "upstream_id": "1194006",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-hashimoto",
+    "address": "中央区新富 1-8-2, 東京, 104-0041, 日本",
+    "name": "鮨 はしもと／Sushi Hashimoto",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:25.632Z",
+    "source_file": "outputs/restaurant-1194006-ja.json",
+    "sha256": "e873f0765745234c5dc26b8bd6b8d2aba61c2bf15539b5c28a41e30e58b0ad54"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 15,
+    "upstream_id": "1194012",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-yoshino",
+    "address": "中野区中央 2-30-2 B1F, 東京, 164-0011, 日本",
+    "name": "鮨 与志乃／Sushi Yoshino",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:32.894Z",
+    "source_file": "outputs/restaurant-1194012-ja.json",
+    "sha256": "9d3d02e80440b3d563d25a4d2ecde81c8a8ea2b03dc701ca0657549cf5f72d21"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 43,
+    "upstream_id": "1194015",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sumibikappo-shirosaka",
+    "address": "港区赤坂 6-3-9, 東京, 107-0052, 日本",
+    "name": "炭火割烹 白坂／Sumibikappo SHIROSAKA",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:06.896Z",
+    "source_file": "outputs/restaurant-1194015-ja.json",
+    "sha256": "ad2da17cee83e095c2772bd6404a8f460582809967339837e85df27aaa4cdd25"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 44,
+    "upstream_id": "1194016",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/zurriola",
+    "address": "中央区銀座 6-8-7 交詢ビル 4F, 東京, 104-0061, 日本",
+    "name": "スリオラ／ZURRIOLA",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:34.031Z",
+    "source_file": "outputs/restaurant-1194016-ja.json",
+    "sha256": "9800f7ef7e361a6c5eb0118cb0ac97941466278d33d12b139bc116aa0397f5cf"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 45,
+    "upstream_id": "1194018",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/seizan",
+    "address": "港区三田 2-17-29 B1F, 東京, 108-0073, 日本",
+    "name": "晴山／Seizan",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:43.751Z",
+    "source_file": "outputs/restaurant-1194018-ja.json",
+    "sha256": "864a27fff0c3d609aadd41e2694b57bfd4bbe67642ca01e8d24f0991aea4632d"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 46,
+    "upstream_id": "1194019",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/seiju",
+    "address": "中央区築地 3-16-9 B1F, 東京, 104-0045, 日本",
+    "name": "清壽／Seiju",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "ja-stars-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:51:56.321Z",
+    "source_file": "outputs/restaurant-1194019-ja.json",
+    "sha256": "d070153f0090418865d5bd42ebd426a2ec8b817bb40e99f2cf342253a8bbda85"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 47,
+    "upstream_id": "1194020",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/seisoka",
+    "address": "港区南麻布 4-2-34, 東京, 106-0047, 日本",
+    "name": "青草窠／Seisoka",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:17.245Z",
+    "source_file": "outputs/restaurant-1194020-ja.json",
+    "sha256": "66e466d7911808bd40d968fbe4f5ef4f096c6f669e8ee1d0698ae70e1814ea54"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 16,
+    "upstream_id": "1194022",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/seki-hanare",
+    "address": "世田谷区世田谷 3-1-3, 東京, 154-0017, 日本",
+    "name": "セキ ハナレ／Seki Hanare",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:54.436Z",
+    "source_file": "outputs/restaurant-1194022-ja.json",
+    "sha256": "01f6f4c897e62af250d24d62f56dad824c95916c3b3d2f90e6cadf6b44fc7d22"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 17,
+    "upstream_id": "1194024",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sennomago",
+    "address": "杉並区西荻北 4-4-2, 東京, 167-0042, 日本",
+    "name": "仙ノ孫／Sennomago",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:56.178Z",
+    "source_file": "outputs/restaurant-1194024-ja.json",
+    "sha256": "3e27852cae9468e78a064bf1a0a476173d1ad3614c2d9dfe467b9be624539bd7"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 18,
+    "upstream_id": "1194026",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sosakumenkobo-nakiryu",
+    "address": "豊島区南大塚 2-34-4, 東京, 170-0005, 日本",
+    "name": "創作麺工房 鳴龍／Sosakumenkobo NAKIRYU",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-3",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:47.291Z",
+    "source_file": "outputs/restaurant-1194026-ja.json",
+    "sha256": "11a042ca26e0370124f71797b8022eb04b0c99019fc7dd0ff25973fedecb0b37"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 19,
+    "upstream_id": "1194027",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/soba-osame",
+    "address": "新宿区下落合 3-21-5, 東京, 161-0033, 日本",
+    "name": "蕎麦 おさめ／Soba Osame",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:17.579Z",
+    "source_file": "outputs/restaurant-1194027-ja.json",
+    "sha256": "f39bbe416395474ee095c41e22f0d2b42d0c2f82361e53f549862fa19e82fea2"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 20,
+    "upstream_id": "1194028",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/soba-tajima",
+    "address": "港区西麻布 3-8-6, 東京, 106-0031, 日本",
+    "name": "蕎麦 たじま／Soba Tajima",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:34.168Z",
+    "source_file": "outputs/restaurant-1194028-ja.json",
+    "sha256": "4e43d3796f066d15d5175c375f520e90a3e33a956cc0a96e7d58bde2a31e1c3d"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 48,
+    "upstream_id": "1194034",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/daigo",
+    "address": "港区愛宕 2-3-1 フォレストタワー 2F, 東京, 105-0002, 日本",
+    "name": "醍醐／Daigo",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:20.132Z",
+    "source_file": "outputs/restaurant-1194034-ja.json",
+    "sha256": "d8b36b70d6319be70cef640460b02fcd426a770fb45b611e3b4855404554344b"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 21,
+    "upstream_id": "1194041",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/t-astous",
+    "address": "港区南麻布 2-5-21, 東京, 106-0047, 日本",
+    "name": "タストゥー／T'astous",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:54:05.504Z",
+    "source_file": "outputs/restaurant-1194041-ja.json",
+    "sha256": "7bf1177d644b10162e75fbb1e813e42cb9e68d3157d20e262dc053702ee28fa7"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 49,
+    "upstream_id": "1194043",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tanimoto",
+    "address": "新宿区神楽坂 3-1 3F, 東京, 162-0825, 日本",
+    "name": "多仁本／Tanimoto",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:32.121Z",
+    "source_file": "outputs/restaurant-1194043-ja.json",
+    "sha256": "14dbfe62944ff65981be277d9169c57484c4e0e191d3e59724af883648eed643"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 22,
+    "upstream_id": "1194050",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/chukasoba-ginza-hachigo",
+    "address": "中央区銀座 3-14-2, 東京, 104-0061, 日本",
+    "name": "中華そば 銀座 八五／Chukasoba Ginza Hachigou",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:25.702Z",
+    "source_file": "outputs/restaurant-1194050-ja.json",
+    "sha256": "852de0e839d99b0ed0d1cccf6e5f643e0a9d3aefdb41da7e222727c771a5ab0b"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 50,
+    "upstream_id": "1194065",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tenoshima",
+    "address": "港区南青山 1-3-21 2F, 東京, 107-0062, 日本",
+    "name": "てのしま／Tenoshima",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:11.018Z",
+    "source_file": "outputs/restaurant-1194065-ja.json",
+    "sha256": "d88600c85bc98522f5ea14583b2b03c73eea872c66038cab95d4edc222853da7"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 51,
+    "upstream_id": "1194066",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/den",
+    "address": "渋谷区神宮前 2-3-18, 東京, 150-0001, 日本",
+    "name": "傳／Den",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:53:00.301Z",
+    "source_file": "outputs/restaurant-1194066-ja.json",
+    "sha256": "e48c26d2045bcb341c2bd56d377d8f436999abda5ca6cbe7fc2dc9409f2d286a"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 52,
+    "upstream_id": "1194072",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tempura-ginya",
+    "address": "港区白金台 5-17-9 B1F, 東京, 108-0071, 日本",
+    "name": "天ぷら 銀屋／Tempura Ginya",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:01.880Z",
+    "source_file": "outputs/restaurant-1194072-ja.json",
+    "sha256": "a74ed7827c726f9a3c0bac82a18dad40fb2177468b1d7d2fc47684ae853239cf"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 53,
+    "upstream_id": "1194073",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tempura-kondo",
+    "address": "中央区銀座 5-5-13 9F, 東京, 104-0061, 日本",
+    "name": "てんぷら 近藤／Tempura Kondo",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "ja-stars-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:41.835Z",
+    "source_file": "outputs/restaurant-1194073-ja.json",
+    "sha256": "8357dfc5234fe2bb07e42d3271b3dedf90b7c7ab6ba0f9312689ec46cf907526"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 54,
+    "upstream_id": "1194077",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tempura-maehira",
+    "address": "港区麻布十番 2-8-16 4F, 東京, 106-0045, 日本",
+    "name": "てんぷら 前平／Tempura Maehira",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:15.422Z",
+    "source_file": "outputs/restaurant-1194077-ja.json",
+    "sha256": "b44b3f2fed245499308528c3ffb1c5e80a4ddd66d8e6d4dbac209e5ca9124c23"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 55,
+    "upstream_id": "1194078",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tempura-miyashiro",
+    "address": "目黒区上目黒 2-18-11, 東京, 153-0051, 日本",
+    "name": "天婦羅 みやしろ／Tempura Miyashiro",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:45.615Z",
+    "source_file": "outputs/restaurant-1194078-ja.json",
+    "sha256": "37728f073855b2f9813d75b470043ea892aa2e39756fbc5278610835d001a39c"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 56,
+    "upstream_id": "1194079",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tempura-motoyoshi",
+    "address": "渋谷区恵比寿西 2-8-11 3F, 東京, 150-0021, 日本",
+    "name": "天ぷら 元吉／Tempura Motoyoshi",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:41.814Z",
+    "source_file": "outputs/restaurant-1194079-ja.json",
+    "sha256": "fb6d7d1fd14be858d917d1eaada5e4a4c047743586c38607157bb1968202ba8a"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 57,
+    "upstream_id": "1194080",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tenmasa-1194080",
+    "address": "目黒区上目黒 3-16-13 B1F, 東京, 153-0051, 日本",
+    "name": "天雅／TEN-MASA",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:46.116Z",
+    "source_file": "outputs/restaurant-1194080-ja.json",
+    "sha256": "a3332c7c4ffe46e7efb1fe18d94314c5e5004a4bb34c41a8bad23d66022f154f"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 23,
+    "upstream_id": "1194081",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tohakuan-karibe",
+    "address": "世田谷区粕谷 4-23-19, 東京, 157-0063, 日本",
+    "name": "東白庵 かりべ／Tohakuan Karibe",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:52.578Z",
+    "source_file": "outputs/restaurant-1194081-ja.json",
+    "sha256": "df85d0247b6ff85b23a233f762b85dfba2caecb7b8c852a89858cfc778237012"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 58,
+    "upstream_id": "1194082",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tour-d-argent-1194082",
+    "address": "千代田区紀尾井町 4-1 ホテルニューオータニ東京 ザ・メイン ロビー階, 東京, 102-8578, 日本",
+    "name": "トゥールダルジャン 東京／Tour D'argent Tokyo",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-2",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:51:33.364Z",
+    "source_file": "outputs/restaurant-1194082-ja.json",
+    "sha256": "d8bcecb5cfb5acc7fb724d78f1eb2285800ed7d85d012049f8288f7f511f3659"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 59,
+    "upstream_id": "1194086",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/dominique-bouchet-1194086",
+    "address": "中央区銀座 1-5-6 2F, 東京, 104-0061, 日本",
+    "name": "ドミニク・ブシェ トーキョー／Dominique Bouchet Tokyo",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:31.185Z",
+    "source_file": "outputs/restaurant-1194086-ja.json",
+    "sha256": "85bf45d3236de36ec895b79f71f6ec82d033f49216641055eacb243059bba028"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 24,
+    "upstream_id": "1194088",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/trattoria-buca-massimo",
+    "address": "江東区富岡 1-24-11, 東京, 135-0047, 日本",
+    "name": "トラットリア ブカ・マッシモ／TRATTORIA BUCA'MASSIMO",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:19.469Z",
+    "source_file": "outputs/restaurant-1194088-ja.json",
+    "sha256": "6b632c84e9886d7cba4b2b7a282cfedbc0980acafb13d8e623cb1bcdb523f1d9"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 60,
+    "upstream_id": "1194096",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/towa",
+    "address": "港区西麻布 4-11-25 2F, 東京, 106-0031, 日本",
+    "name": "常／Towa",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:56.846Z",
+    "source_file": "outputs/restaurant-1194096-ja.json",
+    "sha256": "9fca1c948e630029a41dc8fd6d38438c6f62718509703fb54fb186d4ced2146b"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 25,
+    "upstream_id": "1194097",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tonkatsu-enraku",
+    "address": "大田区池上 6-1-4, 東京, 146-0082, 日本",
+    "name": "とんかつ 燕楽／Tonkatsu Enraku",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:53.685Z",
+    "source_file": "outputs/restaurant-1194097-ja.json",
+    "sha256": "597c99828a12766b823a4fffac14cf0bbf01d8910d17454a8bc8f4d274b27131"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 26,
+    "upstream_id": "1194098",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tonkatsu-nanaido",
+    "address": "新宿区愛住町 3-18, 東京, 160-0005, 日本",
+    "name": "とんかつ 七井戸／Tonkatsu Nanaido",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:35.924Z",
+    "source_file": "outputs/restaurant-1194098-ja.json",
+    "sha256": "4a8508a02de939557c467ac4f1b28dcb1792e8665a262f16cb5e2b6284330ce9"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 27,
+    "upstream_id": "1194101",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tonkatsu-hinata",
+    "address": "新宿区高田馬場 2-13-9, 東京, 169-0075, 日本",
+    "name": "とんかつ ひなた／Tonkatsu Hinata",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:38.255Z",
+    "source_file": "outputs/restaurant-1194101-ja.json",
+    "sha256": "b35e3d8415c61e6bbf9b631c7f9f948d1d4e4499c6de0097d7ff6ce92d047f5f"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 28,
+    "upstream_id": "1194103",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tompachitei",
+    "address": "台東区上野 4-3-4, 東京, 110-0005, 日本",
+    "name": "とん八亭／Tompachitei",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-3",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:47.627Z",
+    "source_file": "outputs/restaurant-1194103-ja.json",
+    "sha256": "9523bdb4533e850c9435af3e1acf17f7e3ada28f5a484febf3254c2428b34aaf"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 61,
+    "upstream_id": "1194111",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/nabeno-ism",
+    "address": "台東区駒形 2-1-17, 東京, 111-0043, 日本",
+    "name": "ナベノ-イズム／Nabeno-Ism",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-4",
+      "ja-stars-3",
+      "ja-stars-4",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:43.736Z",
+    "source_file": "outputs/restaurant-1194111-ja.json",
+    "sha256": "293e3215c045c6805959aba72a156ade2ebc5583c13c6c6c03c6be8458c4f8cf"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 62,
+    "upstream_id": "1194112",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/narisawa",
+    "address": "港区南青山 2-6-15, 東京, 107-0062, 日本",
+    "name": "ナリサワ／NARISAWA",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-2",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:52.966Z",
+    "source_file": "outputs/restaurant-1194112-ja.json",
+    "sha256": "3c238e7cbcb46489ad9ed6f1b262eafd285b9c2ba0beb35836c7d4a7ed45c529"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 63,
+    "upstream_id": "1194114",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/nishiazabu-sushi-shin",
+    "address": "港区西麻布 4-18-20, 東京, 106-0031, 日本",
+    "name": "西麻布 鮨 真／Nishiazabu Sushi Shin",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:47.201Z",
+    "source_file": "outputs/restaurant-1194114-ja.json",
+    "sha256": "174ec6e0f0e5c389d10ab7a292cbfb6b473f1e884c5ea983d3e961a4450aea43"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 64,
+    "upstream_id": "1194115",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/nishiazabu-taku",
+    "address": "港区西麻布 2-11-5, 東京, 106-0031, 日本",
+    "name": "西麻布 拓／Nishiazabu Taku",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:09.547Z",
+    "source_file": "outputs/restaurant-1194115-ja.json",
+    "sha256": "651b9b8d35792d1660261dc226fb719bb4de270cb6f072fcc98371e5faa79713"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 65,
+    "upstream_id": "1194117",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/nihombashi-sonoji",
+    "address": "中央区日本橋人形町 2-22-11, 東京, 103-0013, 日本",
+    "name": "日本橋 蕎ノ字／Nihombashi Sonoji",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-4",
+      "ja-stars-2",
+      "ja-stars-4",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:39.671Z",
+    "source_file": "outputs/restaurant-1194117-ja.json",
+    "sha256": "007c5345edd48f4bc9ed3715d98add0f84188f3a9cc1d93cd72df9e3590b300b"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 29,
+    "upstream_id": "1194119",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/negima",
+    "address": "豊島区北大塚 2-31-19 B1F, 東京, 170-0004, 日本",
+    "name": "ねぎま／Negima",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:17.541Z",
+    "source_file": "outputs/restaurant-1194119-ja.json",
+    "sha256": "74660d94ac3136b914f53af82e97dd5c553e054856fa146677d5a0cf249cc157"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 30,
+    "upstream_id": "1194122",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/noura",
+    "address": "台東区浅草 4-10-6, 東京, 111-0032, 日本",
+    "name": "ノウラ／noura",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-3",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:25.697Z",
+    "source_file": "outputs/restaurant-1194122-ja.json",
+    "sha256": "15865fff67f6a634d4f0bb62cf5e5b3df3aa93b1012f56fbfc22f6acf58c6254"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 66,
+    "upstream_id": "1194123",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/nogizaka-shin",
+    "address": "港区赤坂 8-11-19, 東京, 107-0052, 日本",
+    "name": "乃木坂 しん／Nogizaka Shin",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:03.115Z",
+    "source_file": "outputs/restaurant-1194123-ja.json",
+    "sha256": "7674a9619fc4ac8f06c8c1b71ba81818f02da72c55fb0d6e745eaed3012ff971"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 67,
+    "upstream_id": "1194124",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/nodaiwa-azabu-Iikura-honten-1194124",
+    "address": "港区東麻布 1-5-4, 東京, 106-0044, 日本",
+    "name": "野田岩 麻布飯倉本店／Nodaiwa Azabu Iikura Honten",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:22.518Z",
+    "source_file": "outputs/restaurant-1194124-ja.json",
+    "sha256": "2483c9f79e7256ae8e8601c23ec618180a62e71f35a3a93bd3bb4868ff6948e9"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 31,
+    "upstream_id": "1194127",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/hashimoto",
+    "address": "文京区水道 2-5-7, 東京, 112-0005, 日本",
+    "name": "はし本／Hashimoto",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:17.287Z",
+    "source_file": "outputs/restaurant-1194127-ja.json",
+    "sha256": "eec1a077556dc8ce422981bc53363103c88bb445a4349e9e2ecf6852a009535b"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 32,
+    "upstream_id": "1194133",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/hamacho-kaneko",
+    "address": "中央区日本橋浜町 3-7-3, 東京, 103-0007, 日本",
+    "name": "浜町 かねこ／Hamacho Kaneko",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:45.241Z",
+    "source_file": "outputs/restaurant-1194133-ja.json",
+    "sha256": "fe6b17794afa786b94ae6f1bc2b4b09ceee0b55ee82dc060b426affc4fa35dee"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 68,
+    "upstream_id": "1194135",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/harutaka",
+    "address": "中央区銀座 8-3-1 6F, 東京, 104-0061, 日本",
+    "name": "青空／Harutaka",
+    "award": "ミシュラン 三つ星: 卓越した料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-4",
+      "ja-stars-2",
+      "rating-3-1"
+    ],
+    "captured_at": "2026-09-14T02:52:37.532Z",
+    "source_file": "outputs/restaurant-1194135-ja.json",
+    "sha256": "069e65ed8d97a04095f28c27ea7c4603c287c0e1c043533e3bdb5d5a96317ade"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 69,
+    "upstream_id": "1194143",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/jingumae-higuchi",
+    "address": "渋谷区神宮前 2-19-12, 東京, 150-0001, 日本",
+    "name": "神宮前 樋口／Jingumae Higuchi",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:52.251Z",
+    "source_file": "outputs/restaurant-1194143-ja.json",
+    "sha256": "64c02db1bf045ff5a639fac7e2202b58ee01393f6e78b44411ef77f4eff11900"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 33,
+    "upstream_id": "1194144",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/bistro-glouton",
+    "address": "世田谷区池尻 2-33-7, 東京, 154-0001, 日本",
+    "name": "ビストロ グルトン／BISTRO GLOUTON",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:19.150Z",
+    "source_file": "outputs/restaurant-1194144-ja.json",
+    "sha256": "f47fc610cf3b97edec3d1e6273a5a898d16008e023421ce87864aa75b82e4c60"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 34,
+    "upstream_id": "1194153",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/falo",
+    "address": "渋谷区代官山町 14-10 B1F, 東京, 150-0034, 日本",
+    "name": "ファロ／falò",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:27.376Z",
+    "source_file": "outputs/restaurant-1194153-ja.json",
+    "sha256": "353f02a796944cb591b2bb805c01fded4a8e728b44d6735b137cb89c769b499d"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 70,
+    "upstream_id": "1194154",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/faro-1194154",
+    "address": "中央区銀座 8-8-3 10F, 東京, 104-0061, 日本",
+    "name": "ファロ／FARO",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:22.848Z",
+    "source_file": "outputs/restaurant-1194154-ja.json",
+    "sha256": "5b3f31dcf3d980f59a9f3addcbee0791688e686ea68bb432ace5b2ca47ed03d1"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 71,
+    "upstream_id": "1194155",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/fushikino",
+    "address": "新宿区神楽坂 4-3-11 2F, 東京, 162-0825, 日本",
+    "name": "ふしきの／FUSHIKINO",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:29.054Z",
+    "source_file": "outputs/restaurant-1194155-ja.json",
+    "sha256": "6d58176d14dc733561b023b3942b5465ff0f161e23c3c886a8a138d19a5fbf53"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 35,
+    "upstream_id": "1194159",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/bramasole",
+    "address": "渋谷区神宮前 3-42-5, 東京, 150-0001, 日本",
+    "name": "ブラマソーレ／BRAMASOLE",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:08.025Z",
+    "source_file": "outputs/restaurant-1194159-ja.json",
+    "sha256": "47ed67d1a5b2fcb1a8a84f3da6efe4fdc5ca4f1e7f8844ca226d3de0e5da4927"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 72,
+    "upstream_id": "1194160",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/prisma-1194160",
+    "address": "港区南青山 6-4-6, 東京, 107-0062, 日本",
+    "name": "プリズマ／PRISMA",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:41.410Z",
+    "source_file": "outputs/restaurant-1194160-ja.json",
+    "sha256": "b44010f91fc66841c7a570b60f269ceb35a1dd92f257f2195a9c5382bd7f4346"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 73,
+    "upstream_id": "1194163",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/florilege",
+    "address": "港区虎ノ門 5-10-7 麻布台ヒルズ ガーデンプラザD 2F, 東京, 105-0001, 日本",
+    "name": "フロリレージュ／Florilège",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-2",
+      "ja-stars-2",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:47.263Z",
+    "source_file": "outputs/restaurant-1194163-ja.json",
+    "sha256": "d6e838c0fae0ed1458e376bfece9ac8d03eb67bad29f37404191384058ebcc44"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 74,
+    "upstream_id": "1194164",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/beige-alain-ducasse",
+    "address": "中央区銀座 3-5-3 10F, 東京, 104-0061, 日本",
+    "name": "ベージュ アラン・デュカス／BEIGE Alain Ducasse",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:23.369Z",
+    "source_file": "outputs/restaurant-1194164-ja.json",
+    "sha256": "69b0f787e4fbdc0df2424698d8961e6f1b9a9638412e9126833f3a4a7614945e"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 75,
+    "upstream_id": "1194168",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/bottega-1194168",
+    "address": "渋谷区広尾 5-17-8 B1F, 東京, 150-0012, 日本",
+    "name": "ボッテガ／BOTTEGA",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:17.399Z",
+    "source_file": "outputs/restaurant-1194168-ja.json",
+    "sha256": "1876214b9bb2b1a2dc822b5a97d5432a9c1e297b09ef4bf78a47dca59f72e4fe"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 36,
+    "upstream_id": "1194169",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/homemade-ramen-muginae",
+    "address": "品川区南大井 6-11-10, 東京, 140-0013, 日本",
+    "name": "Homemade Ramen 麦苗／Homemade Ramen Muginae",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:10.911Z",
+    "source_file": "outputs/restaurant-1194169-ja.json",
+    "sha256": "c15157e0901641ef85d7ed05c5d1218ec769bf4ddd58154062e93e14203f7f50"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 37,
+    "upstream_id": "1194171",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ponta-honke",
+    "address": "台東区上野 3-23-3, 東京, 110-0005, 日本",
+    "name": "ぽん多 本家／Ponta Honke",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:16.355Z",
+    "source_file": "outputs/restaurant-1194171-ja.json",
+    "sha256": "6d3319d8dccbc1a09de6de1776df21a3f9df02b160b270edc0d5421918c6686f"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 76,
+    "upstream_id": "1194174",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/makiyaki-ginza-onodera",
+    "address": "中央区銀座 5-14-14 9F, 東京, 104-0061, 日本",
+    "name": "薪焼 銀座おのでら／MAKIYAKI GINZA ONODERA",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "ja-stars-2",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:51:55.964Z",
+    "source_file": "outputs/restaurant-1194174-ja.json",
+    "sha256": "a9bdd7935e5da72f6b0e4e5fd999ba5073b12f291135a01a8fe81f9d6afffd15"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 38,
+    "upstream_id": "1194175",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ma-cuisine-1194175",
+    "address": "港区西麻布 1-2-14 B1F, 東京, 106-0031, 日本",
+    "name": "マ・キュイジーヌ／Ma Cuisine",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:09.167Z",
+    "source_file": "outputs/restaurant-1194175-ja.json",
+    "sha256": "f47a984f9b314a13a022fe31e755104979020782ad538975187117e7b712f46c"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 39,
+    "upstream_id": "1194176",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/matsunozushi",
+    "address": "豊島区南長崎 2-16-12, 東京, 171-0052, 日本",
+    "name": "松野寿し／Matsunozushi",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:37.987Z",
+    "source_file": "outputs/restaurant-1194176-ja.json",
+    "sha256": "0ac34b8914286f81d29085b88ac60c69217f71f33aec30ef9bb44823262e8e88"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 40,
+    "upstream_id": "1194184",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/meishan",
+    "address": "新宿区横寺町 37-39, 東京, 162-0831, 日本",
+    "name": "梅香／Meishan",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:41.515Z",
+    "source_file": "outputs/restaurant-1194184-ja.json",
+    "sha256": "d103db06552ff74e56a55fd9967d573ed3db39458a2880b17722329e85774871"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 41,
+    "upstream_id": "1194186",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/mejiro-shunkotei",
+    "address": "豊島区目白 2-39-1 トラッド目白 2F, 東京, 171-0031, 日本",
+    "name": "目白 旬香亭／Mejiro Shunkotei",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:10.445Z",
+    "source_file": "outputs/restaurant-1194186-ja.json",
+    "sha256": "de68a7e6c0a0917328d25232c5d6ce5719548908731325de0cd7aee7c1575c70"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 42,
+    "upstream_id": "1194189",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/mochibuta-tonkatsu-taiyo",
+    "address": "品川区小山 3-22-7, 東京, 142-0062, 日本",
+    "name": "もち豚とんかつ たいよう／Mochibuta Tonkatsu Taiyo",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:58.251Z",
+    "source_file": "outputs/restaurant-1194189-ja.json",
+    "sha256": "25618f6c10f641ef821e7c984ab50fc9ba535754f5f399ce4905f79383a1205c"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 43,
+    "upstream_id": "1194192",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/yakitori-abe",
+    "address": "品川区上大崎 3-3-4, 東京, 141-0021, 日本",
+    "name": "やきとり 阿部／Yakitori Abe",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:10.110Z",
+    "source_file": "outputs/restaurant-1194192-ja.json",
+    "sha256": "a47a5d12911274cc190ee3e0c22813edd5fbde206e9f747a5a16a4914b6f2f9f"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 44,
+    "upstream_id": "1194197",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/yakumo",
+    "address": "目黒区東山 3-6-15, 東京, 153-0043, 日本",
+    "name": "八雲／YAKUMO",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:59.002Z",
+    "source_file": "outputs/restaurant-1194197-ja.json",
+    "sha256": "6f9a98b2af82378e0b1f32b09aab952eb480ee4c4b067cfa807fa260a07ad079"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 45,
+    "upstream_id": "1194199",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/yamato-1194199",
+    "address": "中央区日本橋富沢町 16-3, 東京, 103-0006, 日本",
+    "name": "ヤマト／YAMATO",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-3",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:46.888Z",
+    "source_file": "outputs/restaurant-1194199-ja.json",
+    "sha256": "6c2be765ad6445aff881cbdbaceb7df25f8b7ac4f2c7fbc784fa3a315fc74b8e"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 77,
+    "upstream_id": "1194212",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/la-table-de-joel-robuchon",
+    "address": "目黒区三田 1-13-1 恵比寿ガーデンプレイス, 東京, 153-0062, 日本",
+    "name": "ラ ターブル ドゥ ジョエル・ロブション／LA TABLE de Joël Robuchon",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:00.580Z",
+    "source_file": "outputs/restaurant-1194212-ja.json",
+    "sha256": "f77610ac420677d17b2a7d721aea55a395187865c58b47a0163a9504089ff35c"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 78,
+    "upstream_id": "1194213",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/lature",
+    "address": "渋谷区渋谷 2-2-2 B1F, 東京, 150-0002, 日本",
+    "name": "ラチュレ／LATURE",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:52.397Z",
+    "source_file": "outputs/restaurant-1194213-ja.json",
+    "sha256": "62c4da4f7b032f6d910cfdae408250b9ad730c4aac0a6ed173acbebf7f0e17d0"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 79,
+    "upstream_id": "1194216",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/l-atelier-de-joel-robuchon-1194216",
+    "address": "港区六本木 6-10-1 六本木ヒルズ ヒルサイド 2F, 東京, 106-0032, 日本",
+    "name": "ラトリエ ドゥ ジョエル・ロブション／L'ATELIER de Joël Robuchon",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:01.022Z",
+    "source_file": "outputs/restaurant-1194216-ja.json",
+    "sha256": "206f65256c0c8e83d3a8ed25e20058d2ede03355f9a1385e4793c51ca990d5c8"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 80,
+    "upstream_id": "1194218",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/l-affinage",
+    "address": "中央区銀座 5-9-16 2F, 東京, 104-0061, 日本",
+    "name": "ラフィナージュ／L'AFFINAGE",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:32.430Z",
+    "source_file": "outputs/restaurant-1194218-ja.json",
+    "sha256": "0900c91424d887e136ad5420d66e153acbd83774a6cdcefdba913ccc8e2cca72"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 81,
+    "upstream_id": "1194221",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/la-paix-1194221",
+    "address": "中央区日本橋室町 1-9-4 B1F, 東京, 103-0022, 日本",
+    "name": "ラ ペ／La Paix",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-4",
+      "ja-stars-2",
+      "ja-stars-4",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:39.631Z",
+    "source_file": "outputs/restaurant-1194221-ja.json",
+    "sha256": "d045b8a372308074135b868bb5fe9a435ad00418be9adab9f59c4fc075f01998"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 46,
+    "upstream_id": "1194222",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/la-bettola-da-ochiai",
+    "address": "中央区銀座 1-21-2, 東京, 104-0061, 日本",
+    "name": "ラ・ベットラ・ダ・オチアイ／LA BETTOLA da Ochiai",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:39.989Z",
+    "source_file": "outputs/restaurant-1194222-ja.json",
+    "sha256": "8476fc4105fa4e55928c8034c87ec31041bfcafda99baa3a0ecfe5f1b505f11c"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 47,
+    "upstream_id": "1194223",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/l-amitie-1194223",
+    "address": "新宿区高田馬場 2-9-12, 東京, 169-0075, 日本",
+    "name": "ラミティエ／L'AMITIE",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:34.221Z",
+    "source_file": "outputs/restaurant-1194223-ja.json",
+    "sha256": "59f69db51d4852b94cd058b67d7c863245f9cb243b8539a0812bcec1e2e6034e"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 48,
+    "upstream_id": "1194225",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ramenya-toy-box",
+    "address": "荒川区東日暮里 1-1-3, 東京, 116-0014, 日本",
+    "name": "ラーメン屋 トイ・ボックス／Ramenya Toy Box",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-3",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:50.514Z",
+    "source_file": "outputs/restaurant-1194225-ja.json",
+    "sha256": "b15f6eb308c8872d8ab4a292ddfbb69453bfddbe1150ec99edb46990decb9d4c"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 49,
+    "upstream_id": "1194227",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/lanbroa",
+    "address": "世田谷区用賀 3-11-15, 東京, 158-0097, 日本",
+    "name": "ランブロア／LANBRoA",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:53.103Z",
+    "source_file": "outputs/restaurant-1194227-ja.json",
+    "sha256": "35a4d9e316e6005b5ade45bd8c78409ccd32651e8d0da702bee3bd194f65cb76"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 50,
+    "upstream_id": "1194228",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/lien",
+    "address": "世田谷区池尻 3-5-22, 東京, 154-0001, 日本",
+    "name": "リアン／Lien",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:16.324Z",
+    "source_file": "outputs/restaurant-1194228-ja.json",
+    "sha256": "b3d4cfdc0f34d6c46d6d7d55f0d7f860866044c9758f900860a555a96b468b09"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 82,
+    "upstream_id": "1194232",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ryugin-1194232",
+    "address": "千代田区有楽町 1-1-2 東京ミッドタウン日比谷 7F, 東京, 100-0006, 日本",
+    "name": "龍吟／RyuGin",
+    "award": "ミシュラン 三つ星: 卓越した料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "ja-stars-2",
+      "rating-3-1"
+    ],
+    "captured_at": "2026-09-14T02:51:38.424Z",
+    "source_file": "outputs/restaurant-1194232-ja.json",
+    "sha256": "58ce331151e3ab80ae51ca1ee9b18b0f8812099186fd4618c0300cf4efdf777b"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 83,
+    "upstream_id": "1194233",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ryuzu",
+    "address": "港区六本木 4-2-35 B1F, 東京, 106-0032, 日本",
+    "name": "リューズ／Ryuzu",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-2",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:51.661Z",
+    "source_file": "outputs/restaurant-1194233-ja.json",
+    "sha256": "dd5da321e7a01c84a326c4375bd1e6a35e52ab9f6539995f1d19ad546a4334c9"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 51,
+    "upstream_id": "1194236",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/le-cabaret-1194236",
+    "address": "渋谷区元代々木町 8-8, 東京, 151-0062, 日本",
+    "name": "ル・キャバレ／Le cabaret",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:54:02.346Z",
+    "source_file": "outputs/restaurant-1194236-ja.json",
+    "sha256": "9af4001f74f7522002ffd6cbcc460bfe38f651b6cc6b43572f103777f53a7c7b"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 84,
+    "upstream_id": "1194239",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/le-sputnik",
+    "address": "港区六本木 7-9-9, 東京, 106-0032, 日本",
+    "name": "ル・スプートニク／le sputnik",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:08.992Z",
+    "source_file": "outputs/restaurant-1194239-ja.json",
+    "sha256": "326ff80aa4de3d4d1a308544dcf1974c21e970db791697d91d0907c2b68f68cb"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 52,
+    "upstream_id": "1194243",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/le-monde-gourmand",
+    "address": "目黒区緑が丘 2-17-15, 東京, 152-0034, 日本",
+    "name": "ル モンド グルマン／Le Monde Gourmand",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:07.971Z",
+    "source_file": "outputs/restaurant-1194243-ja.json",
+    "sha256": "fc1c6c7d59358101d714a6ff28a743cd445dadf6f5b81ef761fde5cd4cd1cd2b"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 53,
+    "upstream_id": "1194247",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/les-copains-de-dominique-bouchet",
+    "address": "中央区銀座 5-1-8 B1F, 東京, 104-0061, 日本",
+    "name": "レ・コパン ドゥ ドミニク・ブシェ／Les Copains de DOMINIQUE BOUCHET",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:06.045Z",
+    "source_file": "outputs/restaurant-1194247-ja.json",
+    "sha256": "e2f1449cb97ccc9a2928ae436889709b4fe74ea5ec24935350dca58721f10300"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 85,
+    "upstream_id": "1194250",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/les-saisons-1194250",
+    "address": "千代田区内幸町 1-1-1 帝国ホテル東京 本館 MF, 東京, 100-8558, 日本",
+    "name": "レ セゾン／Les Saisons",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "star-list-3",
+      "ja-stars-2",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:20.602Z",
+    "source_file": "outputs/restaurant-1194250-ja.json",
+    "sha256": "8b5460debe6e15f067d6e994472e4725240413d264bca7303a2197af7b4019a9"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 86,
+    "upstream_id": "1194251",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/l-effervescence",
+    "address": "港区西麻布 2-26-4, 東京, 106-0031, 日本",
+    "name": "レフェルヴェソンス／L'Effervescence",
+    "award": "ミシュラン 三つ星: 卓越した料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-3-1"
+    ],
+    "captured_at": "2026-09-14T02:51:37.832Z",
+    "source_file": "outputs/restaurant-1194251-ja.json",
+    "sha256": "ba10200c54e3997a0976648efde6d60975373b807abc88e03c364be00ca5c32d"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 87,
+    "upstream_id": "1194252",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ren-mishina",
+    "address": "中央区銀座 7-3-13 B1F, 東京, 104-0061, 日本",
+    "name": "蓮 三四七／Ren Mishina",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-2",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:28.438Z",
+    "source_file": "outputs/restaurant-1194252-ja.json",
+    "sha256": "9560c7930bb0fb30c159a0885dd1ca119dffe4268603220a5141b901abd946b7"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 88,
+    "upstream_id": "1194253",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/l-osier",
+    "address": "中央区銀座 7-5-5, 東京, 104-0061, 日本",
+    "name": "ロオジエ／L'OSIER",
+    "award": "ミシュラン 三つ星: 卓越した料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "ja-stars-2",
+      "rating-3-1"
+    ],
+    "captured_at": "2026-09-14T02:51:37.186Z",
+    "source_file": "outputs/restaurant-1194253-ja.json",
+    "sha256": "53bb461284abbb4c02d82af99643af45df7c3483d693c78ea0e811313b352d5a"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 54,
+    "upstream_id": "1194254",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/los-reyes-magos",
+    "address": "渋谷区代々木 5-55-7, 東京, 151-0053, 日本",
+    "name": "ロス レイエス マーゴス／Los Reyes Magos",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:30.740Z",
+    "source_file": "outputs/restaurant-1194254-ja.json",
+    "sha256": "558c871494021a08cc35604036ba30548cb881c14b28c25d8beec0df78c20cc5"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 55,
+    "upstream_id": "1194257",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/lauburu",
+    "address": "港区南青山 6-8-18, 東京, 107-0062, 日本",
+    "name": "ローブリュー／LAUBURU",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:32.899Z",
+    "source_file": "outputs/restaurant-1194257-ja.json",
+    "sha256": "7aa334be867a41e8886148ce4f00f03622b105c8fdf6c1219f62a9f680c78af7"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 89,
+    "upstream_id": "1194259",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/waketokuyama",
+    "address": "港区南麻布 5-1-5, 東京, 106-0047, 日本",
+    "name": "分とく山／Waketokuyama",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:51:58.932Z",
+    "source_file": "outputs/restaurant-1194259-ja.json",
+    "sha256": "21ebef66386b4eb11836d72243357a0da1933814f9ec9ff0ced582a5bb8bc55a"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 56,
+    "upstream_id": "1194261",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/washokuya-taichi",
+    "address": "大田区北千束 3-36-14, 東京, 145-0062, 日本",
+    "name": "和食や 太いち／Washokuya Taichi",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:53.899Z",
+    "source_file": "outputs/restaurant-1194261-ja.json",
+    "sha256": "ba1ccf44b57b4ec8c7f5112df3cd475dd822e0f08592061989cd40e3c7ec1ef9"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 57,
+    "upstream_id": "1194262",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/watabe",
+    "address": "文京区小石川 1-9-14, 東京, 112-0002, 日本",
+    "name": "わたべ／Watabe",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:07.301Z",
+    "source_file": "outputs/restaurant-1194262-ja.json",
+    "sha256": "7c787fe1d557fdd0806f20fb7badafa2815b42bc644ccb96fb297f19efaab7db"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 90,
+    "upstream_id": "1194937",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/crony-1194937",
+    "address": "港区東麻布 1-20-3, 東京, 106-0044, 日本",
+    "name": "クローニー／Crony",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-2",
+      "ja-stars-2",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:47.222Z",
+    "source_file": "outputs/restaurant-1194937-ja.json",
+    "sha256": "2e3698aec8679e0f7f14e0490eed1f08205fafe2389f353e4a7654b97b504b3f"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 91,
+    "upstream_id": "1195296",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tempura-yaguchi",
+    "address": "中央区日本橋人形町 2-9-7, 東京, 103-0013, 日本",
+    "name": "天ぷら やぐち／Tempura Yaguchi",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-4",
+      "ja-stars-2",
+      "ja-stars-4",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:42.772Z",
+    "source_file": "outputs/restaurant-1195296-ja.json",
+    "sha256": "e690f47a0a48f1b678e03dff10b09c69506f0306be8aed2a4de31ca43cb03105"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 92,
+    "upstream_id": "1195299",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sharikimon-onozawa",
+    "address": "新宿区荒木町 6-39, 東京, 160-0007, 日本",
+    "name": "車力門 おの澤／Sharikimon Onozawa",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:53:00.122Z",
+    "source_file": "outputs/restaurant-1195299-ja.json",
+    "sha256": "fd7a05923525c478bc96643c280de7a62b09934fcb7e82356c4d7a46b97936b2"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 93,
+    "upstream_id": "1195301",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-ryujiro",
+    "address": "港区南青山 2-11-11, 東京, 107-0062, 日本",
+    "name": "鮨 龍次郎／Sushi Ryujiro",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:04.423Z",
+    "source_file": "outputs/restaurant-1195301-ja.json",
+    "sha256": "cad3e4af42dee2773aabac40a76e74cc19d0723eff454483cb450b0a0f94bb15"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 58,
+    "upstream_id": "1195319",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/rozzo-sicilia",
+    "address": "港区白金 1-1-12, 東京, 108-0072, 日本",
+    "name": "ロッツォ シチリア／ROZZO SICILIA",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:54:04.210Z",
+    "source_file": "outputs/restaurant-1195319-ja.json",
+    "sha256": "a30a32448936c9f252e2e7e9329d03b8b13ed4be98f715ddb2d48f2031888f70"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 94,
+    "upstream_id": "1195320",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-masashi",
+    "address": "港区北青山 2-9-9 7F, 東京, 107-0061, 日本",
+    "name": "鮨 将司／Sushi Masashi",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:05.565Z",
+    "source_file": "outputs/restaurant-1195320-ja.json",
+    "sha256": "7fa72dbbe4055eadc305de6ca6cd1d1d322e4b92f3c5c032b22dc16a955934dd"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 95,
+    "upstream_id": "1195343",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/shigeyuki",
+    "address": "渋谷区西原 2-17-3, 東京, 151-0066, 日本",
+    "name": "茂幸／Shigeyuki",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:47.786Z",
+    "source_file": "outputs/restaurant-1195343-ja.json",
+    "sha256": "1cd14c2e462054db83ea907442b2f54c9dde11af9357ff5a29c1fb36e0bd57d6"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 96,
+    "upstream_id": "1195369",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/hakuun",
+    "address": "港区南青山 4-11-2, 東京, 107-0062, 日本",
+    "name": "伯雲／Hakuun",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:45.982Z",
+    "source_file": "outputs/restaurant-1195369-ja.json",
+    "sha256": "1e7cb3c750c5742a0b4906abfec579a8046f2c458075b645db6a203e49004a9b"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 97,
+    "upstream_id": "1195371",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-matsuura",
+    "address": "港区白金 5-7-8, 東京, 108-0072, 日本",
+    "name": "鮨 まつうら／Sushi Matsuura",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:01.078Z",
+    "source_file": "outputs/restaurant-1195371-ja.json",
+    "sha256": "670df6c500fb5cce622befac86c49b8c016f517a61bb335bbcafb800dc822498"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 59,
+    "upstream_id": "1195439",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/rei",
+    "address": "渋谷区元代々木町 10-8, 東京, 151-0062, 日本",
+    "name": "レイ／REI",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:54:01.333Z",
+    "source_file": "outputs/restaurant-1195439-ja.json",
+    "sha256": "bfc392b29eaec3304036c734078f909444c7351a452f6cf505de4db50c67815d"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 60,
+    "upstream_id": "1195643",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/mejiro-zorome",
+    "address": "豊島区目白 3-3-1 B1F, 東京, 171-0031, 日本",
+    "name": "目白 ぞろ芽／Mejiro Zorome",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:22.616Z",
+    "source_file": "outputs/restaurant-1195643-ja.json",
+    "sha256": "1161fd1dbe44517742e4dd7d540259d207197e7827c809e7b1e613c95fa76130"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 98,
+    "upstream_id": "1195644",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ensui",
+    "address": "目黒区中目黒 1-5-12, 東京, 153-0061, 日本",
+    "name": "炎水／Ensui",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:52.304Z",
+    "source_file": "outputs/restaurant-1195644-ja.json",
+    "sha256": "e58a6c971a2cb2bd46790b29b58d52d000ae061095245d5fa1704d2c2cb88975"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 99,
+    "upstream_id": "1195653",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-kojima",
+    "address": "中央区銀座 7-3-8 5F, 東京, 104-0061, 日本",
+    "name": "鮨 こじま／Sushi Kojima",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-2",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:26.521Z",
+    "source_file": "outputs/restaurant-1195653-ja.json",
+    "sha256": "4965df03fbb8145f92bfc71739be0a286804fcbd711615984b0accbb9a6342e7"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 100,
+    "upstream_id": "1195687",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/l-argent",
+    "address": "千代田区霞が関 3-2-6 東京倶楽部ビルディング 2F, 東京, 100-0013, 日本",
+    "name": "ラルジャン／L'ARGENT",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-2",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:51:59.102Z",
+    "source_file": "outputs/restaurant-1195687-ja.json",
+    "sha256": "b0d434da0c7d3253ba25a76331c1ae315275c15af5cc8327ebe37ca8144c3e10"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 61,
+    "upstream_id": "1195722",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/katchar-batchar",
+    "address": "豊島区南大塚 3-2-10 2F, 東京, 170-0005, 日本",
+    "name": "カッチャル バッチャル／Katchar Batchar",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:44.663Z",
+    "source_file": "outputs/restaurant-1195722-ja.json",
+    "sha256": "fd80008ad32389130fe5032ba16b8045ac86fd478aad4313cc04b65e5534effc"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 62,
+    "upstream_id": "1195724",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/hatsuogawa",
+    "address": "台東区雷門 2-8-4, 東京, 111-0034, 日本",
+    "name": "初小川／Hatsuogawa",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-3",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:48.257Z",
+    "source_file": "outputs/restaurant-1195724-ja.json",
+    "sha256": "793d0436e135de746b07f3b3b5f8656a88e99cd6d2731dfadf5c8bdf7596d690"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 101,
+    "upstream_id": "1195780",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sorahana",
+    "address": "港区虎ノ門 5-3-3, 東京, 105-0001, 日本",
+    "name": "空花／Sorahana",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:58.940Z",
+    "source_file": "outputs/restaurant-1195780-ja.json",
+    "sha256": "f93d73398be89ffdb8116ebad0102757a922cd3498eaa1421cf658208ca84802"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 102,
+    "upstream_id": "1196238",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/est",
+    "address": "千代田区大手町 1-2-1 フォーシーズンズホテル東京大手町 39F, 東京, 100-0004, 日本",
+    "name": "エスト／est",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "ja-stars-2",
+      "ja-stars-4",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:51:32.862Z",
+    "source_file": "outputs/restaurant-1196238-ja.json",
+    "sha256": "437f78d4974d2b8bec03fda1e558879bd6f23d8719a0be3a8f6b599555cdc4aa"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 63,
+    "upstream_id": "1196297",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/katsuo-shokudo",
+    "address": "渋谷区鶯谷町 7-12 B1F, 東京, 150-0032, 日本",
+    "name": "かつお食堂／Katsuo Shokudo",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:25.319Z",
+    "source_file": "outputs/restaurant-1196297-ja.json",
+    "sha256": "4e91d92754369fcf49e7526749d2981043d377739ce45a73d425cfcb2636a006"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 103,
+    "upstream_id": "1196380",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/oku",
+    "address": "台東区浅草 3-42-11, 東京, 111-0032, 日本",
+    "name": "奥／Oku",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-4",
+      "ja-stars-2",
+      "ja-stars-4",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:42.636Z",
+    "source_file": "outputs/restaurant-1196380-ja.json",
+    "sha256": "e1dd40854d11a148bc33a126aec0156cb8e18b784e57fa4e6345a981d5825770"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 104,
+    "upstream_id": "1196454",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/alchimiste",
+    "address": "港区白金台 5-17-10, 東京, 108-0071, 日本",
+    "name": "アルシミスト／Alchimiste",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:04.355Z",
+    "source_file": "outputs/restaurant-1196454-ja.json",
+    "sha256": "b2911e51f6b895916021eaf509016959a4d7f29b47c6f2d908a9f50d85dd927d"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 64,
+    "upstream_id": "1196609",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/osobano-kouga",
+    "address": "港区西麻布 2-14-5, 東京, 106-0031, 日本",
+    "name": "おそばの甲賀／Osobano Kouga",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:30.743Z",
+    "source_file": "outputs/restaurant-1196609-ja.json",
+    "sha256": "3300ea5d1a33866872a4a956cf0dc35b5c04d863c85c14b7d8fba05cec533bc4"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 105,
+    "upstream_id": "1196642",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ten-yokota",
+    "address": "港区元麻布 3-10-5 2F, 東京, 106-0046, 日本",
+    "name": "天 よこた／Ten Yokota",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:59.068Z",
+    "source_file": "outputs/restaurant-1196642-ja.json",
+    "sha256": "c84fa6bc680f099d643eed0f7c66e8c0042bdc1a0c41eea1abd2bcad32e18940"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 106,
+    "upstream_id": "1196725",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/nol",
+    "address": "中央区日本橋馬喰町 2-2-1 DDD HOTEL 1F, 東京, 103-0002, 日本",
+    "name": "ノル／nôl",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-4",
+      "ja-stars-2",
+      "ja-stars-4",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:40.342Z",
+    "source_file": "outputs/restaurant-1196725-ja.json",
+    "sha256": "2a0d5d9fe0916d0e614b498d1e88902cbe89c345986e38d78003b3d1bea1dfb7"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 107,
+    "upstream_id": "1197023",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/nemo",
+    "address": "港区南青山 6-15-4 B1F, 東京, 107-0062, 日本",
+    "name": "ネモ／NéMo",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:52.316Z",
+    "source_file": "outputs/restaurant-1197023-ja.json",
+    "sha256": "a5f3761953adead39742012d2a47d60cc5a83d0480438b3b652c95622438e17e"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 65,
+    "upstream_id": "1197753",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/kinoshita-1197753",
+    "address": "渋谷区代々木 3-37-1, 東京, 151-0053, 日本",
+    "name": "キノシタ／Kinoshita",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:11.662Z",
+    "source_file": "outputs/restaurant-1197753-ja.json",
+    "sha256": "774b9efb54462d3da21035626c73f186a7fe0b43b81ed0e9e7b27003d17065a1"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 108,
+    "upstream_id": "1199370",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ginza-kousui",
+    "address": "中央区銀座 6-12-14 8F, 東京, 104-0061, 日本",
+    "name": "銀座 志翠／Ginza Kousui",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-2",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:36.199Z",
+    "source_file": "outputs/restaurant-1199370-ja.json",
+    "sha256": "adb27460c5a24759ea4ca565279e6e7e713401e16bb610c8412929541df6cd2f"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 66,
+    "upstream_id": "1199632",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/hibino-chukashokudo",
+    "address": "渋谷区上原 1-33-11, 東京, 151-0064, 日本",
+    "name": "日々の中華食堂／Hibino Chukashokudo",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:59.506Z",
+    "source_file": "outputs/restaurant-1199632-ja.json",
+    "sha256": "b5f9511add8341bbd845d5a55861e9965da428b0a4f0a41da4d66cd42a483306"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 67,
+    "upstream_id": "1199822",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/asakusa-hirayama",
+    "address": "台東区西浅草 1-3-14, 東京, 111-0035, 日本",
+    "name": "浅草 ひら山／Asakusa Hirayama",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-3",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:21.281Z",
+    "source_file": "outputs/restaurant-1199822-ja.json",
+    "sha256": "4e603af1ab056f94dd8bc46fc6e3cccd5c004ada1eae11cad5d739b89971f8b1"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 109,
+    "upstream_id": "1200145",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/yakumo-uezu",
+    "address": "目黒区八雲 1-3-9, 東京, 152-0023, 日本",
+    "name": "八雲 うえず／Yakumo Uezu",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "ja-stars-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:44.847Z",
+    "source_file": "outputs/restaurant-1200145-ja.json",
+    "sha256": "d6d9576bc517c788f0870e1fb143af5b09076f119542b6f81c199e23db9442e5"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 110,
+    "upstream_id": "1200221",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/guchokuni",
+    "address": "新宿区神楽坂 6-21 3F, 東京, 162-0825, 日本",
+    "name": "愚直に／Guchokuni",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "star-list-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:19.349Z",
+    "source_file": "outputs/restaurant-1200221-ja.json",
+    "sha256": "0b6157182c0c362be0b8b577695e271960726b5114b279a1454606cddc9d83c2"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 111,
+    "upstream_id": "1200230",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/edomae-sushi-hanabusa",
+    "address": "港区赤坂 9-1-7, 東京, 107-0052, 日本",
+    "name": "江戸前鮨 英／Edomae Sushi Hanabusa",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:53:02.688Z",
+    "source_file": "outputs/restaurant-1200230-ja.json",
+    "sha256": "e72847373d6d795ee390bc3be9d2b3d1852801ff7d46d3935e4806140ec19660"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 112,
+    "upstream_id": "1200246",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/l-elan",
+    "address": "渋谷区神宮前 5-10-1 GYRE 4F, 東京, 150-0001, 日本",
+    "name": "レラン／l'élan",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:54.383Z",
+    "source_file": "outputs/restaurant-1200246-ja.json",
+    "sha256": "f0fec1185fba2e89e891f3aabb4f125fe94093111969003f8015762b05dcb73c"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 113,
+    "upstream_id": "1200259",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/amarantos",
+    "address": "中央区銀座 5-6-7 9F, 東京, 104-0061, 日本",
+    "name": "アマラントス／amarantos",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:36.084Z",
+    "source_file": "outputs/restaurant-1200259-ja.json",
+    "sha256": "11dfa493308db4d69d73410eaef14a78fa8b31ccde3c1839cf66036f170ca0f4"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 68,
+    "upstream_id": "1200268",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/dialogue-1200268",
+    "address": "世田谷区北沢\t3-23-21, 東京, 155-0031, 日本",
+    "name": "ディアログ／DIALOGUE",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:28.760Z",
+    "source_file": "outputs/restaurant-1200268-ja.json",
+    "sha256": "6602a7358e4cbccd5bb4e183ef096b85adf71a87ded13cad30064c72e0ba8973"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 114,
+    "upstream_id": "1200289",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/prunier-1200289",
+    "address": "千代田区丸の内 3-2-1 東京會舘 2F, 東京, 100-0005, 日本",
+    "name": "プルニエ／PRUNIER",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:35.276Z",
+    "source_file": "outputs/restaurant-1200289-ja.json",
+    "sha256": "d319a901ea03f08304e0071f33cb89e87e0176f54e06124b4adc4f343141e162"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 115,
+    "upstream_id": "1200357",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-ichijo",
+    "address": "中央区東日本橋 3-1-3, 東京, 103-0004, 日本",
+    "name": "鮨 一條／Sushi Ichijo",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-4",
+      "ja-stars-4",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:40.864Z",
+    "source_file": "outputs/restaurant-1200357-ja.json",
+    "sha256": "dd76251434024ebb1390a4c15b8a0321968c5ff25ccfa2fa4becd1afeba4d0a7"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 69,
+    "upstream_id": "1200411",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/iruca-tokyo",
+    "address": "港区六本木 4-12-12, 東京, 106-0032, 日本",
+    "name": "入鹿 TOKYO／IRUCA TOKYO",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:54:05.501Z",
+    "source_file": "outputs/restaurant-1200411-ja.json",
+    "sha256": "b0e866fb1dacf47fd6dcc0c00ae54482001d1c3417420f1960043a4275b9a2a9"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 70,
+    "upstream_id": "1200419",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tempura-kakiage-yukimura",
+    "address": "港区新橋 6-13-13, 東京, 105-0004, 日本",
+    "name": "天ぷら かき揚げ 之村／Tempura Kakiage Yukimura",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:35.926Z",
+    "source_file": "outputs/restaurant-1200419-ja.json",
+    "sha256": "2f59cda0a89fadbd9505b4255be21010c1a1bcf107fd862defb5c013dc9b5a35"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 71,
+    "upstream_id": "1200563",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/bistrot-vivienne",
+    "address": "中央区銀座 4-13-19, 東京, 104-0061, 日本",
+    "name": "ビストロ ヴィヴィエンヌ／Bistrot Vivienne",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:42.806Z",
+    "source_file": "outputs/restaurant-1200563-ja.json",
+    "sha256": "3cdde8a38ca38de7ace0fcdc1d0952fad306a798d7a209b58d334aacfb6dc9cc"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 72,
+    "upstream_id": "1200569",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/il-ballond-oro",
+    "address": "渋谷区恵比寿 1-24-10, 東京, 150-0013, 日本",
+    "name": "イル バロンドーロ／IL BALLOND'ORO",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:20.426Z",
+    "source_file": "outputs/restaurant-1200569-ja.json",
+    "sha256": "02d1f9367deae5b6aa535334d15a74a5948872e6ab7b6ab44da92d336c0ec754"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 73,
+    "upstream_id": "1201197",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/koryori-kuhara",
+    "address": "渋谷区東\t2-25-38, 東京, 150-0011, 日本",
+    "name": "久原／Kuhara",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:13.527Z",
+    "source_file": "outputs/restaurant-1201197-ja.json",
+    "sha256": "fdd7ff5480294acc15bb3e80e7a8ae6eb9ce6f6328329633126a09137540db06"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 74,
+    "upstream_id": "1201658",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tachigui-sushi-tonari",
+    "address": "港区麻布十番 2-8-7 2F, 東京, 106-0045, 日本",
+    "name": "立喰 鮨となり／Tachigui Sushi Tonari",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:30.810Z",
+    "source_file": "outputs/restaurant-1201658-ja.json",
+    "sha256": "8afe4075a2b55ed47b8c08e2152861eb8b640783b59d976514fc8afde2768677"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 75,
+    "upstream_id": "1201689",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sasaki-seimenjo",
+    "address": "杉並区西荻北 4-26-10, 東京, 167-0042, 日本",
+    "name": "佐々木製麺所／Sasaki Seimenjo",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:55.819Z",
+    "source_file": "outputs/restaurant-1201689-ja.json",
+    "sha256": "cbbb9f825e885d4535100d970133f3f560a0cfaaead3a6a987e5fe264394c490"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 76,
+    "upstream_id": "1201781",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/santosham",
+    "address": "千代田区神田小川町 3-2 2F, 東京, 101-0052, 日本",
+    "name": "三燈舎／SANTOSHAM",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:43.920Z",
+    "source_file": "outputs/restaurant-1201781-ja.json",
+    "sha256": "fc8d2defca56df8bfb6e3211986d9cc1fe81363e3f997e43786cd0a1e067b4ad"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 116,
+    "upstream_id": "1201836",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/gucci-osteria-da-massimo-bottura-1201836",
+    "address": "中央区銀座 6-6-12 4F, 東京, 104-0061, 日本",
+    "name": "グッチ オステリア ダ マッシモ ボットゥーラ トウキョウ／Gucci Osteria da Massimo Bottura Tokyo",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:37.345Z",
+    "source_file": "outputs/restaurant-1201836-ja.json",
+    "sha256": "97e5f5d9c71b2faaa5574d018da5ad189430c93d6494db9c61bd7044a151d65b"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 77,
+    "upstream_id": "1201866",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/alceppo",
+    "address": "港区白金 1-25-32 2F, 東京, 108-0072, 日本",
+    "name": "アルチェッポ／AlCeppo",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:34.303Z",
+    "source_file": "outputs/restaurant-1201866-ja.json",
+    "sha256": "ca4bfc987e72c7079c8fe411c7821dc5118e079f7ba82eacf2c216a13edac1aa"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 117,
+    "upstream_id": "1202086",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/torakuro",
+    "address": "千代田区内幸町 1-1-1 帝国ホテル東京 本館 B1F, 東京, 100-8558, 日本",
+    "name": "寅黒／Torakuro",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:30.882Z",
+    "source_file": "outputs/restaurant-1202086-ja.json",
+    "sha256": "a1398d1783373472aa46d8ae27a722bf077ae8923dba83ddb8aae093845b9e0a"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 118,
+    "upstream_id": "1202352",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/toki",
+    "address": "港区新橋 1-8-4 2F, 東京, 105-0004, 日本",
+    "name": "トキ／TOKi",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-4",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:39.014Z",
+    "source_file": "outputs/restaurant-1202352-ja.json",
+    "sha256": "444031c1fdb914ee4dc0916376039a33ee959a0c5315a9173b6a94a567a1d6f4"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 119,
+    "upstream_id": "1202504",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/monolith",
+    "address": "渋谷区渋谷 2-6-1, 東京, 150-0002, 日本",
+    "name": "モノリス／MONOLITH",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:49.393Z",
+    "source_file": "outputs/restaurant-1202504-ja.json",
+    "sha256": "a5ba2c40ef1aaffcdc32196fe5c337416f4b23b484c939aed1a5914bd5aa739c"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 120,
+    "upstream_id": "1202508",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/trois-visages",
+    "address": "中央区銀座 7-16-21, 東京, 104-0061, 日本",
+    "name": "トワヴィサージュ／TROIS VISAGES",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:25.799Z",
+    "source_file": "outputs/restaurant-1202508-ja.json",
+    "sha256": "5dead2a844e1e4a562cb1225dcadf43611e0002fde8e79d0175e67c25f400d29"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 121,
+    "upstream_id": "1202541",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/myojaku",
+    "address": "港区西麻布 3-2-34 B1F, 東京, 106-0031, 日本",
+    "name": "明寂／Myojaku",
+    "award": "ミシュラン 三つ星: 卓越した料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "rating-3-1"
+    ],
+    "captured_at": "2026-09-14T02:51:37.183Z",
+    "source_file": "outputs/restaurant-1202541-ja.json",
+    "sha256": "873682344fbc74823c8404991cbb1b150450aa3a33691b34d6d68923c554526c"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 122,
+    "upstream_id": "1202736",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ippei-hanten",
+    "address": "港区元麻布 3-12-41, 東京, 106-0046, 日本",
+    "name": "一平飯店／Ippei Hanten",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:07.302Z",
+    "source_file": "outputs/restaurant-1202736-ja.json",
+    "sha256": "059515a7a6c8496866a813ef4d8bf3da04ef04f05e6c40a1d16ae8faa927d782"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 78,
+    "upstream_id": "1202771",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/l-as",
+    "address": "港区南青山 4-16-3, 東京, 107-0062, 日本",
+    "name": "ラス／L'AS",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:19.229Z",
+    "source_file": "outputs/restaurant-1202771-ja.json",
+    "sha256": "c0f8acb6f0b62b705b6bc05820c73df2c2ed4c9936d9cd48ff25c3f9508d42e9"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 123,
+    "upstream_id": "1204977",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/maz",
+    "address": "千代田区紀尾井町 1-3 東京ガーデンテラス紀尾井町 3F, 東京, 102-0094, 日本",
+    "name": "マス／MAZ",
+    "award": "ミシュラン 二つ星: 素晴らしい料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-2",
+      "rating-2-1"
+    ],
+    "captured_at": "2026-09-14T02:51:45.926Z",
+    "source_file": "outputs/restaurant-1204977-ja.json",
+    "sha256": "ec8986e7140f06de2b7a9443358f8bca9747b4e32a30e9274b11a13106221aab"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 124,
+    "upstream_id": "1205576",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/koshikiryori-koki",
+    "address": "港区西新橋 2-13-6, 東京, 105-0003, 日本",
+    "name": "港式料理 鴻禧／Koshikiryori Koki",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:18.443Z",
+    "source_file": "outputs/restaurant-1205576-ja.json",
+    "sha256": "29334b0b1cbae50c7f25dfd9a85bf7c4bbcc525777bd15761a3fe4f573eaf7cd"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 125,
+    "upstream_id": "1205750",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/yakitori-takahashi",
+    "address": "中央区日本橋 2-10-11 2F, 東京, 103-0027, 日本",
+    "name": "焼鳥 髙はし／Yakitori Takahashi",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-4",
+      "ja-stars-4",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:42.358Z",
+    "source_file": "outputs/restaurant-1205750-ja.json",
+    "sha256": "37196951d669c3ebe98d40ea24742984e85c420248b7c54c6e88883c205ea991"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 79,
+    "upstream_id": "1206217",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tensuke",
+    "address": "杉並区高円寺北 3-22-7, 東京, 166-0002, 日本",
+    "name": "天すけ／Tensuke",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:54:01.055Z",
+    "source_file": "outputs/restaurant-1206217-ja.json",
+    "sha256": "82b8134fe4e7ac95ac2a473f6029e6f46d9e88d08fa45640d009f7150df84b42"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 80,
+    "upstream_id": "1206441",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/there-is-ramen",
+    "address": "杉並区天沼 3-10-16, 東京, 167-0032, 日本",
+    "name": "ゼアー イズ ラーメン／there is ramen",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:57.136Z",
+    "source_file": "outputs/restaurant-1206441-ja.json",
+    "sha256": "aaa10c89d7467ac2dad636b40df5d209cc0dbee7f1cc84fd5d0d0feaa47e160b"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 81,
+    "upstream_id": "1206470",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/hoppers-1206470",
+    "address": "中央区日本橋兜町 7-1, 東京, 103-0026, 日本",
+    "name": "ホッパーズ／HOPPERS",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:28.717Z",
+    "source_file": "outputs/restaurant-1206470-ja.json",
+    "sha256": "3476b94abf449d633eb05a48e8df8bcf2493f40468fb786c0c86eb10e174a4f9"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 82,
+    "upstream_id": "1206635",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ramen-break-beats",
+    "address": "目黒区目黒 4-21-19, 東京, 153-0063, 日本",
+    "name": "ラーメン ブレイクビーツ／Ramen Break Beats",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:13.350Z",
+    "source_file": "outputs/restaurant-1206635-ja.json",
+    "sha256": "1f4282d0332be51b5491b3435f344f2dfb60cb6adf46e2e2c50f0b1228cba711"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 83,
+    "upstream_id": "1206656",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/yakitori-sanka",
+    "address": "新宿区矢来町 64-4 2F, 東京, 162-0805, 日本",
+    "name": "焼鳥 山香／Yakitori SANKA",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:12.889Z",
+    "source_file": "outputs/restaurant-1206656-ja.json",
+    "sha256": "296d027582b9434e95536e953166c402c75fda020dc29ad881cfe7ad49b4a45a"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 126,
+    "upstream_id": "1207231",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ubuka",
+    "address": "新宿区荒木町 2-14, 東京, 160-0007, 日本",
+    "name": "うぶか／Ubuka",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:14.211Z",
+    "source_file": "outputs/restaurant-1207231-ja.json",
+    "sha256": "b10282b618a6322056a89863cb83b66ce24ff932f86f49060795b079375b47a2"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 127,
+    "upstream_id": "1207429",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/l-eterre",
+    "address": "新宿区神楽坂 3-6-53 2F, 東京, 162-0825, 日本",
+    "name": "レテール／L'ÉTERRE",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:34.071Z",
+    "source_file": "outputs/restaurant-1207429-ja.json",
+    "sha256": "8205061e7239a7eb61f77bcae4a9b860ac8cb8011d2b87742d8634ed9bc5933a"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 128,
+    "upstream_id": "1207597",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ginza-kitagawa",
+    "address": "中央区銀座 2-10-11 3F, 東京, 104-0061, 日本",
+    "name": "銀座 きた川／Ginza Kitagawa",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:34.230Z",
+    "source_file": "outputs/restaurant-1207597-ja.json",
+    "sha256": "aa8297f7b1fa128865301fa65e4f2d5d38e1245a4ce0d3585a39444e34a98f78"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 84,
+    "upstream_id": "1207930",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/grill-grand",
+    "address": "台東区浅草 3-24-6, 東京, 111-0032, 日本",
+    "name": "グリル グランド／grill GRAND",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-3",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:50.545Z",
+    "source_file": "outputs/restaurant-1207930-ja.json",
+    "sha256": "7bc6bfc7de704004a566a0466e2a89a445e4c6068189eb2dcd2df1b8f71273db"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 129,
+    "upstream_id": "1207933",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/metis-roppongi",
+    "address": "港区六本木 5-18-22, 東京, 106-0032, 日本",
+    "name": "メティス 六本木／Mētis Roppongi",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:12.359Z",
+    "source_file": "outputs/restaurant-1207933-ja.json",
+    "sha256": "c6fd1f8eaadd8b48313e27d0ba2941561e73841427d76d81a17e300451b745ae"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 130,
+    "upstream_id": "1207954",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/mutsukari",
+    "address": "中央区銀座 5-5-19 6F, 東京, 104-0061, 日本",
+    "name": "六雁／Mutsukari",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:36.829Z",
+    "source_file": "outputs/restaurant-1207954-ja.json",
+    "sha256": "fe70f996d0254228c77e573706c57e45ca29eaeb85cc1d848c7f7cce1b693f15"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 85,
+    "upstream_id": "1208220",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/torishige",
+    "address": "渋谷区代々木 2-6-5, 東京, 151-0053, 日本",
+    "name": "鳥茂／Torishige",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:54:04.427Z",
+    "source_file": "outputs/restaurant-1208220-ja.json",
+    "sha256": "990b8dffdc698ec8413238ad1f199a36fc8b8da59f37a2c615c62fe89a46547e"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 131,
+    "upstream_id": "1208307",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/il-ristorante-niko-romito-1208307",
+    "address": "中央区八重洲 2-2-1 ブルガリホテル東京 40F, 東京, 104-0028, 日本",
+    "name": "イル・リストランテ ニコ・ロミート／Il Ristorante - Niko Romito",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "star-list-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:51:35.135Z",
+    "source_file": "outputs/restaurant-1208307-ja.json",
+    "sha256": "db811a4f7a6a9dc94a934e9555668ef2f932478a24ce84a5363cb9ba1ecfb256"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 132,
+    "upstream_id": "1209245",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/primo-passo",
+    "address": "中央区築地 1-5-11 B1F, 東京, 104-0045, 日本",
+    "name": "プリモ パッソ／PRIMO PASSO",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:29.667Z",
+    "source_file": "outputs/restaurant-1209245-ja.json",
+    "sha256": "7c199001618e66f733ca875481eb6d9fccbe1b49810a4c0ebb6472e4f421e7b7"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 133,
+    "upstream_id": "1209552",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/hiroo-ishizaka",
+    "address": "渋谷区広尾 5-19-1 2F, 東京, 150-0012, 日本",
+    "name": "広尾 石阪／Hiroo Ishizaka",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-1",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:16.572Z",
+    "source_file": "outputs/restaurant-1209552-ja.json",
+    "sha256": "8cf478ef744fc661a6cd135a5287e270b836e08266ab470f947b9f6e2efe118e"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 134,
+    "upstream_id": "1209573",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-miura",
+    "address": "港区赤坂 6-19-46, 東京, 107-0052, 日本",
+    "name": "鮨 みうら／Sushi Miura",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:14.181Z",
+    "source_file": "outputs/restaurant-1209573-ja.json",
+    "sha256": "e67d83471779faac81fb766e7af0912334785af9baac572ecc0be4248f6b761d"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 135,
+    "upstream_id": "1209722",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/piao-xiang",
+    "address": "渋谷区広尾 5-19-1, 東京, 150-0012, 日本",
+    "name": "飄香／Piao-Xiang",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:50.943Z",
+    "source_file": "outputs/restaurant-1209722-ja.json",
+    "sha256": "380e499d96bf254aa11d3277d490fe77de3da44f51601b83a79f4a4f2e15288d"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 86,
+    "upstream_id": "1210211",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/japanese-ramen-gokan",
+    "address": "豊島区東池袋 2-57-2, 東京, 170-0013, 日本",
+    "name": "Japanese Ramen 五感／Japanese Ramen Gokan",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:11.381Z",
+    "source_file": "outputs/restaurant-1210211-ja.json",
+    "sha256": "8de67b97802dfc95915facf01b3f6bf240eaaf52fb91023c8414b06a27cb2059"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 136,
+    "upstream_id": "1212474",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/cycle-by-mauro-colagreco",
+    "address": "千代田区大手町 1-2-1 Otemachi One 1F, 東京, 100-0004, 日本",
+    "name": "スィークル／CYCLE by Mauro Colagreco",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:32.123Z",
+    "source_file": "outputs/restaurant-1212474-ja.json",
+    "sha256": "978988181c465ed3fbc7ff0bc5e993755e520073481a7f85647b48a88fd38dab"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 87,
+    "upstream_id": "1212484",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/le-bistrot-des-bleus",
+    "address": "渋谷区広尾 5-4-16 EAT PLAY WORKS 2F, 東京, 150-0012, 日本",
+    "name": "ル ビストロ デ ブル／le bistrot des bleus",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:08.589Z",
+    "source_file": "outputs/restaurant-1212484-ja.json",
+    "sha256": "f7c8af73f7e897186b222f8933144fecfd39afb42c4222a3ecb883f9d149cb84"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 137,
+    "upstream_id": "1212661",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/apotheose",
+    "address": "港区虎ノ門 2-6-2 虎ノ門ヒルズ ステーションタワー 49F, 東京, 105-5549, 日本",
+    "name": "アポテオーズ／apothéose",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:22.110Z",
+    "source_file": "outputs/restaurant-1212661-ja.json",
+    "sha256": "0066ef99494097bf6ff8fa44e05dd55679cfb9bbe698197d4d7209dd977fc120"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 138,
+    "upstream_id": "1212685",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/hakunei",
+    "address": "港区西麻布 4-9-11, 東京, 106-0031, 日本",
+    "name": "白寧／hakunei",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-1",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:09.043Z",
+    "source_file": "outputs/restaurant-1212685-ja.json",
+    "sha256": "ae29d29a4a692e0caadc3be25b033edd780fd5691346705a8e6f8b338fbd47e8"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 88,
+    "upstream_id": "1212774",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/wokotote",
+    "address": "文京区根津 2-35-1, 東京, 113-0031, 日本",
+    "name": "をことて／wokotote",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:16.065Z",
+    "source_file": "outputs/restaurant-1212774-ja.json",
+    "sha256": "45caf43a50124c26fe85dc61b9b578f81b992e73a8abdd8f2a9dfe9ab61ec67b"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 89,
+    "upstream_id": "1212807",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/tachiguisushi-sushikawa",
+    "address": "渋谷区笹塚 1-62-6, 東京, 151-0073, 日本",
+    "name": "立食い鮨 鮨川／Tachiguisushi Sushikawa",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:14.750Z",
+    "source_file": "outputs/restaurant-1212807-ja.json",
+    "sha256": "3d67fe2eebeecc8753690159da061326f8f9262326dd58e1e808b57688430b7b"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 139,
+    "upstream_id": "1212808",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/saucer",
+    "address": "渋谷区恵比寿西 2-7-10 B1F, 東京, 150-0021, 日本",
+    "name": "ソーセ／Saucer",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:49.063Z",
+    "source_file": "outputs/restaurant-1212808-ja.json",
+    "sha256": "5811782ca146634f19716ee7fac081e3fcca24c519ab6d0f8b47b7d792edfd37"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 90,
+    "upstream_id": "1213152",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-mikata",
+    "address": "港区三田 4-1-4, 東京, 108-0073, 日本",
+    "name": "鮨 三か田／Sushi Mikata",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:24.466Z",
+    "source_file": "outputs/restaurant-1213152-ja.json",
+    "sha256": "7525ffdd86e50182377f70c937ef307155dd7a8c803e9b579340f73c88a837ba"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 140,
+    "upstream_id": "1213170",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sanosushi",
+    "address": "港区芝 2-18-9, 東京, 105-0014, 日本",
+    "name": "佐野鮨／Sanosushi",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:53:02.373Z",
+    "source_file": "outputs/restaurant-1213170-ja.json",
+    "sha256": "80373ab16ed68b7678f570bed211d5ab2b38fbac1d04e0cca756c1d15691c374"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 91,
+    "upstream_id": "1213188",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ramen-matsui",
+    "address": "新宿区四谷 4-25-10, 東京, 160-0004, 日本",
+    "name": "ラーメン マツイ／RAMEN MATSUI",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:22.614Z",
+    "source_file": "outputs/restaurant-1213188-ja.json",
+    "sha256": "1ae810286c6750201fe013999ee07afc1286a03975ed11e8f55458c8547dc4f4"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 141,
+    "upstream_id": "1213189",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/hortensia",
+    "address": "中央区新富 1-5-12 2F, 東京, 104-0041, 日本",
+    "name": "オルタンシア／hortensia",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:27.717Z",
+    "source_file": "outputs/restaurant-1213189-ja.json",
+    "sha256": "aaff20a3f5b216c758ef29ad51cf9d0bac112c9eff1feaf24cc5e28c5e96ac67"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 142,
+    "upstream_id": "1213248",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/yotsuya-minemura",
+    "address": "新宿区荒木町 3-21 2F, 東京, 160-0007, 日本",
+    "name": "四ツ谷 みね村／Yotsuya Minemura",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:03.634Z",
+    "source_file": "outputs/restaurant-1213248-ja.json",
+    "sha256": "c0c98280c5bdd135459bf6abf058104bbb9934d70d7f0255eee626e75386bdf4"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 92,
+    "upstream_id": "1213418",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ma-poule",
+    "address": "文京区西片 2-19-17, 東京, 113-0024, 日本",
+    "name": "マ プール／Ma Poule",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:44.212Z",
+    "source_file": "outputs/restaurant-1213418-ja.json",
+    "sha256": "dd5e56ac87f57e0c199a6a3466111778b4553110a086bd0a3f08b47ffe9117f9"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 143,
+    "upstream_id": "1213450",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/higashiyama-muku",
+    "address": "目黒区東山 1-15-5, 東京, 153-0043, 日本",
+    "name": "東山無垢／Higashiyama Muku",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:51:57.804Z",
+    "source_file": "outputs/restaurant-1213450-ja.json",
+    "sha256": "3e785cbafbb3cfdf8e38cd605d7edbd3cd1ff45ff3244f0c6b8b48ef08f9ce27"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 144,
+    "upstream_id": "1213818",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-yuki-1213818",
+    "address": "渋谷区広尾 5-17-4, 東京, 150-0012, 日本",
+    "name": "鮨 ゆうき／Sushi Yuki",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "ja-stars-1",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:11.016Z",
+    "source_file": "outputs/restaurant-1213818-ja.json",
+    "sha256": "8b679a6595d2318ae8c03e9e9a019cb1a9f5293e0dd90f87e7584f75c309eb4d"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 145,
+    "upstream_id": "1214400",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/kappo-muroi",
+    "address": "港区西麻布 2-16-4, 東京, 106-0031, 日本",
+    "name": "割烹 室井／Kappo Muroi",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:56.995Z",
+    "source_file": "outputs/restaurant-1214400-ja.json",
+    "sha256": "35c493185e707dfd6135ffea21f37b372032da2a2b7cb6dde0eed634fe1ef021"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 93,
+    "upstream_id": "1214700",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/le-nougat",
+    "address": "中央区銀座 6-12-2, 東京, 104-0061, 日本",
+    "name": "ヌガ／Le Nougat",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:24.446Z",
+    "source_file": "outputs/restaurant-1214700-ja.json",
+    "sha256": "7ef47c742da062d28476c19c9a43f3c7abf2f6264d592228cc4d254564eeed88"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 94,
+    "upstream_id": "1214706",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/shiosoba-jiku",
+    "address": "杉並区高井戸東 4-14-7, 東京, 168-0072, 日本",
+    "name": "塩そば 時空／Shiosoba Jiku",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:24.083Z",
+    "source_file": "outputs/restaurant-1214706-ja.json",
+    "sha256": "91b49dbd42fdd25e1c7748694c2d19952d2c8d1cfd54e922aa133aa9871372d4"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 146,
+    "upstream_id": "1214953",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/yama-1214953",
+    "address": "港区白金 6-16-41, 東京, 108-0072, 日本",
+    "name": "山／Yama",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:51:57.771Z",
+    "source_file": "outputs/restaurant-1214953-ja.json",
+    "sha256": "a8b77ef0dbfa45c6085da230bf3cdb345289cba6f5939fc2b7e6f59ffd7f9b00"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 95,
+    "upstream_id": "1214972",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/les-six",
+    "address": "港区南麻布 5-15-25 2F, 東京, 106-0047, 日本",
+    "name": "レ シス／Les six",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:54:04.198Z",
+    "source_file": "outputs/restaurant-1214972-ja.json",
+    "sha256": "ca57ad47f054ae0cc94fe0341ced2444a70ed18d03b6c0ca9b89f0f03eca301d"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 147,
+    "upstream_id": "1215272",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-tanaka",
+    "address": "港区南麻布 2-7-23, 東京, 106-0047, 日本",
+    "name": "鮨 田中／Sushi Tanaka",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-stars-1",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:58.882Z",
+    "source_file": "outputs/restaurant-1215272-ja.json",
+    "sha256": "89a9a97765e7a1c8321fbcdbad7ef367a9b2670e28eb7e490b5735b3ed41e959"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 148,
+    "upstream_id": "1216644",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sushi-oya",
+    "address": "新宿区袋町 3-6 3F, 東京, 162-0828, 日本",
+    "name": "鮨 大矢／Sushi Oya",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "star-list-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:17.813Z",
+    "source_file": "outputs/restaurant-1216644-ja.json",
+    "sha256": "c9fa55c172fe7d9b512c0638668e6a38b2e52e99a09a3a7b11d11319eaee4117"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 149,
+    "upstream_id": "1216918",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/akasaka-shimabukuro",
+    "address": "港区赤坂 3-21-8 3F, 東京, 107-0052, 日本",
+    "name": "赤坂 島袋／Akasaka Shimabukuro",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:21.119Z",
+    "source_file": "outputs/restaurant-1216918-ja.json",
+    "sha256": "7203e638ad65922f4519efa3c2f215910b192ab8b0d1f3e0454f0e28338640a7"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 150,
+    "upstream_id": "1216928",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ewig",
+    "address": "港区南青山 4-3-23 2F, 東京, 107-0062, 日本",
+    "name": "エーヴィック／EWIG",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:03.202Z",
+    "source_file": "outputs/restaurant-1216928-ja.json",
+    "sha256": "a943913d77b0080acb23549a0469cdee7e2bfe35528d6c51d47e0abe374c7055"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 151,
+    "upstream_id": "1217103",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/manoir",
+    "address": "渋谷区広尾 1-10-6, 東京, 150-0012, 日本",
+    "name": "マノワ／MANOIR",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:51:55.740Z",
+    "source_file": "outputs/restaurant-1217103-ja.json",
+    "sha256": "b8c863cdbc1cf59959868656b1f9815f18f579fce4553351b34168167a7b68d9"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 152,
+    "upstream_id": "1217131",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/khao-1217131",
+    "address": "千代田区神田神保町 2-12-7, 東京, 101-0051, 日本",
+    "name": "カオ／KHAO",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "ja-stars-4",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:27.714Z",
+    "source_file": "outputs/restaurant-1217131-ja.json",
+    "sha256": "e030267b426ec302d0e4251a507b68e0595bd9429c7752bfb1fa9a50f8b70fea"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 96,
+    "upstream_id": "1217146",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/shokudo-wata",
+    "address": "新宿区新宿 1-19-11, 東京, 160-0022, 日本",
+    "name": "食堂わた／Shokudo Wata",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:38.774Z",
+    "source_file": "outputs/restaurant-1217146-ja.json",
+    "sha256": "60f416d116a78023c9422e264d7f81ead45b0fc823482a7f1bfd2fda5b1e5185"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 153,
+    "upstream_id": "1217544",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sassa",
+    "address": "渋谷区広尾 5-13-6, 東京, 150-0012, 日本",
+    "name": "佐々／Sassa",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:51:57.493Z",
+    "source_file": "outputs/restaurant-1217544-ja.json",
+    "sha256": "89fd94516fed52090e04d9fa3730f6b19e856f8dd8048d5a98825f82acee4853"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 97,
+    "upstream_id": "1217754",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/yaesu-unagi-hashimoto",
+    "address": "中央区八重洲 1-5-10, 東京, 103-0028, 日本",
+    "name": "八重洲 鰻 はし本／Yaesu Unagi Hashimoto",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:14.548Z",
+    "source_file": "outputs/restaurant-1217754-ja.json",
+    "sha256": "e701e58d6f188fc01e291268cee5369b7c8ac3144446a082a882738feb165ffb"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 154,
+    "upstream_id": "1217824",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/hyakuyaku-by-tokuyamazushi",
+    "address": "中央区銀座 4-4-2 9F, 東京, 104-0061, 日本",
+    "name": "百薬 by 徳山鮓／Hyakuyaku by Tokuyamazushi",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-3",
+      "rating-1-3"
+    ],
+    "captured_at": "2026-09-14T02:52:30.889Z",
+    "source_file": "outputs/restaurant-1217824-ja.json",
+    "sha256": "a1aa4c603005b4bb651fd5faacf3d25aa7e114cf46b1e52126c4d60a8268b58b"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 98,
+    "upstream_id": "1217982",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ginza-katsukami-ii",
+    "address": "中央区銀座 6-8-7 交詢ビル 4F, 東京, 104-0061, 日本",
+    "name": "ぎんざ かつかみ弐／GINZA KATSUKAMI II",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:21.362Z",
+    "source_file": "outputs/restaurant-1217982-ja.json",
+    "sha256": "b17f95a48bb9635fcf62cbda771778f988ff57beb1fbbdfd538a3aa0b2b158f3"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 99,
+    "upstream_id": "1218206",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/gigio",
+    "address": "世田谷区若林 4-24-19, 東京, 154-0023, 日本",
+    "name": "ジージョ／Gigio",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:55.928Z",
+    "source_file": "outputs/restaurant-1218206-ja.json",
+    "sha256": "df55a6ce79c29e344ae0cdb838d2845595605d61765dd1c63fe254702b43bca8"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 155,
+    "upstream_id": "1218215",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/la-gloire-1218215",
+    "address": "港区赤坂 2-17-7, 東京, 107-0052, 日本",
+    "name": "ラ グロワ／La Gloire",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-1"
+    ],
+    "captured_at": "2026-09-14T02:52:19.818Z",
+    "source_file": "outputs/restaurant-1218215-ja.json",
+    "sha256": "31cfc119f053bafd8c71de1a13b6e62597db4f7a94423143b7483e1770a87813"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 100,
+    "upstream_id": "1218218",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/shutei-tanaka",
+    "address": "墨田区墨田 3-25-7, 東京, 131-0031, 日本",
+    "name": "酒亭 田中／Shutei Tanaka",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-3",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:05.929Z",
+    "source_file": "outputs/restaurant-1218218-ja.json",
+    "sha256": "23f88dddb06f5dd0d7b23093f20ecd16b12f0c86e99a82fdf7e566060cd92fd2"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 101,
+    "upstream_id": "1218245",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/loiseau-de-france",
+    "address": "新宿区市谷船河原町 15, 東京, 162-0826, 日本",
+    "name": "ロワゾー・ドゥ・フランス／Loiseau de France",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:04.583Z",
+    "source_file": "outputs/restaurant-1218245-ja.json",
+    "sha256": "3b5381f0c937ab677ba7e088074d2c2f6ffbd9815133217ef67f4840d3ea6ca7"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 102,
+    "upstream_id": "1218270",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/teuchisoba-jiyusan",
+    "address": "中野区江原町 3-1-4, 東京, 165-0023, 日本",
+    "name": "手打蕎麦 じゆうさん／Teuchisoba Jiyusan",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:37.151Z",
+    "source_file": "outputs/restaurant-1218270-ja.json",
+    "sha256": "fdc84456cf39a078a46228901232572aabcf401675c20ffb4d56e8f1a766f833"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 103,
+    "upstream_id": "1219188",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/shinrakuki",
+    "address": "新宿区若葉 2-7, 東京, 160-0011, 日本",
+    "name": "新楽記／Shinrakuki",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:22.011Z",
+    "source_file": "outputs/restaurant-1219188-ja.json",
+    "sha256": "33c9f72a6cab9cfd791193cdf2df48060b37bf6ba1fa20e9e10d2ca3bcf0fb47"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 104,
+    "upstream_id": "1240749",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/biriyani-osawa",
+    "address": "千代田区内神田 1-15-12 B1F, 東京, 101-0047, 日本",
+    "name": "ビリヤニ大澤／Biriyani Osawa",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:05.336Z",
+    "source_file": "outputs/restaurant-1240749-ja.json",
+    "sha256": "4961f4bc3a538f58c89db22111be86d9c615f87c448feddd55301a716ca5dfff"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 105,
+    "upstream_id": "1240750",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/ginza-haru-chan-ramen",
+    "address": "中央区銀座 3-11-6, 東京, 104-0061, 日本",
+    "name": "銀座はるちゃんラーメン／Ginza HARU CHAN Ramen",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-2"
+    ],
+    "captured_at": "2026-09-14T02:53:41.748Z",
+    "source_file": "outputs/restaurant-1240750-ja.json",
+    "sha256": "1d2fdb484e7ad334f23427d5fa9c825f48ae03009345ba7e79a7bea60495dea1"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 106,
+    "upstream_id": "1240752",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/teuchi-asama",
+    "address": "目黒区上目黒 2-13-7, 東京, 153-0051, 日本",
+    "name": "手打ち あさま／Teuchi Asama",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:58.990Z",
+    "source_file": "outputs/restaurant-1240752-ja.json",
+    "sha256": "6f7bf62900893e36b5f1b043a7395f71b144b296249522bbf5bc91a2eed597c7"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 107,
+    "upstream_id": "1240815",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/yoshoku-edoya",
+    "address": "港区白金 6-6-1, 東京, 108-0072, 日本",
+    "name": "洋食 エドヤ／Yoshoku Edoya",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list-2",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:32.897Z",
+    "source_file": "outputs/restaurant-1240815-ja.json",
+    "sha256": "15bb30a796313980bb3e4d3f1fed0cb4afdfb1bf4c3fe99f5a68054527687949"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 108,
+    "upstream_id": "1240865",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sobakappo-nagano",
+    "address": "墨田区東向島 2-20-6, 東京, 131-0032, 日本",
+    "name": "蕎麦割烹 ながの／Sobakappo Nagano",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "bib-list-3",
+      "ja-bib-3"
+    ],
+    "captured_at": "2026-09-14T02:53:14.097Z",
+    "source_file": "outputs/restaurant-1240865-ja.json",
+    "sha256": "e104e8e03a383f26c6a222430485a60e2e88b52a3312c62b2863b2d5b98315d8"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 109,
+    "upstream_id": "1240867",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/zupperia-osteria-pitigliano",
+    "address": "世田谷区祖師谷 3-4-9 2F, 東京, 157-0072, 日本",
+    "name": "ズッペリア・オステリア・ピティリアーノ／ZUPPERIA OSTERIA PITIGLIANO",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:51.653Z",
+    "source_file": "outputs/restaurant-1240867-ja.json",
+    "sha256": "3b83aeb01013943a7ba7a9d7684d742b6c1a9a451bf8a507646db5f54f27d37a"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 156,
+    "upstream_id": "1241425",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/takumi-tatsuhiro",
+    "address": "新宿区新宿 1-11-7, 東京, 160-0022, 日本",
+    "name": "匠 達広／Takumi Tatsuhiro",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list-2",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:52:08.244Z",
+    "source_file": "outputs/restaurant-1241425-ja.json",
+    "sha256": "1ec687eee8edd0f6b312e1977aff951fb4e727e27a777b4ceecbb9b6aaf701a0"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 110,
+    "upstream_id": "1241612",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/sobakiri-suzuki",
+    "address": "練馬区南大泉 4-43-32, 東京, 178-0064, 日本",
+    "name": "そばきり すゞ木／Sobakiri Suzuki",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:57.026Z",
+    "source_file": "outputs/restaurant-1241612-ja.json",
+    "sha256": "7f04b07778411166eb8ca7ae339d555514d8d583a5e103a17da9c5f0bab9639d"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 157,
+    "upstream_id": "1241924",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/maerge",
+    "address": "港区南青山 3-8-14, 東京, 107-0062, 日本",
+    "name": "マージ／mærge",
+    "award": "ミシュラン 一つ星: 優れた料理",
+    "award_year": "2026",
+    "list_pages": [
+      "star-list",
+      "ja-stars-1",
+      "rating-1-2"
+    ],
+    "captured_at": "2026-09-14T02:51:55.087Z",
+    "source_file": "outputs/restaurant-1241924-ja.json",
+    "sha256": "58af960d7769b89187880b4a806684794e1e069a6365c48cdc8bf41fa7986af9"
+  },
+  {
+    "guide_type": "michelin-bib-gourmand",
+    "id": 111,
+    "upstream_id": "1241936",
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/night-market-1241936",
+    "address": "渋谷区渋谷 2-6-6, 東京, 150-0002, 日本",
+    "name": "ナイトマーケット／Night Market",
+    "award": "ビブグルマン：価格以上の満足感が得られる料理",
+    "award_year": "2026",
+    "list_pages": [
+      "bib-list",
+      "ja-bib-1"
+    ],
+    "captured_at": "2026-09-14T02:53:03.649Z",
+    "source_file": "outputs/restaurant-1241936-ja.json",
+    "sha256": "7f5250de3b85b23fc714fe39400286ab1478f6e9ddc8b59d9569b65a9aa4b7c8"
+  },
+  {
+    "guide_type": "michelin-starred",
+    "id": 158,
+    "upstream_id": null,
+    "canonical": "https://guide.michelin.com/jp/ja/tokyo-region/tokyo/restaurant/kibun",
+    "name": "氣分／KIBUN",
+    "award": "一つ星／現代風料理、プロモーテッド",
+    "award_year": "2026",
+    "source_file": "outputs/ja-stars-reveal.json",
+    "captured_at": "2026-09-14T02:43:50.104Z",
+    "exception": "Annual award retained. Official detail now reports restaurant not found; address and coordinates unresolved."
+  }
+]

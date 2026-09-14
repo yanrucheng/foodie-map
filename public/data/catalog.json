@@ -1,0 +1,611 @@
+{
+  "version": 1,
+  "cities": [
+    {
+      "id": "hong-kong",
+      "label": "Hong Kong",
+      "labelZh": "香港",
+      "center": [
+        22.302,
+        114.177
+      ],
+      "zoom": 11,
+      "guides": [
+        {
+          "id": "michelin-bib-gourmand",
+          "label": "Michelin Bib Gourmand 2026",
+          "labelZh": "米其林必比登",
+          "year": 2026,
+          "dataPath": "/data/hong-kong/2026/michelin-bib-gourmand.json",
+          "legacyPath": "/data/hong-kong/michelin-bib-gourmand.json",
+          "coverage": {
+            "status": "unverified",
+            "note": "旧文件自报年度；官方年度名单、完整身份集合、采集及核验时间未恢复。",
+            "verifiedMembers": [],
+            "officialCount": null,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": null,
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        },
+        {
+          "id": "michelin-starred",
+          "label": "Michelin Starred 2026",
+          "labelZh": "米其林星级",
+          "year": 2026,
+          "dataPath": "/data/hong-kong/2026/michelin-starred.json",
+          "legacyPath": "/data/hong-kong/michelin-starred.json",
+          "coverage": {
+            "status": "unverified",
+            "note": "旧文件自报年度；官方年度名单、完整身份集合、采集及核验时间未恢复。",
+            "verifiedMembers": [],
+            "officialCount": null,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": null,
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        }
+      ],
+      "taxonomyPath": "/data/taxonomy/hong-kong.json",
+      "mappingsPath": "/data/taxonomy/hong-kong-mappings.json",
+      "spatialContext": {
+        "coordinateSystem": "WGS84"
+      },
+      "scope": {
+        "description": "旧登记范围；尚未恢复官方年度地域定义。",
+        "members": [
+          "hong-kong"
+        ]
+      }
+    },
+    {
+      "id": "beijing",
+      "label": "Beijing",
+      "labelZh": "北京",
+      "center": [
+        39.904,
+        116.407
+      ],
+      "zoom": 11,
+      "guides": [
+        {
+          "id": "michelin-bib-gourmand",
+          "label": "Michelin Bib Gourmand 2026",
+          "labelZh": "米其林必比登",
+          "year": 2026,
+          "dataPath": "/data/beijing/2026/michelin-bib-gourmand.json",
+          "legacyPath": "/data/beijing/michelin-bib-gourmand.json",
+          "coverage": {
+            "status": "unverified",
+            "note": "旧文件自报年度；官方年度名单、完整身份集合、采集及核验时间未恢复。",
+            "verifiedMembers": [],
+            "officialCount": null,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": null,
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        },
+        {
+          "id": "michelin-starred",
+          "label": "Michelin Starred 2026",
+          "labelZh": "米其林星级",
+          "year": 2026,
+          "dataPath": "/data/beijing/2026/michelin-starred.json",
+          "legacyPath": "/data/beijing/michelin-starred.json",
+          "coverage": {
+            "status": "unverified",
+            "note": "旧文件自报年度；官方年度名单、完整身份集合、采集及核验时间未恢复。",
+            "verifiedMembers": [],
+            "officialCount": null,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": null,
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        }
+      ],
+      "taxonomyPath": "/data/taxonomy/beijing.json",
+      "mappingsPath": "/data/taxonomy/beijing-mappings.json",
+      "spatialContext": {
+        "coordinateSystem": "WGS84"
+      },
+      "scope": {
+        "description": "旧登记范围；尚未恢复官方年度地域定义。",
+        "members": [
+          "beijing"
+        ]
+      }
+    },
+    {
+      "id": "guangzhou-shenzhen",
+      "label": "Guangzhou & Shenzhen",
+      "labelZh": "广州 · 深圳",
+      "center": [
+        23.13,
+        113.26
+      ],
+      "zoom": 10,
+      "guides": [
+        {
+          "id": "michelin-starred",
+          "label": "Michelin Starred 2026",
+          "labelZh": "米其林星级",
+          "year": 2026,
+          "dataPath": "/data/guangzhou-shenzhen/2026/michelin-starred.json",
+          "legacyPath": "/data/guangzhou-shenzhen/michelin-starred.json",
+          "coverage": {
+            "status": "unverified",
+            "note": "旧文件自报年度；官方年度名单、完整身份集合、采集及核验时间未恢复。",
+            "verifiedMembers": [],
+            "officialCount": null,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": null,
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        },
+        {
+          "id": "michelin-bib-gourmand",
+          "label": "Michelin Bib Gourmand 2026",
+          "labelZh": "米其林必比登",
+          "year": 2026,
+          "dataPath": "/data/guangzhou-shenzhen/2026/michelin-bib-gourmand.json",
+          "legacyPath": "/data/guangzhou-shenzhen/michelin-bib-gourmand.json",
+          "coverage": {
+            "status": "unverified",
+            "note": "旧文件自报年度；官方年度名单、完整身份集合、采集及核验时间未恢复。",
+            "verifiedMembers": [],
+            "officialCount": null,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": null,
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        }
+      ],
+      "taxonomyPath": "/data/taxonomy/guangzhou-shenzhen.json",
+      "mappingsPath": "/data/taxonomy/guangzhou-shenzhen-mappings.json",
+      "spatialContext": {
+        "coordinateSystem": "WGS84"
+      },
+      "scope": {
+        "description": "旧登记范围；尚未恢复官方年度地域定义。",
+        "members": [
+          "guangzhou",
+          "shenzhen"
+        ]
+      }
+    },
+    {
+      "id": "shanghai",
+      "label": "Shanghai",
+      "labelZh": "上海",
+      "center": [
+        31.2304,
+        121.4737
+      ],
+      "zoom": 11,
+      "guides": [
+        {
+          "id": "michelin-starred",
+          "label": "Michelin Starred 2026",
+          "labelZh": "米其林星级",
+          "year": 2026,
+          "dataPath": "/data/shanghai/2026/michelin-starred.json",
+          "legacyPath": "/data/shanghai/michelin-starred.json",
+          "coverage": {
+            "status": "unverified",
+            "note": "旧文件自报年度；官方年度名单、完整身份集合、采集及核验时间未恢复。",
+            "verifiedMembers": [],
+            "officialCount": null,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": null,
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        },
+        {
+          "id": "michelin-bib-gourmand",
+          "label": "Michelin Bib Gourmand 2026",
+          "labelZh": "米其林必比登",
+          "year": 2026,
+          "dataPath": "/data/shanghai/2026/michelin-bib-gourmand.json",
+          "legacyPath": "/data/shanghai/michelin-bib-gourmand.json",
+          "coverage": {
+            "status": "unverified",
+            "note": "旧文件自报年度；官方年度名单、完整身份集合、采集及核验时间未恢复。",
+            "verifiedMembers": [],
+            "officialCount": null,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": null,
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        }
+      ],
+      "taxonomyPath": "/data/taxonomy/shanghai.json",
+      "mappingsPath": "/data/taxonomy/shanghai-mappings.json",
+      "spatialContext": {
+        "coordinateSystem": "WGS84"
+      },
+      "scope": {
+        "description": "旧登记范围；尚未恢复官方年度地域定义。",
+        "members": [
+          "shanghai"
+        ]
+      }
+    },
+    {
+      "id": "chengdu",
+      "label": "Chengdu",
+      "labelZh": "成都",
+      "center": [
+        30.572,
+        104.066
+      ],
+      "zoom": 12,
+      "guides": [
+        {
+          "id": "michelin-starred",
+          "label": "Michelin Starred 2026",
+          "labelZh": "米其林星级",
+          "year": 2026,
+          "dataPath": "/data/chengdu/2026/michelin-starred.json",
+          "legacyPath": "/data/chengdu/michelin-starred.json",
+          "coverage": {
+            "status": "unverified",
+            "note": "旧文件自报年度；官方年度名单、完整身份集合、采集及核验时间未恢复。",
+            "verifiedMembers": [],
+            "officialCount": null,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": null,
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        }
+      ],
+      "taxonomyPath": "/data/taxonomy/chengdu.json",
+      "mappingsPath": "/data/taxonomy/chengdu-mappings.json",
+      "spatialContext": {
+        "coordinateSystem": "WGS84"
+      },
+      "scope": {
+        "description": "旧登记范围；尚未恢复官方年度地域定义。",
+        "members": [
+          "chengdu"
+        ]
+      }
+    },
+    {
+      "id": "macau",
+      "label": "Macau",
+      "labelZh": "澳門",
+      "center": [
+        22.166,
+        113.559
+      ],
+      "zoom": 13,
+      "guides": [
+        {
+          "id": "michelin-starred",
+          "label": "Michelin Starred 2026",
+          "labelZh": "米其林星級",
+          "year": 2026,
+          "dataPath": "/data/macau/2026/michelin-starred.json",
+          "legacyPath": "/data/macau/michelin-starred.json",
+          "coverage": {
+            "status": "unverified",
+            "note": "旧文件自报年度；官方年度名单、完整身份集合、采集及核验时间未恢复。",
+            "verifiedMembers": [],
+            "officialCount": null,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": null,
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        },
+        {
+          "id": "michelin-bib-gourmand",
+          "label": "Michelin Bib Gourmand 2026",
+          "labelZh": "米其林必比登",
+          "year": 2026,
+          "dataPath": "/data/macau/2026/michelin-bib-gourmand.json",
+          "legacyPath": "/data/macau/michelin-bib-gourmand.json",
+          "coverage": {
+            "status": "unverified",
+            "note": "旧文件自报年度；官方年度名单、完整身份集合、采集及核验时间未恢复。",
+            "verifiedMembers": [],
+            "officialCount": null,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": null,
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        }
+      ],
+      "taxonomyPath": "/data/taxonomy/macau.json",
+      "mappingsPath": "/data/taxonomy/macau-mappings.json",
+      "spatialContext": {
+        "coordinateSystem": "WGS84"
+      },
+      "scope": {
+        "description": "旧登记范围；尚未恢复官方年度地域定义。",
+        "members": [
+          "macau"
+        ]
+      }
+    },
+    {
+      "id": "tokyo",
+      "basemap": "gsi-standard",
+      "label": "Tokyo",
+      "labelZh": "东京",
+      "center": [
+        35.68,
+        139.76
+      ],
+      "zoom": 12,
+      "guides": [
+        {
+          "id": "michelin-starred",
+          "label": "Michelin Starred 2026",
+          "labelZh": "米其林星级",
+          "year": 2026,
+          "dataPath": "/data/tokyo/2026/michelin-starred.json",
+          "legacyPath": "/data/tokyo/michelin-starred.json",
+          "coverage": {
+            "status": "partial",
+            "note": "年度仍缺 2 家身份；现行在线集合对齐不等于年度完整。",
+            "verifiedMembers": [],
+            "officialCount": 160,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": "2026-09-14",
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "edition",
+                "ref": "repo:eval/sessions/260914-1037-tokyo-michelin/edition-evidence.json",
+                "note": "东京原采集材料；年度完整身份集合仍未恢复"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260914-1037-tokyo-michelin/list-identities.json",
+                "note": "东京原采集材料；年度完整身份集合仍未恢复"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260914-1037-tokyo-michelin/record-evidence.json",
+                "note": "东京原采集材料；年度完整身份集合仍未恢复"
+              },
+              {
+                "kind": "scope",
+                "ref": "repo:eval/sessions/260914-1037-tokyo-michelin/report.md",
+                "note": "东京原采集材料；年度完整身份集合仍未恢复"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        },
+        {
+          "id": "michelin-bib-gourmand",
+          "label": "Michelin Bib Gourmand 2026",
+          "labelZh": "米其林必比登",
+          "year": 2026,
+          "dataPath": "/data/tokyo/2026/michelin-bib-gourmand.json",
+          "legacyPath": "/data/tokyo/michelin-bib-gourmand.json",
+          "coverage": {
+            "status": "partial",
+            "note": "年度仍缺 3 家身份；现行在线集合对齐不等于年度完整。",
+            "verifiedMembers": [],
+            "officialCount": 114,
+            "reconciliationPath": null
+          },
+          "provenance": {
+            "collectedAt": "2026-09-14",
+            "verifiedAt": null,
+            "sources": [
+              {
+                "kind": "gap",
+                "ref": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md",
+                "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "edition",
+                "ref": "repo:eval/sessions/260914-1037-tokyo-michelin/edition-evidence.json",
+                "note": "东京原采集材料；年度完整身份集合仍未恢复"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260914-1037-tokyo-michelin/list-identities.json",
+                "note": "东京原采集材料；年度完整身份集合仍未恢复"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260914-1037-tokyo-michelin/record-evidence.json",
+                "note": "东京原采集材料；年度完整身份集合仍未恢复"
+              },
+              {
+                "kind": "scope",
+                "ref": "repo:eval/sessions/260914-1037-tokyo-michelin/report.md",
+                "note": "东京原采集材料；年度完整身份集合仍未恢复"
+              }
+            ],
+            "revision": {
+              "id": "p03-annual-path-migration",
+              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
+              "evidence": "repo:openspec/changes/p03-versioned-guide-coverage/evidence/provenance.md"
+            }
+          }
+        }
+      ],
+      "taxonomyPath": "/data/taxonomy/tokyo.json",
+      "mappingsPath": "/data/taxonomy/tokyo-mappings.json",
+      "spatialContext": {
+        "coordinateSystem": "WGS84"
+      },
+      "scope": {
+        "description": "官方 Tokyo / tokyo-region；观察到 19 个特别区，尚无仅限 23 区的排他性依据。",
+        "members": [
+          "tokyo"
+        ]
+      }
+    }
+  ]
+}

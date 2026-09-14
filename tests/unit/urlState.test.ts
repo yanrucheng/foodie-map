@@ -1,37 +1,22 @@
+// @vitest-environment jsdom
 /**
  * Unit tests for URL state utilities.
  * Tests readSelectionParams and writeSelectionParams functions.
  */
 
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { readSelectionParams, writeSelectionParams } from "@/utils/urlState";
 
 describe("urlState", () => {
-  const originalLocation = window.location;
-  const originalHistory = window.history;
+  const originalUrl = window.location.href;
+  const originalState = window.history.state;
 
   beforeEach(() => {
-    // Mock window.location
-    const mockLocation = {
-      search: "?year=2024&city=hong-kong&guide=michelin-guide",
-      pathname: "/map",
-    };
-    Object.defineProperty(window, "location", {
-      value: mockLocation,
-      writable: true,
-    });
-
-    // Mock window.history.replaceState
-    window.history.replaceState = vi.fn();
+    window.history.replaceState(null, "", "/map?year=2024&city=hong-kong&guide=michelin-guide");
   });
 
   afterEach(() => {
-    // Restore original location
-    Object.defineProperty(window, "location", {
-      value: originalLocation,
-      writable: true,
-    });
-    window.history.replaceState = originalHistory.replaceState;
+    window.history.replaceState(originalState, "", originalUrl);
   });
 
   describe("readSelectionParams", () => {
@@ -45,7 +30,7 @@ describe("urlState", () => {
     });
 
     it("should return undefined for missing params", () => {
-      (window.location as any).search = "";
+      window.history.replaceState(null, "", "/map");
       const params = readSelectionParams();
       expect(params).toEqual({
         year: undefined,
@@ -55,7 +40,7 @@ describe("urlState", () => {
     });
 
     it("should handle partial params", () => {
-      (window.location as any).search = "?city=beijing";
+      window.history.replaceState(null, "", "/map?city=beijing");
       const params = readSelectionParams();
       expect(params).toEqual({
         year: undefined,
@@ -66,24 +51,21 @@ describe("urlState", () => {
   });
 
   describe("writeSelectionParams", () => {
-    it("should write all params to URL and call replaceState", () => {
+    it("should update all selection params in the current URL", () => {
       writeSelectionParams(2025, "beijing", "michelin-starred");
 
-      expect(window.history.replaceState).toHaveBeenCalledWith(
-        null,
-        "",
-        "/map?year=2025&city=beijing&guide=michelin-starred"
+      expect(window.location.pathname + window.location.search).toBe(
+        "/map?year=2025&city=beijing&guide=michelin-starred",
       );
     });
 
     it("should preserve existing pathname", () => {
-      (window.location as any).pathname = "/custom-path";
+      window.history.replaceState(null, "", "/custom-path?view=map");
       writeSelectionParams(2024, "shanghai", "bib-gourmand");
 
-      expect(window.history.replaceState).toHaveBeenCalledWith(
-        null,
-        "",
-        expect.stringContaining("/custom-path?")
+      expect(window.location.pathname).toBe("/custom-path");
+      expect(window.location.search).toBe(
+        "?view=map&year=2024&city=shanghai&guide=bib-gourmand",
       );
     });
   });

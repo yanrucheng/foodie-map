@@ -1,0 +1,396 @@
+{
+  "verified_at": "2026-09-14T12:05:54.967048+08:00",
+  "runtime": {
+    "node": "v24.21.0",
+    "npm": "11.19.0",
+    "python": "3.14.0",
+    "browser": "HeadlessChrome/147.0.7727.57"
+  },
+  "commands": [
+    {
+      "command": "rtk npm run validate:data -- --json",
+      "exit_code": 0,
+      "log": "outputs/validate-data.log",
+      "result": "13 datasets; 671 listed; 652 locatable; no errors",
+      "log_sha256": "130fa2badb9b6a0fdccde286a081995f71c272b83d8a9dda8ba638bf48d2f017"
+    },
+    {
+      "command": "rtk npm run check",
+      "exit_code": 0,
+      "log": "outputs/check-final.log",
+      "result": "types/lint/data pass",
+      "log_sha256": "1e5dddbd256bacd3a7d6fe85472f18b4e323b2238b20ea322e9b90d4ca564c56"
+    },
+    {
+      "command": "rtk npm test",
+      "exit_code": 0,
+      "log": "outputs/test-final.log",
+      "result": "12 files, 166 tests pass",
+      "log_sha256": "87815248e30ca4399b3b888dd41817a078aa0fb25320b241c0ee64d1e09d8f3f"
+    },
+    {
+      "command": "rtk npm run build",
+      "exit_code": 0,
+      "log": "outputs/build.log",
+      "result": "build succeeds; >500kB chunk warning",
+      "log_sha256": "38d17d6ca995d0c0a98e3532391c86c35b6553e502c0392d3888932a774d64e8"
+    },
+    {
+      "command": "rtk npm run readme",
+      "exit_code": 0,
+      "log": "outputs/readme.log",
+      "result": "13 datasets, 671 entries",
+      "log_sha256": "92fbd4c529fe2e44aa1b15664a5258cd6b82a5c08f2b4e1af967865aba6fe28a"
+    },
+    {
+      "command": "rtk npm run test:e2e",
+      "exit_code": 0,
+      "log": "outputs/e2e.log",
+      "result": "50 tests pass",
+      "log_sha256": "ac3d0efb28d0b31631a687e23c8295c7a1259078775dd5fb51ae9c5b8e868587"
+    },
+    {
+      "command": "rtk git diff --check",
+      "exit_code": 0,
+      "log": "outputs/diff-check.log"
+    }
+  ],
+  "source_files": {
+    "public/data/tokyo/michelin-starred.json": "d251f8e75a96b91d478ab3a4be68a2d78212eb9276ec0c4457de60b4376a0f8f",
+    "public/data/tokyo/michelin-bib-gourmand.json": "51b8a9d135813863bf278a403dfe270681746326ab541d6580a7aceb29f72e66",
+    "public/data/taxonomy/tokyo.json": "2bbe8f930fa5093e7db7531737370526d653fffe3edddde5e137f54847839fe9",
+    "public/data/taxonomy/tokyo-mappings.json": "d1a3d487527037b5157609421731efd0e3a475f1bb0e8464221e645c677a35ea",
+    "src/config/cities.ts": "51926edf4f4402a3190a26e76c08f95d061fe9f622ad7468721d978b9c1b9a19",
+    "src/data/contract.ts": "762621fea058c8302f035ed3f0389f9f0c83639a89a53d9f056ec8dd87556d0f",
+    "tests/unit/dataContract.test.ts": "fc7e393c5956862256d33ffde9f6e4c52ab75ae14885829fd61b17f8b827c127",
+    "tests/unit/dataConsumers.test.tsx": "ddf6e550c12fc1ee84877eccf3bb68abbf0e3f69392ea34fc2ca9e9f5b5a03c2",
+    "scripts/render-coverage-table.py": "f4fd91bdeb2f433513711502c7781eccd942b6c94d0e439207ce792242199a75",
+    "readme/data-onboarding-guide.md": "092ee64e8ce3e9f1aef620510543837d4dc94c00541b34911658823705f3914e"
+  },
+  "existing_city_registration_byte_identical_after_removing_tokyo": true,
+  "existing_data_files_compared": 24,
+  "existing_data_files_changed": [],
+  "release": {
+    "version": "0.3.0",
+    "buildId": "76a0d6d7dc990adc547aa6784c9825773a611d1ac768a5b44b5d8e69e60a3dc6",
+    "sourceSha256": "245c00f7bb6cf05aa0b4e983480fe990295ad9dc0e5ee5fca051517a4c095111",
+    "lockSha256": "063f2ece50fe424b00f1235f05d45a0f094e1a893419e6938b617b8cef3e02df",
+    "dataRevision": "709b1a57b0f8f415bebcbfd80348bb8ee7de44078b8cee6c8ec1199c2a2ff18c",
+    "discovery": {
+      "provider": "legacy-cities.ts; P03 formal catalog pending",
+      "sha256": "0e051feb9fae65bdec4e6ef0d3a06ab631949993d90c6bd15dcddf92467ff134"
+    },
+    "resources": {
+      "/data/taxonomy/hong-kong.json": {
+        "url": "/_foodie/data/35c9083ad8b323b121cc43d7bcb98618fab0bb54a8f9969dc92b906ea5fa49bf/data/taxonomy/hong-kong.json",
+        "sha256": "35c9083ad8b323b121cc43d7bcb98618fab0bb54a8f9969dc92b906ea5fa49bf",
+        "kind": "taxonomy"
+      },
+      "/data/taxonomy/hong-kong-mappings.json": {
+        "url": "/_foodie/data/a30d1687a730e3fbfb2e8152757e9ce1d9b159a46df94b98dbed5d6ec49ef318/data/taxonomy/hong-kong-mappings.json",
+        "sha256": "a30d1687a730e3fbfb2e8152757e9ce1d9b159a46df94b98dbed5d6ec49ef318",
+        "kind": "mappings"
+      },
+      "/data/hong-kong/michelin-bib-gourmand.json": {
+        "url": "/_foodie/data/4bb9b52056785043a49599effcd5316b8b2bccd198896ab20b5fcc42132371f3/data/hong-kong/michelin-bib-gourmand.json",
+        "sha256": "4bb9b52056785043a49599effcd5316b8b2bccd198896ab20b5fcc42132371f3",
+        "kind": "restaurants",
+        "identity": "hong-kong/2026/michelin-bib-gourmand"
+      },
+      "/data/hong-kong/michelin-starred.json": {
+        "url": "/_foodie/data/b9f5d503af78e7ed8de440691c0c365f01978ff2c53bc5ed1daa8aa9bacfa034/data/hong-kong/michelin-starred.json",
+        "sha256": "b9f5d503af78e7ed8de440691c0c365f01978ff2c53bc5ed1daa8aa9bacfa034",
+        "kind": "restaurants",
+        "identity": "hong-kong/2026/michelin-starred"
+      },
+      "/data/taxonomy/beijing.json": {
+        "url": "/_foodie/data/685e0e55b927199d83f1e85b6dadbafcf3bf934edeb6bc2342bff7a3ecd63c36/data/taxonomy/beijing.json",
+        "sha256": "685e0e55b927199d83f1e85b6dadbafcf3bf934edeb6bc2342bff7a3ecd63c36",
+        "kind": "taxonomy"
+      },
+      "/data/taxonomy/beijing-mappings.json": {
+        "url": "/_foodie/data/4a103cba1cfa92d439bcfc7f8db62cbfb2a8cce5407acf75871d9822cad9c902/data/taxonomy/beijing-mappings.json",
+        "sha256": "4a103cba1cfa92d439bcfc7f8db62cbfb2a8cce5407acf75871d9822cad9c902",
+        "kind": "mappings"
+      },
+      "/data/beijing/michelin-bib-gourmand.json": {
+        "url": "/_foodie/data/f61a5f138facf0c459febedf63e3c233acf1ba86f105ebbfcbf384451f542948/data/beijing/michelin-bib-gourmand.json",
+        "sha256": "f61a5f138facf0c459febedf63e3c233acf1ba86f105ebbfcbf384451f542948",
+        "kind": "restaurants",
+        "identity": "beijing/2026/michelin-bib-gourmand"
+      },
+      "/data/beijing/michelin-starred.json": {
+        "url": "/_foodie/data/03d254e5ce162d10d8ae870f57346fa1235cb179f496449d64313ff55889db2f/data/beijing/michelin-starred.json",
+        "sha256": "03d254e5ce162d10d8ae870f57346fa1235cb179f496449d64313ff55889db2f",
+        "kind": "restaurants",
+        "identity": "beijing/2026/michelin-starred"
+      },
+      "/data/taxonomy/guangzhou-shenzhen.json": {
+        "url": "/_foodie/data/fa43e5840d0a3cf92615f605974a58bcfc1513092091b8f3f31335969384d167/data/taxonomy/guangzhou-shenzhen.json",
+        "sha256": "fa43e5840d0a3cf92615f605974a58bcfc1513092091b8f3f31335969384d167",
+        "kind": "taxonomy"
+      },
+      "/data/taxonomy/guangzhou-shenzhen-mappings.json": {
+        "url": "/_foodie/data/b65e6f1a8799df5de545fc711f298e2191b6b3f441140f6d19a8bd3f953b0b29/data/taxonomy/guangzhou-shenzhen-mappings.json",
+        "sha256": "b65e6f1a8799df5de545fc711f298e2191b6b3f441140f6d19a8bd3f953b0b29",
+        "kind": "mappings"
+      },
+      "/data/guangzhou-shenzhen/michelin-starred.json": {
+        "url": "/_foodie/data/35f3f4200e92e551fa68d8ede87057ee9db2abab3f720db7a6e2341a6630826f/data/guangzhou-shenzhen/michelin-starred.json",
+        "sha256": "35f3f4200e92e551fa68d8ede87057ee9db2abab3f720db7a6e2341a6630826f",
+        "kind": "restaurants",
+        "identity": "guangzhou-shenzhen/2026/michelin-starred"
+      },
+      "/data/guangzhou-shenzhen/michelin-bib-gourmand.json": {
+        "url": "/_foodie/data/91c3149387f186abde3c78bc6dee61f276b40c19e33bb7931abacc14e5418e83/data/guangzhou-shenzhen/michelin-bib-gourmand.json",
+        "sha256": "91c3149387f186abde3c78bc6dee61f276b40c19e33bb7931abacc14e5418e83",
+        "kind": "restaurants",
+        "identity": "guangzhou-shenzhen/2026/michelin-bib-gourmand"
+      },
+      "/data/taxonomy/shanghai.json": {
+        "url": "/_foodie/data/1f51310840bdd3293b3dd499955cccfdb05ff617bfe81f0f6ead6987832c8b16/data/taxonomy/shanghai.json",
+        "sha256": "1f51310840bdd3293b3dd499955cccfdb05ff617bfe81f0f6ead6987832c8b16",
+        "kind": "taxonomy"
+      },
+      "/data/taxonomy/shanghai-mappings.json": {
+        "url": "/_foodie/data/740d8ca72553bb6928d49c5f9fd280ad188bb496e696a935002ce308db69e00c/data/taxonomy/shanghai-mappings.json",
+        "sha256": "740d8ca72553bb6928d49c5f9fd280ad188bb496e696a935002ce308db69e00c",
+        "kind": "mappings"
+      },
+      "/data/shanghai/michelin-starred.json": {
+        "url": "/_foodie/data/6a53d40770a748488877ed32f20a9a2d2c523ef8b0121cbac6a5a28db9821725/data/shanghai/michelin-starred.json",
+        "sha256": "6a53d40770a748488877ed32f20a9a2d2c523ef8b0121cbac6a5a28db9821725",
+        "kind": "restaurants",
+        "identity": "shanghai/2026/michelin-starred"
+      },
+      "/data/shanghai/michelin-bib-gourmand.json": {
+        "url": "/_foodie/data/43c1a6142cff1c67d55e51ef263d4b7b38549f0ac274fe3d2bead258df083637/data/shanghai/michelin-bib-gourmand.json",
+        "sha256": "43c1a6142cff1c67d55e51ef263d4b7b38549f0ac274fe3d2bead258df083637",
+        "kind": "restaurants",
+        "identity": "shanghai/2026/michelin-bib-gourmand"
+      },
+      "/data/taxonomy/chengdu.json": {
+        "url": "/_foodie/data/a029ce5a420bcaa9d9a6bc583cfda74be52458cd5a6f55a39e0da1cbbc539510/data/taxonomy/chengdu.json",
+        "sha256": "a029ce5a420bcaa9d9a6bc583cfda74be52458cd5a6f55a39e0da1cbbc539510",
+        "kind": "taxonomy"
+      },
+      "/data/taxonomy/chengdu-mappings.json": {
+        "url": "/_foodie/data/461d50edac8354cb3ebffd040f44a055275ff7bc845c19de339fecfba2f0d1d4/data/taxonomy/chengdu-mappings.json",
+        "sha256": "461d50edac8354cb3ebffd040f44a055275ff7bc845c19de339fecfba2f0d1d4",
+        "kind": "mappings"
+      },
+      "/data/chengdu/michelin-starred.json": {
+        "url": "/_foodie/data/b2a8fcf426e0c3e3f41cb6215919a633e140d865f59b15bf4b7d06e82f6ccb25/data/chengdu/michelin-starred.json",
+        "sha256": "b2a8fcf426e0c3e3f41cb6215919a633e140d865f59b15bf4b7d06e82f6ccb25",
+        "kind": "restaurants",
+        "identity": "chengdu/2026/michelin-starred"
+      },
+      "/data/taxonomy/macau.json": {
+        "url": "/_foodie/data/2513c08c88bc5a0417eaf69bf09dbd1f7e97ed6755416dd17f6c19b590c8a840/data/taxonomy/macau.json",
+        "sha256": "2513c08c88bc5a0417eaf69bf09dbd1f7e97ed6755416dd17f6c19b590c8a840",
+        "kind": "taxonomy"
+      },
+      "/data/taxonomy/macau-mappings.json": {
+        "url": "/_foodie/data/b50737be0d655d29b5eb7d7c22df7e05a579b7590a08f397e9762e75188f242c/data/taxonomy/macau-mappings.json",
+        "sha256": "b50737be0d655d29b5eb7d7c22df7e05a579b7590a08f397e9762e75188f242c",
+        "kind": "mappings"
+      },
+      "/data/macau/michelin-starred.json": {
+        "url": "/_foodie/data/023684815b220ba1a4d0255892624fb75f5b0f6afcd392741dab69e54f2f1f53/data/macau/michelin-starred.json",
+        "sha256": "023684815b220ba1a4d0255892624fb75f5b0f6afcd392741dab69e54f2f1f53",
+        "kind": "restaurants",
+        "identity": "macau/2026/michelin-starred"
+      },
+      "/data/macau/michelin-bib-gourmand.json": {
+        "url": "/_foodie/data/739087cf464b7c91185ef7e09fd5480e8901ff78b27705a243011233ba9f0a5c/data/macau/michelin-bib-gourmand.json",
+        "sha256": "739087cf464b7c91185ef7e09fd5480e8901ff78b27705a243011233ba9f0a5c",
+        "kind": "restaurants",
+        "identity": "macau/2026/michelin-bib-gourmand"
+      },
+      "/data/taxonomy/tokyo.json": {
+        "url": "/_foodie/data/2bbe8f930fa5093e7db7531737370526d653fffe3edddde5e137f54847839fe9/data/taxonomy/tokyo.json",
+        "sha256": "2bbe8f930fa5093e7db7531737370526d653fffe3edddde5e137f54847839fe9",
+        "kind": "taxonomy"
+      },
+      "/data/taxonomy/tokyo-mappings.json": {
+        "url": "/_foodie/data/d1a3d487527037b5157609421731efd0e3a475f1bb0e8464221e645c677a35ea/data/taxonomy/tokyo-mappings.json",
+        "sha256": "d1a3d487527037b5157609421731efd0e3a475f1bb0e8464221e645c677a35ea",
+        "kind": "mappings"
+      },
+      "/data/tokyo/michelin-starred.json": {
+        "url": "/_foodie/data/d251f8e75a96b91d478ab3a4be68a2d78212eb9276ec0c4457de60b4376a0f8f/data/tokyo/michelin-starred.json",
+        "sha256": "d251f8e75a96b91d478ab3a4be68a2d78212eb9276ec0c4457de60b4376a0f8f",
+        "kind": "restaurants",
+        "identity": "tokyo/2026/michelin-starred"
+      },
+      "/data/tokyo/michelin-bib-gourmand.json": {
+        "url": "/_foodie/data/51b8a9d135813863bf278a403dfe270681746326ab541d6580a7aceb29f72e66/data/tokyo/michelin-bib-gourmand.json",
+        "sha256": "51b8a9d135813863bf278a403dfe270681746326ab541d6580a7aceb29f72e66",
+        "kind": "restaurants",
+        "identity": "tokyo/2026/michelin-bib-gourmand"
+      }
+    },
+    "sourceFiles": {
+      ".github/workflows/deploy.yml": "914f6e60c6e4f11c284d6f15b9f661b6b605e3ed64a0c12cfa408faaf4a5b2f7",
+      ".npmrc": "7151cf397def0c2cb0ab65643701d27d335a72c90f775675b5f826bc7005818a",
+      ".nvmrc": "73fb1b615e2043a933be1c0895cde4358036acc28d785692509b822aa53c761f",
+      ".puppeteerrc.cjs": "854e668889c18c153af827c1326bfa6f1fce0f4ac3149942d576294758138c2f",
+      "Makefile": "23d3176a93d7ceffb0594d4ae03f90bd99f5af63dbe787e2fcf4c012ce85a705",
+      "VERSION": "d915cc95d6ca8f47ae297713ed46d4e5c5d99ddd29fc3c61e263bdf305f2b5b0",
+      "eslint.config.mjs": "48dd019154bb3725d30c9dc1e9002dd7e11dd47aac6b92d1fe82c36e535c2203",
+      "index.html": "dd43967d59d3880ec8ad0ff4bb17ff79a229da4666552d9d9b4c029458f06634",
+      "package-lock.json": "063f2ece50fe424b00f1235f05d45a0f094e1a893419e6938b617b8cef3e02df",
+      "package.json": "ef5918465c0de12b78dced5b2108d8d9711a14901df6615463268243844a217f",
+      "public/.DS_Store": "d5ae85c5136c444fa8adb48a695b47012ae01d11b215cf95711da3b3a1b7864a",
+      "public/CNAME": "081f96380dde655a9d319c59b73d35713b4496ffbbff422aa24b38b59c238d9a",
+      "public/data/.DS_Store": "fe2f55d6ff826b18ac748849421f225b046e6de476380b16f1e38f66ae70d927",
+      "public/data/beijing/michelin-bib-gourmand.json": "f61a5f138facf0c459febedf63e3c233acf1ba86f105ebbfcbf384451f542948",
+      "public/data/beijing/michelin-starred.json": "03d254e5ce162d10d8ae870f57346fa1235cb179f496449d64313ff55889db2f",
+      "public/data/chengdu/michelin-starred.json": "b2a8fcf426e0c3e3f41cb6215919a633e140d865f59b15bf4b7d06e82f6ccb25",
+      "public/data/guangzhou-shenzhen/michelin-bib-gourmand.json": "91c3149387f186abde3c78bc6dee61f276b40c19e33bb7931abacc14e5418e83",
+      "public/data/guangzhou-shenzhen/michelin-starred.json": "35f3f4200e92e551fa68d8ede87057ee9db2abab3f720db7a6e2341a6630826f",
+      "public/data/hong-kong/michelin-bib-gourmand.json": "4bb9b52056785043a49599effcd5316b8b2bccd198896ab20b5fcc42132371f3",
+      "public/data/hong-kong/michelin-starred.json": "b9f5d503af78e7ed8de440691c0c365f01978ff2c53bc5ed1daa8aa9bacfa034",
+      "public/data/macau/michelin-bib-gourmand.json": "739087cf464b7c91185ef7e09fd5480e8901ff78b27705a243011233ba9f0a5c",
+      "public/data/macau/michelin-starred.json": "023684815b220ba1a4d0255892624fb75f5b0f6afcd392741dab69e54f2f1f53",
+      "public/data/shanghai/michelin-bib-gourmand.json": "43c1a6142cff1c67d55e51ef263d4b7b38549f0ac274fe3d2bead258df083637",
+      "public/data/shanghai/michelin-starred.json": "6a53d40770a748488877ed32f20a9a2d2c523ef8b0121cbac6a5a28db9821725",
+      "public/data/taxonomy/beijing-mappings.json": "4a103cba1cfa92d439bcfc7f8db62cbfb2a8cce5407acf75871d9822cad9c902",
+      "public/data/taxonomy/beijing.json": "685e0e55b927199d83f1e85b6dadbafcf3bf934edeb6bc2342bff7a3ecd63c36",
+      "public/data/taxonomy/chengdu-mappings.json": "461d50edac8354cb3ebffd040f44a055275ff7bc845c19de339fecfba2f0d1d4",
+      "public/data/taxonomy/chengdu.json": "a029ce5a420bcaa9d9a6bc583cfda74be52458cd5a6f55a39e0da1cbbc539510",
+      "public/data/taxonomy/guangzhou-shenzhen-mappings.json": "b65e6f1a8799df5de545fc711f298e2191b6b3f441140f6d19a8bd3f953b0b29",
+      "public/data/taxonomy/guangzhou-shenzhen.json": "fa43e5840d0a3cf92615f605974a58bcfc1513092091b8f3f31335969384d167",
+      "public/data/taxonomy/hong-kong-mappings.json": "a30d1687a730e3fbfb2e8152757e9ce1d9b159a46df94b98dbed5d6ec49ef318",
+      "public/data/taxonomy/hong-kong.json": "35c9083ad8b323b121cc43d7bcb98618fab0bb54a8f9969dc92b906ea5fa49bf",
+      "public/data/taxonomy/macau-mappings.json": "b50737be0d655d29b5eb7d7c22df7e05a579b7590a08f397e9762e75188f242c",
+      "public/data/taxonomy/macau.json": "2513c08c88bc5a0417eaf69bf09dbd1f7e97ed6755416dd17f6c19b590c8a840",
+      "public/data/taxonomy/shanghai-mappings.json": "740d8ca72553bb6928d49c5f9fd280ad188bb496e696a935002ce308db69e00c",
+      "public/data/taxonomy/shanghai.json": "1f51310840bdd3293b3dd499955cccfdb05ff617bfe81f0f6ead6987832c8b16",
+      "public/data/taxonomy/tokyo-mappings.json": "d1a3d487527037b5157609421731efd0e3a475f1bb0e8464221e645c677a35ea",
+      "public/data/taxonomy/tokyo.json": "2bbe8f930fa5093e7db7531737370526d653fffe3edddde5e137f54847839fe9",
+      "public/data/tokyo/michelin-bib-gourmand.json": "51b8a9d135813863bf278a403dfe270681746326ab541d6580a7aceb29f72e66",
+      "public/data/tokyo/michelin-starred.json": "d251f8e75a96b91d478ab3a4be68a2d78212eb9276ec0c4457de60b4376a0f8f",
+      "public/icons/apple-touch-icon.png": "b47699c587e5ebf86e8a415b94f12463987914edab03b7a202cf671a7fc13415",
+      "public/icons/favicon-32.png": "1d7ee35cb05fec746916f9ec27662045232b972b3ec0a7fb854159f14d9fcc14",
+      "public/icons/icon-192.png": "7c100ac2deddb84b76ded8aeda23a6905d8ed9e9a605c064274ed67d98530f55",
+      "public/icons/icon-512.png": "0b6f59a6e9e28ef674748cb03143f7e0367a69efd2a2fbc6ab8a4444b7b65207",
+      "public/icons/icon.svg": "7f74e065b33b464e5201b328cf246bb9217b445d2a91c1d2b36095c37d62bc22",
+      "public/manifest.json": "5296d8f9beca53de64a63cb9b458d5960e6d35569d1f4bfaff239a622e5fdfef",
+      "public/sw.js": "ca849ba1addf845763e4d21d27373054947295653b1a4dec31ec090a83426b5a",
+      "scripts/data-contract.ts": "889d3811db059a992b29e490b2741d515cd595ef1855f9d6558fb31062036496",
+      "scripts/e2e.mjs": "98d2be5b4a924ecd332f06c5f8e1db538826d9af0da2369a927624a60ebf3e7a",
+      "scripts/migrate-guide-data.ts": "bcb54f9c1f73e01c406b05f00ce03732ce3aff24603233d9103515dbc7cac0e2",
+      "scripts/release-artifact.ts": "0af4971c92255ffbe9d6c938566b01cd079d135b6bf158a67902ba6136933df5",
+      "scripts/release-build.ts": "8e23ec46ff2c27ce04d32ec7a6443884f90b163cda6d0c128e13a06e8be72b6f",
+      "scripts/release-quality.mjs": "d6a78bcaa473f38e5c737e8c0e8c96ad11ad32e71cf8a89733bdffbf461e0682",
+      "scripts/render-coverage-table.py": "f4fd91bdeb2f433513711502c7781eccd942b6c94d0e439207ce792242199a75",
+      "src/App.tsx": "68d3f9995c3669fcc8550d5a737bd4279241a54880c60b06c91afdbdb1223f82",
+      "src/components/BottomSheet.tsx": "09a27fb62c25ee959c289ad875dfdd0763af0f5e18a75bee2518df6715a2efb1",
+      "src/components/DialogSurface.tsx": "a0b0708eca076870a1910b4ff6f24363bb1d8c76d26069033952c343b5943c6b",
+      "src/components/DynamicTitle.tsx": "78acc44057c16344b9bdd6e555a63132e1edb43972dcbf0b47da2d55fa1456d9",
+      "src/components/FilterPanel.tsx": "1b72ebddd4071c28dc9bd54ffdcfdad657d6b67f2056431d969e410e286847f0",
+      "src/components/Header.tsx": "544326cb5d2d8ab6423fb64246ff745b7d514b4aaf9effc495af81ebe51b6c56",
+      "src/components/HeatLayer.ts": "347f6ea46e1cf5468bc8573d882268f78c7601511b8ef35e82da72db70aa3bb5",
+      "src/components/Legend.tsx": "fea0d83fbe17fa537552b4b9d7ead98d55061f2388cdd000615d83642400e92c",
+      "src/components/LocationButton.ts": "8ec68d62820d90e33c007b5f3708f95a705b2c981f8eeb48b850e1b9149d15e3",
+      "src/components/MapShell.tsx": "3e71d459b684afae2a22918298a945c985b731727b58e1aaebe27f8915fb9bde",
+      "src/components/MobilePopupCard.tsx": "84584c543ea7067bf6cac8f9329b871326bb1cffd916a7f3f489f85b859dbfdc",
+      "src/components/MobileShell.tsx": "37f224e11bc6a14ad982bfd8cf523d845e2aef947e41a120351e464def6bb6f7",
+      "src/components/PickerOptions.tsx": "99b38e9bf47b7bfdbb6e25be626b595c24fc8a9ae77727da1ab15fb4b3e57862",
+      "src/components/RestaurantMarker.ts": "07b655da4eb75a9fe2872a6a6ab5f2b9c18baf00293856dd1efc83663da62b19",
+      "src/components/SearchBar.tsx": "94abc1c153ef1de246e02f68684671fa1e952ec3b602e3c9a7a2275da421f7d7",
+      "src/components/SegmentPicker.tsx": "6631eeeb4997becd7e7d260c7695ea30ddceb863e7909a897e281da2b470ede6",
+      "src/components/SegmentPickerMobile.tsx": "945377dfb32af9d45b7d08e5e23838ea45ffab99fa4e41032fb905bf4438e790",
+      "src/components/StatsPanelReact.tsx": "f39c146c431903c6d371c88cece1b822375a7206ea3242c3fec59c1464158ceb",
+      "src/components/TileService.ts": "57178c55d2ae6616024ad4d771b17649f728bc0583197fd6ac543b5fb2a3acd3",
+      "src/components/UserLocationMarker.ts": "9cd3875531eac107164c3faea62445581a138522859c33a5c6e32e2779104195",
+      "src/config/cities.ts": "51926edf4f4402a3190a26e76c08f95d061fe9f622ad7468721d978b9c1b9a19",
+      "src/config/cuisineRegistry.ts": "8ab0f36e8cbd22c65bcecbe60e74a9dcd8cc84b2f84de4442332122120f4e026",
+      "src/data/contract.ts": "762621fea058c8302f035ed3f0389f9f0c83639a89a53d9f056ec8dd87556d0f",
+      "src/data/display.ts": "2a943cc51c3dc972ec3de9d18326d4ab76767923723465ab5735731242190dc6",
+      "src/data/release.ts": "7691a984a2d4c49d8b453536124fb6e48d66b3190f948bb314a6c17f9b382afe",
+      "src/data/taxonomy.ts": "1764cb9c447a174c1d136f6c4c0f0812aae0f769cc52b2093071f036ca18ade9",
+      "src/data/validation.ts": "f3667dc1e0b2ff304f6410eb8f1260dfced8808e1ec5c91d39a3ea7672998b71",
+      "src/hooks/useDeviceOrientation.ts": "83c431e5bae98960ba6ddf7dad4a7bda053936c5e8d54c1af06aa24a99b4d2fd",
+      "src/hooks/useFilters.ts": "a9b4c222c039aa7c3e7f5442a74012c464b7c5f7e2e3b32f4a3480f90ebdef25",
+      "src/hooks/useGeolocation.ts": "fdfec255a72608da34393b6dc20da4621f2c7350c19a1baf4bedcf402446b06c",
+      "src/hooks/useGuideData.ts": "fbd8e90b6045a29dbe32f0ff43c8827daeb02244dfff4ae8e16d6e816f4eeaff",
+      "src/hooks/useLocationTracking.ts": "e8e8c6dbc2262b7dbf2eb0ee2f3d3ccf47584815d96fed1df78cbdd84d5ba050",
+      "src/hooks/usePanelState.ts": "68f7c5fb62a19c05edb70c1da2a2416e89180fe2549b63f7edff7926ad1b5102",
+      "src/hooks/useReleaseStatus.ts": "1cbfbd05553974dabe4c9e4de8ed97bd1b6ed7aedd99ccb8ef2bd8f10c0e6576",
+      "src/hooks/useSelection.ts": "631e17a36a3b78cb48bdac4d2c706eefe3e274fa989302e127ae42bcb381b726",
+      "src/hooks/useViewport.ts": "1dc4437ff63c350bc8d65f16a65576b61f59b93bd3ad3a365c26d587cdbb6c6c",
+      "src/hooks/useVisualViewport.ts": "f0894b187bf8ed62b60a3f7da0e87ade48d88f9c882e90159df5f9f2db16fc17",
+      "src/lib/leaflet.ts": "eb329c5c01682516ee13ea40704afad74c5baea5507dc5589e4dca49aab02cdd",
+      "src/main.tsx": "245709c2f46fd1f1c68f1a6c30645dfb9682a49a7d3173ddcb12c607303666fb",
+      "src/styles/base.css": "965ef81a4d37733e9bcf7664e7a8ee2fe738520419b8689e970898c92700ae70",
+      "src/styles/controls.css": "52e638cffb830e69630b96788f017918ac97050dec707482ca93a4b57ea16f45",
+      "src/styles/global.css": "101764a87e28f1f01cc8d98eb8588402515ba635ff5e35423b8a4cfe6b9296ca",
+      "src/styles/markers.css": "8fe1d761826aa8215e93f8964275b0a64efd3848929c0066864ddb83cb21f189",
+      "src/styles/mobile.css": "aa6d95d325999009f70ac108be10404ed4aa28ee5f440ad7c510548fcfa4a8b5",
+      "src/styles/pickers.css": "080e273425cca545b255dd00bafd7c7a90fdd96904d3fb94a253832e403fc1eb",
+      "src/types/geolocation.ts": "4b35d8262ec8d8c491b951b7baee1cd921d448822a8d5ada044130c18e712516",
+      "src/types/restaurant.ts": "00b9d9ad9dd3009b80fe9c2409bc4af07f7a79f914e96a856beccf0c48d9d9dc",
+      "src/utils/focus.ts": "a70be69ca79456dffacd5c3b1d5bacd49ad1bb7ade128a5b82c4c9c1ac970a20",
+      "src/utils/gcj02.ts": "e99eca9e41427f8ed01f071500ffa03018f25f332cb772d2d84cd1de2ff979d8",
+      "src/utils/mapPosition.ts": "096869daa9a180c1b4e0b09fe53b45ab348be6cc21bd1da21c4a75a82e758e07",
+      "src/utils/permissions.ts": "22032df095298c32a34238f92dbc9f54257f9342a6927916f048da51af81f9b4",
+      "src/utils/touch.ts": "4091138dbfb83d8bde030bc49028797102562d22b2cce83b77762976d31d9dcc",
+      "src/utils/urlState.ts": "20be9f33afddf49bb68e4de005da5a62b0bc8026ca6ff37b858f4beda1491fa7",
+      "src/version.ts": "a0c962a9a57ab1dc46f7e1c8e7e93c54433866093781c31ac8f61539dc8b02ea",
+      "src/vite-env.d.ts": "dee3fdf54a4b0da32c8066e822949a6c9e7a1d37a83db01781b09d39b44d4215",
+      "tests/e2e/accessibility.helpers.mjs": "4ea2cb12670dffd6c8f3594dd30b2b6c8e3f445f4df6165d85bc52c423050019",
+      "tests/e2e/accessible-interface.test.mjs": "790675b75aec760a20a95595393a14843b037d7097c5939c34afd0908e87a8c5",
+      "tests/e2e/bundled-runtime.test.mjs": "19ad24df14229a0cadc412b5caa729af2c0046799aa87e3141b1cbb317461c70",
+      "tests/e2e/data-contract.test.mjs": "17e57548c8d5777c361add8480f8692692db652cdbb0d438f388fed41c723590",
+      "tests/e2e/evidence.mjs": "7fbfebea439c28f004eb0613e10fb954a4dee238bed604eaf213c4077e39bcf6",
+      "tests/e2e/fixtures/guide-experience.json": "171e65db273a3f707125e2ca6e5be7c7104208c9db22da8d34102535e32d3aa7",
+      "tests/e2e/fixtures/legacy-sw.js": "e6ae76afb49c25614329294a9b81362d5e7223346c8dc32b5fd4b7de242177bd",
+      "tests/e2e/fixtures/restaurants.json": "5851eb102c044abc2570a64a614ccd437b50e11a11d59f487ddef94c5cfad07d",
+      "tests/e2e/guide-experience.test.mjs": "558da08565180b127f85e165e5f5c8fb6bfc3779924f525fe3069d90f0f5a541",
+      "tests/e2e/helpers.mjs": "e9cc21d7a3acf8b8623320b7324341ce22fde2dce3d293f6453ae9869b658023",
+      "tests/e2e/map-location.test.mjs": "0c0f76ffed55bf237143b2de7ce8fb2196dcad282964efcf82989a9eeb9669dd",
+      "tests/e2e/page-zoom.mjs": "fb3e6c9020c414e32d22c107fb734ff613f03c98eb46042ddbe19b80ce864abe",
+      "tests/e2e/performance.mjs": "a2f85927172aa8d53d8487d522020c2c61330758e0b831a4c90fe9de4a693949",
+      "tests/e2e/release-cache.test.mjs": "5ad29d9785f079ab60bab357127f7b53c0f21cb0e8493b2a3d185da091051cf5",
+      "tests/e2e/release-flow.test.mjs": "1437ebfb14b7e3da8ba78bb3b4df26258490e18b514895a462d8e8a7058650ef",
+      "tests/e2e/release-rollout.test.mjs": "de20b33b1274b644c3001187ebd76b131ffd773705baf77857010fcf36a4994b",
+      "tests/e2e/release.helpers.mjs": "9ffc26f80410584e6873c3ed307d38f11ebcdd85d464d446bfa30643415de1d5",
+      "tests/e2e/title-filter.test.mjs": "a1f071c27b5dc3a1fd75de1fb229e6fa4da2435cb81a388ac5e26f8b6c081016",
+      "tests/setup.ts": "12e76a22492a934b082b0cfc63fc9e74afb217e54e4179012cac16c067bdd59f",
+      "tests/unit/accessibleControls.test.tsx": "ea892bf00d59be83cf676209f7026076293c41cd931ef81d084a89c624a6248a",
+      "tests/unit/cuisineRegistry.test.ts": "215c4d00dcc865991ef578edf830adee86d73305b24092c99c4b96814afe6c57",
+      "tests/unit/dataConsumers.test.tsx": "ddf6e550c12fc1ee84877eccf3bb68abbf0e3f69392ea34fc2ca9e9f5b5a03c2",
+      "tests/unit/dataContract.test.ts": "fc7e393c5956862256d33ffde9f6e4c52ab75ae14885829fd61b17f8b827c127",
+      "tests/unit/dataFixtures.ts": "2db9b47d229cf9fefc31f363f5017c13f1c93220a14b30b432fe98d097704f17",
+      "tests/unit/dataTools.test.ts": "6e0f5155212b5f13145398ad730b187c84dba2e9f57480ff222464dd4c0d72e3",
+      "tests/unit/guideExperience.test.tsx": "453a2d2a93f590bf5e67fe23b5e544c1783e1502045beccee8a9a1f0e7547a60",
+      "tests/unit/guideMigration.test.ts": "b1995a52b2cf0f4b5c86af85c114bd140186f2f39023eedf983ae0d4664fff28",
+      "tests/unit/locationLifecycle.test.tsx": "37e475aad84367c72c5f972dbef74a6b116c734bafbdf1d7346c7e5130985137",
+      "tests/unit/mapLocation.test.tsx": "b85077dae2a89185169e5569ba2f575584788d7c64abd7e67dcfa78693f68c8b",
+      "tests/unit/releaseTransport.test.ts": "01bfe770e66e671850548fda48b86499bfebb9a78fe86447415af5c7c237a47d",
+      "tests/unit/urlState.test.ts": "0e475a2607532f9b8e8e1a39159f451dd60f1a2041d68b0556df4a7a61e24298",
+      "tests/unit/useFilters.test.ts": "f03b6bdf0fbc52c14f73bab117a35fae36a797e7ddda2fb6eaddc7be9718306c",
+      "tsconfig.json": "7a2b438d4a022e295e6ad50a53f795f98c297950628731e522084f6203387894",
+      "tsconfig.node.json": "e59e3e53dd724e14bcfb3c387a20600d37ec28bb39593915566f6e4d5f416f53",
+      "vite.config.ts": "526ae911aca9989927609e0399bf6f70061327b69b4109e01172220436135269",
+      "vitest.config.ts": "0448cad523172ea976f7f817c1b5b4d9f04b2a85490703e2bc10bdf18fef6f81"
+    },
+    "shell": {
+      "/assets/index-CuU3nFLt.css": "ac5ca6414314484cddb05f980a217e02bc5bb446b22202a1877a8ab84ed76858",
+      "/assets/index-BCSDthwl.js": "91eab0935dec8dffcd5719bd039eef58c58c7e21925042ac74bec7289f266abd",
+      "/assets/MobileShell-ChHn5bPQ.js": "aca38dc0b61939fe0f6f12ceebb77a270a23ee5c58937fabeef6d044437f64ab",
+      "/index.html": "2f811742079084cf885aed4051402b744519aeca4145b138c6469df2090af15c",
+      "/icons/apple-touch-icon.png": "b47699c587e5ebf86e8a415b94f12463987914edab03b7a202cf671a7fc13415",
+      "/icons/favicon-32.png": "1d7ee35cb05fec746916f9ec27662045232b972b3ec0a7fb854159f14d9fcc14",
+      "/icons/icon-192.png": "7c100ac2deddb84b76ded8aeda23a6905d8ed9e9a605c064274ed67d98530f55",
+      "/icons/icon-512.png": "0b6f59a6e9e28ef674748cb03143f7e0367a69efd2a2fbc6ab8a4444b7b65207",
+      "/icons/icon.svg": "7f74e065b33b464e5201b328cf246bb9217b445d2a91c1d2b36095c37d62bc22",
+      "/manifest.json": "5296d8f9beca53de64a63cb9b458d5960e6d35569d1f4bfaff239a622e5fdfef"
+    }
+  },
+  "final_acceptance": "left to main Agent",
+  "annual_completeness": "partial",
+  "real_basemap_accuracy": "not verified"
+}

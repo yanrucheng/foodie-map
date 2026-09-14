@@ -283,7 +283,7 @@
     },
     {
       "raw": "海鮮",
-      "groupKey": "WESTERN_OTHER",
+      "groupKey": "OTHER",
       "sources": [
         "bib-gourmand",
         "starred"
@@ -306,13 +306,6 @@
     {
       "raw": "扒房",
       "groupKey": "STEAKHOUSE_GRILL",
-      "sources": [
-        "starred"
-      ]
-    },
-    {
-      "raw": "",
-      "groupKey": "OTHER",
       "sources": [
         "starred"
       ]

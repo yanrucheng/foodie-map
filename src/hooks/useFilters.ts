@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
+import { getMapPosition, type SpatialContext } from "@/data/contract";
 import type { Restaurant, VenueType } from "@/types/restaurant";
 
 /** Venue type filter mode: "all" shows everything, others isolate a specific type. */
@@ -7,6 +8,9 @@ export type VenueFilter = "all" | VenueType;
 interface UseFiltersResult {
   /** Set of distinct cuisine_group keys present in the loaded restaurant data. */
   dataGroups: Set<string>;
+  visibleRestaurants: Restaurant[];
+  mappableRestaurants: Restaurant[];
+  reveal: (restaurant: Restaurant) => void;
   activeGroups: Set<string>;
   toggle: (group: string) => void;
   toggleAll: () => void;
@@ -19,7 +23,7 @@ interface UseFiltersResult {
  * Manages active cuisine group and venue type filter state.
  * Groups are derived from the distinct cuisine_group values in the loaded restaurant data.
  */
-export function useFilters(restaurants: Restaurant[]): UseFiltersResult {
+export function useFilters(restaurants: Restaurant[], datasetKey = "", spatialContext?: SpatialContext): UseFiltersResult {
   const allGroups = useMemo(
     () => [...new Set(restaurants.map((r) => r.cuisine_group))],
     [restaurants]
@@ -28,11 +32,12 @@ export function useFilters(restaurants: Restaurant[]): UseFiltersResult {
   const [activeGroups, setActiveGroups] = useState<Set<string>>(() => new Set(allGroups));
   const [venueFilter, setVenueFilter] = useState<VenueFilter>("all");
 
-  // Sync activeGroups when allGroups changes (e.g., on data load).
-  // Activates all groups so the default state is always "all selected".
-  useMemo(() => {
+  const [source, setSource] = useState({ restaurants, datasetKey });
+  if (source.restaurants !== restaurants || source.datasetKey !== datasetKey) {
+    setSource({ restaurants, datasetKey });
     setActiveGroups(new Set(allGroups));
-  }, [allGroups]);
+    setVenueFilter("all");
+  }
 
   const toggle = useCallback((group: string) => {
     setActiveGroups((prev) => {
@@ -70,5 +75,15 @@ export function useFilters(restaurants: Restaurant[]): UseFiltersResult {
     });
   }, []);
 
-  return { dataGroups: new Set(allGroups), activeGroups, toggle, toggleAll, enableGroup, venueFilter, setVenueFilter };
+  const reveal = useCallback((restaurant: Restaurant) => {
+    if (!restaurants.includes(restaurant)) return;
+    enableGroup(restaurant.cuisine_group);
+    setVenueFilter((previous) => previous === "all" || previous === restaurant.venue_type ? previous : "all");
+  }, [restaurants, enableGroup]);
+  const visibleRestaurants = useMemo(() => restaurants.filter((record) =>
+    activeGroups.has(record.cuisine_group) && (venueFilter === "all" || record.venue_type === venueFilter)
+  ), [restaurants, activeGroups, venueFilter]);
+  const mappableRestaurants = useMemo(() => visibleRestaurants.filter((record) => getMapPosition(record, spatialContext) !== null), [visibleRestaurants, spatialContext]);
+
+  return { visibleRestaurants, mappableRestaurants, reveal, dataGroups: new Set(allGroups), activeGroups, toggle, toggleAll, enableGroup, venueFilter, setVenueFilter };
 }

@@ -1,106 +1,72 @@
-"""Scan public/data/ and render a coverage markdown table into readme/data-onboarding-guide.md."""
-
+"""Render/check coverage through the production catalog validator; never infer dataset identity."""
+import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
+import subprocess
+import sys
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DATA_DIR = PROJECT_ROOT / "public" / "data"
-README_PATH = PROJECT_ROOT / "readme" / "data-onboarding-guide.md"
-
-# Marker comments used to locate the auto-rendered section
 START_MARKER = "<!-- COVERAGE_TABLE_START -->"
 END_MARKER = "<!-- COVERAGE_TABLE_END -->"
 
-# Human-readable city names
-CITY_LABELS = {
-    "beijing": "Beijing / 北京",
-    "chengdu": "Chengdu / 成都",
-    "guangzhou-shenzhen": "Guangzhou & Shenzhen / 广州·深圳",
-    "hangzhou": "Hangzhou / 杭州",
-    "hong-kong": "Hong Kong / 香港",
-    "macau": "Macau / 澳門",
-    "shanghai": "Shanghai / 上海",
-    "taipei-taichung": "Taipei & Taichung / 台北·台中",
-    "tainan-kaohsiung": "Tainan & Kaohsiung / 台南·高雄",
-}
 
-# Human-readable guide names
-GUIDE_LABELS = {
-    "michelin-starred": "Michelin Starred / 米其林星级",
-    "michelin-bib-gourmand": "Michelin Bib Gourmand / 米其林必比登",
-    "dianping-black-pearl": "Dianping Black Pearl / 黑珍珠",
-}
-
-
-def scan_data() -> list[dict]:
-    """Scan data directory and return a list of dataset info dicts."""
-    results = []
-    for city_dir in sorted(DATA_DIR.iterdir()):
-        if not city_dir.is_dir() or city_dir.name == "taxonomy":
-            continue
-        city_slug = city_dir.name
-        for json_file in sorted(city_dir.glob("*.json")):
-            guide_slug = json_file.stem
-            with open(json_file, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            # Detect edition year from data
-            edition_year = None
-            if data and isinstance(data[0], dict):
-                edition_year = data[0].get("edition_year")
-            results.append(
-                {
-                    "city": city_slug,
-                    "guide": guide_slug,
-                    "entries": len(data),
-                    "edition_year": edition_year,
-                }
-            )
-    return results
-
-
-def render_table(datasets: list[dict]) -> str:
-    """Render the coverage markdown table from scanned datasets."""
-    lines = [
-        "| City | Guide | Year | Entries |",
-        "|------|-------|------|---------|",
-    ]
-    total = 0
-    for ds in datasets:
-        city_label = CITY_LABELS.get(ds["city"], ds["city"])
-        guide_label = GUIDE_LABELS.get(ds["guide"], ds["guide"])
-        year = ds["edition_year"] or "—"
-        lines.append(f"| {city_label} | {guide_label} | {year} | {ds['entries']} |")
-        total += ds["entries"]
-    lines.append(f"| **Total** | | | **{total}** |")
+def render(root: Path) -> str:
+    result = subprocess.run([os.environ.get("FOODIE_NODE", "node"), str(PROJECT_ROOT / "scripts/data-contract.ts"), "--root", str(root), "--json"], capture_output=True, text=True, check=False)
+    if result.returncode:
+        raise ValueError(result.stdout or result.stderr)
+    validated = json.loads(result.stdout)
+    by_identity = {row["identity"]: row for row in validated["datasets"]}
+    checksum = hashlib.sha256(json.dumps(validated["inputs"], sort_keys=True).encode()).hexdigest()
+    lines = [f"<!-- catalog-and-inputs-sha256: {checksum} -->", "", "| 城市 / 实际范围 | 榜单 | 年度 | 收录 | 可定位 | 名单状态 | 官方总数 |", "|---|---|---:|---:|---:|---|---:|"]
+    total = locatable = 0
+    labels = {"not-collected": "未采集", "unverified": "未核验", "partial": "部分", "verified": "已核验完整"}
+    def escape(value: str) -> str:
+        return value.replace("|", "\\|").replace("\n", " ")
+    for city in validated["catalog"]["cities"]:
+        for guide in city["guides"]:
+            row = by_identity[f"{city['id']}/{guide['year']}/{guide['id']}"]
+            counts = row["counts"]
+            listed, located = (counts["listed"], counts["locatable"]) if counts else ("—", "—")
+            if counts:
+                total += listed
+                locatable += located
+            state = labels[guide["coverage"]["status"]]
+            if listed == 0 and state != "已核验完整":
+                state += "；空文件，非官方零收录"
+            count = guide["coverage"]["officialCount"]
+            lines.append(f"| {escape(city['labelZh'])} / {escape(city['scope']['description'])} | {escape(guide['labelZh'])} | {guide['year']} | {listed} | {located} | {state} | {count if count is not None else '未知'} |")
+    lines += [f"| **合计** | | | **{total}** | **{locatable}** | | |", "", "可定位按 P02 getMapPosition(record, catalog.spatialContext) 计算，不代表精度已验收。未采集无文件不计为零条；已发布缺文件是错误。来源、采集/核验时间、范围成员与修订见 [catalog](../public/data/catalog.json)。"]
     return "\n".join(lines)
 
 
-def update_readme(table_md: str) -> None:
-    """Replace the section between markers in the readme with the new table."""
-    content = README_PATH.read_text(encoding="utf-8")
-    if START_MARKER not in content:
-        raise ValueError(
-            f"Missing {START_MARKER} in {README_PATH}. "
-            "Add the markers to indicate where the table should be rendered."
-        )
-    before = content.split(START_MARKER)[0]
-    after = content.split(END_MARKER)[1]
-    new_content = (
-        before
-        + START_MARKER
-        + "\n\n"
-        + table_md
-        + "\n\n"
-        + END_MARKER
-        + after
-    )
-    README_PATH.write_text(new_content, encoding="utf-8")
-    print(f"✅ Updated coverage table in {README_PATH.relative_to(PROJECT_ROOT)}")
-    print(f"   {len(datasets)} datasets, {sum(d['entries'] for d in datasets)} total entries")
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=PROJECT_ROOT / "public/data")
+    parser.add_argument("--document", type=Path, default=PROJECT_ROOT / "readme/data-onboarding-guide.md")
+    parser.add_argument("--check", action="store_true")
+    args = parser.parse_args()
+    content = args.document.read_text(encoding="utf-8")
+    if content.count(START_MARKER) != 1 or content.count(END_MARKER) != 1 or content.index(START_MARKER) > content.index(END_MARKER):
+        raise ValueError("Coverage document must contain exactly one ordered marker pair")
+    before, rest = content.split(START_MARKER)
+    _, after = rest.split(END_MARKER)
+    expected = before + START_MARKER + "\n\n" + render(args.root.resolve()) + "\n\n" + END_MARKER + after
+    if args.check:
+        if expected != content:
+            print(f"STALE_COVERAGE: {args.document}; run npm run readme", file=sys.stderr)
+            return 1
+        print("PASS: coverage matches catalog and all referenced input bytes")
+    else:
+        args.document.write_text(expected, encoding="utf-8")
+        print(f"Updated {args.document}")
+    return 0
 
 
 if __name__ == "__main__":
-    datasets = scan_data()
-    table_md = render_table(datasets)
-    update_readme(table_md)
+    try:
+        sys.exit(main())
+    except (ValueError, OSError) as error:
+        print(error, file=sys.stderr)
+        sys.exit(1)

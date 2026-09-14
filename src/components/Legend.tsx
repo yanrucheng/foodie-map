@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { cuisineRegistry, getGroupStyle } from "@/config/cuisineRegistry";
+import { useId, useState } from "react";
+import { type CuisineGroup, getGroupStyle } from "@/config/cuisineRegistry";
 
 interface LegendProps {
   /** Distinct cuisine_group keys present in the loaded data. */
   dataGroups: Set<string>;
+  groups: CuisineGroup[];
   totalCount: number;
   geocodedCount: number;
   /** When true, renders as a compact horizontal scrollable strip (mobile). */
@@ -16,7 +17,8 @@ interface LegendProps {
  * Desktop: flex-wrap grid with full coverage text.
  * Mobile (compact): horizontal scrollable strip with info icon toggle for coverage note.
  */
-export function Legend({ dataGroups, totalCount, geocodedCount, compact }: LegendProps) {
+export function Legend({ dataGroups, groups, totalCount, geocodedCount, compact }: LegendProps) {
+  const noteId = useId();
   const [showNote, setShowNote] = useState(false);
 
   const coveragePercent = totalCount > 0
@@ -24,7 +26,7 @@ export function Legend({ dataGroups, totalCount, geocodedCount, compact }: Legen
     : "0.0";
 
   // Filter taxonomy to groups present in the dataset, ordered by sortOrder.
-  const visibleGroups = cuisineRegistry
+  const visibleGroups = groups
     .filter((g) => dataGroups.has(g.key))
     .sort((a, b) => a.sortOrder - b.sortOrder);
 
@@ -47,12 +49,13 @@ export function Legend({ dataGroups, totalCount, geocodedCount, compact }: Legen
           onClick={() => setShowNote((v) => !v)}
           aria-label="显示覆盖率信息"
           aria-expanded={showNote}
+          aria-controls={showNote ? noteId : undefined}
         >
           ℹ
         </button>
         {showNote && (
-          <div className="legend-compact-note">
-            地理编码成功 {geocodedCount} / {totalCount}（{coveragePercent}%）
+          <div id={noteId} className="legend-compact-note">
+            可定位 {geocodedCount} / 收录 {totalCount}（{coveragePercent}%）
           </div>
         )}
       </section>
@@ -73,7 +76,7 @@ export function Legend({ dataGroups, totalCount, geocodedCount, compact }: Legen
         })}
       </div>
       <div className="coverage-note">
-        地理编码成功 {geocodedCount} / {totalCount}（{coveragePercent}%），区域 fallback 0 家；fallback 餐厅会在弹窗中标注。
+        可定位 {geocodedCount} / 收录 {totalCount}（{coveragePercent}%）
       </div>
     </section>
   );

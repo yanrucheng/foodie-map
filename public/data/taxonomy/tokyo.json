@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "city": "tokyo",
+  "fallbackGroup": "OTHER",
+  "groups": [
+    { "key": "JAPANESE", "labelZh": "日本料理", "labelEn": "Japanese", "sortOrder": 1 },
+    { "key": "SUSHI", "labelZh": "寿司", "labelEn": "Sushi", "sortOrder": 2 },
+    { "key": "TEMPURA", "labelZh": "天妇罗", "labelEn": "Tempura", "sortOrder": 3 },
+    { "key": "YAKITORI", "labelZh": "烧鸟", "labelEn": "Yakitori", "sortOrder": 4 },
+    { "key": "UNAGI", "labelZh": "鳗鱼", "labelEn": "Unagi", "sortOrder": 5 },
+    { "key": "SOBA", "labelZh": "荞麦面", "labelEn": "Soba", "sortOrder": 6 },
+    { "key": "RAMEN", "labelZh": "拉面", "labelEn": "Ramen", "sortOrder": 7 },
+    { "key": "TONKATSU", "labelZh": "炸猪排", "labelEn": "Tonkatsu", "sortOrder": 8 },
+    { "key": "YOSHOKU", "labelZh": "日式洋食", "labelEn": "Yoshoku", "sortOrder": 9 },
+    { "key": "IZAKAYA", "labelZh": "居酒屋", "labelEn": "Izakaya", "sortOrder": 10 },
+    { "key": "SPECIALTIES", "labelZh": "专门料理", "labelEn": "Specialties", "sortOrder": 11 },
+    { "key": "FRENCH", "labelZh": "法国菜", "labelEn": "French", "sortOrder": 20 },
+    { "key": "ITALIAN", "labelZh": "意大利菜", "labelEn": "Italian", "sortOrder": 21 },
+    { "key": "CHINESE", "labelZh": "中国菜", "labelEn": "Chinese", "sortOrder": 22 },
+    { "key": "SPANISH", "labelZh": "西班牙菜", "labelEn": "Spanish", "sortOrder": 23 },
+    { "key": "PORTUGUESE", "labelZh": "葡萄牙菜", "labelEn": "Portuguese", "sortOrder": 24 },
+    { "key": "AUSTRIAN", "labelZh": "奥地利菜", "labelEn": "Austrian", "sortOrder": 25 },
+    { "key": "SOUTH_SOUTHEAST_ASIAN", "labelZh": "南亚与东南亚菜", "labelEn": "South & Southeast Asian", "sortOrder": 26 },
+    { "key": "CONTEMPORARY", "labelZh": "现代与创意料理", "labelEn": "Contemporary & Creative", "sortOrder": 30 },
+    { "key": "OTHER", "labelZh": "其他", "labelEn": "Other", "sortOrder": 99 }
+  ]
+}
