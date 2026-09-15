@@ -4,13 +4,14 @@
 /* Standard tile compositing also lets contrast audits resolve map overlays reliably. */
 #map img.leaflet-tile { mix-blend-mode: normal; }
 .restaurant-marker { display: grid; place-items: center; border-radius: 50%; }
-.marker-dot { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #17212e; position: relative; }
+.marker-dot { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #17212e; position: relative; }
 .restaurant-marker:focus-visible .marker-dot, .restaurant-marker--selected .marker-dot { outline: 3px solid #17212e; outline-offset: 3px; box-shadow: 0 0 0 3px #fff; }
 .restaurant-marker:focus-visible, .restaurant-marker--selected { z-index: 1000 !important; }
-.serving-icon, .detail-symbol { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.dining-icon, .detail-symbol { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .detail-symbol { width: 32px; height: 32px; border-radius: 50%; border: 1px solid #fff; }
-.serving-icon svg, .detail-symbol svg, .marker-dot svg { width: 20px; height: 20px; }
-.marker-dot.new::after { content: 'NEW'; position: absolute; left: 50%; top: -13px; transform: translateX(-50%); font-size: 8px; font-weight: 700; background: linear-gradient(135deg, #c89e39, #f5de9c); color: #3b2d00; padding: 1px 4px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.55); }
+.dining-icon svg, .detail-symbol svg, .marker-dot svg { width: 21px; height: 21px; }
+.marker-dot.new::after { pointer-events: none; content: 'NEW'; position: absolute; left: 50%; top: 36px; transform: translateX(-50%); font-size: 8px; font-weight: 700; background: linear-gradient(135deg, #c89e39, #f5de9c); color: #3b2d00; padding: 1px 4px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.55); }
+.price-badge { position: absolute; right: -10px; top: -13px; min-width: 16px; height: 16px; padding: 0 3px; border: 1px solid #556650; border-radius: 5px; background: #fffefa; color: #243b30; font: 750 10px/14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; white-space: nowrap; pointer-events: none; }
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #101821; color: var(--text); }
 .popup { min-width: 250px; }
 .popup h2 { margin: 0 0 6px; font-size: 16px; }

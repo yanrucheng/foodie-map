@@ -79,7 +79,7 @@ function App({ registry = cities }: { registry?: CityConfig[] }) {
     data-coverage={guide.coverage?.status} data-build={release?.buildId} data-revision={release?.resources[guide.dataPath]?.sha256} data-delivery={resource.delivery}
     title={release ? `Foodie Map ${release.version} · 构建 ${release.buildId.slice(0, 12)} · 数据 ${release.dataRevision.slice(0, 12)}` : undefined}
     role={status === "error" ? "alert" : "status"}>
-    {subtitle}{guide.coverage && (status === "ready" || status === "empty") && <span title={`${city.scope?.description ?? ""} ${guide.coverage.note}`}> · {({ verified: "名单已核验", partial: "部分名单", unverified: "名单未核验", "not-collected": "尚未采集" })[guide.coverage.status]}{status === "empty" && guide.coverage.status !== "verified" && "（空文件不代表官方零收录）"}</span>}{status === "ready" && visibleRestaurants.length === 0 && "。当前筛选没有餐厅，请调整消费形式或菜系与品类。"} {(status === "error" || resource.offline) && <button onClick={retry}>重试</button>}
+    {subtitle}{guide.coverage && (status === "ready" || status === "empty") && <span title={`${city.scope?.description ?? ""} ${guide.coverage.note}`}> · {({ verified: "名单已核验", partial: "部分名单", unverified: "名单未核验", "not-collected": "尚未采集" })[guide.coverage.status]}{status === "empty" && guide.coverage.status !== "verified" && "（空文件不代表官方零收录）"}</span>}{status === "ready" && visibleRestaurants.length === 0 && "。当前筛选没有餐厅，请调整主打体验或菜系与品类。"} {(status === "error" || resource.offline) && <button onClick={retry}>重试</button>}
     {release && <span className="release-status">{offline && status !== "error" ? "离线浏览 · 使用已缓存版次" : resource.delivery === "cache" ? "使用已验证缓存" : ""}{connectivity.waiting && " · 更新已就绪，关闭本应用所有页面后重新打开。"}</span>}
   </div>;
   const titleElement = <DynamicTitle key={selection.datasetKey}
@@ -92,7 +92,7 @@ function App({ registry = cities }: { registry?: CityConfig[] }) {
     selection: popupRestaurant ? detail : null, onRestaurantSelect: showDetail, onRestaurantClose: closeMapDetail,
     dataGroups: filters.dataGroups, activeGroups: filters.activeGroups,
     onToggleGroup: filters.toggle, onToggleAll: filters.toggleAll,
-    formCounts: filters.formCounts, formFilter: filters.formFilter, onFormFilterChange: filters.setFormFilter,
+    diningCounts: filters.diningCounts, diningFilter: filters.diningFilter, onDiningFilterChange: filters.setDiningFilter,
     center: city.center, zoom: city.zoom, spatialContext: city.spatialContext, basemap: city.basemap,
   };
   const geocodedCount = data.filter((record) => getMapPosition(record, city.spatialContext) !== null).length;

@@ -24,7 +24,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "french"
   },
   {
     "id": 2,
@@ -51,7 +52,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "french"
   },
   {
     "id": 3,
@@ -78,7 +80,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 4,
@@ -105,7 +108,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "other"
   },
   {
     "id": 5,
@@ -132,7 +136,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 6,
@@ -159,7 +164,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 7,
@@ -186,7 +192,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "seafood"
   },
   {
     "id": 8,
@@ -213,7 +220,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "other"
   },
   {
     "id": 9,
@@ -267,7 +275,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "meat"
   },
   {
     "id": 11,
@@ -294,7 +303,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 12,
@@ -321,7 +331,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 13,
@@ -348,7 +359,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 14,
@@ -375,7 +387,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "meat"
   },
   {
     "id": 15,
@@ -402,7 +415,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 16,
@@ -429,7 +443,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "seafood"
   },
   {
     "id": 17,
@@ -456,7 +471,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "other"
   },
   {
     "id": 18,
@@ -483,7 +499,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "seafood"
   },
   {
     "id": 19,
@@ -510,7 +527,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 20,
@@ -537,7 +555,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "seafood"
   },
   {
     "id": 21,
@@ -564,7 +583,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 22,
@@ -591,7 +611,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "other"
   },
   {
     "id": 23,
@@ -618,7 +639,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "seafood"
   },
   {
     "id": 24,
@@ -645,7 +667,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 25,
@@ -672,7 +695,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 26,
@@ -699,7 +723,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 27,
@@ -726,7 +751,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "seafood"
   },
   {
     "id": 28,
@@ -753,7 +779,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 29,
@@ -780,7 +807,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 30,
@@ -807,7 +835,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 31,
@@ -834,7 +863,8 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "other"
   },
   {
     "id": 32,
@@ -861,6 +891,7 @@
     "signature_dishes": "",
     "geo_source": "google_maps",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "french"
   }
 ]

@@ -97,5 +97,5 @@ dialog.desktop-detail { inset: auto 12px 12px auto; width: min(480px, calc(100vw
 .mobile-shell .leaflet-bottom.leaflet-right { margin-bottom: 76px; }
 .mobile-shell .leaflet-control-container .leaflet-top.leaflet-left,
 .mobile-shell .leaflet-control-container .leaflet-top.leaflet-right { margin-top: 12px; }
-.mobile-shell .map-service-status { bottom: 132px; max-height: 120px; overflow: auto; }
+.mobile-shell .map-service-status { top: 12px; bottom: auto; left: auto; right: 12px; transform: none; max-width: calc(100% - 80px); max-height: 120px; overflow: auto; }
 .mobile-shell .map-spatial-status { bottom: 12px; left: 12px; transform: none; max-width: calc(100% - 200px); }

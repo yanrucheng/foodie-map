@@ -1,0 +1,107 @@
+{
+  "status": "passed",
+  "reviewed": 402,
+  "labeled": 398,
+  "unclassified": 4,
+  "listed": 671,
+  "datasets": [
+    {
+      "dataset": "hong-kong/2026/michelin-bib-gourmand",
+      "listed": 70,
+      "ordered_identities_sha256": "9e8bfcd966f6d2b1730c6c932d2d580517abd0e9f8d5240e534ea5222e931274"
+    },
+    {
+      "dataset": "hong-kong/2026/michelin-starred",
+      "listed": 77,
+      "ordered_identities_sha256": "a2ce6c1d430527b594c877b06e48ca9e075d286b62165ff4558cb35535d908e5"
+    },
+    {
+      "dataset": "beijing/2026/michelin-bib-gourmand",
+      "listed": 26,
+      "ordered_identities_sha256": "bcc3aee36f8e23d708d5b858b1a82600146b0b4881697d9dc273a3852e9d1ac6"
+    },
+    {
+      "dataset": "beijing/2026/michelin-starred",
+      "listed": 32,
+      "ordered_identities_sha256": "7e4651d1f06df860e31842d93a28c2ca86b3d7486fa8977caaf7997397f78392"
+    },
+    {
+      "dataset": "guangzhou-shenzhen/2026/michelin-starred",
+      "listed": 20,
+      "ordered_identities_sha256": "26819ab9126357c733b53ca8feed66bab8fc8d6ced5e7f986cdcb4e7031632a2"
+    },
+    {
+      "dataset": "guangzhou-shenzhen/2026/michelin-bib-gourmand",
+      "listed": 44,
+      "ordered_identities_sha256": "1aafd02d750a6c8d7de1ea76b186309a223e5590d2750e7abd3699d88f36ffa5"
+    },
+    {
+      "dataset": "shanghai/2026/michelin-starred",
+      "listed": 51,
+      "ordered_identities_sha256": "da3f7392fc7b96862273edcbcd0339288ac066c93eae8f913e0a2e25fa38ba38"
+    },
+    {
+      "dataset": "shanghai/2026/michelin-bib-gourmand",
+      "listed": 35,
+      "ordered_identities_sha256": "796d18d836944e19276c667d1b3e8e2c7e342d510fb845596a72217936c629ed"
+    },
+    {
+      "dataset": "chengdu/2026/michelin-starred",
+      "listed": 13,
+      "ordered_identities_sha256": "6f835b4d9d766576477a0c6328fbf14c74551a5772a5e5e18ca09f42d879c941"
+    },
+    {
+      "dataset": "macau/2026/michelin-starred",
+      "listed": 21,
+      "ordered_identities_sha256": "3576c7685d04d9f0a26886fe0c7322c4c1330c9ba700ea77aa0ecf3ee58a19c0"
+    },
+    {
+      "dataset": "macau/2026/michelin-bib-gourmand",
+      "listed": 13,
+      "ordered_identities_sha256": "77ceb28b044440c89d10be3a4f42738c223b34d0363f160653a4f2408423a633"
+    },
+    {
+      "dataset": "tokyo/2026/michelin-starred",
+      "listed": 158,
+      "ordered_identities_sha256": "afcff70369816cc8689ed035e564f6b05901df4ba402e54a0e6a8d589360b0e5"
+    },
+    {
+      "dataset": "tokyo/2026/michelin-bib-gourmand",
+      "listed": 111,
+      "ordered_identities_sha256": "61059489a5e26f2a301b355c515714161e9c703d1a4acee204ec5d110126896a"
+    }
+  ],
+  "unchanged_existing_files": 275,
+  "allowed_existing_file_changes": [
+    "public/data/beijing/2026/michelin-bib-gourmand.json",
+    "public/data/beijing/2026/michelin-starred.json",
+    "public/data/beijing/michelin-bib-gourmand.json",
+    "public/data/beijing/michelin-starred.json",
+    "public/data/catalog.json",
+    "public/data/chengdu/2026/michelin-starred.json",
+    "public/data/chengdu/michelin-starred.json",
+    "public/data/guangzhou-shenzhen/2026/michelin-bib-gourmand.json",
+    "public/data/guangzhou-shenzhen/2026/michelin-starred.json",
+    "public/data/guangzhou-shenzhen/michelin-bib-gourmand.json",
+    "public/data/guangzhou-shenzhen/michelin-starred.json",
+    "public/data/hong-kong/2026/michelin-bib-gourmand.json",
+    "public/data/hong-kong/2026/michelin-starred.json",
+    "public/data/hong-kong/michelin-bib-gourmand.json",
+    "public/data/hong-kong/michelin-starred.json",
+    "public/data/macau/2026/michelin-bib-gourmand.json",
+    "public/data/macau/2026/michelin-starred.json",
+    "public/data/macau/michelin-bib-gourmand.json",
+    "public/data/macau/michelin-starred.json",
+    "public/data/shanghai/2026/michelin-bib-gourmand.json",
+    "public/data/shanghai/2026/michelin-starred.json",
+    "public/data/shanghai/michelin-bib-gourmand.json",
+    "public/data/shanghai/michelin-starred.json",
+    "readme/data-onboarding-guide.md"
+  ],
+  "all_non_dining_fields_unchanged": true,
+  "identities_and_order_unchanged": true,
+  "existing_prices_unchanged": true,
+  "tokyo_data_and_accepted_ui_unchanged": true,
+  "coverage_scope_and_provenance_dates_unchanged": true,
+  "aliases_byte_equal": true
+}

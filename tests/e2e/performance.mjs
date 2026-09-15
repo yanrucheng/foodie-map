@@ -19,7 +19,7 @@ const random = () => ((randomState = (Math.imul(randomState, 1664525) + 10139042
 const fixtures = Array.from({ length: 1000 }, (_, index) => ({
   id: index + 1, city: "performance-city", guide_type: "michelin-bib-gourmand", edition_year: 2026,
   name: `性能 ${String(index).padStart(4, "0")}`, name_en: `Performance ${String(index).padStart(4, "0")}`,
-  cuisine: index % 2 ? "A" : "B", cuisine_group: index % 2 ? "A" : "B", serving_form: index % 2 ? "meal" : "dessert",
+  cuisine: index % 2 ? "A" : "B", cuisine_group: index % 2 ? "A" : "B", serving_form: index % 2 ? "meal" : "dessert", dining_category: index % 2 ? "meat" : "dessert_drink", price_range: "¥¥¥¥",
   lat: 22.302 + (random() - 0.5) * 0.015, lon: 114.177 + (random() - 0.5) * 0.015, geocode_success: true,
 }));
 const fixturePath = "/data/performance-city/2026/michelin-bib-gourmand.json";
@@ -182,7 +182,7 @@ try {
           await page.click('[aria-label="筛选"]');
           await page.waitForSelector(".filter-pill", { visible: true });
           for (let index = 0; index < 10; index++) {
-            const selector = index % 2 === 0 ? '.form-segment-btn[data-form="meal"]' : '.form-segment-btn[data-form="all"]';
+            const selector = index % 2 === 0 ? '.dining-segment-btn[data-dining="meat"]' : '.dining-segment-btn[data-dining="all"]';
             const count = index % 2 === 0 ? 500 : 1000;
             await arm({ type: "filter", event: "click", selector, count });
             await page.click(selector);

@@ -5,6 +5,7 @@ const optionalText = z.string().nullish();
 export const localIdSchema = z.number().int().positive().max(Number.MAX_SAFE_INTEGER);
 export const citySchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/u);
 export const guideTypeSchema = z.enum(["michelin-starred", "michelin-bib-gourmand"]);
+export const diningCategorySchema = z.enum(["staple", "meat", "seafood", "dessert_drink", "french", "chinese", "japanese_course", "other"]);
 export const servingFormSchema = z.enum(["meal", "snack", "dessert", "drink"]);
 export const venueTypeSchema = z.enum(["restaurant", "street_food", "dessert"]);
 export const currencySchema = z.enum(["CNY", "HKD", "MOP", "JPY"]);
@@ -85,6 +86,7 @@ const restaurantObjectSchema = z.object({
   cuisine: optionalText,
   venue_type: venueTypeSchema.nullish(),
   serving_form: servingFormSchema.nullish(),
+  dining_category: diningCategorySchema.nullish(),
   area: optionalText,
   primary_area: optionalText,
   major_region: optionalText,
@@ -113,7 +115,7 @@ export const restaurantSchema = restaurantObjectSchema.superRefine((record, cont
     if (Object.prototype.hasOwnProperty.call(record, field)) context.addIssue({ code: "custom", path: [field], message: "Retired price field; migrate to price and currency" });
   }
   for (const field of ["color", "icon", "svg"]) {
-    if (Object.prototype.hasOwnProperty.call(record, field)) context.addIssue({ code: "custom", path: [field], message: "Presentation is derived from cuisine_group and serving_form; data cannot override it" });
+    if (Object.prototype.hasOwnProperty.call(record, field)) context.addIssue({ code: "custom", path: [field], message: "Presentation is derived from cuisine_group, dining_category and price_range; data cannot override it" });
   }
 });
 
@@ -128,5 +130,6 @@ export function checkUniqueIds(records: { id: number }[], context: z.RefinementC
 export const restaurantArraySchema = z.array(restaurantSchema).superRefine(checkUniqueIds);
 export function parseRestaurantArray(input: unknown): Restaurant[] { return restaurantArraySchema.parse(input); }
 export type Restaurant = z.infer<typeof restaurantSchema>;
+export type DiningCategory = z.infer<typeof diningCategorySchema>;
 export type ServingForm = z.infer<typeof servingFormSchema>;
 export type VenueType = z.infer<typeof venueTypeSchema>;

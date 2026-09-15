@@ -1,0 +1,124 @@
+{
+  "status": "passed",
+  "recorded_at": "2026-09-15T11:11:12.715451+00:00",
+  "runtime": {
+    "node": "v24.21.0",
+    "npm": "11.19.0"
+  },
+  "release_started_at": "2026-09-15T11:05:30.775Z",
+  "release_finished_at": "2026-09-15T11:08:51.170Z",
+  "release_steps": [
+    {
+      "script": "check",
+      "command": "npm run check",
+      "startedAt": "2026-09-15T11:05:30.803Z",
+      "finishedAt": "2026-09-15T11:05:34.801Z",
+      "exitCode": 0,
+      "log": "check.log"
+    },
+    {
+      "script": "test",
+      "command": "npm run test",
+      "startedAt": "2026-09-15T11:05:34.801Z",
+      "finishedAt": "2026-09-15T11:05:38.285Z",
+      "exitCode": 0,
+      "log": "test.log"
+    },
+    {
+      "script": "check:coverage",
+      "command": "npm run check:coverage",
+      "startedAt": "2026-09-15T11:05:38.285Z",
+      "finishedAt": "2026-09-15T11:05:38.516Z",
+      "exitCode": 0,
+      "log": "check-coverage.log"
+    },
+    {
+      "script": "build",
+      "command": "npm run build",
+      "startedAt": "2026-09-15T11:05:38.516Z",
+      "finishedAt": "2026-09-15T11:05:40.078Z",
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    {
+      "script": "test:e2e",
+      "command": "npm run test:e2e -- --prebuilt",
+      "startedAt": "2026-09-15T11:05:40.082Z",
+      "finishedAt": "2026-09-15T11:08:38.011Z",
+      "exitCode": 0,
+      "log": "test-e2e.log"
+    },
+    {
+      "script": "test:performance",
+      "command": "npm run test:performance -- --dist /Users/chengyanru/repos/personal/foodie-map/dist --output /Users/chengyanru/repos/personal/foodie-map/test-results/p09-tokyo-data/release/performance.json",
+      "startedAt": "2026-09-15T11:08:38.011Z",
+      "finishedAt": "2026-09-15T11:08:51.135Z",
+      "exitCode": 0,
+      "log": "test-performance.log"
+    }
+  ],
+  "release_verify_exit_code": 0,
+  "source_sha256": "3ea27ba0d1c8863bec3565015c8769b813f7803bf6c4d67e90b2e8ccde74ad1f",
+  "artifact_sha256": "a960691a394852e1543ca65dc18a79284aad3ba60052f2f7f91f4219bdb61036",
+  "build_id": "41fab3c66b7fba9a709db198a20e2fd1c2c7d3ca42fd18f7b33e8349d9cf91f2",
+  "tests": {
+    "quick_files": 15,
+    "quick_passed": 248,
+    "browser_passed": 68,
+    "browser_failed": 0,
+    "browser_skipped": 0
+  },
+  "validation": {
+    "valid": true,
+    "errors": 0,
+    "warnings": 14,
+    "warning_code": "DUPLICATE_COORDINATES"
+  },
+  "performance": {
+    "datasets": [
+      {
+        "kind": "largest-current",
+        "lcpMedianMs": 688,
+        "clsMedian": 0,
+        "jsGzipMaxBytes": 164029
+      },
+      {
+        "kind": "fixture-1000",
+        "lcpMedianMs": 684,
+        "clsMedian": 0,
+        "jsGzipMaxBytes": 159210
+      }
+    ],
+    "interactionCount": 20,
+    "interactionP95Ms": 72.7999999821186
+  },
+  "reconciliation": "reconciliation.json",
+  "distribution": "distribution.json",
+  "source_evidence_sha256": "77d6b4042156ce9b5b1be5ef46e3a1b86c16b45bea05a9f79a377a49a629f6ae",
+  "other_checks": {
+    "check:repository": 0,
+    "git diff --check": 0,
+    "report_links": 0
+  },
+  "preview_inspection": [
+    {
+      "url": "http://127.0.0.1:4173/?city=tokyo&year=2026&guide=michelin-starred",
+      "title": "2026 东京 · 米其林星级餐厅地图",
+      "visible_individual_markers": 7,
+      "visible_price_badges": 7,
+      "distinct_visible_icons": 4,
+      "loaded_tiles": 24
+    },
+    {
+      "url": "http://127.0.0.1:4173/?city=tokyo&year=2026&guide=michelin-bib-gourmand",
+      "title": "2026 东京 · 米其林必比登餐厅地图",
+      "visible_individual_markers": 20,
+      "visible_price_badges": 20,
+      "distinct_visible_icons": 4,
+      "loaded_tiles": 24
+    }
+  ],
+  "scope": "Tokyo only; user review pending before other cities.",
+  "pushed": false,
+  "deployed": false
+}

@@ -1,0 +1,316 @@
+{
+  "status": "passed",
+  "recorded_at": "2026-09-15T13:35:10.176046+00:00",
+  "scope": "6 regions, 11 datasets, 402 records; Tokyo and accepted UI unchanged",
+  "node": "v24.21.0",
+  "release_started_at": "2026-09-15T13:27:58.376Z",
+  "release_finished_at": "2026-09-15T13:31:20.758Z",
+  "release_steps": [
+    {
+      "script": "check",
+      "command": "npm run check",
+      "startedAt": "2026-09-15T13:27:58.397Z",
+      "finishedAt": "2026-09-15T13:28:01.731Z",
+      "exitCode": 0,
+      "log": "check.log"
+    },
+    {
+      "script": "test",
+      "command": "npm run test",
+      "startedAt": "2026-09-15T13:28:01.731Z",
+      "finishedAt": "2026-09-15T13:28:05.564Z",
+      "exitCode": 0,
+      "log": "test.log"
+    },
+    {
+      "script": "check:coverage",
+      "command": "npm run check:coverage",
+      "startedAt": "2026-09-15T13:28:05.564Z",
+      "finishedAt": "2026-09-15T13:28:05.799Z",
+      "exitCode": 0,
+      "log": "check-coverage.log"
+    },
+    {
+      "script": "build",
+      "command": "npm run build",
+      "startedAt": "2026-09-15T13:28:05.799Z",
+      "finishedAt": "2026-09-15T13:28:07.243Z",
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    {
+      "script": "test:e2e",
+      "command": "npm run test:e2e -- --prebuilt",
+      "startedAt": "2026-09-15T13:28:07.247Z",
+      "finishedAt": "2026-09-15T13:31:07.400Z",
+      "exitCode": 0,
+      "log": "test-e2e.log"
+    },
+    {
+      "script": "test:performance",
+      "command": "npm run test:performance -- --dist /Users/chengyanru/repos/personal/foodie-map/dist --output /Users/chengyanru/repos/personal/foodie-map/test-results/p09-regional-data/release/performance.json",
+      "startedAt": "2026-09-15T13:31:07.400Z",
+      "finishedAt": "2026-09-15T13:31:20.728Z",
+      "exitCode": 0,
+      "log": "test-performance.log"
+    }
+  ],
+  "release_verify_exit_code": 0,
+  "source_sha256": "3a0ce0fab90749ce55e526504b2692fc58e5f05ff518f24b36f0b42b080b1118",
+  "artifact_sha256": "aec8c3ca8dfc08c8d2148b599dcd55d2a7669772d9308ad26ea7a8ca243a1ade",
+  "build_id": "35a0fde16682cd1c9687af5417b2060f0fa1a424b60ec7b69d7e6d36da88cf27",
+  "tests": {
+    "quick_files": 15,
+    "quick_passed": 248,
+    "browser_passed": 68,
+    "browser_failed": 0,
+    "browser_skipped": 0
+  },
+  "validation": {
+    "valid": true,
+    "errors": 0,
+    "warnings": 14,
+    "warning_code": "DUPLICATE_COORDINATES"
+  },
+  "performance": {
+    "datasets": [
+      {
+        "kind": "largest-current",
+        "lcpMedianMs": 696,
+        "clsMedian": 0,
+        "jsGzipMaxBytes": 164017
+      },
+      {
+        "kind": "fixture-1000",
+        "lcpMedianMs": 684,
+        "clsMedian": 0,
+        "jsGzipMaxBytes": 159082
+      }
+    ],
+    "interactionCount": 20,
+    "interactionP95Ms": 79.2999999821186
+  },
+  "reconciliation": "reconciliation.json",
+  "source_evidence_sha256": {
+    "beijing-evidence.json": "6b83d780caea8413526b4a6fe5c31ac9bc9c46ffd79616302e9ea258fb164115",
+    "guangzhou-shenzhen-evidence.json": "3c6a53d2ca7a82755d0ee8d213478abf9bbf72dae258d8b8ac670509bf8c06a5",
+    "source-evidence.json": "1e5a851ec12fd13ccd9b65bda74538768838215f5ec9e10fc120caf7ce0c7995",
+    "macau-evidence.json": "1090d606939be53b933a3af52c65423c1bfecd27721f80c3ec27652a35eb5979",
+    "hong-kong-evidence.json": "34cb3833f72e88629af8e566a9f4eba4db5f6694ecf2d0db99dbadce65e335b2",
+    "chengdu-evidence.json": "9539171f222887158193658752ad03fb2343c30c50cc8b5b8b11f15816ab5c0e",
+    "shanghai-evidence.json": "c679da88737f46dce6c140493dfd7c3de75239f08d7f9bf0461de3c5cd215327"
+  },
+  "labeled_this_stage": 398,
+  "unclassified_this_stage": 4,
+  "labeled_total": 656,
+  "unclassified_total": 15,
+  "price_changes": 0,
+  "pushed": false,
+  "deployed": false,
+  "preview": [
+    {
+      "dataset": "hong-kong/2026/michelin-bib-gourmand",
+      "url": "http://127.0.0.1:4173/?city=hong-kong&year=2026&guide=michelin-bib-gourmand",
+      "buildId": "35a0fde16682cd1c9687af5417b2060f0fa1a424b60ec7b69d7e6d36da88cf27",
+      "buttons": [
+        "全部 70",
+        "面饭面点 25",
+        "肉食主打 8",
+        "鱼鲜主打 3",
+        "甜饮 3",
+        "中餐 22",
+        "其他料理 9"
+      ],
+      "markers": 5,
+      "icons": 5,
+      "loadedTiles": 2
+    },
+    {
+      "dataset": "hong-kong/2026/michelin-starred",
+      "url": "http://127.0.0.1:4173/?city=hong-kong&year=2026&guide=michelin-starred",
+      "buildId": "35a0fde16682cd1c9687af5417b2060f0fa1a424b60ec7b69d7e6d36da88cf27",
+      "buttons": [
+        "全部 77",
+        "面饭面点 1",
+        "肉食主打 5",
+        "鱼鲜主打 9",
+        "法式 13",
+        "中餐 27",
+        "日式会席 4",
+        "其他料理 18"
+      ],
+      "markers": 1,
+      "icons": 1,
+      "loadedTiles": 27
+    },
+    {
+      "dataset": "beijing/2026/michelin-bib-gourmand",
+      "url": "http://127.0.0.1:4173/?city=beijing&year=2026&guide=michelin-bib-gourmand",
+      "buildId": "35a0fde16682cd1c9687af5417b2060f0fa1a424b60ec7b69d7e6d36da88cf27",
+      "buttons": [
+        "全部 26",
+        "面饭面点 5",
+        "肉食主打 2",
+        "鱼鲜主打 3",
+        "中餐 15",
+        "其他料理 1"
+      ],
+      "markers": 5,
+      "icons": 4,
+      "loadedTiles": 6
+    },
+    {
+      "dataset": "beijing/2026/michelin-starred",
+      "url": "http://127.0.0.1:4173/?city=beijing&year=2026&guide=michelin-starred",
+      "buildId": "35a0fde16682cd1c9687af5417b2060f0fa1a424b60ec7b69d7e6d36da88cf27",
+      "buttons": [
+        "全部 32",
+        "肉食主打 2",
+        "鱼鲜主打 6",
+        "法式 3",
+        "中餐 15",
+        "其他料理 6"
+      ],
+      "markers": 2,
+      "icons": 2,
+      "loadedTiles": 22
+    },
+    {
+      "dataset": "guangzhou-shenzhen/2026/michelin-starred",
+      "url": "http://127.0.0.1:4173/?city=guangzhou-shenzhen&year=2026&guide=michelin-starred",
+      "buildId": "35a0fde16682cd1c9687af5417b2060f0fa1a424b60ec7b69d7e6d36da88cf27",
+      "buttons": [
+        "全部 20",
+        "面饭面点 1",
+        "鱼鲜主打 1",
+        "中餐 15",
+        "其他料理 3"
+      ],
+      "markers": 0,
+      "icons": 0,
+      "loadedTiles": 6
+    },
+    {
+      "dataset": "guangzhou-shenzhen/2026/michelin-bib-gourmand",
+      "url": "http://127.0.0.1:4173/?city=guangzhou-shenzhen&year=2026&guide=michelin-bib-gourmand",
+      "buildId": "35a0fde16682cd1c9687af5417b2060f0fa1a424b60ec7b69d7e6d36da88cf27",
+      "buttons": [
+        "全部 44",
+        "面饭面点 9",
+        "肉食主打 8",
+        "鱼鲜主打 2",
+        "中餐 22",
+        "其他料理 3"
+      ],
+      "markers": 3,
+      "icons": 2,
+      "loadedTiles": 15
+    },
+    {
+      "dataset": "shanghai/2026/michelin-starred",
+      "url": "http://127.0.0.1:4173/?city=shanghai&year=2026&guide=michelin-starred",
+      "buildId": "35a0fde16682cd1c9687af5417b2060f0fa1a424b60ec7b69d7e6d36da88cf27",
+      "buttons": [
+        "全部 51",
+        "面饭面点 1",
+        "肉食主打 3",
+        "鱼鲜主打 7",
+        "法式 2",
+        "中餐 29",
+        "其他料理 9"
+      ],
+      "markers": 3,
+      "icons": 1,
+      "loadedTiles": 5
+    },
+    {
+      "dataset": "shanghai/2026/michelin-bib-gourmand",
+      "url": "http://127.0.0.1:4173/?city=shanghai&year=2026&guide=michelin-bib-gourmand",
+      "buildId": "35a0fde16682cd1c9687af5417b2060f0fa1a424b60ec7b69d7e6d36da88cf27",
+      "buttons": [
+        "全部 35",
+        "面饭面点 14",
+        "鱼鲜主打 4",
+        "法式 1",
+        "中餐 12",
+        "其他料理 4"
+      ],
+      "markers": 5,
+      "icons": 3,
+      "loadedTiles": 1
+    },
+    {
+      "dataset": "chengdu/2026/michelin-starred",
+      "url": "http://127.0.0.1:4173/?city=chengdu&year=2026&guide=michelin-starred",
+      "buildId": "35a0fde16682cd1c9687af5417b2060f0fa1a424b60ec7b69d7e6d36da88cf27",
+      "buttons": [
+        "全部 13",
+        "鱼鲜主打 2",
+        "中餐 8",
+        "其他料理 3"
+      ],
+      "markers": 4,
+      "icons": 2,
+      "loadedTiles": 4
+    },
+    {
+      "dataset": "macau/2026/michelin-starred",
+      "url": "http://127.0.0.1:4173/?city=macau&year=2026&guide=michelin-starred",
+      "buildId": "35a0fde16682cd1c9687af5417b2060f0fa1a424b60ec7b69d7e6d36da88cf27",
+      "buttons": [
+        "全部 21",
+        "鱼鲜主打 2",
+        "法式 2",
+        "中餐 12",
+        "日式会席 1",
+        "其他料理 4"
+      ],
+      "markers": 1,
+      "icons": 1,
+      "loadedTiles": 1
+    },
+    {
+      "dataset": "macau/2026/michelin-bib-gourmand",
+      "url": "http://127.0.0.1:4173/?city=macau&year=2026&guide=michelin-bib-gourmand",
+      "buildId": "35a0fde16682cd1c9687af5417b2060f0fa1a424b60ec7b69d7e6d36da88cf27",
+      "buttons": [
+        "全部 13",
+        "面饭面点 3",
+        "鱼鲜主打 1",
+        "中餐 3",
+        "其他料理 6"
+      ],
+      "markers": 4,
+      "icons": 4,
+      "loadedTiles": 19
+    }
+  ],
+  "preview_datasets_checked": 11,
+  "preview_filter_notes_absent": true,
+  "zoom_preview": [
+    {
+      "city": "hong-kong",
+      "markers": 7,
+      "icons": 4,
+      "loadedTiles": 28
+    },
+    {
+      "city": "guangzhou-shenzhen",
+      "markers": 8,
+      "icons": 3,
+      "loadedTiles": 30
+    },
+    {
+      "city": "beijing",
+      "markers": 15,
+      "icons": 5,
+      "loadedTiles": 28
+    }
+  ],
+  "other_checks": {
+    "repository_policy": 0,
+    "git_diff_check": 0,
+    "report_links": 0
+  },
+  "zoom_preview_measurement_note": "Marker/icon counts are DOM counts, not visibility-confirmed screen counts. Screenshots retain clusters; no new overlap/visibility acceptance is claimed."
+}

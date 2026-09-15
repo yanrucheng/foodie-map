@@ -33,12 +33,17 @@
                 "kind": "gap",
                 "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-2006-regional-dining/hong-kong-evidence.json",
+                "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-hong-kong-20260915",
+              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
+              "evidence": "repo:eval/sessions/260915-2006-regional-dining/hong-kong-evidence.json"
             }
           }
         },
@@ -64,12 +69,17 @@
                 "kind": "gap",
                 "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-2006-regional-dining/hong-kong-evidence.json",
+                "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-hong-kong-20260915",
+              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
+              "evidence": "repo:eval/sessions/260915-2006-regional-dining/hong-kong-evidence.json"
             }
           }
         }
@@ -118,12 +128,17 @@
                 "kind": "gap",
                 "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-2006-regional-dining/beijing-evidence.json",
+                "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-beijing-20260915",
+              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
+              "evidence": "repo:eval/sessions/260915-2006-regional-dining/beijing-evidence.json"
             }
           }
         },
@@ -149,12 +164,17 @@
                 "kind": "gap",
                 "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-2006-regional-dining/beijing-evidence.json",
+                "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-beijing-20260915",
+              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
+              "evidence": "repo:eval/sessions/260915-2006-regional-dining/beijing-evidence.json"
             }
           }
         }
@@ -203,12 +223,17 @@
                 "kind": "gap",
                 "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-2006-regional-dining/guangzhou-shenzhen-evidence.json",
+                "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-guangzhou-shenzhen-20260915",
+              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
+              "evidence": "repo:eval/sessions/260915-2006-regional-dining/guangzhou-shenzhen-evidence.json"
             }
           }
         },
@@ -234,12 +259,17 @@
                 "kind": "gap",
                 "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-2006-regional-dining/guangzhou-shenzhen-evidence.json",
+                "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-guangzhou-shenzhen-20260915",
+              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
+              "evidence": "repo:eval/sessions/260915-2006-regional-dining/guangzhou-shenzhen-evidence.json"
             }
           }
         }
@@ -289,12 +319,17 @@
                 "kind": "gap",
                 "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-2006-regional-dining/shanghai-evidence.json",
+                "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-shanghai-20260915",
+              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
+              "evidence": "repo:eval/sessions/260915-2006-regional-dining/shanghai-evidence.json"
             }
           }
         },
@@ -320,12 +355,17 @@
                 "kind": "gap",
                 "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-2006-regional-dining/shanghai-evidence.json",
+                "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-shanghai-20260915",
+              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
+              "evidence": "repo:eval/sessions/260915-2006-regional-dining/shanghai-evidence.json"
             }
           }
         }
@@ -374,12 +414,17 @@
                 "kind": "gap",
                 "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-2006-regional-dining/chengdu-evidence.json",
+                "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-chengdu-20260915",
+              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
+              "evidence": "repo:eval/sessions/260915-2006-regional-dining/chengdu-evidence.json"
             }
           }
         }
@@ -428,12 +473,17 @@
                 "kind": "gap",
                 "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-2006-regional-dining/macau-evidence.json",
+                "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-macau-20260915",
+              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
+              "evidence": "repo:eval/sessions/260915-2006-regional-dining/macau-evidence.json"
             }
           }
         },
@@ -459,12 +509,17 @@
                 "kind": "gap",
                 "ref": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md",
                 "note": "迁移来源缺口及旧名单声明的局限"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-2006-regional-dining/macau-evidence.json",
+                "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-macau-20260915",
+              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
+              "evidence": "repo:eval/sessions/260915-2006-regional-dining/macau-evidence.json"
             }
           }
         }
@@ -534,12 +589,17 @@
                 "kind": "scope",
                 "ref": "repo:eval/sessions/260914-1037-tokyo-michelin/report.md",
                 "note": "东京原采集材料；年度完整身份集合仍未恢复"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-1826-tokyo-dining/source-evidence.json",
+                "note": "同一已收录门店的 P09 字段核实证据及未决缺口；不补证年度身份集合完整性，不提升 partial。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-tokyo-20260915",
+              "reason": "按 P09 逐店核实主打体验并补充 dining_category；其他餐厅事实、已有价格、coverage 和采集/完整性核验时间不变。",
+              "evidence": "repo:eval/sessions/260915-1826-tokyo-dining/source-evidence.json"
             }
           }
         },
@@ -585,12 +645,17 @@
                 "kind": "scope",
                 "ref": "repo:eval/sessions/260914-1037-tokyo-michelin/report.md",
                 "note": "东京原采集材料；年度完整身份集合仍未恢复"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260915-1826-tokyo-dining/source-evidence.json",
+                "note": "同一已收录门店的 P09 字段核实证据及未决缺口；不补证年度身份集合完整性，不提升 partial。"
               }
             ],
             "revision": {
-              "id": "p03-annual-path-migration",
-              "reason": "只迁移文件路径，全部餐厅事实字节保持；旧地址由年度文件派生。",
-              "evidence": "repo:docs/runbook/runbook-260507-1013-valid-data-source-guide.md"
+              "id": "p09-dining-tokyo-20260915",
+              "reason": "按 P09 逐店核实主打体验并补充 dining_category；其他餐厅事实、已有价格、coverage 和采集/完整性核验时间不变。",
+              "evidence": "repo:eval/sessions/260915-1826-tokyo-dining/source-evidence.json"
             }
           }
         }

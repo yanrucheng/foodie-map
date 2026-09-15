@@ -39,7 +39,7 @@ export function MobilePopupCard({ restaurant, onClose, groups, spatialContext, m
         {/* Tags row */}
         <div className="mobile-popup-tags">
           <span className="detail-symbol" style={{ background: groupStyle.color, color: groupStyle.textColor }}
-            dangerouslySetInnerHTML={{ __html: facts.form.svg }} />
+            dangerouslySetInnerHTML={{ __html: facts.category.svg }} />
           {facts.tags.map((tag, index) => (
             <span key={index} className="mobile-popup-tag"
               style={index === 0 ? { background: groupStyle.color, color: groupStyle.textColor } : undefined}>

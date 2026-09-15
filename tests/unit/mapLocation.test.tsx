@@ -34,7 +34,7 @@ afterEach(() => { cleanup(); createdMaps.forEach((map) => { if (!removedMaps.has
 
 function props(records: MapShellProps["restaurants"], spatialContext?: SpatialContext): MapShellProps {
   return { selection: null, onRestaurantSelect() {}, onRestaurantClose() {}, restaurants: records, visibleRestaurants: records, spatialContext, groups: [], dataGroups: new Set(["OTHER"]), activeGroups: new Set(["OTHER"]),
-    onToggleAll() {}, onToggleGroup() {}, formCounts: { meal: 0, snack: 0, dessert: 0, drink: 0, unclassified: 0 }, formFilter: "all", onFormFilterChange() {}, center: [22.3, 114.17], zoom: 12 };
+    onToggleAll() {}, onToggleGroup() {}, diningCounts: { staple: 0, meat: 0, seafood: 0, dessert_drink: 0, french: 0, chinese: 0, japanese_course: 0, other: 0, unclassified: 0 }, diningFilter: "all", onDiningFilterChange() {}, center: [22.3, 114.17], zoom: 12 };
 }
 
 describe("P05-R1/R2/R3 shared coordinate interpretation", () => {

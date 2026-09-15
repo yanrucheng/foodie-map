@@ -26,7 +26,8 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "other"
   },
   {
     "id": 2,
@@ -55,7 +56,8 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "seafood"
   },
   {
     "id": 3,
@@ -84,7 +86,8 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "staple"
   },
   {
     "id": 4,
@@ -113,7 +116,8 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "staple"
   },
   {
     "id": 5,
@@ -142,7 +146,8 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "other"
   },
   {
     "id": 6,
@@ -171,7 +176,8 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "chinese"
   },
   {
     "id": 7,
@@ -200,7 +206,8 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "staple"
   },
   {
     "id": 8,
@@ -229,7 +236,8 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "chinese"
   },
   {
     "id": 9,
@@ -258,7 +266,8 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "other"
   },
   {
     "id": 10,
@@ -287,7 +296,8 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "other"
   },
   {
     "id": 11,
@@ -316,7 +326,8 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "other"
   },
   {
     "id": 12,
@@ -345,7 +356,8 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "chinese"
   },
   {
     "id": 13,
@@ -374,6 +386,7 @@
     "geo_source": "michelin_exact",
     "geocode_success": true,
     "status": "active",
-    "price": null
+    "price": null,
+    "dining_category": "other"
   }
 ]

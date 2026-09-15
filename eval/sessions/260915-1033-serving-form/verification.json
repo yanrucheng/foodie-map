@@ -1,0 +1,412 @@
+{
+  "baseline_head": "27e41b6ed25a1c52190726562d064e59883d5d89",
+  "datasets": [
+    {
+      "dataset": "hong-kong/2026/michelin-bib-gourmand",
+      "count": 70,
+      "changed": 0,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 70
+      },
+      "after": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 70
+      },
+      "before_sha256": "4bb9b52056785043a49599effcd5316b8b2bccd198896ab20b5fcc42132371f3",
+      "after_sha256": "4bb9b52056785043a49599effcd5316b8b2bccd198896ab20b5fcc42132371f3",
+      "other_fields_sha256": "516661e4b3d26e311e51ebcdb96d81974b7925e008122158b60dc1d37695c2e0",
+      "other_fields_equal": true
+    },
+    {
+      "dataset": "hong-kong/2026/michelin-starred",
+      "count": 77,
+      "changed": 0,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 77
+      },
+      "after": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 77
+      },
+      "before_sha256": "b9f5d503af78e7ed8de440691c0c365f01978ff2c53bc5ed1daa8aa9bacfa034",
+      "after_sha256": "b9f5d503af78e7ed8de440691c0c365f01978ff2c53bc5ed1daa8aa9bacfa034",
+      "other_fields_sha256": "49043ef6f863418768cc21bb8868d7e5e2abb62b721ffa2bb966b32b23eed6cd",
+      "other_fields_equal": true
+    },
+    {
+      "dataset": "beijing/2026/michelin-bib-gourmand",
+      "count": 26,
+      "changed": 0,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 26
+      },
+      "after": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 26
+      },
+      "before_sha256": "f61a5f138facf0c459febedf63e3c233acf1ba86f105ebbfcbf384451f542948",
+      "after_sha256": "f61a5f138facf0c459febedf63e3c233acf1ba86f105ebbfcbf384451f542948",
+      "other_fields_sha256": "b7465e30e415c24d23d32ade6021f32e87e89c92a013404c33e273d71a55f9bf",
+      "other_fields_equal": true
+    },
+    {
+      "dataset": "beijing/2026/michelin-starred",
+      "count": 32,
+      "changed": 0,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 32
+      },
+      "after": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 32
+      },
+      "before_sha256": "03d254e5ce162d10d8ae870f57346fa1235cb179f496449d64313ff55889db2f",
+      "after_sha256": "03d254e5ce162d10d8ae870f57346fa1235cb179f496449d64313ff55889db2f",
+      "other_fields_sha256": "ca0d1cbc6441aa9409bd690db89d7ea4ace75de29edff588af927a97ad82d56c",
+      "other_fields_equal": true
+    },
+    {
+      "dataset": "guangzhou-shenzhen/2026/michelin-starred",
+      "count": 20,
+      "changed": 0,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 20
+      },
+      "after": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 20
+      },
+      "before_sha256": "35f3f4200e92e551fa68d8ede87057ee9db2abab3f720db7a6e2341a6630826f",
+      "after_sha256": "35f3f4200e92e551fa68d8ede87057ee9db2abab3f720db7a6e2341a6630826f",
+      "other_fields_sha256": "fd50f50fe51fe2ee33ca0b979d0cd2380ff18353367bfb5420fda31f7b639b5d",
+      "other_fields_equal": true
+    },
+    {
+      "dataset": "guangzhou-shenzhen/2026/michelin-bib-gourmand",
+      "count": 44,
+      "changed": 0,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 44
+      },
+      "after": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 44
+      },
+      "before_sha256": "91c3149387f186abde3c78bc6dee61f276b40c19e33bb7931abacc14e5418e83",
+      "after_sha256": "91c3149387f186abde3c78bc6dee61f276b40c19e33bb7931abacc14e5418e83",
+      "other_fields_sha256": "4edd795ba8ea4109b54b24d69817da1e21e66649d7e3ad0650048d03f9a8e72a",
+      "other_fields_equal": true
+    },
+    {
+      "dataset": "shanghai/2026/michelin-starred",
+      "count": 51,
+      "changed": 0,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 51
+      },
+      "after": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 51
+      },
+      "before_sha256": "6a53d40770a748488877ed32f20a9a2d2c523ef8b0121cbac6a5a28db9821725",
+      "after_sha256": "6a53d40770a748488877ed32f20a9a2d2c523ef8b0121cbac6a5a28db9821725",
+      "other_fields_sha256": "98a9d069604bb61576798d0f1b0fc897c3d80d17b5b924cc9d37febf550b4378",
+      "other_fields_equal": true
+    },
+    {
+      "dataset": "shanghai/2026/michelin-bib-gourmand",
+      "count": 35,
+      "changed": 0,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 35
+      },
+      "after": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 35
+      },
+      "before_sha256": "43c1a6142cff1c67d55e51ef263d4b7b38549f0ac274fe3d2bead258df083637",
+      "after_sha256": "43c1a6142cff1c67d55e51ef263d4b7b38549f0ac274fe3d2bead258df083637",
+      "other_fields_sha256": "00f72e2df12684084eb4566ac183c1759c923758816a3e639e72644b232f264b",
+      "other_fields_equal": true
+    },
+    {
+      "dataset": "chengdu/2026/michelin-starred",
+      "count": 13,
+      "changed": 0,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 13
+      },
+      "after": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 13
+      },
+      "before_sha256": "b2a8fcf426e0c3e3f41cb6215919a633e140d865f59b15bf4b7d06e82f6ccb25",
+      "after_sha256": "b2a8fcf426e0c3e3f41cb6215919a633e140d865f59b15bf4b7d06e82f6ccb25",
+      "other_fields_sha256": "e11d5e197ab017179384347a250aa1fa94c0db06e713b1a680c962568aecffc9",
+      "other_fields_equal": true
+    },
+    {
+      "dataset": "macau/2026/michelin-starred",
+      "count": 21,
+      "changed": 0,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 21
+      },
+      "after": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 21
+      },
+      "before_sha256": "023684815b220ba1a4d0255892624fb75f5b0f6afcd392741dab69e54f2f1f53",
+      "after_sha256": "023684815b220ba1a4d0255892624fb75f5b0f6afcd392741dab69e54f2f1f53",
+      "other_fields_sha256": "60a427eae8b82da0d33ee1ebf63d9951f6ccfdf7c862357f4915e5d3fc038392",
+      "other_fields_equal": true
+    },
+    {
+      "dataset": "macau/2026/michelin-bib-gourmand",
+      "count": 13,
+      "changed": 0,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 13
+      },
+      "after": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 13
+      },
+      "before_sha256": "739087cf464b7c91185ef7e09fd5480e8901ff78b27705a243011233ba9f0a5c",
+      "after_sha256": "739087cf464b7c91185ef7e09fd5480e8901ff78b27705a243011233ba9f0a5c",
+      "other_fields_sha256": "466999b15768879cb76dce88fd3d381dd8fb67eda3e37b912a3b2145899db9a2",
+      "other_fields_equal": true
+    },
+    {
+      "dataset": "tokyo/2026/michelin-starred",
+      "count": 158,
+      "changed": 158,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 158
+      },
+      "after": {
+        "meal": 157,
+        "snack": 0,
+        "dessert": 1,
+        "drink": 0,
+        "unclassified": 0
+      },
+      "before_sha256": "d251f8e75a96b91d478ab3a4be68a2d78212eb9276ec0c4457de60b4376a0f8f",
+      "after_sha256": "8f3e5d85ac01593a0d12856dca016de12120443d794e2be091cfd457e4ce452d",
+      "other_fields_sha256": "4fc2aad152a896415aa788c0e6ad2cbd30e1e76077f16636f2ec8e962754afc6",
+      "other_fields_equal": true
+    },
+    {
+      "dataset": "tokyo/2026/michelin-bib-gourmand",
+      "count": 111,
+      "changed": 109,
+      "before": {
+        "meal": 0,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 111
+      },
+      "after": {
+        "meal": 109,
+        "snack": 0,
+        "dessert": 0,
+        "drink": 0,
+        "unclassified": 2
+      },
+      "before_sha256": "51b8a9d135813863bf278a403dfe270681746326ab541d6580a7aceb29f72e66",
+      "after_sha256": "395463b5e62f685018757d6f10b079b544951ebdb452f58b81ac83dca64c475d",
+      "other_fields_sha256": "cfc8385ec6381b800b0faab765fa30d03e9685af83a61b7682ffde6b647ab4e6",
+      "other_fields_equal": true
+    }
+  ],
+  "added": 0,
+  "removed": 0,
+  "changed_other_fields": 0,
+  "total": {
+    "count": 671,
+    "processed": 269,
+    "changed": 267,
+    "before": {
+      "meal": 0,
+      "snack": 0,
+      "dessert": 0,
+      "drink": 0,
+      "unclassified": 671
+    },
+    "after": {
+      "meal": 266,
+      "snack": 0,
+      "dessert": 1,
+      "drink": 0,
+      "unclassified": 404
+    }
+  },
+  "scope": "Tokyo only; other 11 annual datasets and all their legacy aliases byte-identical to baseline.",
+  "source_evidence_count": 269,
+  "checks": {
+    "record_reconciliation": "passed; all 671 records",
+    "data:aliases": "passed",
+    "readme": "passed",
+    "validate:data": "passed via check",
+    "check:coverage": "passed",
+    "check:repository": "passed",
+    "git diff --check": "passed",
+    "release:check": {
+      "passed": true,
+      "startedAt": "2026-09-15T02:55:12.713Z",
+      "finishedAt": "2026-09-15T02:58:13.924Z",
+      "steps": [
+        {
+          "script": "check",
+          "command": "npm run check",
+          "startedAt": "2026-09-15T02:55:12.730Z",
+          "finishedAt": "2026-09-15T02:55:16.245Z",
+          "exitCode": 0,
+          "log": "check.log"
+        },
+        {
+          "script": "test",
+          "command": "npm run test",
+          "startedAt": "2026-09-15T02:55:16.245Z",
+          "finishedAt": "2026-09-15T02:55:19.826Z",
+          "exitCode": 0,
+          "log": "test.log"
+        },
+        {
+          "script": "check:coverage",
+          "command": "npm run check:coverage",
+          "startedAt": "2026-09-15T02:55:19.826Z",
+          "finishedAt": "2026-09-15T02:55:20.067Z",
+          "exitCode": 0,
+          "log": "check-coverage.log"
+        },
+        {
+          "script": "build",
+          "command": "npm run build",
+          "startedAt": "2026-09-15T02:55:20.067Z",
+          "finishedAt": "2026-09-15T02:55:21.614Z",
+          "exitCode": 0,
+          "log": "build.log"
+        },
+        {
+          "script": "test:e2e",
+          "command": "npm run test:e2e -- --prebuilt",
+          "startedAt": "2026-09-15T02:55:21.618Z",
+          "finishedAt": "2026-09-15T02:58:00.406Z",
+          "exitCode": 0,
+          "log": "test-e2e.log"
+        },
+        {
+          "script": "test:performance",
+          "command": "npm run test:performance -- --dist /Users/chengyanru/repos/personal/foodie-map/dist --output /Users/chengyanru/repos/personal/foodie-map/test-results/release/performance.json",
+          "startedAt": "2026-09-15T02:58:00.406Z",
+          "finishedAt": "2026-09-15T02:58:13.900Z",
+          "exitCode": 0,
+          "log": "test-performance.log"
+        }
+      ]
+    },
+    "release:verify": "passed",
+    "unit_tests": 213,
+    "browser_tests": 67
+  },
+  "artifact": {
+    "buildId": "7751cef4d8703ab57b5f53376f02cf2ab0dd7c8ba60d09a2ab54df1f74a03a6d",
+    "sourceSha256": "8aaa958cc19a47a7097eb254bfabda6139d14686f0cda16ba8c1839b1cd473ce",
+    "dataRevision": "7a40c268598aeaef042d83e55c836b0c82eacf9d5e74cbb2060ada1b51119b22"
+  },
+  "performance": {
+    "largest_current_lcp_median_ms": 700,
+    "fixture_1000_lcp_median_ms": 692,
+    "cls_median": 0,
+    "interaction_p95_ms": 89.9,
+    "largest_current_js_gzip_max_bytes": 162332
+  },
+  "not_done": [
+    "No push",
+    "No deployment",
+    "Other regions paused by user priority; preliminary sources remain local-only."
+  ]
+}

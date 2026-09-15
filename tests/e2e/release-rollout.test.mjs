@@ -11,6 +11,15 @@ process.env.PLAYWRIGHT_BROWSERS_PATH ??= resolve("node_modules/.cache/playwright
 const { chromium } = await import("playwright");
 let temporary, harness, server, browser, A, B, fixtureA;
 const records = [];
+async function assertDining(page, revision) {
+  const detail = page.locator('.mobile-popup-card, .leaflet-popup-content');
+  assert.match(await detail.textContent(), revision === 'B' ? /鱼鲜主打.*¥¥¥¥/s : /肉食主打.*¥¥/s);
+  const marker = page.locator('.restaurant-marker--selected');
+  assert.equal(await marker.locator('.price-badge').textContent(), revision === 'B' ? '¥¥¥¥' : '¥¥');
+  const paths = await detail.locator('.detail-symbol svg').innerHTML();
+  assert.equal(await marker.locator('svg').innerHTML(), paths);
+  records.push({ name: `P09 category/price/icon coherence ${revision}`, paths, badge: await marker.locator('.price-badge').textContent() });
+}
 before(async () => {
   temporary = await mkdtemp(join(tmpdir(), "foodie-p07-rollout-"));
   fixtureA = await releaseFixture("A");
@@ -44,7 +53,7 @@ test("P07-R3/R5 A to B to A keeps old pages, lazy chunks, editions and rollback 
     s.page.on("response", (response) => { if (response.url().includes("MobileShell-")) lazyResponses.push({ url: response.url(), serviceWorker: response.fromServiceWorker() }); });
     await s.page.setViewportSize({ width: 390, height: 844 });
     await s.page.locator(".mobile-shell").waitFor();
-    await search(s.page, "2026 A");
+    await search(s.page, "2026 A"); await assertDining(s.page, "A");
     assert.ok(lazyResponses.some((response) => response.serviceWorker), "old page loads real asynchronous A module from its worker after B replaced server files");
     await snapshot(s.page, "p07-rollout-A-lazy-mobile-after-B", A, records);
     await s.page.keyboard.press("Escape");
@@ -53,7 +62,7 @@ test("P07-R3/R5 A to B to A keeps old pages, lazy chunks, editions and rollback 
     assert.equal(await concurrent.locator(".dataset-status").getAttribute("data-build"), A.buildId, "no new HTML under an old active worker");
     const pageB = await activateAfterClosingPages(s.context, waitingB);
     await pageB.goto(server.baseUrl + initialSelection); await controlled(pageB); await cached(pageB, B);
-    await search(pageB, "修订 B");
+    await search(pageB, "修订 B"); await assertDining(pageB, "B");
     assert.match(await pageB.locator(".leaflet-popup-content").textContent(), /修订 B/);
     await snapshot(pageB, "p07-rollout-B-same-year-revision", B, records);
     await pageB.locator(".leaflet-popup-close-button").click();
@@ -61,16 +70,18 @@ test("P07-R3/R5 A to B to A keeps old pages, lazy chunks, editions and rollback 
     await cached(pageB, B, "/data/fixture-city/2027/michelin-bib-gourmand.json");
     await s.context.setOffline(true); server.state.offline = true;
     await pageB.reload(); await ready(pageB, 2027);
+    await search(pageB, "2027 A"); await assertDining(pageB, "B");
     await snapshot(pageB, "p07-rollout-B-new-year-offline", B, records);
+    await pageB.locator('.leaflet-popup-close-button').click();
     server.state.offline = false; await s.context.setOffline(false);
     const waitingA = await installWaiting(server, s.context, pageB, join(temporary, "A"));
     await choose(pageB, "年份", "2026"); await ready(pageB);
-    await search(pageB, "修订 B");
+    await search(pageB, "修订 B"); await assertDining(pageB, "B");
     assert.match(await pageB.locator(".leaflet-popup-content").textContent(), /修订 B/);
     await snapshot(pageB, "p07-rollout-B-while-rollback-waits", B, records);
     const pageA = await activateAfterClosingPages(s.context, waitingA);
     await pageA.goto(server.baseUrl + initialSelection); await controlled(pageA); await cached(pageA, A);
-    await search(pageA, "2026 A");
+    await search(pageA, "2026 A"); await assertDining(pageA, "A");
     assert.doesNotMatch(await pageA.locator(".leaflet-popup-content").textContent(), /修订 B/);
     const cacheState = await pageA.evaluate(async ({ foreign, obsolete }) => ({ keys: await caches.keys(), foreign: await (await (await caches.open(foreign)).match("/foreign-record")).text(), obsolete: await caches.has(obsolete) }), { foreign, obsolete });
     assert.equal(cacheState.foreign, "keep-me"); assert.equal(cacheState.obsolete, false);

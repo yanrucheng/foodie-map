@@ -22,6 +22,10 @@ export async function releaseFixture(revision = "A") {
   }]));
   if (revision === "A") fixture.cities = [{ ...fixture.cities[0], guides: fixture.cities[0].guides.filter((guide) => guide.year === 2026) }];
   if (revision === "B") fixture.datasets[dataPath][0].name += " · 修订 B";
+  for (const dataset of Object.values(fixture.datasets)) {
+    dataset[0].dining_category = revision === "B" ? "seafood" : "meat";
+    dataset[0].price_range = revision === "B" ? "$$$$" : "￥￥";
+  }
   const catalog = fixtureCatalog(fixture.cities);
   for (const city of catalog.cities) for (const guide of city.guides) guide.provenance.revision = {
     id: `release-rehearsal-${revision}`, reason: revision === "B" ? "Synthetic same-edition restaurant-name correction and new edition discovery" : "Synthetic initial edition for A to B to A rollback",

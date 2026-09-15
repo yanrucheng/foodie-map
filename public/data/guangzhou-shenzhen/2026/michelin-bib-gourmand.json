@@ -26,7 +26,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 2,
@@ -55,7 +56,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "seafood"
   },
   {
     "id": 3,
@@ -84,7 +86,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "meat"
   },
   {
     "id": 4,
@@ -113,7 +116,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "staple"
   },
   {
     "id": 5,
@@ -142,7 +146,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 6,
@@ -171,7 +176,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 7,
@@ -200,7 +206,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "other"
   },
   {
     "id": 8,
@@ -229,7 +236,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "seafood"
   },
   {
     "id": 9,
@@ -258,7 +266,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "meat"
   },
   {
     "id": 10,
@@ -287,7 +296,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 11,
@@ -316,7 +326,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 12,
@@ -345,7 +356,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 13,
@@ -374,7 +386,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "staple"
   },
   {
     "id": 14,
@@ -403,7 +416,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 15,
@@ -432,7 +446,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "other"
   },
   {
     "id": 16,
@@ -461,7 +476,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 17,
@@ -490,7 +506,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 18,
@@ -519,7 +536,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "other"
   },
   {
     "id": 19,
@@ -548,7 +566,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "meat"
   },
   {
     "id": 20,
@@ -577,7 +596,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 21,
@@ -606,7 +626,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "staple"
   },
   {
     "id": 22,
@@ -635,7 +656,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 23,
@@ -664,7 +686,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 24,
@@ -693,7 +716,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "staple"
   },
   {
     "id": 25,
@@ -722,7 +746,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 26,
@@ -751,7 +776,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "meat"
   },
   {
     "id": 27,
@@ -780,7 +806,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "staple"
   },
   {
     "id": 28,
@@ -809,7 +836,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "meat"
   },
   {
     "id": 29,
@@ -838,7 +866,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 30,
@@ -867,7 +896,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 31,
@@ -896,7 +926,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "staple"
   },
   {
     "id": 32,
@@ -925,7 +956,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 33,
@@ -954,7 +986,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 34,
@@ -983,7 +1016,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "staple"
   },
   {
     "id": 35,
@@ -1012,7 +1046,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "meat"
   },
   {
     "id": 36,
@@ -1041,7 +1076,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 37,
@@ -1070,7 +1106,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "meat"
   },
   {
     "id": 38,
@@ -1099,7 +1136,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 39,
@@ -1128,7 +1166,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "staple"
   },
   {
     "id": 40,
@@ -1157,7 +1196,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 41,
@@ -1186,7 +1226,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   },
   {
     "id": 42,
@@ -1215,7 +1256,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "staple"
   },
   {
     "id": 43,
@@ -1244,7 +1286,8 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "meat"
   },
   {
     "id": 44,
@@ -1273,6 +1316,7 @@
     "geocode_success": true,
     "status": "active",
     "price": null,
-    "currency": "CNY"
+    "currency": "CNY",
+    "dining_category": "chinese"
   }
 ]

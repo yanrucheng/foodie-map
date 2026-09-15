@@ -13,8 +13,8 @@ import { createPortal } from "react-dom";
 import { focusBookmark } from "@/utils/focus";
 import L from "@/lib/leaflet";
 import type { Restaurant } from "@/types/restaurant";
-import type { CuisineGroup, FormCounts } from "@/config/restaurantPresentation";
-import type { FormFilter } from "@/hooks/useFilters";
+import type { CuisineGroup, DiningCounts } from "@/config/restaurantPresentation";
+import type { DiningFilter } from "@/hooks/useFilters";
 import type { Map as LeafletMap, Marker, MarkerClusterGroup } from "leaflet";
 import { createRestaurantMarker, popupHtml } from "./RestaurantMarker";
 import { HeatLayerManager } from "./HeatLayer";
@@ -35,9 +35,9 @@ export interface MapShellProps {
   activeGroups: Set<string>;
   onToggleGroup: (group: string) => void;
   onToggleAll: () => void;
-  formFilter: FormFilter;
-  formCounts: FormCounts;
-  onFormFilterChange: (filter: FormFilter) => void;
+  diningFilter: DiningFilter;
+  diningCounts: DiningCounts;
+  onDiningFilterChange: (filter: DiningFilter) => void;
   center: [number, number];
   spatialContext?: SpatialContext;
   basemap?: BasemapId;
@@ -67,7 +67,7 @@ export interface MapShellHandle {
  */
 export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
   function MapShell(
-    { restaurants, visibleRestaurants, groups, dataGroups, activeGroups, onToggleGroup, onToggleAll, formFilter, formCounts, onFormFilterChange, center, zoom, spatialContext, basemap, hideControls, onModeChange, selection, onRestaurantSelect, onRestaurantClose, mobileDetails },
+    { restaurants, visibleRestaurants, groups, dataGroups, activeGroups, onToggleGroup, onToggleAll, diningFilter, diningCounts, onDiningFilterChange, center, zoom, spatialContext, basemap, hideControls, onModeChange, selection, onRestaurantSelect, onRestaurantClose, mobileDetails },
     ref,
   ) {
     const selectedRestaurant = selection?.record ?? null;
@@ -125,7 +125,7 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
       if (!position) return;
       // A spiderfied marker has a temporary display position; keep its popup beside it.
       const anchor = markersRef.current.get(selected.id)?.getLatLng() ?? position;
-      const popup = L.popup({ autoPan: false, offset: [0, -22] }).setLatLng(anchor).setContent(popupHtml(selected, groups, context));
+      const popup = L.popup({ autoPan: true, autoPanPaddingTopLeft: [280, 112], autoPanPaddingBottomRight: [240, 70], offset: [0, -38] }).setLatLng(anchor).setContent(popupHtml(selected, groups, context));
       detailPopupRef.current = { record: selected, popup };
       popup.openOn(map);
     }, [groups, context, basemap, mobileDetails, removeDetailPopup]);
@@ -218,7 +218,7 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
         spiderfyOnMaxZoom: true,
         maxClusterRadius: 48,
         // Keep coincident points expandable at max zoom, with room for 44px targets.
-        spiderfyDistanceMultiplier: 1.6,
+        spiderfyDistanceMultiplier: 2.4,
         iconCreateFunction: (c) =>
           L.divIcon({
             html: `<div class="cluster-badge" aria-label="${c.getChildCount()} 家餐厅，展开查看">${c.getChildCount()}</div>`,
@@ -356,9 +356,9 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
               activeGroups={activeGroups}
               onToggle={onToggleGroup}
               onToggleAll={onToggleAll}
-              formFilter={formFilter}
-              formCounts={formCounts}
-              onFormFilterChange={onFormFilterChange}
+              diningFilter={diningFilter}
+              diningCounts={diningCounts}
+              onDiningFilterChange={onDiningFilterChange}
               onModeToggle={handleModeToggle}
               currentMode={mode}
             />,

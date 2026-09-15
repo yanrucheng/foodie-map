@@ -4,9 +4,9 @@
 
 ## 权威入口与输入
 
-P08 [自动配色与四类图标](../docs/plan/plan-260914-2209-restaurant-visual-encoding.md)已在本地实现。可选 `serving_form` 接受 `meal`（餐食）、`snack`（小食）、`dessert`（甜品）、`drink`（饮品）；缺省/null 显示“类型未标注”，空串、unknown、数组等非法值会使整个数据集报错。旧 `venue_type` 保留原义，不自动转换。正式名单补标仍由独立数据任务负责，开发通过不等于来源标注完成或独立验收通过。
+[P09 主打体验图标与价格角标](../docs/plan/plan-260915-1504-dining-experience-markers.md)已接入本地可执行合同和界面：可选 `dining_category` 驱动八类图标及主打体验筛选；`price_range` 的有效等级显示 ¥–¥¥¥¥，缺失或不可识别时无角标。字段合法值以 [schema](../src/data/contract.ts) 为准，图形/名称/价格解析共用 [展示模块](../src/config/restaurantPresentation.ts)。旧 `serving_form` 的四值和缺省/null 继续合法。开发验证及独立验收状态见 [P09 tasks](../openspec/changes/p09-dining-experience-markers/tasks.md)；正式餐厅补标是另一个数据任务，不能从预览导出试分。
 
-语义判断遵循[来源 runbook](../docs/runbook/runbook-260507-1013-valid-data-source-guide.md#p08-labeling)。`cuisine_group` 继续由完整 raw 精确映射派生；合法非 OTHER key 自动上色，同 key 跨城市、榜单、年度和筛选同色，允许撞色。先检索现有 key，再按证据复用或新增 taxonomy/mappings；不用改前端样式。数据不得用 color/icon/svg 覆盖展示定义。boarding 只改变 cuisine_group，两个类型字段和其他事实原样透传。
+新标注的语义与证据判断遵循[来源 runbook 的 P09 节](../docs/runbook/runbook-260507-1013-valid-data-source-guide.md#p09-labeling)。旧 `serving_form`、`venue_type` 保留原义和原校验，不直接转换、改名或要求双写新字段。`cuisine_group` 继续由完整 raw 精确映射派生；合法非 OTHER key 自动上色，同 key 跨城市、榜单、年度和筛选同色，允许撞色。先检索现有 key，再按证据复用或新增 taxonomy/mappings；不用改前端样式。数据不得用 color/icon/svg 覆盖展示定义。boarding 只改变 cuisine_group，主分类、历史字段与价格均原样透传。
 
 - [public/data/catalog.json](../public/data/catalog.json) 是城市/范围、榜单、年度、文件路径、展示和 taxonomy/mappings 的唯一登记。[cities.ts](../src/config/cities.ts) 只适配它。release.json 是 P07 构建摘要，不编辑。
 - 餐厅字段、空值、价格/币种、位置资格只以 [P02 合同](../src/data/contract.ts)、[taxonomy 合同](../src/data/taxonomy.ts)、[校验](../src/data/validation.ts) 为准；含 JPY，金额保留原文，不推算均价。
@@ -17,7 +17,7 @@ P08 [自动配色与四类图标](../docs/plan/plan-260914-2209-restaurant-visua
 1. 先从官方年度公告确认版次与范围。采集日期不能推导 edition_year；当前详情不能证明历史年度完整。组合范围逐成员说明，不把“广州·深圳”标题当作两个城市都已核验。
 2. 数据放到 `public/data/<city>/<year>/<guide>.json`。数组记录保留六个必填字段：id、name、city、guide_type、edition_year、cuisine_group。文件内 id 只需唯一，跨年不用它匹配。缺坐标省略或 null/null，不能用 0,0；无位置餐厅仍可搜索和看详情。停业/搬迁/详情失效不能删除历史入选事实。
 3. 在 catalog.cities 增加城市或在 guides 增加版次。城市字段：id/label/labelZh/center/zoom、scope.description/members、spatialContext、taxonomyPath/mappingsPath；榜单字段：id/label/labelZh/year/dataPath、coverage、provenance。完整格式以 [catalog schema](../src/data/catalog.ts) 与[可执行夹具](../tests/fixtures/p03Catalog.ts) 为准。普通扩展不改选择器、地图、卡片、Python 城市表或手写 taxonomy import。
-4. 复用/增加 taxonomy 与 mappings，路径从 catalog 引用，可用非默认文件名。mappings 格式为 `{version:1, city:"…", mappings:[{raw:"完整原始标签",groupKey:"OTHER",sources:["可选来源"]}]}`；不拆复合标签、不覆盖原始 cuisine。用 `python3 skills/cuisine-boarding/board.py --input 原始.json --output 候选.json --taxonomy 分类.json --mappings 映射.json --dry-run` 预检，再移除 dry-run 生成候选；输入与输出必须不同。未知/未映射保留 OTHER 和 warning。
+4. 复用/增加 taxonomy 与 mappings，路径从 catalog 引用，可用非默认文件名。mappings 格式为 `{version:1, city:"…", mappings:[{raw:"完整原始标签",groupKey:"OTHER",sources:["可选来源"]}]}`；不拆复合标签、不覆盖原始 cuisine。按来源 runbook 判断并填写单个 dining_category，证据不足留空/null；价格保持来源原文，不存角标值。用 `python3 skills/cuisine-boarding/board.py --input 原始.json --output 候选.json --taxonomy 分类.json --mappings 映射.json --dry-run` 预检，再移除 dry-run 生成候选；输入与输出必须不同。未知/未映射菜系保留 OTHER 和 warning，boarding 不判断主打体验。
 5. 填写 coverage 与 provenance，运行校验、覆盖生成及年度对账。修订同一年度须填 revision.id/reason/evidence，并在 Git 或任务记录保存原因和前后差异；P07 为发布文件生成摘要。不要因新年度采集覆写旧年度。
 
 | 状态 | 文件与依据 |
@@ -67,7 +67,16 @@ rtk npm run release:verify
 
 `data:aliases` 仅在设置 legacyPath 时更新旧地址副本：每个旧地址固定到 catalog 中指定的某年度，不跟随最新年份；年度文件是唯一维护源。校验拒绝旧地址与其源字节不同。BC-01 尚未确定，暂保留已有地址和合法 year/city/guide 链接；没有永久兼容承诺，退役另行决定。
 
-`readme` 更新下方覆盖区块；`check:coverage` 只读，表格缺失、过期、数据/登记/本地证据字节变化均非零，即使条数未变也能发现。validate:data 数据错误 exit 1，命令执行/使用错误 exit 2。重复坐标等维护 warning 不自动删店或改 geocode_success。校验同时覆盖所有登记 taxonomy 分组（含未使用组）的自动样式，并在文本和 JSON 的 `counts.serving_form` 中汇总四类及 `unclassified` 数量；缺失类型不逐店告警、不设覆盖率门槛。
+`readme` 更新下方覆盖区块；`check:coverage` 只读，表格缺失、过期、数据/登记/本地证据字节变化均非零，即使条数未变也能发现。validate:data 数据错误 exit 1，命令执行/使用错误 exit 2。重复坐标等维护 warning 不自动删店或改 geocode_success。校验同时覆盖所有登记 taxonomy 分组（含未使用组）的自动样式，并保留 `counts.serving_form` 的四类及 `unclassified` 统计。每份城市×年度×榜单新增 `counts.dining_category`（八显式值与 unclassified）、`counts.price_grade`（1–4、missing、unrecognized）、`counts.largest_icon_group` 与 `counts.largest_icon_price_group`（group/count/ratio；空名单为 null）。两个最大组的分母都是 listed；无角标组合合并 missing/unrecognized，原价诊断分别保留。主分类缺失不逐店告警、不设分布门槛；非标准非空等级通过 `UNRECOGNIZED_PRICE_GRADE` 提示，字段原文保留。
+
+隔离接入与机器可读交接使用原入口：
+
+```sh
+rtk npm run validate:data -- --root /tmp/p09-data --json
+rtk proxy env E2E_ARTIFACT_DIR=test-results/p09/browser node --test tests/e2e/visual-encoding.test.mjs
+```
+
+`--root` 目录包含正式 catalog 格式、年度 JSON 和 catalog 引用的 taxonomy/mappings。上述浏览器演练自行构造隔离新城、两年度和两榜单，使用正式 parser、boarding、构建及 Worker；不写 public/data。交接须附身份/旧字段/价格/坐标与 coverage 的前后对账，以及分榜单分类/价格分布与未补来源范围。
 
 正式发布门禁使用实际覆盖检查，构建一次，生产浏览器与性能检查消费该产物，verify 校验源和产物未变化。通过门禁不授权部署，不代替 P05 地图精度或 P06 人工验收。发布流程与缓存 A→B→A 见[开发指南](development.md)。
 
@@ -90,7 +99,7 @@ rtk proxy node --test tests/e2e/catalog.test.mjs tests/e2e/release-cache.test.mj
 
 <!-- COVERAGE_TABLE_START -->
 
-<!-- catalog-and-inputs-sha256: c7744629f003be14bfc8d5f4fe92b43866d844e7d87cd619de6bb7d1bcd60129 -->
+<!-- catalog-and-inputs-sha256: d2e12846611e905d4916e752062c030b8a571b4d1670fb7b016d292d046bc9c8 -->
 
 | 城市 / 实际范围 | 榜单 | 年度 | 收录 | 可定位 | 名单状态 | 官方总数 |
 |---|---|---:|---:|---:|---|---:|

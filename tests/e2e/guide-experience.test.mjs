@@ -165,7 +165,7 @@ for (const viewport of [desktop, mobile]) {
       const cuisineSelector = compact ? ".filter-pill" : ".filter-item";
       await page.waitForSelector(cuisineSelector, { visible: true });
       await clickText(page, cuisineSelector, "测试城新菜系");
-      await clickText(page, ".form-segment-btn", "餐食 1");
+      await clickText(page, ".dining-segment-btn", "肉食主打 1");
       await page.waitForFunction(() => document.querySelector(".dataset-status").textContent.includes("筛选结果 1"));
       if (compact) {
         await page.click(".bottom-sheet-backdrop", { offset: { x: 10, y: 100 } });
@@ -279,13 +279,14 @@ test("P04-R2 late A/B responses cannot overwrite C or revive an old detail", asy
   } finally { for (const release of held.values()) release(); await session.close(); }
 });
 
-for (const failure of ["404", "network", "bad-json", "object", "unsafe-link", "empty"]) {
+for (const failure of ["404", "network", "bad-json", "object", "unsafe-link", "invalid-dining", "empty"]) {
   test(`P04-R2/R6 ${failure} withdraws old edition and recovers through retry or selection`, async () => {
     let failing = true;
     const session = await harness.createPage(desktop, [], (request, url) => {
       if (url.pathname === newPath && failing) {
         if (failure === "network") return request.abort("failed");
         const body = failure === "bad-json" ? "{broken" : failure === "object" ? "{}" : failure === "empty" ? "[]"
+          : failure === "invalid-dining" ? JSON.stringify([{ ...fixture.datasets[newPath][0], dining_category: "sweet" }])
           : failure === "unsafe-link" ? JSON.stringify([{ ...fixture.datasets[newPath][0], guide_url: "javascript:alert(1)" }]) : "";
         return request.respond({ status: failure === "404" ? 404 : 200, contentType: "application/json", body });
       }

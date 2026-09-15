@@ -1,0 +1,102 @@
+{
+  "recorded_at": "2026-09-15T11:33:31.765056+00:00",
+  "passed": true,
+  "scope": "User-requested removal of unclassified notes from dining filters; other cities remain paused.",
+  "node": "v24.21.0",
+  "release_steps": [
+    {
+      "script": "check",
+      "command": "npm run check",
+      "startedAt": "2026-09-15T11:29:22.023Z",
+      "finishedAt": "2026-09-15T11:29:25.526Z",
+      "exitCode": 0,
+      "log": "check.log"
+    },
+    {
+      "script": "test",
+      "command": "npm run test",
+      "startedAt": "2026-09-15T11:29:25.526Z",
+      "finishedAt": "2026-09-15T11:29:28.944Z",
+      "exitCode": 0,
+      "log": "test.log"
+    },
+    {
+      "script": "check:coverage",
+      "command": "npm run check:coverage",
+      "startedAt": "2026-09-15T11:29:28.944Z",
+      "finishedAt": "2026-09-15T11:29:29.175Z",
+      "exitCode": 0,
+      "log": "check-coverage.log"
+    },
+    {
+      "script": "build",
+      "command": "npm run build",
+      "startedAt": "2026-09-15T11:29:29.175Z",
+      "finishedAt": "2026-09-15T11:29:30.653Z",
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    {
+      "script": "test:e2e",
+      "command": "npm run test:e2e -- --prebuilt",
+      "startedAt": "2026-09-15T11:29:30.659Z",
+      "finishedAt": "2026-09-15T11:32:31.811Z",
+      "exitCode": 0,
+      "log": "test-e2e.log"
+    },
+    {
+      "script": "test:performance",
+      "command": "npm run test:performance -- --dist /Users/chengyanru/repos/personal/foodie-map/dist --output /Users/chengyanru/repos/personal/foodie-map/test-results/p09-tokyo-label-ui/release/performance.json",
+      "startedAt": "2026-09-15T11:32:31.811Z",
+      "finishedAt": "2026-09-15T11:32:44.405Z",
+      "exitCode": 0,
+      "log": "test-performance.log"
+    }
+  ],
+  "release_verify_exit_code": 0,
+  "build_id": "b78a93cf28357f4dc2d5fd0f62b99e5a43bc7b1d6d29bcaa353777512e96b237",
+  "source_sha256": "c4cc16c6aba0f9288145ec262a22a173aa66034dda8c60e031cfdeeaa94b7c3c",
+  "artifact_sha256": "88ab1a3f975633af70e17007a67e9f0bdb240fd37d8a9d62c60993357281495d",
+  "data_files_checked": 41,
+  "data_files_changed": 0,
+  "preview": [
+    {
+      "width": 1440,
+      "other_label": "其他料理 35",
+      "buttons": [
+        "全部 158",
+        "面饭面点 1",
+        "肉食主打 5",
+        "鱼鲜主打 29",
+        "甜饮 1",
+        "法式 43",
+        "中餐 6",
+        "日式会席 38",
+        "其他料理 35"
+      ],
+      "build_id": "b78a93cf28357f4dc2d5fd0f62b99e5a43bc7b1d6d29bcaa353777512e96b237"
+    },
+    {
+      "width": 390,
+      "other_label": "其他料理 35",
+      "buttons": [
+        "全部 158",
+        "面饭面点 1",
+        "肉食主打 5",
+        "鱼鲜主打 29",
+        "甜饮 1",
+        "法式 43",
+        "中餐 6",
+        "日式会席 38",
+        "其他料理 35"
+      ],
+      "build_id": "b78a93cf28357f4dc2d5fd0f62b99e5a43bc7b1d6d29bcaa353777512e96b237"
+    }
+  ],
+  "tests": {
+    "quick": 248,
+    "browser": 68
+  },
+  "logs": "test-results/p09-tokyo-label-ui/",
+  "initial_failure": "First gate stopped on an unsupported test API option; corrected to anchored name matching, then all final gates passed."
+}

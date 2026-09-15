@@ -121,20 +121,24 @@ python3 skills/cuisine-boarding/board.py --help
 
 实际接入遵循[数据接入指南](data-onboarding-guide.md)和 P02/P03 的合同。
 
-## P08 展示与验证
+## P09 展示与验证
 
-[`restaurantPresentation.ts`](../src/config/restaurantPresentation.ts) 是自动配色、消费形式名称和本地 SVG 的共享入口，替代原 cuisineRegistry 手工色表。类别语义仍由 taxonomy/mappings 维护，字段规则由 contract.ts 维护。FNV-1a 32 位哈希取 360 色相，62% 饱和度、28% 亮度、白色前景；OTHER 固定 #666666。React 和 Leaflet 共用受信 Tabler Outline 3.46.0 图形，许可随 `public/icons/tabler-LICENSE.txt` 构建。没有远程图标依赖。
+[`restaurantPresentation.ts`](../src/config/restaurantPresentation.ts) 是自动配色、八类主打图标、名称/顺序、价格解析和分布诊断的共享纯模块。字段合法性及类型归 contract.ts；语义和证据归[来源 runbook](../docs/runbook/runbook-260507-1013-valid-data-source-guide.md#p09-labeling)。FNV-1a 颜色算法沿用 P08，同 key 跨城市/年度/榜单稳定。Tabler Outline 3.46.0、Lucide 1.46.0 和已确认自绘餐盘内联打包，来源及许可随 `public/icons/` 构建，无图标 CDN。
 
-`serving_form` 是独立可选字段。useFilters 统一组合类别/形式过滤，统计、地图和热力图消费同一结果；形式按钮数量按整份数据（含无坐标）计数。App 的当前选中记录同时驱动标记外圈、桌面弹窗和移动详情；标记点击与搜索更新同一状态，关闭、筛选撤下和切版清理同步撤下外圈。每次激活传递现有选择对象，因此连续鼠标点击或再次搜索同一记录也会同步实际弹窗状态。全未标注名单仍可浏览。标记可见直径 32px、图形 20px、操作目标 44px；最高缩放继续聚合，spiderfy 间距倍率 1.6，保留来源坐标。实际正式补标和同义 key 规范化由数据任务负责。
+可选 `dining_category` 独立于 serving_form/venue_type，程序不转换旧标签。useFilters 组合菜系与主打体验过滤，地图/聚合/热力图/统计消费同一集合；按钮按整份名单（含无坐标）计数。其他料理过滤包含显式 other 与未标注，旁注明确区分。App 选择对象同步外圈、Leaflet 弹窗和 React 移动详情；搜索揭示恢复必要过滤，切版撤下旧选择。正式补标由数据任务负责，全未标注名单仍可使用。
 
-针对性复核沿用既有入口，无新增 CLI：
+36px 圆底、21px 本地图形、44px 命中目标；价格右上、NEW 下方、焦点及选中圈共存。只有 price_range 解析副本中 1–4 个相同 Unicode 货币符号生成角标，统一 ¥ 显示，原文和币种不变。缺失/不可识别时不创建角标；实际金额不用于估档。最高缩放继续聚合并支持 spiderfy，保留源坐标。
+
+针对性检查沿用原入口，测试扩展原视觉夹具 `tests/fixtures/p08Catalog.ts` 到八类及价格，不读取预览试分：
 
 ```sh
 rtk npm test -- tests/unit/restaurantPresentation.test.ts tests/unit/useFilters.test.ts tests/unit/dataTools.test.ts
-rtk proxy env E2E_ARTIFACT_DIR=test-results/p08/browser node --test tests/e2e/visual-encoding.test.mjs
+rtk proxy env E2E_ARTIFACT_DIR=test-results/p09/browser node --test tests/e2e/visual-encoding.test.mjs
+rtk npm run release:check
+rtk npm run release:verify
 ```
 
-浏览器场景通过原始 catalog、正式 parser 和 releaseBuild 加载隔离新城与类别，验证四类/未知、组合筛选、两端详情、键盘/触摸、重合点和离线图标；开发证据与未验收范围见 [P08 tasks](../openspec/changes/p08-automatic-visual-encoding/tasks.md)。完整交付仍运行 `release:check` / `release:verify` 和既有缓存回滚检查。
+浏览器演练经正式 catalog/parser/releaseBuild 加载隔离新城、两年度、两榜单，验证分类与价格、两端详情、键盘/触摸、重合点和离线资源。证据与独立验收边界见 [P09 tasks](../openspec/changes/p09-dining-experience-markers/tasks.md)。P08 历史实现证据保留；完整交付沿用现有发布门禁和整包缓存升级/回滚。P09 原生 200% 缩放沿用下文 Chrome for Testing 准备步骤，运行 `rtk proxy env E2E_ARTIFACT_DIR=test-results/p09/zoom node tests/e2e/page-zoom.mjs --dining`；保存实际视口及系统窗口高度限制，不把模拟 CSS 缩放记作原生页面缩放。
 
 ## 排障
 

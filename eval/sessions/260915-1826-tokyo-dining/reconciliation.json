@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "baseline_head": "27e41b6ed25a1c52190726562d064e59883d5d89",
+  "baseline_captured_at": "2026-09-15T10:26:45.386061+00:00",
+  "listed": 671,
+  "tokyo_reviewed": 269,
+  "tokyo_labeled": 258,
+  "tokyo_unclassified": 11,
+  "counts": {
+    "hong-kong/2026/michelin-bib-gourmand": 70,
+    "hong-kong/2026/michelin-starred": 77,
+    "beijing/2026/michelin-bib-gourmand": 26,
+    "beijing/2026/michelin-starred": 32,
+    "guangzhou-shenzhen/2026/michelin-starred": 20,
+    "guangzhou-shenzhen/2026/michelin-bib-gourmand": 44,
+    "shanghai/2026/michelin-starred": 51,
+    "shanghai/2026/michelin-bib-gourmand": 35,
+    "chengdu/2026/michelin-starred": 13,
+    "macau/2026/michelin-starred": 21,
+    "macau/2026/michelin-bib-gourmand": 13,
+    "tokyo/2026/michelin-starred": 158,
+    "tokyo/2026/michelin-bib-gourmand": 111
+  },
+  "ordered_identity_sha256": {
+    "hong-kong/2026/michelin-bib-gourmand": "9e8bfcd966f6d2b1730c6c932d2d580517abd0e9f8d5240e534ea5222e931274",
+    "hong-kong/2026/michelin-starred": "a2ce6c1d430527b594c877b06e48ca9e075d286b62165ff4558cb35535d908e5",
+    "beijing/2026/michelin-bib-gourmand": "bcc3aee36f8e23d708d5b858b1a82600146b0b4881697d9dc273a3852e9d1ac6",
+    "beijing/2026/michelin-starred": "7e4651d1f06df860e31842d93a28c2ca86b3d7486fa8977caaf7997397f78392",
+    "guangzhou-shenzhen/2026/michelin-starred": "26819ab9126357c733b53ca8feed66bab8fc8d6ced5e7f986cdcb4e7031632a2",
+    "guangzhou-shenzhen/2026/michelin-bib-gourmand": "1aafd02d750a6c8d7de1ea76b186309a223e5590d2750e7abd3699d88f36ffa5",
+    "shanghai/2026/michelin-starred": "da3f7392fc7b96862273edcbcd0339288ac066c93eae8f913e0a2e25fa38ba38",
+    "shanghai/2026/michelin-bib-gourmand": "796d18d836944e19276c667d1b3e8e2c7e342d510fb845596a72217936c629ed",
+    "chengdu/2026/michelin-starred": "6f835b4d9d766576477a0c6328fbf14c74551a5772a5e5e18ca09f42d879c941",
+    "macau/2026/michelin-starred": "3576c7685d04d9f0a26886fe0c7322c4c1330c9ba700ea77aa0ecf3ee58a19c0",
+    "macau/2026/michelin-bib-gourmand": "77ceb28b044440c89d10be3a4f42738c223b34d0363f160653a4f2408423a633",
+    "tokyo/2026/michelin-starred": "afcff70369816cc8689ed035e564f6b05901df4ba402e54a0e6a8d589360b0e5",
+    "tokyo/2026/michelin-bib-gourmand": "61059489a5e26f2a301b355c515714161e9c703d1a4acee204ec5d110126896a"
+  },
+  "protected_fields": "All restaurant fields except dining_category match the initial worktree, including key presence/null, IDs, names, ratings, cuisine/cuisine_group, serving_form/venue_type, prices, coordinates and order.",
+  "coverage_dates_scope_unchanged": true,
+  "non_tokyo_annual_files_byte_unchanged": 11,
+  "non_tokyo_alias_files_byte_unchanged": 11,
+  "existing_files_byte_unchanged": 279,
+  "allowed_existing_file_changes": [
+    "public/data/catalog.json",
+    "public/data/tokyo/2026/michelin-bib-gourmand.json",
+    "public/data/tokyo/2026/michelin-starred.json",
+    "public/data/tokyo/michelin-bib-gourmand.json",
+    "public/data/tokyo/michelin-starred.json",
+    "readme/data-onboarding-guide.md"
+  ],
+  "aliases_byte_equal": true
+}

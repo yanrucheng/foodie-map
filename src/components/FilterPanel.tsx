@@ -1,5 +1,5 @@
-import { type CuisineGroup, getGroupStyle, servingForms, getServingForm, type FormCounts } from "@/config/restaurantPresentation";
-import type { FormFilter } from "@/hooks/useFilters";
+import { type CuisineGroup, getGroupStyle, diningDisplayCounts, diningCategoryOrder, diningCategories, getDiningCategory, type DiningCounts } from "@/config/restaurantPresentation";
+import type { DiningFilter } from "@/hooks/useFilters";
 
 interface FilterPanelProps {
   /** Distinct cuisine_group keys present in the loaded data — controls which groups to render. */
@@ -8,9 +8,9 @@ interface FilterPanelProps {
   activeGroups: Set<string>;
   onToggle: (group: string) => void;
   onToggleAll: () => void;
-  formFilter: FormFilter;
-  formCounts: FormCounts;
-  onFormFilterChange: (filter: FormFilter) => void;
+  diningFilter: DiningFilter;
+  diningCounts: DiningCounts;
+  onDiningFilterChange: (filter: DiningFilter) => void;
   onModeToggle: () => void;
   currentMode: "marker" | "heat";
   /** "pill" renders touch-optimized pill buttons (mobile). Default: "checkbox". */
@@ -18,7 +18,7 @@ interface FilterPanelProps {
 }
 
 /**
- * React filter panel for cuisine group filtering, serving form filtering,
+ * React filter panel for cuisine group filtering, dining category filtering,
  * and display mode toggle. Groups are ordered by taxonomy sortOrder and
  * only displayed if present in the active dataset.
  */
@@ -28,9 +28,9 @@ export function FilterPanel({
   activeGroups,
   onToggle,
   onToggleAll,
-  formFilter,
-  formCounts,
-  onFormFilterChange,
+  diningFilter,
+  diningCounts,
+  onDiningFilterChange,
   onModeToggle,
   currentMode,
   variant = "checkbox",
@@ -44,28 +44,26 @@ export function FilterPanel({
 
   const allActive = renderedGroups.every((g) => activeGroups.has(g.key));
 
-  const knownForms = (Object.keys(servingForms) as (keyof typeof servingForms)[]).filter((key) => formCounts[key] > 0);
-  const options: { value: FormFilter; label: string; count: number }[] = [
-    { value: "all", label: "全部", count: Object.values(formCounts).reduce((a, b) => a + b, 0) },
-    ...knownForms.map((value) => ({ value, label: servingForms[value].label, count: formCounts[value] })),
-    ...(knownForms.length && formCounts.unclassified ? [{ value: "unclassified" as const, label: "未标注", count: formCounts.unclassified }] : []),
+  const displayCounts = diningDisplayCounts(diningCounts);
+  const options: { value: DiningFilter; label: string; count: number }[] = [
+    { value: "all", label: "全部", count: Object.values(displayCounts).reduce((a, b) => a + b, 0) },
+    ...diningCategoryOrder.filter((key) => displayCounts[key] > 0).map((value) => ({ value, label: diningCategories[value].label, count: displayCounts[value] })),
   ];
 
   return (
     <div className="floating-card control-block">
-      <div className="control-title">消费形式</div>
-      <p className="form-count-note">数量按本版全部收录（含无坐标）</p>
-      {!knownForms.length && <p className="form-count-note">类型未标注：{formCounts.unclassified} 家</p>}
-      <div className="form-filter-segment" role="group" aria-label="消费形式筛选">
+      <div className="control-title">主打体验</div>
+      <p className="dining-count-note">数量按本版全部收录（含无坐标）</p>
+      <div className="dining-filter-segment" role="group" aria-label="主打体验筛选">
         {options.map(({ value, label, count }) => (
           <button
             key={value}
-            data-form={value}
-            className={`form-segment-btn ${formFilter === value ? "form-segment-btn--active" : ""}`}
-            onClick={() => onFormFilterChange(value)}
-            aria-pressed={formFilter === value}
+            data-dining={value}
+            className={`dining-segment-btn ${diningFilter === value ? "dining-segment-btn--active" : ""}`}
+            onClick={() => onDiningFilterChange(value)}
+            aria-pressed={diningFilter === value}
           >
-            {value !== "all" && <span className="serving-icon" dangerouslySetInnerHTML={{ __html: getServingForm(value === "unclassified" ? null : value).svg }} />}
+            {value !== "all" && <span className="dining-icon" dangerouslySetInnerHTML={{ __html: getDiningCategory(value).svg }} />}
             <span>{label} {count}</span>
           </button>
         ))}

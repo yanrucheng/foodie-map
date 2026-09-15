@@ -74,7 +74,7 @@ export async function audit(page, name) {
   const geometry = await page.evaluate(() => ({
     viewport: { width: innerWidth, height: innerHeight, visualWidth: visualViewport.width, visualHeight: visualViewport.height, scale: visualViewport.scale },
     overflow: document.documentElement.scrollWidth > innerWidth,
-    surfaces: Array.from(document.querySelectorAll(".header, .floating-card, .bottom-sheet, .bottom-sheet-toolbar button, .form-segment-btn--active, .mobile-popup-tag, .dataset-status, .loc-error-toast, .search-wrap input")).map((node) => {
+    surfaces: Array.from(document.querySelectorAll(".header, .floating-card, .bottom-sheet, .bottom-sheet-toolbar button, .dining-segment-btn--active, .mobile-popup-tag, .dataset-status, .loc-error-toast, .search-wrap input")).map((node) => {
       const style = getComputedStyle(node); return { selector: node.className || node.tagName, color: style.color, background: style.backgroundColor, backgroundImage: style.backgroundImage, fontSize: style.fontSize };
     }),
     references: Array.from(document.querySelectorAll("[aria-controls], [aria-activedescendant]")).flatMap((node) => ["aria-controls", "aria-activedescendant"].filter((attr) => node.hasAttribute(attr)).map((attr) => ({ attr, id: node.getAttribute(attr), exists: !!document.getElementById(node.getAttribute(attr)) }))),

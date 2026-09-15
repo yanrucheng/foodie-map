@@ -137,27 +137,28 @@ describe("P04-R2/R6 dataset-bound loading", () => {
 
 describe("P04-R3/R4 shared filters and city taxonomy", () => {
   it("search reveal clears both blocking filters; a new dataset resets venue and cuisine", () => {
-    const records = [restaurant({ cuisine_group: "CANTONESE", serving_form: "meal", venue_type: "street_food", lat: 22.3, lon: 114.1 }),
-      restaurant({ id: 2, cuisine_group: "NEW_GROUP", serving_form: "dessert" })];
+    const records = [restaurant({ cuisine_group: "CANTONESE", dining_category: "meat", venue_type: "street_food", lat: 22.3, lon: 114.1 }),
+      restaurant({ id: 2, cuisine_group: "NEW_GROUP", dining_category: "dessert_drink" })];
     const { result, rerender } = renderHook(({ key }) => useFilters(records, key), { initialProps: { key: "A" } });
-    act(() => { result.current.toggle("NEW_GROUP"); result.current.setFormFilter("meal"); });
+    act(() => { result.current.toggle("NEW_GROUP"); result.current.setDiningFilter("meat"); });
     expect(result.current.visibleRestaurants).toEqual([records[0]]);
     act(() => result.current.reveal(records[1]!));
-    expect(result.current.formFilter).toBe("all");
+    expect(result.current.diningFilter).toBe("all");
     expect(result.current.visibleRestaurants).toEqual(records);
     expect(result.current.mappableRestaurants).toEqual([records[0]]);
-    act(() => { result.current.toggle("CANTONESE"); result.current.setFormFilter("dessert"); });
+    act(() => { result.current.toggle("CANTONESE"); result.current.setDiningFilter("dessert_drink"); });
     rerender({ key: "B" });
-    expect(result.current.formFilter).toBe("all");
+    expect(result.current.diningFilter).toBe("all");
     expect(result.current.visibleRestaurants).toEqual(records);
   });
 
-  it("P08 keeps an entirely unclassified dataset browsable without four empty form buttons", () => {
+  it("P08 keeps an entirely unclassified dataset browsable without eight empty category buttons", () => {
     const view = render(<FilterPanel groups={[]} dataGroups={new Set()} activeGroups={new Set()} onToggle={() => {}} onToggleAll={() => {}}
-      formCounts={{ meal: 0, snack: 0, dessert: 0, drink: 0, unclassified: 7 }} formFilter="all"
-      onFormFilterChange={() => {}} onModeToggle={() => {}} currentMode="marker" />);
-    expect(view.getByText("类型未标注：7 家")).toBeTruthy();
-    expect(view.container.querySelectorAll(".form-segment-btn")).toHaveLength(1);
+      diningCounts={{ staple: 0, meat: 0, seafood: 0, dessert_drink: 0, french: 0, chinese: 0, japanese_course: 0, other: 0, unclassified: 7 }} diningFilter="all"
+      onDiningFilterChange={() => {}} onModeToggle={() => {}} currentMode="marker" />);
+    expect(view.getByRole("button", { name: /^其他料理 7$/ })).toBeTruthy();
+    expect(view.queryByText(/未标注/)).toBeNull();
+    expect(view.container.querySelectorAll(".dining-segment-btn")).toHaveLength(2);
     expect(view.getByRole("button", { name: "全部 7" }).getAttribute("aria-pressed")).toBe("true");
   });
 
@@ -166,7 +167,7 @@ describe("P04-R3/R4 shared filters and city taxonomy", () => {
     const toggle = vi.fn();
     const view = render(<FilterPanel groups={groups} dataGroups={new Set(["NEW_GROUP", "CANTONESE"])}
       activeGroups={new Set(["NEW_GROUP", "CANTONESE"])} onToggle={toggle} onToggleAll={() => {}}
-      formCounts={{ meal: 1, snack: 0, dessert: 1, drink: 0, unclassified: 0 }} formFilter="all" onFormFilterChange={() => {}} onModeToggle={() => {}} currentMode="marker" />);
+      diningCounts={{ staple: 0, meat: 1, seafood: 0, dessert_drink: 1, french: 0, chinese: 0, japanese_course: 0, other: 0, unclassified: 0 }} diningFilter="all" onDiningFilterChange={() => {}} onModeToggle={() => {}} currentMode="marker" />);
     expect(view.getAllByRole("checkbox").map((element) => element.parentElement?.textContent)).toEqual(["测试城新菜系", "测试城粤菜"]);
     fireEvent.click(view.getAllByRole("checkbox")[0]!);
     expect(toggle).toHaveBeenCalledWith("NEW_GROUP");

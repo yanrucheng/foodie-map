@@ -24,7 +24,7 @@ function mockRestaurant(cuisineGroup: string): Restaurant {
     cuisine: "Test Cuisine",
     cuisine_group: cuisineGroup,
     is_new: false,
-    serving_form: "meal",
+    dining_category: "meat",
     area: "Test Area",
     primary_area: "Test Area",
     major_region: "Test Region",
@@ -62,9 +62,9 @@ describe("useFilters", () => {
       expect(result.current.dataGroups.size).toBe(3);
     });
 
-    it("should have 'all' as default formFilter", () => {
+    it("should have 'all' as default diningFilter", () => {
       const { result } = renderHook(() => useFilters(mockRestaurants));
-      expect(result.current.formFilter).toBe("all");
+      expect(result.current.diningFilter).toBe("all");
     });
   });
 
@@ -169,45 +169,45 @@ describe("useFilters", () => {
     });
   });
 
-  describe("setFormFilter", () => {
-    it("should update formFilter", () => {
+  describe("setDiningFilter", () => {
+    it("should update diningFilter", () => {
       const { result } = renderHook(() => useFilters(mockRestaurants));
 
       act(() => {
-        result.current.setFormFilter("snack");
+        result.current.setDiningFilter("staple");
       });
 
-      expect(result.current.formFilter).toBe("snack");
+      expect(result.current.diningFilter).toBe("staple");
     });
   });
 });
 
-describe("P08 form intersections and missing annotations", () => {
+describe("P09 dining intersections and missing annotations", () => {
   it("counts whole-dataset forms, filters map eligibility after intersection, reveals unknown and resets", () => {
     const rows = [
-      { id: 1, cuisine_group: "A", serving_form: "meal", lat: 22.3, lon: 114.1 },
-      { id: 2, cuisine_group: "A", serving_form: "snack" },
-      { id: 3, cuisine_group: "B", serving_form: "meal" },
-      { id: 4, cuisine_group: "B", serving_form: null },
+      { id: 1, cuisine_group: "A", dining_category: "meat", lat: 22.3, lon: 114.1 },
+      { id: 2, cuisine_group: "A", dining_category: "staple" },
+      { id: 3, cuisine_group: "B", dining_category: "meat" },
+      { id: 4, cuisine_group: "B", dining_category: null },
       { id: 5, cuisine_group: "A", venue_type: "restaurant" },
     ].map((row) => ({ name: "test", city: "fixture-city", guide_type: "michelin-bib-gourmand", edition_year: 2026, ...row } as Restaurant));
     const { result, rerender } = renderHook(({ key }) => useFilters(rows, key), { initialProps: { key: "A" } });
-    expect(result.current.formCounts).toEqual({ meal: 2, snack: 1, dessert: 0, drink: 0, unclassified: 2 });
-    act(() => { result.current.setFormFilter("meal"); result.current.toggle("B"); });
+    expect(result.current.diningCounts).toEqual({ staple: 1, meat: 2, seafood: 0, dessert_drink: 0, french: 0, chinese: 0, japanese_course: 0, other: 0, unclassified: 2 });
+    act(() => { result.current.setDiningFilter("meat"); result.current.toggle("B"); });
     expect(result.current.visibleRestaurants.map((r) => r.id)).toEqual([1]);
     expect(result.current.mappableRestaurants.map((r) => r.id)).toEqual([1]);
-    expect(result.current.formCounts.meal).toBe(2);
-    act(() => result.current.setFormFilter("unclassified"));
+    expect(result.current.diningCounts.meat).toBe(2);
+    act(() => result.current.setDiningFilter("other"));
     expect(result.current.visibleRestaurants.map((r) => r.id)).toEqual([5]);
     expect(result.current.mappableRestaurants).toEqual([]);
     act(() => result.current.reveal(rows[3]!));
-    expect(result.current.formFilter).toBe("unclassified");
+    expect(result.current.diningFilter).toBe("other");
     expect(result.current.visibleRestaurants.map((r) => r.id)).toEqual([4, 5]);
     act(() => result.current.reveal(rows[1]!));
-    expect(result.current.formFilter).toBe("all");
-    act(() => result.current.setFormFilter("drink"));
+    expect(result.current.diningFilter).toBe("all");
+    act(() => result.current.setDiningFilter("dessert_drink"));
     rerender({ key: "B" });
-    expect(result.current.formFilter).toBe("all");
+    expect(result.current.diningFilter).toBe("all");
     expect(result.current.visibleRestaurants).toEqual(rows);
   });
 });

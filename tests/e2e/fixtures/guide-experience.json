@@ -207,7 +207,8 @@
         "is_new": true,
         "primary_area": "测试城区域",
         "guide_url": "https://guide.michelin.com/en/fixture/restaurant/example",
-        "serving_form": "meal"
+        "serving_form": "meal",
+        "dining_category": "meat"
       },
       {
         "city": "fixture-city",
@@ -221,7 +222,8 @@
         "venue_type": "dessert",
         "lat": 22.31,
         "lon": 114.18,
-        "serving_form": "dessert"
+        "serving_form": "dessert",
+        "dining_category": "dessert_drink"
       },
       {
         "city": "fixture-city",
@@ -262,7 +264,8 @@
         "is_new": true,
         "primary_area": "测试城区域",
         "guide_url": "https://guide.michelin.com/en/fixture/restaurant/example",
-        "serving_form": "meal"
+        "serving_form": "meal",
+        "dining_category": "meat"
       },
       {
         "city": "fixture-city",
@@ -276,7 +279,8 @@
         "venue_type": "dessert",
         "lat": 22.31,
         "lon": 114.18,
-        "serving_form": "dessert"
+        "serving_form": "dessert",
+        "dining_category": "dessert_drink"
       },
       {
         "city": "fixture-city",
@@ -317,7 +321,8 @@
         "is_new": true,
         "primary_area": "新城区域",
         "guide_url": "https://guide.michelin.com/en/fixture/restaurant/example",
-        "serving_form": "meal"
+        "serving_form": "meal",
+        "dining_category": "meat"
       },
       {
         "city": "new-city",
@@ -331,7 +336,8 @@
         "venue_type": "dessert",
         "lat": 22.31,
         "lon": 114.18,
-        "serving_form": "dessert"
+        "serving_form": "dessert",
+        "dining_category": "dessert_drink"
       },
       {
         "city": "new-city",
@@ -372,7 +378,8 @@
         "is_new": true,
         "primary_area": "第三城区域",
         "guide_url": "https://guide.michelin.com/en/fixture/restaurant/example",
-        "serving_form": "meal"
+        "serving_form": "meal",
+        "dining_category": "meat"
       },
       {
         "city": "third-city",
@@ -386,7 +393,8 @@
         "venue_type": "dessert",
         "lat": 22.31,
         "lon": 114.18,
-        "serving_form": "dessert"
+        "serving_form": "dessert",
+        "dining_category": "dessert_drink"
       },
       {
         "city": "third-city",
@@ -427,7 +435,8 @@
         "is_new": true,
         "primary_area": "旧版城区域",
         "guide_url": "https://guide.michelin.com/en/fixture/restaurant/example",
-        "serving_form": "meal"
+        "serving_form": "meal",
+        "dining_category": "meat"
       },
       {
         "city": "old-only",
@@ -441,7 +450,8 @@
         "venue_type": "dessert",
         "lat": 22.31,
         "lon": 114.18,
-        "serving_form": "dessert"
+        "serving_form": "dessert",
+        "dining_category": "dessert_drink"
       },
       {
         "city": "old-only",

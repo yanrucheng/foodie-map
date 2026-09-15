@@ -26,7 +26,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 200–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 2,
@@ -55,7 +56,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–250",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 3,
@@ -84,7 +86,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 200–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 4,
@@ -113,7 +116,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 200–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 5,
@@ -142,7 +146,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "other"
   },
   {
     "id": 6,
@@ -171,7 +176,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "other"
   },
   {
     "id": 7,
@@ -200,7 +206,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 80–150",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 8,
@@ -229,7 +236,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "other"
   },
   {
     "id": 9,
@@ -258,7 +266,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 10,
@@ -287,7 +296,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "meat"
   },
   {
     "id": 11,
@@ -316,7 +326,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 50–100",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "dessert_drink"
   },
   {
     "id": 12,
@@ -345,7 +356,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 13,
@@ -374,7 +386,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 40–80",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 14,
@@ -403,7 +416,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 200–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 15,
@@ -461,7 +475,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 17,
@@ -490,7 +505,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 18,
@@ -519,7 +535,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "seafood"
   },
   {
     "id": 19,
@@ -548,7 +565,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 50–80",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 20,
@@ -577,7 +595,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 200–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 21,
@@ -606,7 +625,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 80–150",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "seafood"
   },
   {
     "id": 22,
@@ -635,7 +655,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 200–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 23,
@@ -664,7 +685,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "seafood"
   },
   {
     "id": 24,
@@ -693,7 +715,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 25,
@@ -722,7 +745,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 50–100",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "dessert_drink"
   },
   {
     "id": 26,
@@ -751,7 +775,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 50–100",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 27,
@@ -780,7 +805,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "meat"
   },
   {
     "id": 28,
@@ -809,7 +835,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 29,
@@ -838,7 +865,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 200–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "other"
   },
   {
     "id": 30,
@@ -867,7 +895,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 30–50",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "dessert_drink"
   },
   {
     "id": 31,
@@ -896,7 +925,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 80–150",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 32,
@@ -925,7 +955,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 50–100",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 33,
@@ -954,7 +985,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 20–50",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "other"
   },
   {
     "id": 34,
@@ -983,7 +1015,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 50–100",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 35,
@@ -1012,7 +1045,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–250",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 36,
@@ -1041,7 +1075,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 50–100",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 37,
@@ -1070,7 +1105,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 38,
@@ -1099,7 +1135,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "other"
   },
   {
     "id": 39,
@@ -1128,7 +1165,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 40,
@@ -1157,7 +1195,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 50–100",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 41,
@@ -1186,7 +1225,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 42,
@@ -1215,7 +1255,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 80–150",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "meat"
   },
   {
     "id": 43,
@@ -1244,7 +1285,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 200–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 44,
@@ -1273,7 +1315,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–250",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 45,
@@ -1302,7 +1345,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 250–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 46,
@@ -1331,7 +1375,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 50–150",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "meat"
   },
   {
     "id": 47,
@@ -1360,7 +1405,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "other"
   },
   {
     "id": 48,
@@ -1389,7 +1435,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "meat"
   },
   {
     "id": 49,
@@ -1418,7 +1465,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 50,
@@ -1447,7 +1495,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 200–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 51,
@@ -1476,7 +1525,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–150",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 52,
@@ -1505,7 +1555,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 200–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 53,
@@ -1534,7 +1585,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 80–150",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 54,
@@ -1563,7 +1615,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 55,
@@ -1592,7 +1645,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 56,
@@ -1621,7 +1675,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 200–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 57,
@@ -1650,7 +1705,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 58,
@@ -1679,7 +1735,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 150–300",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "meat"
   },
   {
     "id": 59,
@@ -1708,7 +1765,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 60,
@@ -1737,7 +1795,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "other"
   },
   {
     "id": 61,
@@ -1766,7 +1825,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 60–120",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 62,
@@ -1795,7 +1855,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "meat"
   },
   {
     "id": 63,
@@ -1824,7 +1885,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 80–150",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 64,
@@ -1853,7 +1915,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 50–80",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 65,
@@ -1882,7 +1945,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 40–80",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 66,
@@ -1911,7 +1975,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 80–150",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "staple"
   },
   {
     "id": 67,
@@ -1940,7 +2005,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 68,
@@ -1969,7 +2035,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 69,
@@ -1998,7 +2065,8 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 100–200",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "chinese"
   },
   {
     "id": 70,
@@ -2027,6 +2095,7 @@
     "geocode_success": true,
     "status": "active",
     "price": "約 250–400",
-    "currency": "HKD"
+    "currency": "HKD",
+    "dining_category": "meat"
   }
 ]

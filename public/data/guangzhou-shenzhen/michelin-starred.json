@@ -24,7 +24,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 2,
@@ -51,7 +52,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 3,
@@ -78,7 +80,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "other"
   },
   {
     "id": 4,
@@ -105,7 +108,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 5,
@@ -132,7 +136,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 6,
@@ -159,7 +164,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "other"
   },
   {
     "id": 7,
@@ -186,7 +192,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "staple"
   },
   {
     "id": 8,
@@ -213,7 +220,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 9,
@@ -240,7 +248,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 10,
@@ -267,7 +276,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 11,
@@ -294,7 +304,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 12,
@@ -321,7 +332,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 13,
@@ -348,7 +360,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 14,
@@ -375,7 +388,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "other"
   },
   {
     "id": 15,
@@ -402,7 +416,8 @@
     "signature_dishes": "",
     "geo_source": "manual",
     "geocode_success": false,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 16,
@@ -429,7 +444,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 17,
@@ -456,7 +472,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "seafood"
   },
   {
     "id": 18,
@@ -483,7 +500,8 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 19,
@@ -510,7 +528,8 @@
     "signature_dishes": "",
     "geo_source": "manual",
     "geocode_success": false,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   },
   {
     "id": 20,
@@ -537,6 +556,7 @@
     "signature_dishes": "",
     "geo_source": "michelin_exact",
     "geocode_success": true,
-    "status": "active"
+    "status": "active",
+    "dining_category": "chinese"
   }
 ]

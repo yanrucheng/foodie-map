@@ -60,7 +60,7 @@ export function MobileShell({
       {activePanel === "filter" && <FilterPanel
         groups={mapProps.groups} dataGroups={mapProps.dataGroups} activeGroups={mapProps.activeGroups}
         onToggle={mapProps.onToggleGroup} onToggleAll={mapProps.onToggleAll}
-        formCounts={mapProps.formCounts} formFilter={mapProps.formFilter} onFormFilterChange={mapProps.onFormFilterChange}
+        diningCounts={mapProps.diningCounts} diningFilter={mapProps.diningFilter} onDiningFilterChange={mapProps.onDiningFilterChange}
         onModeToggle={handleModeToggle} currentMode={displayMode} variant="pill"
       />}
       {activePanel === "stats" && <StatsPanelReact restaurants={mapProps.visibleRestaurants} />}

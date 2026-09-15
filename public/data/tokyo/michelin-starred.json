@@ -18,7 +18,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-3568-6055",
     "website": "https://kikunoi.jp/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 2,
@@ -39,7 +41,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5847-9600",
     "website": "https://asahinagastronome.com/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 3,
@@ -60,7 +64,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5772-2553",
     "website": "https://azabukadowaki.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 4,
@@ -80,7 +86,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6453-7256",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 5,
@@ -101,7 +109,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6434-8711",
     "website": "https://www.heritagebykei.com/ja",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 6,
@@ -122,7 +132,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6804-3846",
     "website": "https://abysse.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 7,
@@ -143,7 +155,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-3796-7835",
     "website": "https://www.itsuka8.com/",
-    "cuisine_group": "CHINESE"
+    "cuisine_group": "CHINESE",
+    "serving_form": "meal",
+    "dining_category": "chinese"
   },
   {
     "id": 8,
@@ -164,7 +178,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5537-5580",
     "website": "https://www.esquissetokyo.com/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 9,
@@ -185,7 +201,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-3211-5317",
     "website": "https://www.palacehoteltokyo.com/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 10,
@@ -206,7 +224,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5549-4562",
     "website": "https://www.koji-shimomura.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 11,
@@ -226,7 +246,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5615-8728",
-    "cuisine_group": "TEMPURA"
+    "cuisine_group": "TEMPURA",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 12,
@@ -246,7 +268,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-6721-9218",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 13,
@@ -267,7 +291,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6264-4129",
     "website": "https://www.karyu-tokyo.com/",
-    "cuisine_group": "SPECIALTIES"
+    "cuisine_group": "SPECIALTIES",
+    "serving_form": "meal",
+    "dining_category": "meat"
   },
   {
     "id": 14,
@@ -288,7 +314,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3874-1552",
     "website": "https://www.hommage-arai.com/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 15,
@@ -309,7 +337,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 50-3145-9475",
     "website": "https://oryouritsuji.jp/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 16,
@@ -330,7 +360,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3499-3877",
     "website": "https://www.instagram.com/miyasaka_minamiaoyama?utm_source=qr",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 17,
@@ -351,7 +383,8 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 50-3138-5225",
     "website": "https://i1company.jp/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal"
   },
   {
     "id": 18,
@@ -372,7 +405,8 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6459-0176",
     "website": "https://www.nihonryori-kanda.com/restaurant/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal"
   },
   {
     "id": 19,
@@ -393,7 +427,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6277-0090",
     "website": "https://www.quintessence.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 20,
@@ -414,7 +450,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3261-8577",
     "website": "https://www.kioicho-fukudaya.jp/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 21,
@@ -434,7 +472,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-5250-8777",
-    "cuisine_group": "TEMPURA"
+    "cuisine_group": "TEMPURA",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 22,
@@ -455,7 +495,8 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6215-9544",
     "website": "https://www.kojyu.jp/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal"
   },
   {
     "id": 23,
@@ -475,7 +516,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6263-0345",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 24,
@@ -495,7 +538,8 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3571-8596",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal"
   },
   {
     "id": 25,
@@ -515,7 +559,8 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5543-0335",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal"
   },
   {
     "id": 26,
@@ -536,7 +581,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6277-5813",
     "website": "https://www.craftale-tokyo.com/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 27,
@@ -557,7 +604,8 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 50-3138-5225",
     "website": "https://kagurazaka-kohaku.jp/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal"
   },
   {
     "id": 28,
@@ -578,7 +626,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 50-3188-8819",
     "website": "https://sazenka.com/",
-    "cuisine_group": "CHINESE"
+    "cuisine_group": "CHINESE",
+    "serving_form": "meal",
+    "dining_category": "chinese"
   },
   {
     "id": 29,
@@ -598,7 +648,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3445-5301",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 30,
@@ -618,7 +670,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "website": "https://shinois.com/",
-    "cuisine_group": "CHINESE"
+    "cuisine_group": "CHINESE",
+    "serving_form": "meal",
+    "dining_category": "chinese"
   },
   {
     "id": 31,
@@ -639,7 +693,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6427-5167",
     "website": "https://nishiazabu-jushu.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 32,
@@ -659,7 +715,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3486-2929",
-    "cuisine_group": "SPECIALTIES"
+    "cuisine_group": "SPECIALTIES",
+    "serving_form": "meal",
+    "dining_category": "meat"
   },
   {
     "id": 33,
@@ -680,7 +738,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5424-1347",
     "website": "https://www.robuchon.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 34,
@@ -700,7 +760,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-3572-4855",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 35,
@@ -721,7 +783,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5545-5857",
     "website": "https://series-restaurant.com/",
-    "cuisine_group": "CHINESE"
+    "cuisine_group": "CHINESE",
+    "serving_form": "meal",
+    "dining_category": "chinese"
   },
   {
     "id": 36,
@@ -741,7 +805,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-6804-2006",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 37,
@@ -761,7 +827,8 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-3507-5501",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal"
   },
   {
     "id": 38,
@@ -781,7 +848,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5413-6626",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 39,
@@ -802,7 +871,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5568-4411",
     "website": "https://www.sushi-kanesaka.com/",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 40,
@@ -822,7 +893,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-6264-2234",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 41,
@@ -842,7 +915,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-3429-1344",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 42,
@@ -862,7 +937,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5541-5578",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 43,
@@ -883,7 +960,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5797-7066",
     "website": "https://shirosaka.jp/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 44,
@@ -904,7 +983,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3289-5331",
     "website": "https://zurriola.jp/",
-    "cuisine_group": "SPANISH"
+    "cuisine_group": "SPANISH",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 45,
@@ -925,7 +1006,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3451-8320",
     "website": "https://seizan-mita.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 46,
@@ -946,7 +1029,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3546-2622",
     "website": "https://seijyu.jp/",
-    "cuisine_group": "TEMPURA"
+    "cuisine_group": "TEMPURA",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 47,
@@ -967,7 +1052,8 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3473-3103",
     "website": "https://seisoka.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal"
   },
   {
     "id": 48,
@@ -988,7 +1074,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-3431-0811",
     "website": "https://www.atago-daigo.jp/",
-    "cuisine_group": "SPECIALTIES"
+    "cuisine_group": "SPECIALTIES",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 49,
@@ -1009,7 +1097,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6380-5797",
     "website": "https://tanimoto-kagurazaka.jp/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 50,
@@ -1030,7 +1120,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6316-2150",
     "website": "https://www.tenoshima.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 51,
@@ -1051,7 +1143,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6455-5433",
     "website": "https://www.jimbochoden.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 52,
@@ -1071,7 +1165,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5422-7612",
-    "cuisine_group": "TEMPURA"
+    "cuisine_group": "TEMPURA",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 53,
@@ -1092,7 +1188,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5568-0923",
     "website": "https://tempura-kondo.com/",
-    "cuisine_group": "TEMPURA"
+    "cuisine_group": "TEMPURA",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 54,
@@ -1112,7 +1210,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-6435-1996",
-    "cuisine_group": "TEMPURA"
+    "cuisine_group": "TEMPURA",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 55,
@@ -1133,7 +1233,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6452-2808",
     "website": "https://www.miyashiro.tokyo/",
-    "cuisine_group": "TEMPURA"
+    "cuisine_group": "TEMPURA",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 56,
@@ -1154,7 +1256,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6455-0200",
     "website": "https://motoyoshi-1120.com/",
-    "cuisine_group": "TEMPURA"
+    "cuisine_group": "TEMPURA",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 57,
@@ -1175,7 +1279,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6303-4005",
     "website": "https://ten-masa.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 58,
@@ -1196,7 +1302,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3239-3111",
     "website": "https://tourdargent.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 59,
@@ -1217,7 +1325,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6264-4477",
     "website": "https://www.dominique-bouchet.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 60,
@@ -1237,7 +1347,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6433-5680",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 61,
@@ -1258,7 +1370,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5246-4056",
     "website": "https://www.nabeno-ism.tokyo/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 62,
@@ -1279,7 +1393,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5785-0799",
     "website": "https://www.narisawa-yoshihiro.com/",
-    "cuisine_group": "CONTEMPORARY"
+    "cuisine_group": "CONTEMPORARY",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 63,
@@ -1299,7 +1415,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5485-0031",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 64,
@@ -1320,7 +1438,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5774-4372",
     "website": "https://nishiazabu-taku.com/",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 65,
@@ -1341,7 +1461,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5643-1566",
     "website": "https://www.sonoji.info/",
-    "cuisine_group": "TEMPURA"
+    "cuisine_group": "TEMPURA",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 66,
@@ -1362,7 +1484,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6721-0086",
     "website": "https://www.nogi-s.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 67,
@@ -1383,7 +1507,9 @@
     "price_range": "¥¥",
     "phone": "+81 3-3583-7852",
     "website": "https://www.nodaiwa.co.jp/",
-    "cuisine_group": "UNAGI"
+    "cuisine_group": "UNAGI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 68,
@@ -1403,7 +1529,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3573-1144",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 69,
@@ -1423,7 +1551,8 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3402-7038",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal"
   },
   {
     "id": 70,
@@ -1444,7 +1573,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-3572-3911",
     "website": "https://faro.shiseido.co.jp/",
-    "cuisine_group": "ITALIAN"
+    "cuisine_group": "ITALIAN",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 71,
@@ -1465,7 +1596,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-3269-4556",
     "website": "https://fushikino.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 72,
@@ -1485,7 +1618,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3406-3050",
-    "cuisine_group": "ITALIAN"
+    "cuisine_group": "ITALIAN",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 73,
@@ -1506,7 +1641,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6435-8018",
     "website": "https://www.aoyama-florilege.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 74,
@@ -1527,7 +1664,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5159-5500",
     "website": "https://beige-tokyo.com/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 75,
@@ -1548,7 +1687,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6450-3933",
     "website": "https://www.bottega-cucina.com/",
-    "cuisine_group": "ITALIAN"
+    "cuisine_group": "ITALIAN",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 76,
@@ -1569,7 +1710,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 50-3628-1295",
     "website": "https://onodera-group.com/makiyaki/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 77,
@@ -1590,7 +1733,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5424-1338",
     "website": "https://www.robuchon.jp/shop-list/latable",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 78,
@@ -1611,7 +1756,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6450-5297",
     "website": "https://www.lature.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "meat"
   },
   {
     "id": 79,
@@ -1632,7 +1779,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5772-7500",
     "website": "https://www.robuchon.jp/shop-list/latelier",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 80,
@@ -1653,7 +1802,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6274-6541",
     "website": "https://laffinage.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 81,
@@ -1674,7 +1825,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 50-3196-2390",
     "website": "https://lapaix-m.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 82,
@@ -1695,7 +1848,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6630-0007",
     "website": "https://www.nihonryori-ryugin.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 83,
@@ -1716,7 +1871,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5770-4236",
     "website": "https://www.restaurant-ryuzu.com/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 84,
@@ -1737,7 +1894,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6434-7080",
     "website": "https://le-sputnik.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 85,
@@ -1758,7 +1917,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3539-8087",
     "website": "https://www.imperialhotel.co.jp/tokyo",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 86,
@@ -1779,7 +1940,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5766-9500",
     "website": "https://www.leffervescence.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 87,
@@ -1800,7 +1963,8 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 50-3138-5225",
     "website": "https://ginza-ren.jp/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal"
   },
   {
     "id": 88,
@@ -1821,7 +1985,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3571-6050",
     "website": "https://losier.shiseido.co.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 89,
@@ -1842,7 +2008,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5789-3838",
     "website": "https://waketoku.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 90,
@@ -1863,7 +2031,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6712-5085",
     "website": "https://www.fft-crony.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 91,
@@ -1883,7 +2053,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3527-3701",
-    "cuisine_group": "TEMPURA"
+    "cuisine_group": "TEMPURA",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 92,
@@ -1903,7 +2075,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6457-8550",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 93,
@@ -1923,7 +2097,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6384-5865",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 94,
@@ -1944,7 +2120,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6384-5526",
     "website": "https://sushimasashi.tokyo/",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 95,
@@ -1964,7 +2142,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-6804-9428",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 96,
@@ -1985,7 +2165,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6812-9613",
     "website": "https://nihonryori-hakuun.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 97,
@@ -2005,7 +2187,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-6450-2557",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 98,
@@ -2026,7 +2210,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5860-7530",
     "website": "https://nihonryori-ensui.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 99,
@@ -2046,7 +2232,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6264-6464",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 100,
@@ -2067,7 +2255,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6268-8427",
     "website": "https://largent.tokyo/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 101,
@@ -2088,7 +2278,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 80-4071-0555",
     "website": "https://sorahana-japan.net/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 102,
@@ -2110,7 +2302,9 @@
     "phone": "+81 3-6810-0655",
     "website": "https://www.est-tokyo.com/",
     "price": "Dinner: TERROIR – EIGHT COURSES\nJPY 27,000\nAll prices are in Japanese Yen and include 15% service charge and applicable tax.",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 103,
@@ -2130,7 +2324,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-6802-4474",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 104,
@@ -2151,7 +2347,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5422-7358",
     "website": "https://alchimiste.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 105,
@@ -2172,7 +2370,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6721-0404",
     "website": "https://www.ten-yokota.com/",
-    "cuisine_group": "TEMPURA"
+    "cuisine_group": "TEMPURA",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 106,
@@ -2192,7 +2392,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "website": "https://nol.jp/",
-    "cuisine_group": "CONTEMPORARY"
+    "cuisine_group": "CONTEMPORARY",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 107,
@@ -2213,7 +2415,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5962-6085",
     "website": "https://restaurantnemo.net/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 108,
@@ -2234,7 +2438,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5962-8053",
     "website": "https://ginza-kousui.jp/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 109,
@@ -2255,7 +2461,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5726-9359",
     "website": "https://www.yakumo-uezu.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 110,
@@ -2276,7 +2484,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 50-3138-5225",
     "website": "https://kagurazaka-guchokuni.jp/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 111,
@@ -2297,7 +2507,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3478-1010",
     "website": "https://akasaka-hanabusa.com/",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 112,
@@ -2318,7 +2530,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6803-8670",
     "website": "https://lelan.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 113,
@@ -2339,7 +2553,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6228-5041",
     "website": "https://www.amarantos2021.com/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 114,
@@ -2360,7 +2576,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 50-3134-3551",
     "website": "https://www.kaikan.co.jp/restaurant/prunier/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 115,
@@ -2380,7 +2598,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6661-1335",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 116,
@@ -2401,7 +2621,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6264-6606",
     "website": "https://www.gucciosteria.com/ja/tokyo",
-    "cuisine_group": "ITALIAN"
+    "cuisine_group": "ITALIAN",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 117,
@@ -2422,7 +2644,8 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3539-8224",
     "website": "https://www.imperialhotel.co.jp/tokyo",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal"
   },
   {
     "id": 118,
@@ -2443,7 +2666,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6228-5665",
     "website": "https://toki.nara.jp/",
-    "cuisine_group": "SPANISH"
+    "cuisine_group": "SPANISH",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 119,
@@ -2464,7 +2689,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6427-3580",
     "website": "https://neo-monolith.com/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 120,
@@ -2485,7 +2712,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-3544-5205",
     "website": "https://troisvisages.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 121,
@@ -2506,7 +2735,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 50-3101-3945",
     "website": "https://myoujyaku.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 122,
@@ -2527,7 +2758,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 50-3033-3946",
     "website": "https://ippei-hanten.com/",
-    "cuisine_group": "CHINESE"
+    "cuisine_group": "CHINESE",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 123,
@@ -2548,7 +2781,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6272-8513",
     "website": "https://maztokyo.jp/",
-    "cuisine_group": "CONTEMPORARY"
+    "cuisine_group": "CONTEMPORARY",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 124,
@@ -2569,7 +2804,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6268-8863",
     "website": "https://koushiki-ryori.com/",
-    "cuisine_group": "CHINESE"
+    "cuisine_group": "CHINESE",
+    "serving_form": "meal",
+    "dining_category": "chinese"
   },
   {
     "id": 125,
@@ -2590,7 +2827,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-3527-9501",
     "website": "https://yakitoritakahashi-japan.com/",
-    "cuisine_group": "YAKITORI"
+    "cuisine_group": "YAKITORI",
+    "serving_form": "meal",
+    "dining_category": "meat"
   },
   {
     "id": 126,
@@ -2611,7 +2850,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-3356-7270",
     "website": "https://ubuka.jp/",
-    "cuisine_group": "SPECIALTIES"
+    "cuisine_group": "SPECIALTIES",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 127,
@@ -2631,7 +2872,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6388-1312",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 128,
@@ -2651,7 +2894,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6264-2872",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 129,
@@ -2672,7 +2917,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5544-9778",
     "website": "https://metis-roppongi.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 130,
@@ -2693,7 +2940,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-5568-6266",
     "website": "https://mutsukari.com/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 131,
@@ -2714,7 +2963,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6262-6624",
     "website": "https://www.bulgarihotels.com/ja_JP/tokyo/dining/il-ristorante-niko-romito",
-    "cuisine_group": "ITALIAN"
+    "cuisine_group": "ITALIAN",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 132,
@@ -2735,7 +2986,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6826-9672",
     "website": "https://ppasso.jp/",
-    "cuisine_group": "ITALIAN"
+    "cuisine_group": "ITALIAN",
+    "serving_form": "meal",
+    "dining_category": "staple"
   },
   {
     "id": 133,
@@ -2755,7 +3008,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 80-2392-7910",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 134,
@@ -2776,7 +3031,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 90-8894-0020",
     "website": "https://sushimiura-japan.com/",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 135,
@@ -2797,7 +3054,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6277-2141",
     "website": "https://www.piao-xiang.com/",
-    "cuisine_group": "CHINESE"
+    "cuisine_group": "CHINESE",
+    "serving_form": "meal",
+    "dining_category": "chinese"
   },
   {
     "id": 136,
@@ -2818,7 +3077,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6551-2885",
     "website": "https://cyclerestaurant.com/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 137,
@@ -2839,7 +3100,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6811-2573",
     "website": "https://apotheose.jp/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 138,
@@ -2860,7 +3123,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 90-8946-3919",
     "website": "https://hakunei.com/",
-    "cuisine_group": "CONTEMPORARY"
+    "cuisine_group": "CONTEMPORARY",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 139,
@@ -2880,7 +3145,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-6712-7713",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 140,
@@ -2900,7 +3167,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥",
     "phone": "+81 3-6453-9666",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 141,
@@ -2921,7 +3190,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6262-8987",
     "website": "https://www.hortensiatokyo.com/",
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 142,
@@ -2941,7 +3212,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5315-4958",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 143,
@@ -2962,7 +3235,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 70-3149-4112",
     "website": "https://higashiyama-muku.jp/",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 144,
@@ -2982,7 +3257,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6277-0468",
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 145,
@@ -3002,7 +3279,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6805-1994",
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 146,
@@ -3022,7 +3301,9 @@
     "currency": "JPY",
     "price_range": "¥¥¥¥",
     "website": "https://yama-dessert.com/",
-    "cuisine_group": "CONTEMPORARY"
+    "cuisine_group": "CONTEMPORARY",
+    "serving_form": "dessert",
+    "dining_category": "dessert_drink"
   },
   {
     "id": 147,
@@ -3043,7 +3324,9 @@
     "price_range": "¥¥¥",
     "phone": "+81 3-6809-3522",
     "is_new": true,
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 148,
@@ -3065,7 +3348,9 @@
     "phone": "+81 3-6228-1868",
     "website": "https://sushioya.com/",
     "is_new": true,
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 149,
@@ -3086,7 +3371,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-6277-7290",
     "is_new": true,
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 150,
@@ -3108,7 +3395,9 @@
     "phone": "+81 3-6804-5942",
     "website": "https://ewig-tokyo.com/",
     "is_new": true,
-    "cuisine_group": "AUSTRIAN"
+    "cuisine_group": "AUSTRIAN",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 151,
@@ -3130,7 +3419,9 @@
     "phone": "+81 3-6432-5015",
     "website": "https://manoir-restaurant.jp/",
     "is_new": true,
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "meat"
   },
   {
     "id": 152,
@@ -3152,7 +3443,9 @@
     "phone": "+81 50-5536-9856",
     "website": "https://khao.tokyo/",
     "is_new": true,
-    "cuisine_group": "SOUTH_SOUTHEAST_ASIAN"
+    "cuisine_group": "SOUTH_SOUTHEAST_ASIAN",
+    "serving_form": "meal",
+    "dining_category": "other"
   },
   {
     "id": 153,
@@ -3173,7 +3466,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 70-8306-7946",
     "is_new": true,
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 154,
@@ -3195,7 +3490,9 @@
     "phone": "+81 3-5579-9760",
     "website": "https://salt-group.jp/shop/hyakuyaku/",
     "is_new": true,
-    "cuisine_group": "JAPANESE"
+    "cuisine_group": "JAPANESE",
+    "serving_form": "meal",
+    "dining_category": "japanese_course"
   },
   {
     "id": 155,
@@ -3217,7 +3514,9 @@
     "phone": "+81 3-6441-0251",
     "website": "https://la-gloire.jp/",
     "is_new": true,
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 156,
@@ -3238,7 +3537,9 @@
     "price_range": "¥¥¥¥",
     "phone": "+81 3-5925-8225",
     "is_new": true,
-    "cuisine_group": "SUSHI"
+    "cuisine_group": "SUSHI",
+    "serving_form": "meal",
+    "dining_category": "seafood"
   },
   {
     "id": 157,
@@ -3260,7 +3561,9 @@
     "phone": "+81 3-6910-5615",
     "website": "https://maerge.tokyo/",
     "is_new": true,
-    "cuisine_group": "FRENCH"
+    "cuisine_group": "FRENCH",
+    "serving_form": "meal",
+    "dining_category": "french"
   },
   {
     "id": 158,
@@ -3275,6 +3578,8 @@
     "lat": null,
     "lon": null,
     "geocode_success": false,
-    "cuisine_group": "CONTEMPORARY"
+    "cuisine_group": "CONTEMPORARY",
+    "serving_form": "meal",
+    "dining_category": "other"
   }
 ]

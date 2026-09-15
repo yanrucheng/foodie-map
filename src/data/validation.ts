@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { citySchema, editionYearSchema, getMapPosition, guideTypeSchema, restaurantArraySchema, restaurantFieldNames, spatialContextSchema, type Restaurant, type SpatialContext } from "./contract.ts";
 import { deriveCuisine, taxonomyBundleSchema, type Mappings, type Taxonomy } from "./taxonomy.ts";
-import { countServingForms, getGroupStyle } from "../config/restaurantPresentation.ts";
+import { countServingForms, getGroupStyle, diningDistribution, parsePriceGrade } from "../config/restaurantPresentation.ts";
 
 export interface Diagnostic {
   severity: "error" | "warning";
@@ -48,7 +48,7 @@ export function presentationDiagnostics(taxonomy: Taxonomy, file: string): Diagn
 /** Read-only validation; catalog discovery belongs to P03, record rules stay here. */
 export function validateDataset(input: unknown, context: DatasetContext, file: string) {
   const diagnostics: Diagnostic[] = [];
-  const counts = { listed: Array.isArray(input) ? input.length : 0, locatable: 0, missing_cuisine: 0, unmapped: 0, explicit_other: 0, serving_form: countServingForms([]) };
+  const counts = { listed: Array.isArray(input) ? input.length : 0, locatable: 0, missing_cuisine: 0, unmapped: 0, explicit_other: 0, serving_form: countServingForms([]), ...diningDistribution([]) };
   const parsed = restaurantArraySchema.safeParse(input);
   const metadata = contextSchema.safeParse(context);
   const bundle = taxonomyBundleSchema.safeParse(context);
@@ -58,6 +58,7 @@ export function validateDataset(input: unknown, context: DatasetContext, file: s
   if (!parsed.success || !metadata.success || !bundle.success) return { records: [], counts, diagnostics };
   const records = parsed.data;
   counts.serving_form = countServingForms(records);
+  Object.assign(counts, diningDistribution(records));
   diagnostics.push(...presentationDiagnostics(bundle.data.taxonomy, `${file} taxonomy`));
   const issue = (severity: Diagnostic["severity"], code: string, field: string, reason: string, record?: Restaurant) => {
     diagnostics.push({ severity, code, file, field, reason, ...(record ? { record_id: record.id } : {}) });
@@ -71,6 +72,9 @@ export function validateDataset(input: unknown, context: DatasetContext, file: s
     }
     for (const field of Object.keys(record)) {
       if (!restaurantFieldNames.has(field)) issue("warning", "EXTRA_FIELD", `/${index}/${field}`, "Extra field preserved; check its spelling if intended for display", record);
+    }
+    if (parsePriceGrade(record.price_range).status === "unrecognized") {
+      diagnostics.push({ severity: "warning", code: "UNRECOGNIZED_PRICE_GRADE", file, record_id: record.id, field: `/${index}/price_range`, raw: record.price_range, reason: "Source text retained; no price badge is displayed" });
     }
     const resolution = deriveCuisine(record.cuisine, bundle.data.taxonomy, bundle.data.mappings);
     if (resolution.reason === "missing") counts.missing_cuisine++;

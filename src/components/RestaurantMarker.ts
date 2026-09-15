@@ -22,7 +22,7 @@ export function popupHtml(item: Restaurant, groups?: CuisineGroup[], spatialCont
     <div class="popup" role="region" aria-label="餐厅详情">
       <h2>${escapeHtml(facts.name)}</h2>
       ${facts.secondaryName ? `<div class="en">${escapeHtml(facts.secondaryName)}</div>` : ""}
-      <div class="tags"><span class="detail-symbol" style="background:${facts.groupStyle.color};color:${facts.groupStyle.textColor}">${facts.form.svg}</span>${facts.tags.map((tag, index) => `<span class="tag"${index === 0 ? ` style="background:${facts.groupStyle.color};color:${facts.groupStyle.textColor}"` : ""}>${escapeHtml(tag)}</span>`).join("")}</div>
+      <div class="tags"><span class="detail-symbol" style="background:${facts.groupStyle.color};color:${facts.groupStyle.textColor}">${facts.category.svg}</span>${facts.tags.map((tag, index) => `<span class="tag"${index === 0 ? ` style="background:${facts.groupStyle.color};color:${facts.groupStyle.textColor}"` : ""}>${escapeHtml(tag)}</span>`).join("")}</div>
       ${facts.details.map(([label, value]) => `<div class="line"><strong>${escapeHtml(label)}：</strong>${escapeHtml(value)}</div>`).join("")}
       ${facts.guideUrl ? `<div class="line"><a href="${escapeHtml(facts.guideUrl)}" target="_blank" rel="noopener noreferrer">查看米其林官方页面</a></div>` : ""}
     </div>`;
@@ -52,13 +52,13 @@ export function createRestaurantMarker(
   const [lat, lng] = position;
 
   const marker = L.marker([lat, lng], {
-    title: `${facts.name} · ${getGroupLabel(item.cuisine_group, options?.groups)} · ${facts.form.label}${item.is_new ? ` · ${item.edition_year} 新晋` : ""}`,
+    title: `${facts.name} · ${getGroupLabel(item.cuisine_group, options?.groups)} · ${facts.category.label}${facts.priceGrade.tier ? ` · 价格等级 ${facts.priceGrade.tier}，共 4 档` : ""}${item.is_new ? ` · ${item.edition_year} 新晋` : ""}`,
     icon: L.divIcon({
       className: "restaurant-marker",
-      html: `<div class="${className}" style="background:${groupStyle.color};color:${groupStyle.textColor}">${facts.form.svg}</div>`,
+      html: `<div class="${className}" style="background:${groupStyle.color};color:${groupStyle.textColor}">${facts.category.svg}${facts.priceGrade.badge ? `<span class="price-badge" aria-hidden="true">${facts.priceGrade.badge}</span>` : ""}</div>`,
       iconSize: [44, 44],
       iconAnchor: [22, 22],
-      popupAnchor: [0, -22],
+      popupAnchor: [0, -38],
     }),
   });
 

@@ -1,0 +1,724 @@
+{
+  "scope": "仅记录其他事实疑点，不作为未授权修正。",
+  "items": [
+    {
+      "key": "beijing/2026/michelin-bib-gourmand#18",
+      "type": "source_address_difference",
+      "record_address": "朝阳区朝外大街朝外SOHO 2层D区0260",
+      "record_address_en": "0260, Section D, 2F, Chaowai SOHO, Chaowai Street, Chaoyang, Beijing, Chinese Mainland",
+      "source_address": "0260, 2F, Building D, CHAOWAI SOHO, 6 Chaowai Street, Chaoyang, Beijing, 100020, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/beijing-municipality/beijing/restaurant/tianchumiaoxiang-vegetarian-chaoyang",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "beijing/2026/michelin-bib-gourmand#26",
+      "type": "source_address_difference",
+      "record_address": "朝阳区酒仙桥路2号798艺术区3818号楼",
+      "record_address_en": "Building 3818, 798 Art District, 2 Jiuxianqiao Road, Chaoyang, Beijing, Chinese Mainland",
+      "source_address": "Buidling 3818, 798 Art District, 2 Jiuxianqiao Road, Chaoyang, Beijing, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/beijing-municipality/beijing/restaurant/liu-ma-ma-dumplings-chaoyang",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "beijing/2026/michelin-starred#3",
+      "type": "source_address_difference",
+      "record_address": "东城区王府井大街1号璞瑄酒店3楼",
+      "record_address_en": "3F, The Puxuan Hotel, 1 Wangfujing Street, Dongcheng, Beijing, Chinese Mainland",
+      "source_address": "3F, The Puxuan Hotel, 1 Wangfujing Street, Dongcheng, Beijing, 100006, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/beijing-municipality/beijing/restaurant/fu-chun-ju",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "beijing/2026/michelin-starred#7",
+      "type": "source_address_difference",
+      "record_address": "西城区金融大街11号金融街国际酒店B1层",
+      "record_address_en": "B1 Level, Financial Street International Hotel, 11 Jinrong Street, Xicheng, Beijing, Chinese Mainland",
+      "source_address": "B1 Level, International Finance Centre, 11 Jinrong Street, Xicheng, Beijing, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/beijing-municipality/beijing/restaurant/xin-rong-ji-jinrong-street",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "beijing/2026/michelin-starred#22",
+      "type": "source_address_difference",
+      "record_address": "朝阳区工体北路4号院14号楼1层04室",
+      "record_address_en": "Room 04, 1F, Block 14, Courtyard 4, Gongti North Road, Chaoyang, Beijing, Chinese Mainland",
+      "source_address": "Room 04, 1F, Block 14, Courtyard 4, Gongti North Road, Chaoyang, Beijing, 100000, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/beijing-municipality/beijing/restaurant/lamdre",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "beijing/2026/michelin-starred#28",
+      "type": "source_address_difference",
+      "record_address": "朝阳区东三环中路61号",
+      "record_address_en": "61 Dongsanhuan Middle Road, Chaoyang, Beijing, Chinese Mainland",
+      "source_address": "61 Dongsanhuan Middle Road, Chaoyang, Beijing, 10020, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/beijing-municipality/beijing/restaurant/poetry%E2%80%A7wine",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "beijing/2026/michelin-starred#30",
+      "type": "source_address_difference",
+      "record_address": "朝阳区金和东路20号华贸中心3楼L307",
+      "record_address_en": "L307, 3F, CP Center, 20 Jinhe East Road, Chaoyang, Beijing, Chinese Mainland",
+      "source_address": "L307, 3F, CP Center, 20 Jinhe East Road, Chaoyang, Beijing, 100020, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/beijing-municipality/beijing/restaurant/mo-jasmine",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "guangzhou-shenzhen/2026/michelin-starred#18",
+      "type": "source_address_difference",
+      "record_address": "越秀区旭鸣园路18号",
+      "record_address_en": "Xi'an Garden, 18 Xuguyuan Road, Yuexiu, Guangzhou, Chinese Mainland",
+      "source_address": "Xi'an Garden, 18 Xuguyuan Road, Yuexiu, Guangzhou, 510000, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/guangdong-province/guangzhou/restaurant/yong",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "guangzhou-shenzhen/2026/michelin-starred#20",
+      "type": "source_address_difference",
+      "record_address": "天河区珠江新城珠江西路5号四季酒店71楼",
+      "record_address_en": "71F, Four Seasons Hotel, 5 Zhujiang West Road, Zhujiang New Town, Tianhe, Guangzhou, Chinese Mainland",
+      "source_address": "2F, Four Seasons Hotel, 5 Zhujiang West Road, Zhujiang New Town, Tianhe, Guangzhou, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/hk/en/guangdong-province/guangzhou/restaurant/yu-yue-heen",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "guangzhou-shenzhen/2026/michelin-bib-gourmand#43",
+      "type": "source_address_difference",
+      "record_address": "海珠区江南大道南429号",
+      "record_address_en": "429 Jiangnan Avenue South, Haizhu, Guangzhou, Chinese Mainland",
+      "source_address": "429 Jiangnan Avenue South, Haizhu, Guangzhou, 510260, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/guangdong-province/guangzhou/restaurant/zhu-zai-ji-shi-fu-jiangnan-avenue",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#3",
+      "type": "source_address_difference",
+      "record_address": "黄浦区圆明园路169号协进大楼6-7楼",
+      "record_address_en": "",
+      "source_address": "6-7F, Associate Mission Building, 169 Yuanmingyuan Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/8-%C2%BD-otto-e-mezzo-bombana",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#12",
+      "type": "source_address_difference",
+      "record_address": "黄浦区新天地马当路99号朗廷酒店5楼",
+      "record_address_en": "",
+      "source_address": "5F, The Langham, 99 Madang Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/t-ang-court-506725",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#15",
+      "type": "source_reports_temporary_closure",
+      "record_status": "active",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/cheng-long-hang-huangpu",
+      "action": "保留已有营业状态；另行核实有效日期。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#25",
+      "type": "source_address_difference",
+      "record_address": "黄浦区福州路556号",
+      "record_address_en": "Shanghai, Chinese Mainland",
+      "source_address": "556 Fuzhou Road, Huangpu, Shanghai, 200001, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/lao-zheng-xing-huangpu",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#26",
+      "type": "source_address_difference",
+      "record_address": "徐汇区建国西路480号建业里嘉佩乐酒店",
+      "record_address_en": "Shanghai, Chinese Mainland",
+      "source_address": "Capella, Jian Ye Li, 480 West Jianguo Road, Xuhui, Shanghai, 200031, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/le-comptoir-de-pierre-gagnaire",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#32",
+      "type": "source_address_difference",
+      "record_address": "黄浦区中山东二路600号BFC外滩金融中心南区商场3楼S301",
+      "record_address_en": "Shanghai, Chinese Mainland",
+      "source_address": "S301, 3F, South Mall, The Bund Finance Center, 600 Zhongshan Dong Er Road, Huangpu, Shanghai, 200001, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/meet-the-bund",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#36",
+      "type": "source_address_difference",
+      "record_address": "普陀区莫干山路600号千树L7-05",
+      "record_address_en": "",
+      "source_address": "L7-05, 1000Trees, 600 Moganshan Road, Putuo, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/narisawa-1209925",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#39",
+      "type": "source_address_difference",
+      "record_address": "徐汇区肇嘉浜路407号",
+      "record_address_en": "",
+      "source_address": "407 Zhaojiabang Road, Xuhui, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/ren-he-guan-zhaojiabang-road",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#41",
+      "type": "source_address_difference",
+      "record_address": "黄浦区广东路20号外滩5号5楼",
+      "record_address_en": "",
+      "source_address": "5F, Bund 5, 20 Guangdong Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/sheng-yong-xing",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#42",
+      "type": "source_address_difference",
+      "record_address": "静安区南京西路1376号上海商城109号商铺",
+      "record_address_en": "",
+      "source_address": "Shop 109, Shanghai Centre, 1376 West Nanjing Road, Jingan, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/sole",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#43",
+      "type": "source_address_difference",
+      "record_address": "",
+      "record_address_en": "",
+      "source_address": "279 Beihai Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/vivant-by-johnny-pham",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#45",
+      "type": "source_address_difference",
+      "record_address": "静安区南京西路688号688广场2楼",
+      "record_address_en": "",
+      "source_address": "2F, 688 Plaza, 688 West Nanjing Road, Jingan, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/xin-rong-ji-west-nanjing-road",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#46",
+      "type": "source_address_difference",
+      "record_address": "黄浦区中山东一路32号外滩32号半岛酒店2楼",
+      "record_address_en": "",
+      "source_address": "2F, The Peninsula Hotel, Bund 32, 32 Zhongshan Dong Yi Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/yi-long-court",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#47",
+      "type": "source_address_difference",
+      "record_address": "虹口区东大名路1089号北外滩来福士东塔56楼",
+      "record_address_en": "",
+      "source_address": "56F, East Tower, Raffles City The Bund, 1089 Dongdaming Road, Hongkou, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/yong-fu-hongkou",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#48",
+      "type": "source_address_difference",
+      "record_address": "黄浦区茂名南路59号锦江饭店锦北楼12楼",
+      "record_address_en": "",
+      "source_address": "11-12F, Cathay Building, Jin Jiang Hotel, 59 South Maoming Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/yong-fu",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#49",
+      "type": "source_address_difference",
+      "record_address": "浦东新区浦东南路111号浦东文华东方酒店LG层",
+      "record_address_en": "",
+      "source_address": "LG Level, Mandarin Oriental Pudong, 111 South Pudong Road, Pudong, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/yong-yi-ting",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#50",
+      "type": "source_address_difference",
+      "record_address": "闵行区号文路161号万金中心",
+      "record_address_en": "",
+      "source_address": "Vi Park, 161 Haowen Road, Minhang, Shanghai, 200000, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/yue-hai-tang",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-starred#51",
+      "type": "source_address_difference",
+      "record_address": "闵行区苏虹路318弄16-101号虹桥丽宝广场116号铺",
+      "record_address_en": "",
+      "source_address": "Shop 116, Hongqiao Lihpao Plaza, No.16-101, Lane 318, Suhong Road, Minhang, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/zhou-she-minhang",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#4",
+      "type": "source_address_difference",
+      "record_address": "南京西路1266号恒隆广场5楼",
+      "record_address_en": "5F, Plaza 66, 1266 West Nanjing Road, Jingan, Shanghai, China Mainland",
+      "source_address": "L501, Plaza 66, 1266 West Nanjing Road, Jingan, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/blossom-1246455",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#5",
+      "type": "source_address_difference",
+      "record_address": "进贤路124号",
+      "record_address_en": "124 Jinxian Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "124 Jinxian Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/chun",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#6",
+      "type": "source_address_difference",
+      "record_address": "淮海中路1号",
+      "record_address_en": "158 Luhe Road, Huangpu, Shanghai, 200001, China Mainland",
+      "source_address": "158 Luhe Road, Huangpu, Shanghai, 200001, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/us/en/shanghai-municipality/shanghai/restaurant/cong-s-kitchen",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#7",
+      "type": "source_address_difference",
+      "record_address": "四川中路136号",
+      "record_address_en": "136 Middle Sichuan Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "136 Middle Sichuan Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/da-hu-chun-middle-sichuan-road",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#8",
+      "type": "source_address_difference",
+      "record_address": "北京西路1013号尚演谷南楼",
+      "record_address_en": "2F, 90 South Shaanxi Road, Jingan, Shanghai, China Mainland",
+      "source_address": "2F, 90 South Shaanxi Road, Jingan, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/easeful-cuisine",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#9",
+      "type": "source_address_difference",
+      "record_address": "南京西路445号",
+      "record_address_en": "445 West Nanjing Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "445 West Nanjing Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/gong-de-lin-jingan",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#10",
+      "type": "source_address_difference",
+      "record_address": "广西北路445号",
+      "record_address_en": "445 North Guangxi Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "156 Guangyuan Road, Xuhui, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/hao-sheng",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#11",
+      "type": "source_address_difference",
+      "record_address": "彭浦镇沪太路1188号",
+      "record_address_en": "1188 Hutai Road, Pengpu Town, Jingan, Shanghai, China Mainland",
+      "source_address": "1190 Hutai Road, Jing'an, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/he-shan-mian-jia",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#12",
+      "type": "source_address_difference",
+      "record_address": "港汇恒隆广场5楼",
+      "record_address_en": "L324, South Building, HKRI Taikoo Hui, 288 Shimen Yi Road, Jingan, Shanghai, 400040, China Mainland",
+      "source_address": "L324, South Building, HKRI Taikoo Hui, 288 Shimen Yi Road, Jingan, Shanghai, 400040, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/ho-hung-kee-570572",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#13",
+      "type": "source_address_difference",
+      "record_address": "延平路69-2号",
+      "record_address_en": "128 Yanping Road, Jingan, Shanghai, China Mainland",
+      "source_address": "128 Yanping Road, Jingan, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/jing-mei-wu-xi-si-fang-mian-guan",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#14",
+      "type": "source_address_difference",
+      "record_address": "进贤路130号",
+      "record_address_en": "130 Jinxian Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "130 Jinxian Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/lan-xin-jinxian-road",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#15",
+      "type": "source_address_difference",
+      "record_address": "思南路107号",
+      "record_address_en": "107 Sinan Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "107 Sinan Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/us/en/shanghai-municipality/shanghai/restaurant/lao-di-fang-mian-guan",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#16",
+      "type": "source_address_difference",
+      "record_address": "豫园路115号",
+      "record_address_en": "115 Yuyuan Old Street, City God Temple, Huangpu, Shanghai, China Mainland",
+      "source_address": "115 Yuyuan Old Street, City God Temple, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/lu-bo-lang",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#17",
+      "type": "source_address_difference",
+      "record_address": "进贤路134号",
+      "record_address_en": "134 Jinxian Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "134 Jinxian Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/mao-long",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#18",
+      "type": "source_address_difference",
+      "record_address": "安福路168号",
+      "record_address_en": "2F, 195 Anfu Road, Xuhui, Shanghai, China Mainland",
+      "source_address": "2F, 195 Anfu Road, Xuhui, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/mi-thai-an-fu-road",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#19",
+      "type": "source_address_difference",
+      "record_address": "豫园路85号",
+      "record_address_en": "85 Yuyuan Road, City God Temple, Huangpu, Shanghai, China Mainland",
+      "source_address": "85 Yuyuan Road, City God Temple, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/nanxiang-steamed-bun-city-god-temple",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#22",
+      "type": "source_address_difference",
+      "record_address": "太仓路181弄新天地北里5号",
+      "record_address_en": "No. 5, Xintiandi Beili, Lane 181, Taicang Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "No. 5, Xintiandi Beili, Lane 181, Taicang Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/polux",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#23",
+      "type": "source_address_difference",
+      "record_address": "天津路504号",
+      "record_address_en": "506 Tianjin Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "506 Tianjin Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/qiao-ai-lai-lai-xiao-long-huangpu",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#24",
+      "type": "source_address_difference",
+      "record_address": "太仓路128号1-2楼",
+      "record_address_en": "1-2F, 128 Taicang Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "1-2F, 128 Taicang Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/rong-cuisine-huangpu",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#25",
+      "type": "source_address_difference",
+      "record_address": "南京西路1376号上海商城东峰1楼",
+      "record_address_en": "L105A-1, 688 Plaza, 688 West Nanjing Road, Jingan, Shanghai, China Mainland",
+      "source_address": "L105A-1, 688 Plaza, 688 West Nanjing Road, Jingan, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/rongjia-noodle-soup-with-yellow-croaker",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#27",
+      "type": "source_address_difference",
+      "record_address": "临港新城滴水湖畔",
+      "record_address_en": "L2-016-017, Sunny Walk, 230 Ruiping Road, Xuhui, Shanghai, China Mainland",
+      "source_address": "L2-016-017, Sunny Walk, 230 Ruiping Road, Xuhui, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/the-lakeside-veggie",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#28",
+      "type": "source_address_difference",
+      "record_address": "斜土路1422弄12号",
+      "record_address_en": "No. 12, Lane 1422, Xietu Road, Xuhui, Shanghai, China Mainland",
+      "source_address": "No. 12, Lane 1422, Xietu Road, Xuhui, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/us/en/shanghai-municipality/shanghai/restaurant/the-taste-of-huzhou",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#29",
+      "type": "source_address_difference",
+      "record_address": "陆家嘴环路1366号",
+      "record_address_en": "01-02, 3F, New Bund 31 Mall, No.15, Lane 666, West Haiyang Road, Pudong, Shanghai, China Mainland",
+      "source_address": "01-02, 3F, New Bund 31 Mall, No.15, Lane 666, West Haiyang Road, Pudong, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/us/en/shanghai-municipality/shanghai/restaurant/wang-lu",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#30",
+      "type": "source_address_difference",
+      "record_address": "嘉善路222号",
+      "record_address_en": "222 Jiashan Road, Xuhui, Shanghai, China Mainland",
+      "source_address": "222 Jiashan Road, Xuhui, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/xiao-tao-mian-guan",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#31",
+      "type": "source_address_difference",
+      "record_address": "福建中路345号",
+      "record_address_en": "345 Middle Fujian Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "345 Middle Fujian Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/us/en/shanghai-municipality/shanghai/restaurant/yangzhou-fan-dian-huangpu",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#32",
+      "type": "source_address_difference",
+      "record_address": "浦东南路500号",
+      "record_address_en": "Shop 910, 9F, L+Mall, 899 South Pudong Road, Pudong, Shanghai, China Mainland",
+      "source_address": "Shop 910, 9F, L+Mall, 899 South Pudong Road, Pudong, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/yongfu-mini",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#33",
+      "type": "source_address_difference",
+      "record_address": "丽园路501号",
+      "record_address_en": "501 Liyuan Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "501 Liyuan Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/yu-du-lao-wei-mian-huangpu",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#34",
+      "type": "source_address_difference",
+      "record_address": "新闸路1852号",
+      "record_address_en": "358 West Yan'an Road, Jingan, Shanghai, China Mainland",
+      "source_address": "358 West Yan'an Road, Jingan, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/yu-ge-zhan-jiang-jingan",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#35",
+      "type": "source_address_difference",
+      "record_address": "黄陂南路780号",
+      "record_address_en": "344 Changle Road, Huangpu, Shanghai, China Mainland",
+      "source_address": "344 Changle Road, Huangpu, Shanghai, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/yunhe-noodle-huangpu",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "chengdu/2026/michelin-starred#2",
+      "type": "source_address_difference",
+      "record_address": "成都市青羊区长发街24号",
+      "record_address_en": "24 Changfa Street, Qingyang, Chengdu, Chinese Mainland",
+      "source_address": "No. 1, 24 Changfa Street, Qingyang, Chengdu, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/chengdu-municipality/chengdu/restaurant/yu-zhi-lan-1196150",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "chengdu/2026/michelin-starred#4",
+      "type": "source_address_difference",
+      "record_address": "成都市武侯区交子大道33号中国华商金融中心3楼313室",
+      "record_address_en": "No. 313, 3F, Chinese Financial Center, 33 Jiaozi Avenue, Wuhou, Chengdu, Chinese Mainland",
+      "source_address": "No. 318, 3F, Chinese Financial Center, 33 Jiaozi Avenue, Wuhou, Chengdu, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/chengdu-municipality/chengdu/restaurant/co",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "chengdu/2026/michelin-starred#5",
+      "type": "source_address_difference",
+      "record_address": "成都市金牛区金牛坝路12号",
+      "record_address_en": "12 Jinniuba Road, Jinniu, Chengdu, Chinese Mainland",
+      "source_address": "No. 1, Courtyard 5, China Railway Ludao Art City, 16 Majia Garden Road, Jinniu, Chengdu, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/chengdu-municipality/chengdu/restaurant/fang-xiang-jing",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "chengdu/2026/michelin-starred#9",
+      "type": "source_address_difference",
+      "record_address": "成都市锦江区笔帖式街81号博舍酒店",
+      "record_address_en": "The Temple House, 81 Bitieshi Street, Jinjiang, Chengdu, 610021, Chinese Mainland",
+      "source_address": "Upper House, 81 Bitieshi Street, Jinjiang, Chengdu, 610021, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/chengdu-municipality/chengdu/restaurant/mi-xun-teahouse",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "chengdu/2026/michelin-starred#12",
+      "type": "source_address_difference",
+      "record_address": "成都市锦江区镗钯街42号",
+      "record_address_en": "42 Tangba Street, Jinjiang, Chengdu, Chinese Mainland",
+      "source_address": "No. 1, Block 8, Building & Greenwich Plaza, 1 Wangjiang Road, Wuhou, Chengdu, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/chengdu-municipality/chengdu/restaurant/xu-s-cuisine",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "chengdu/2026/michelin-starred#13",
+      "type": "source_address_difference",
+      "record_address": "成都市武侯区桐梓林东路1号1栋",
+      "record_address_en": "No. 1, 1 Tongzilin East Road, Wuhou, Chengdu, Chinese Mainland",
+      "source_address": "1-1 Tongzilin East Road, Wuhou, Chengdu, Chinese Mainland",
+      "source_url": "https://guide.michelin.com/en/chengdu-municipality/chengdu/restaurant/young-art-yong-ya-he-xian-tongzilin-east-road",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-bib-gourmand#4",
+      "type": "source_address_difference",
+      "record_address": "譚臣道 105–111 號豪富大廈 1 樓",
+      "record_address_en": "1F, Harvard Commercial Building, 105-111 Thomson Road, Wan Chai, Hong Kong, Hong Kong SAR China",
+      "source_address": "1F, Harvard Commercial Building, 105-111 Thomson  Road, Wan Chai, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/lai-s-kitchen",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#1",
+      "type": "source_reports_temporary_closure",
+      "record_status": "active",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/8½-otto-e-mezzo-bombana",
+      "action": "保留已有营业状态；另行核实有效日期。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#10",
+      "type": "source_address_difference",
+      "record_address": "中環皇后大道中15號置地廣場告羅士打大廈Forty-Five 44樓",
+      "record_address_en": "44F, Forty-Five, Gloucester Tower, Landmark, 15 Queen's Road Central, Central, Hong Kong",
+      "source_address": "44F, Forty-Five, Gloucester Tower, Landmark, 15 Queen's Road Central, Central, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/cristal-room-by-anne-sophie-pic",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#11",
+      "type": "source_address_difference",
+      "record_address": "中環皇后大道中15號置地廣場中庭4樓401號舖",
+      "record_address_en": "Shop 401, 4F, Landmark Atrium, 15 Queen's Road Central, Hong Kong",
+      "source_address": "Shops 403-410, 4F, Landmark Atrium, 15 Queen's Road Central, Central, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/l-atelier-de-joel-robuchon",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#16",
+      "type": "source_address_difference",
+      "record_address": "中環德輔道中22號華懋中心一期8樓",
+      "record_address_en": "8F, One Chinachem Central, 22 Des Voeux Road Central, Central, Hong Kong, Hong Kong SAR China",
+      "source_address": "8F, One Chinachem Central, 22 Des Voeux Road Central,  Central, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/octavium",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#17",
+      "type": "source_address_difference",
+      "record_address": "灣仔港灣徑1號瑞吉酒店2樓",
+      "record_address_en": "2F, The St. Regis Hong Kong, 1 Harbour Drive, Wan Chai, Hong Kong, Hong Kong SAR China",
+      "source_address": "2F, The St. Regis Hotel, 1 Harbour Drive, Wan Chai, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/run",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#18",
+      "type": "source_address_difference",
+      "record_address": "上環荷李活道210號",
+      "record_address_en": "210 Hollywood Road, Sheung Wan, Hong Kong, Hong Kong SAR China",
+      "source_address": "68 Lok Ku Road, Sheung Wan, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/tate",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#19",
+      "type": "source_address_difference",
+      "record_address": "尖沙咀柯士甸道西1號環球貿易廣場香港麗思卡爾頓酒店102樓",
+      "record_address_en": "102F, The Ritz-Carlton Hong Kong, International Commerce Centre, 1 Austin Road West, Tsim Sha Tsui, Hong Kong, Hong Kong SAR China",
+      "source_address": "102F, The Ritz-Carlton, International Commerce Centre, 1 Austin Road West, Tsim Sha Tsui, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/tin-lung-heen",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#20",
+      "type": "source_address_difference",
+      "record_address": "中環威靈頓街129號地下",
+      "record_address_en": "G/F, 129 Wellington Street, Central, Hong Kong, Hong Kong SAR China",
+      "source_address": "Shop G05, 107-108, GF & 1F, Nexxus Building, 41 Connaught Road Central, Central, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/ying-jee-club",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#21",
+      "type": "source_address_difference",
+      "record_address": "中環遮打道18號歷山大廈3樓301號舖",
+      "record_address_en": "Shop 301, 3F, Alexandra House, 18 Chater Road, Central, Hong Kong, Hong Kong SAR China",
+      "source_address": "Shop 302, 3F, Alexandra House, 18 Chater Road, Central, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/ami",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#39",
+      "type": "source_address_difference",
+      "record_address": "灣仔軒尼詩道226號寶華商業中心地下",
+      "record_address_en": "G/F, Po Wah Commercial Centre, 226 Hennessy Road, Wan Chai, Hong Kong, Hong Kong SAR China",
+      "source_address": "GF, Po Wah Commercial Center, 226 Hennessy Road, Wan Chai, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/kam-s-roast-goose",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#49",
+      "type": "source_address_difference",
+      "record_address": "中環荷李活道61-63號地下",
+      "record_address_en": "G/F, 61-63 Hollywood Road, Central, Hong Kong, Hong Kong SAR China",
+      "source_address": "61-63 Hollywood Road, Central, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/neighborhood",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#55",
+      "type": "source_address_difference",
+      "record_address": "銅鑼灣希慎道33號利園一期3樓",
+      "record_address_en": "3F, Lee Garden One, 33 Hysan Avenue, Causeway Bay, Hong Kong, Hong Kong SAR China",
+      "source_address": "Shop No. 402 & 403, 4F, Lee Garden One, 33 Hysan Avenue, Causeway Bay, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/roganic1185143",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#56",
+      "type": "source_address_difference",
+      "record_address": "中環安蘭街18號21樓",
+      "record_address_en": "21F, 18 On Lan Street, Central, Hong Kong, Hong Kong SAR China",
+      "source_address": "21F,  18 On Lan Street, Central, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/ryota-kappou-modern",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#72",
+      "type": "source_address_difference",
+      "record_address": "中環士丹利街34-38號地下",
+      "record_address_en": "G/F, 34-38 Stanley Street, Central, Hong Kong, Hong Kong SAR China",
+      "source_address": "GF, Conwell House, 34-38 Stanley Street, Central, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/yat-lok",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "hong-kong/2026/michelin-starred#76",
+      "type": "source_address_difference",
+      "record_address": "金鐘金鐘道88號太古廣場港麗酒店8樓",
+      "record_address_en": "8F, Conrad Hong Kong, Pacific Place, 88 Queensway, Admiralty, Hong Kong, Hong Kong SAR China",
+      "source_address": "1-3F, ZJ 300, 300-306 Lockhart Road, Wan Chai, Hong Kong, Hong Kong SAR China",
+      "source_url": "https://guide.michelin.com/hk/en/hong-kong-region/hong-kong/restaurant/zhejiang-heen",
+      "action": "只记录，地址与坐标不改；含格式/拼写/邮编差异，不能全部认定迁址。"
+    },
+    {
+      "key": "shanghai/2026/michelin-bib-gourmand#8",
+      "type": "cuisine_and_address_conflict",
+      "record_cuisine": "素食",
+      "record_group": "VEGETARIAN",
+      "source_cuisine": "Jiangzhe",
+      "record_address": "北京西路1013号尚演谷南楼",
+      "record_address_en": "2F, 90 South Shaanxi Road, Jingan, Shanghai, China Mainland",
+      "source_address": "2F, 90 South Shaanxi Road, Jingan, Shanghai, Chinese Mainland",
+      "reason": "同一 listing 描述鱼类及江浙家常菜；中文地址、英文地址与原素食分组存在需另行核实的冲突。",
+      "action": "本轮仅填 dining_category=chinese；其他字段按用户要求不改。"
+    }
+  ]
+}

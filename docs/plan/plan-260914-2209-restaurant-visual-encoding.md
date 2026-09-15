@@ -2,20 +2,22 @@
 id: "plan-260914-2209-restaurant-visual-encoding"
 title: "餐厅自动配色与四类图标：设计定稿与开发交接"
 type: plan
-status: active
+status: superseded
 created: 2026-09-14
-updated: 2026-09-14
+updated: 2026-09-15
 timezone: "Asia/Shanghai"
 parent: "index-plan"
 depends-on:
   - "plan-260913-0040-frontend-professionalization"
-superseded-by: ""
+superseded-by: "plan-260915-1504-dining-experience-markers"
 author: "Codex"
 tags: ["design", "visualization", "taxonomy", "onboarding", "handoff"]
 source: "2026-09-14 用户确认四类图标方案、自动配色与接入目的，并授权设计定稿；实际开发由另一 Agent 完成。"
 ---
 
 # 餐厅自动配色与四类图标
+
+后续视觉与接入目标已由 [P09 主打体验图标与价格角标](plan-260915-1504-dining-experience-markers.md)接替。P08 保留为既有实现背景，其自动配色和历史字段事实继续有效；本文被替代不代表 P09 代码已经实现。新开发与补标请从 P09 和当前来源 runbook 进入。
 
 本次设计已经定稿，本地框架实现已完成；开发证据与独立验收状态由 P08 tasks 记录。目的：用户容易识别餐厅大类并进一步筛选，接入 Agent 按统一规则标注新地区，框架自动生成展示，不再逐个类别补颜色或业务代码。
 

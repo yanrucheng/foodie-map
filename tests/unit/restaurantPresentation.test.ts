@@ -1,13 +1,13 @@
 // @vitest-environment jsdom
 import { afterEach, describe, it, expect, vi } from "vitest";
 import * as presentation from "@/config/restaurantPresentation";
-import { servingFormSchema, parseRestaurantArray } from "@/data/contract";
+import { diningCategorySchema, servingFormSchema, parseRestaurantArray } from "@/data/contract";
 import { validateDataset, presentationDiagnostics } from "@/data/validation";
 import { restaurantFacts } from "@/data/display";
 import { context, restaurant, taxonomy } from "./dataFixtures";
 import hongKong from "../../public/data/taxonomy/hong-kong.json";
 import beijing from "../../public/data/taxonomy/beijing.json";
-const { getGroupStyle, getGroupLabel, getServingForm, servingForms } = presentation;
+const { getGroupStyle, getGroupLabel, getDiningCategory, diningCategories, parsePriceGrade, diningDistribution, diningDisplayCounts } = presentation;
 afterEach(() => vi.restoreAllMocks());
 
 describe("P08 deterministic category colors", () => {
@@ -57,7 +57,7 @@ describe("P08 optional independent forms and local icons", () => {
     const result = validateDataset(rows, context, "forms.json");
     expect(result.counts.serving_form).toEqual({ meal: 1, snack: 1, dessert: 1, drink: 1, unclassified: 5 });
     expect(result.diagnostics).toEqual([]);
-    expect(rows.map((row) => restaurantFacts(row).form.label)).toEqual(["餐食", "小食", "甜品", "饮品", ...Array(5).fill("类型未标注")]);
+    expect(rows.map((row) => restaurantFacts(row).category.label)).toEqual(Array(9).fill("主打体验未标注"));
     expect(new Set(rows.map((row) => restaurantFacts(row).groupStyle.color)).size).toBe(1);
   });
   it.each(["unknown", "", "other", "unclassified", [], 0, false, {}])("rejects %j with file/id/field diagnostics", (serving_form) => {
@@ -66,19 +66,80 @@ describe("P08 optional independent forms and local icons", () => {
     expect(result.diagnostics).toContainEqual(expect.objectContaining({ severity: "error", file: "bad-form.json", record_id: 1, field: "/0/serving_form" }));
   });
   it("has valid local SVG for every schema form and unknown, with pinned Tabler identities", () => {
-    expect(Object.keys(servingForms)).toEqual(servingFormSchema.options);
-    expect(Object.values(servingForms).map((form) => form.icon)).toEqual(["tools-kitchen-2", "dumpling", "cake-roll", "cup"]);
-    for (const form of [...servingFormSchema.options, null]) {
-      const svg = new DOMParser().parseFromString(getServingForm(form).svg, "image/svg+xml");
+    expect(Object.keys(diningCategories)).toEqual(diningCategorySchema.options);
+    expect(Object.values(diningCategories).map((form) => form.icon)).toEqual(["bowl-chopsticks", "meat", "fish", "cake-roll", "chef-hat", "cooking-pot", "kaiseki-tray", "tools-kitchen-2"]);
+    for (const form of [...diningCategorySchema.options, null]) {
+      const svg = new DOMParser().parseFromString(getDiningCategory(form).svg, "image/svg+xml");
       expect(svg.querySelector("parsererror")).toBeNull();
       expect(svg.documentElement.tagName).toBe("svg");
       expect(svg.querySelectorAll("path").length).toBeGreaterThan(0);
       expect(svg.querySelector("script, image, use, foreignObject, [href], [onload]")).toBeNull();
       expect(svg.documentElement.getAttribute("viewBox")).toBe("0 0 24 24");
     }
-    expect(getServingForm(null)).toEqual(getServingForm(undefined));
+    expect(getDiningCategory(null)).toEqual(getDiningCategory(undefined));
   });
   it.each(["color", "icon", "svg"])("rejects data overrides of %s", (field) => {
     expect(() => parseRestaurantArray([{ ...restaurant(), [field]: "<svg/>" }])).toThrow();
+  });
+});
+
+describe("P09 source category and price contracts", () => {
+  it("preserves eight independent categories, legacy fields and source prices", () => {
+    const rows = diningCategorySchema.options.map((dining_category, index) => restaurant({ id: index + 1, dining_category,
+      serving_form: "drink", venue_type: "street_food", price_range: " ￥￥ ", price: " 150–250 ", currency: "JPY" }));
+    const before = structuredClone(rows);
+    expect(parseRestaurantArray(rows)).toEqual(before);
+    const result = validateDataset(rows, context, "dining.json");
+    expect(result.diagnostics).toEqual([]);
+    expect(result.counts.serving_form.drink).toBe(8);
+    expect(result.counts.dining_category.unclassified).toBe(0);
+    expect(rows.map((row) => restaurantFacts(row).category.label)).toEqual(["面饭面点", "肉食主打", "鱼鲜主打", "甜饮", "法式", "中餐", "日式会席", "其他料理"]);
+    expect(rows.every((row) => restaurantFacts(row).categoryAnnotated)).toBe(true);
+    expect(rows).toEqual(before);
+  });
+  it.each(["", "unknown", "mixed", "meal", "snack", "sweet", "kaiseki", [], 3, false, {}])("rejects category %j with an actionable field path", (dining_category) => {
+    const result = validateDataset([{ ...restaurant(), dining_category }], context, "bad-dining.json");
+    expect(result.records).toEqual([]);
+    expect(result.diagnostics).toContainEqual(expect.objectContaining({ severity: "error", file: "bad-dining.json", record_id: 1, field: "/0/dining_category" }));
+  });
+  it.each(["¥", "$$", " ￥￥￥ ", "££££", "€€", "＄＄", "₩₩", "\u{1e2ff}\u{1e2ff}"])("parses %s on a copy using Unicode symbol counts", (raw) => {
+    const tier = [...raw.trim().normalize("NFKC")].length;
+    expect(parsePriceGrade(raw)).toEqual({ status: "valid", tier, badge: "¥".repeat(tier) });
+    const row = restaurant({ price_range: raw, price: "150 起", currency: "MOP" });
+    const facts = restaurantFacts(row);
+    expect(facts.details).toContainEqual(["价格", "MOP 150 起"]);
+    expect(facts.details.find(([label]) => label === "价格等级")?.[1]).toContain(`原文 ${raw}`);
+    expect(row.price_range).toBe(raw);
+  });
+  it.each([undefined, null, "", " \t\n", "　"])("has no badge for missing %j", (raw) => {
+    expect(parsePriceGrade(raw)).toEqual({ status: "missing", tier: null, badge: null });
+    expect(restaurantFacts(restaurant({ price: "150–250", currency: "CNY", price_range: raw })).priceGrade.badge).toBeNull();
+  });
+  it.each(["¥150–250", "150", "约200元", "¥¥¥¥¥", "$¥", "¥ ¥", '<img src=x onerror="alert(1)">'])("preserves unsupported price %s without guessing", (raw) => {
+    expect(parsePriceGrade(raw)).toEqual({ status: "unrecognized", tier: null, badge: null });
+    const row = restaurant({ price_range: raw });
+    const result = validateDataset([row], context, "prices.json");
+    expect(result.records).toEqual([row]);
+    expect(result.diagnostics).toContainEqual(expect.objectContaining({ severity: "warning", code: "UNRECOGNIZED_PRICE_GRADE", file: "prices.json", record_id: 1, field: "/0/price_range", raw }));
+    expect(restaurantFacts(row).details).toContainEqual(["价格等级", `${raw}（未识别等级）`]);
+  });
+  it("reconciles explicit other, absent/null and no-badge combinations with listed denominators", () => {
+    const rows = [
+      { dining_category: "other" as const, price_range: "¥" }, {}, { dining_category: null, price_range: "150" },
+      { dining_category: "meat" as const, price_range: "$$" }, { dining_category: "meat" as const, price_range: "¥¥¥" },
+      { dining_category: "meat" as const, price_range: "¥¥¥¥" },
+    ];
+    const result = diningDistribution(rows);
+    expect(result.dining_category).toEqual({ staple: 0, meat: 3, seafood: 0, dessert_drink: 0, french: 0, chinese: 0, japanese_course: 0, other: 1, unclassified: 2 });
+    expect(result.price_grade).toEqual({ 1: 1, 2: 1, 3: 1, 4: 1, missing: 1, unrecognized: 1 });
+    expect(Object.values(diningDisplayCounts(result.dining_category)).reduce((a, b) => a + b, 0)).toBe(6);
+    expect(result.largest_icon_group?.ratio).toBe(.5);
+    expect(result.largest_icon_price_group).toEqual({ group: "other:no-badge", count: 2, ratio: 2 / 6 });
+    expect(diningDistribution([]).largest_icon_group).toBeNull();
+    expect(diningDistribution([]).largest_icon_price_group).toBeNull();
+    expect(getDiningCategory(null).svg).toBe(getDiningCategory("other").svg);
+    expect(getDiningCategory(null).label).not.toBe(getDiningCategory("other").label);
+    const missing = restaurantFacts(restaurant());
+    expect(missing.categoryAnnotated).toBe(false);
   });
 });
