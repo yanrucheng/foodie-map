@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { citySchema, editionYearSchema, getMapPosition, guideTypeSchema, restaurantArraySchema, restaurantFieldNames, spatialContextSchema, type Restaurant, type SpatialContext } from "./contract.ts";
 import { deriveCuisine, taxonomyBundleSchema, type Mappings, type Taxonomy } from "./taxonomy.ts";
+import { countServingForms, getGroupStyle } from "../config/restaurantPresentation.ts";
 
 export interface Diagnostic {
   severity: "error" | "warning";
@@ -34,10 +35,20 @@ export function schemaDiagnostics(error: z.ZodError, file: string, input?: unkno
 
 const contextSchema = z.object({ city: citySchema, guide_type: guideTypeSchema, edition_year: editionYearSchema, spatial: spatialContextSchema.optional() });
 
+/** Includes unused registered groups; hashing must never hide missing presentation support. */
+export function presentationDiagnostics(taxonomy: Taxonomy, file: string): Diagnostic[] {
+  return taxonomy.groups.flatMap((group, index) => {
+    const style = getGroupStyle(group.key);
+    const hue = /^hsl\((\d+) 62% 28%\)$/u.exec(style.color);
+    const valid = style.textColor === "#fff" && (group.key === "OTHER" ? style.color === "#666666" : hue !== null && Number(hue[1]) < 360);
+    return valid ? [] : [{ severity: "error" as const, code: "INVALID_PRESENTATION", file, field: `/groups/${index}/key`, reason: `Cannot generate category style for ${group.key}` }];
+  });
+}
+
 /** Read-only validation; catalog discovery belongs to P03, record rules stay here. */
 export function validateDataset(input: unknown, context: DatasetContext, file: string) {
   const diagnostics: Diagnostic[] = [];
-  const counts = { listed: Array.isArray(input) ? input.length : 0, locatable: 0, missing_cuisine: 0, unmapped: 0, explicit_other: 0 };
+  const counts = { listed: Array.isArray(input) ? input.length : 0, locatable: 0, missing_cuisine: 0, unmapped: 0, explicit_other: 0, serving_form: countServingForms([]) };
   const parsed = restaurantArraySchema.safeParse(input);
   const metadata = contextSchema.safeParse(context);
   const bundle = taxonomyBundleSchema.safeParse(context);
@@ -46,6 +57,8 @@ export function validateDataset(input: unknown, context: DatasetContext, file: s
   if (!bundle.success) diagnostics.push(...schemaDiagnostics(bundle.error, `${file} taxonomy/mappings`));
   if (!parsed.success || !metadata.success || !bundle.success) return { records: [], counts, diagnostics };
   const records = parsed.data;
+  counts.serving_form = countServingForms(records);
+  diagnostics.push(...presentationDiagnostics(bundle.data.taxonomy, `${file} taxonomy`));
   const issue = (severity: Diagnostic["severity"], code: string, field: string, reason: string, record?: Restaurant) => {
     diagnostics.push({ severity, code, file, field, reason, ...(record ? { record_id: record.id } : {}) });
   };

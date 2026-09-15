@@ -4,7 +4,9 @@
 
 ## 权威入口与输入
 
-P08 [自动配色与四类图标设计](../docs/plan/plan-260914-2209-restaurant-visual-encoding.md)已定稿、尚待开发。新的消费形式标注规则见[来源 runbook](../docs/runbook/runbook-260507-1013-valid-data-source-guide.md#p08-labeling)；当前命令/合同尚未实现 serving_form，正式数据补标须在实现后进行。原 cuisine_group、taxonomy/mappings 和以下接入命令继续有效。
+P08 [自动配色与四类图标](../docs/plan/plan-260914-2209-restaurant-visual-encoding.md)已在本地实现。可选 `serving_form` 接受 `meal`（餐食）、`snack`（小食）、`dessert`（甜品）、`drink`（饮品）；缺省/null 显示“类型未标注”，空串、unknown、数组等非法值会使整个数据集报错。旧 `venue_type` 保留原义，不自动转换。正式名单补标仍由独立数据任务负责，开发通过不等于来源标注完成或独立验收通过。
+
+语义判断遵循[来源 runbook](../docs/runbook/runbook-260507-1013-valid-data-source-guide.md#p08-labeling)。`cuisine_group` 继续由完整 raw 精确映射派生；合法非 OTHER key 自动上色，同 key 跨城市、榜单、年度和筛选同色，允许撞色。先检索现有 key，再按证据复用或新增 taxonomy/mappings；不用改前端样式。数据不得用 color/icon/svg 覆盖展示定义。boarding 只改变 cuisine_group，两个类型字段和其他事实原样透传。
 
 - [public/data/catalog.json](../public/data/catalog.json) 是城市/范围、榜单、年度、文件路径、展示和 taxonomy/mappings 的唯一登记。[cities.ts](../src/config/cities.ts) 只适配它。release.json 是 P07 构建摘要，不编辑。
 - 餐厅字段、空值、价格/币种、位置资格只以 [P02 合同](../src/data/contract.ts)、[taxonomy 合同](../src/data/taxonomy.ts)、[校验](../src/data/validation.ts) 为准；含 JPY，金额保留原文，不推算均价。
@@ -65,7 +67,7 @@ rtk npm run release:verify
 
 `data:aliases` 仅在设置 legacyPath 时更新旧地址副本：每个旧地址固定到 catalog 中指定的某年度，不跟随最新年份；年度文件是唯一维护源。校验拒绝旧地址与其源字节不同。BC-01 尚未确定，暂保留已有地址和合法 year/city/guide 链接；没有永久兼容承诺，退役另行决定。
 
-`readme` 更新下方覆盖区块；`check:coverage` 只读，表格缺失、过期、数据/登记/本地证据字节变化均非零，即使条数未变也能发现。validate:data 数据错误 exit 1，命令执行/使用错误 exit 2。重复坐标等维护 warning 不自动删店或改 geocode_success。
+`readme` 更新下方覆盖区块；`check:coverage` 只读，表格缺失、过期、数据/登记/本地证据字节变化均非零，即使条数未变也能发现。validate:data 数据错误 exit 1，命令执行/使用错误 exit 2。重复坐标等维护 warning 不自动删店或改 geocode_success。校验同时覆盖所有登记 taxonomy 分组（含未使用组）的自动样式，并在文本和 JSON 的 `counts.serving_form` 中汇总四类及 `unclassified` 数量；缺失类型不逐店告警、不设覆盖率门槛。
 
 正式发布门禁使用实际覆盖检查，构建一次，生产浏览器与性能检查消费该产物，verify 校验源和产物未变化。通过门禁不授权部署，不代替 P05 地图精度或 P06 人工验收。发布流程与缓存 A→B→A 见[开发指南](development.md)。
 
@@ -88,7 +90,7 @@ rtk proxy node --test tests/e2e/catalog.test.mjs tests/e2e/release-cache.test.mj
 
 <!-- COVERAGE_TABLE_START -->
 
-<!-- catalog-and-inputs-sha256: a40d8020475244574c78bb06fc87a4eabad03397abc6ee971c8350a3b6a43723 -->
+<!-- catalog-and-inputs-sha256: c7744629f003be14bfc8d5f4fe92b43866d844e7d87cd619de6bb7d1bcd60129 -->
 
 | 城市 / 实际范围 | 榜单 | 年度 | 收录 | 可定位 | 名单状态 | 官方总数 |
 |---|---|---:|---:|---:|---|---:|

@@ -121,6 +121,21 @@ python3 skills/cuisine-boarding/board.py --help
 
 实际接入遵循[数据接入指南](data-onboarding-guide.md)和 P02/P03 的合同。
 
+## P08 展示与验证
+
+[`restaurantPresentation.ts`](../src/config/restaurantPresentation.ts) 是自动配色、消费形式名称和本地 SVG 的共享入口，替代原 cuisineRegistry 手工色表。类别语义仍由 taxonomy/mappings 维护，字段规则由 contract.ts 维护。FNV-1a 32 位哈希取 360 色相，62% 饱和度、28% 亮度、白色前景；OTHER 固定 #666666。React 和 Leaflet 共用受信 Tabler Outline 3.46.0 图形，许可随 `public/icons/tabler-LICENSE.txt` 构建。没有远程图标依赖。
+
+`serving_form` 是独立可选字段。useFilters 统一组合类别/形式过滤，统计、地图和热力图消费同一结果；形式按钮数量按整份数据（含无坐标）计数。App 的当前选中记录同时驱动标记外圈、桌面弹窗和移动详情；标记点击与搜索更新同一状态，关闭、筛选撤下和切版清理同步撤下外圈。每次激活传递现有选择对象，因此连续鼠标点击或再次搜索同一记录也会同步实际弹窗状态。全未标注名单仍可浏览。标记可见直径 32px、图形 20px、操作目标 44px；最高缩放继续聚合，spiderfy 间距倍率 1.6，保留来源坐标。实际正式补标和同义 key 规范化由数据任务负责。
+
+针对性复核沿用既有入口，无新增 CLI：
+
+```sh
+rtk npm test -- tests/unit/restaurantPresentation.test.ts tests/unit/useFilters.test.ts tests/unit/dataTools.test.ts
+rtk proxy env E2E_ARTIFACT_DIR=test-results/p08/browser node --test tests/e2e/visual-encoding.test.mjs
+```
+
+浏览器场景通过原始 catalog、正式 parser 和 releaseBuild 加载隔离新城与类别，验证四类/未知、组合筛选、两端详情、键盘/触摸、重合点和离线图标；开发证据与未验收范围见 [P08 tasks](../openspec/changes/p08-automatic-visual-encoding/tasks.md)。完整交付仍运行 `release:check` / `release:verify` 和既有缓存回滚检查。
+
 ## 排障
 
 | 输出或现象 | 处理方式 |

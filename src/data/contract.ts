@@ -5,6 +5,7 @@ const optionalText = z.string().nullish();
 export const localIdSchema = z.number().int().positive().max(Number.MAX_SAFE_INTEGER);
 export const citySchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/u);
 export const guideTypeSchema = z.enum(["michelin-starred", "michelin-bib-gourmand"]);
+export const servingFormSchema = z.enum(["meal", "snack", "dessert", "drink"]);
 export const venueTypeSchema = z.enum(["restaurant", "street_food", "dessert"]);
 export const currencySchema = z.enum(["CNY", "HKD", "MOP", "JPY"]);
 export const editionYearSchema = z.number().int().min(1000).max(9999);
@@ -83,6 +84,7 @@ const restaurantObjectSchema = z.object({
   is_new: z.boolean().nullish(),
   cuisine: optionalText,
   venue_type: venueTypeSchema.nullish(),
+  serving_form: servingFormSchema.nullish(),
   area: optionalText,
   primary_area: optionalText,
   major_region: optionalText,
@@ -110,6 +112,9 @@ export const restaurantSchema = restaurantObjectSchema.superRefine((record, cont
   for (const field of retiredPriceFields) {
     if (Object.prototype.hasOwnProperty.call(record, field)) context.addIssue({ code: "custom", path: [field], message: "Retired price field; migrate to price and currency" });
   }
+  for (const field of ["color", "icon", "svg"]) {
+    if (Object.prototype.hasOwnProperty.call(record, field)) context.addIssue({ code: "custom", path: [field], message: "Presentation is derived from cuisine_group and serving_form; data cannot override it" });
+  }
 });
 
 export function checkUniqueIds(records: { id: number }[], context: z.RefinementCtx): void {
@@ -123,4 +128,5 @@ export function checkUniqueIds(records: { id: number }[], context: z.RefinementC
 export const restaurantArraySchema = z.array(restaurantSchema).superRefine(checkUniqueIds);
 export function parseRestaurantArray(input: unknown): Restaurant[] { return restaurantArraySchema.parse(input); }
 export type Restaurant = z.infer<typeof restaurantSchema>;
+export type ServingForm = z.infer<typeof servingFormSchema>;
 export type VenueType = z.infer<typeof venueTypeSchema>;

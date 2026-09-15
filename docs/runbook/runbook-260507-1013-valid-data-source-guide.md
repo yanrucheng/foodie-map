@@ -54,9 +54,9 @@ source: "readme/data-onboarding-guide.md; eval/data-quality-audit-260506.md"
 
 <a id="p08-labeling"></a>
 
-## P08 消费形式与细分类别标注（设计定稿，待实现）
+## P08 消费形式与细分类别标注（本地实现已支持）
 
-本节落实用户已确认的“四类图标＋自动颜色”。完整合同归 [P08 design](../../openspec/changes/p08-automatic-visual-encoding/design.md)，本节负责来源判断与标注操作。**当前工具尚未实现 serving_form；本节先供开发与数据 Agent 交接，不表示正式数据已补标。** 开发完成后由 P08 任务更新这里的状态及[原接入入口](../../readme/data-onboarding-guide.md)，不建立另一套命令流程。
+本节落实用户已确认的“四类图标＋自动颜色”。完整合同归 [P08 design](../../openspec/changes/p08-automatic-visual-encoding/design.md)，本节负责来源判断与标注操作。**当前 schema、boarding 透传、校验汇总和界面已支持 serving_form；正式数据补标仍是独立任务。** 命令继续使用[原接入入口](../../readme/data-onboarding-guide.md)，开发证据和独立验收状态见 [P08 tasks](../../openspec/changes/p08-automatic-visual-encoding/tasks.md)。
 
 ### 先判断主营消费形式
 
@@ -69,7 +69,7 @@ source: "readme/data-onboarding-guide.md; eval/data-quality-audit-260506.md"
 | dessert（甜品） | 主营甜食，如冰激凌、蛋糕、糖水 | 餐厅供应餐后甜点不使整家店成为甜品；兼售咖啡仍要看主营。 |
 | drink（饮品） | 主营咖啡、茶饮、奶茶、酒饮等 | 咖啡店兼售蛋糕不自动归为甜品；酒吧有小食不自动归为 snack。 |
 
-有多种供给且来源不能确定主次，或来源不足时省略字段或填 null。不要填 unknown/other/mixed，不强行在四类中选一个。图标只是展示结果，不根据饺子/蛋糕图形反推门店类型。原 venue_type 按原义保留，不与 serving_form 批量复制、改名或双写。
+有多种供给且来源不能确定主次，或来源不足时省略字段或填 null。空串、数组和非法业务值由正式校验拒绝；`unclassified` 只用于界面/统计，不能写入数据。不要填 unknown/other/mixed，不强行在四类中选一个。图标只是展示结果，不根据饺子/蛋糕图形反推门店类型。原 venue_type 按原义保留，不与 serving_form 批量复制、改名或双写。
 
 在已有采集/任务材料中保留门店身份、参考来源和支持主营判断的简短说明。已有材料足够时直接引用，不要求新增逐店凭证文件、独立证明服务或重新抓取全部来源。更新历史年度要说明证据适用时间，不能用今天的菜单默默改写过去。
 

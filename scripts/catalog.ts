@@ -6,7 +6,7 @@ import { z } from "zod";
 import { catalogSchema, type Catalog } from "../src/data/catalog.ts";
 import { reconciliationSchema, reconcileCoverage } from "../src/data/reconciliation.ts";
 import { taxonomyBundleSchema } from "../src/data/taxonomy.ts";
-import { schemaDiagnostics, validateDataset, type Diagnostic } from "../src/data/validation.ts";
+import { schemaDiagnostics, validateDataset, presentationDiagnostics, type Diagnostic } from "../src/data/validation.ts";
 
 const repository = fileURLToPath(new URL("../", import.meta.url));
 export const digest = (body: string | Buffer) => createHash("sha256").update(body).digest("hex");
@@ -39,6 +39,7 @@ export function validateCatalogRoot(root: string, options: { checkAliases?: bool
       else report(error, !existsSync(taxonomyFile) ? taxonomyFile : mappingsFile);
     }
     if (bundle && bundle.taxonomy.city !== city.id) issue(taxonomyFile, "TAXONOMY_CITY_MISMATCH", `Expected ${city.id}`);
+    if (bundle) diagnostics.push(...presentationDiagnostics(bundle.taxonomy, taxonomyFile));
     for (const guide of city.guides) {
       const identity = `${city.id}/${guide.year}/${guide.id}`;
       for (const source of guide.provenance.sources) reference(source.ref);

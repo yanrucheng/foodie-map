@@ -113,7 +113,7 @@ for (const engine of ["chromium", "webkit"]) {
       const opened = page.context().waitForEvent("page"); await page.keyboard.press("Enter"); const source = await opened; await source.close();
       await page.keyboard.press("Escape");
       await page.waitForFunction(() => document.activeElement?.dataset.focusKey === "search");
-      await tabTo(page, ".venue-segment-btn"); await page.keyboard.press("Space");
+      await tabTo(page, ".form-segment-btn"); await page.keyboard.press("Space");
       await tabTo(page, '.filter-item input'); await page.keyboard.press("Space"); await visibleFocus(page);
       await tabTo(page, ".mode-btn"); await page.keyboard.press("Enter");
       await page.locator("canvas.leaflet-heatmap-layer").waitFor(); await page.keyboard.press("Enter");
@@ -125,7 +125,7 @@ for (const engine of ["chromium", "webkit"]) {
       await audit(page, `p06-${engine}-no-match`);
       assert.match(await page.locator(".search-feedback").textContent(), /修改搜索词/);
       await page.keyboard.press("Escape");
-      await page.getByRole("button", { name: "仅甜品", exact: true }).click();
+      await page.getByRole("button", { name: "甜品 1", exact: true }).click();
       await page.getByText(/当前筛选没有餐厅/).waitFor();
       await audit(page, `p06-${engine}-filtered-empty`);
       for (const failure of ["empty", "error", "bad-json", "loading"]) {

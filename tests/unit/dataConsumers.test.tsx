@@ -11,8 +11,8 @@ afterEach(cleanup);
 const response = (data: unknown) => ({ ok: true, json: async () => data });
 
 describe("runtime data consumption (P02-R1/R6)", () => {
-  it("loads partial records and clears invalid results through the existing error channel", async () => {
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValueOnce(response([restaurant()])).mockResolvedValueOnce(response([{ ...restaurant(), price: {} }])));
+  it.each([{ price: {} }, { serving_form: "unknown" }])("clears invalid results through the existing error channel: %j", async (invalid) => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValueOnce(response([restaurant()])).mockResolvedValueOnce(response([{ ...restaurant(), ...invalid }])));
     const { result, rerender } = renderHook(({ file }) => useGuideData(file), { initialProps: { file: "/valid.json" } });
     await waitFor(() => expect(result.current.loading).toBe(false));
     expect(result.current.data).toEqual([restaurant()]);

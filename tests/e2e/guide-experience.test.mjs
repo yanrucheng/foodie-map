@@ -165,7 +165,7 @@ for (const viewport of [desktop, mobile]) {
       const cuisineSelector = compact ? ".filter-pill" : ".filter-item";
       await page.waitForSelector(cuisineSelector, { visible: true });
       await clickText(page, cuisineSelector, "测试城新菜系");
-      await clickText(page, ".venue-segment-btn", "仅餐厅");
+      await clickText(page, ".form-segment-btn", "餐食 1");
       await page.waitForFunction(() => document.querySelector(".dataset-status").textContent.includes("筛选结果 1"));
       if (compact) {
         await page.click(".bottom-sheet-backdrop", { offset: { x: 10, y: 100 } });

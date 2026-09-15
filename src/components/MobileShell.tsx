@@ -21,7 +21,6 @@ interface MobileShellProps {
   mapRef: RefObject<MapShellHandle | null>;
   mapProps: MapShellProps;
   onLocate: (restaurant: Restaurant) => void;
-  onMarkerTap: (restaurant: Restaurant) => void;
   popupRestaurant: Restaurant | null;
   onClosePopup: () => void;
   searchKey: string;
@@ -31,7 +30,7 @@ interface MobileShellProps {
 
 /** Mobile layout consumes the same active dataset, filtered list and detail selection as desktop. */
 export function MobileShell({
-  headerContent, statusContent, mapRef, mapProps, onLocate, onMarkerTap,
+  headerContent, statusContent, mapRef, mapProps, onLocate,
   popupRestaurant, onClosePopup, searchKey, totalCount, geocodedCount,
 }: MobileShellProps) {
   const { activePanel, toggle, close } = usePanelState();
@@ -51,7 +50,7 @@ export function MobileShell({
       <SearchBar key={searchKey} restaurants={mapProps.restaurants} onLocate={handleLocate} />
     </div>
     <main className="mobile-map-container">
-      <MapShell ref={mapRef} {...mapProps} hideControls onModeChange={setDisplayMode} onMarkerTap={onMarkerTap} />
+      <MapShell ref={mapRef} {...mapProps} hideControls mobileDetails onModeChange={setDisplayMode} />
     </main>
     <div className="mobile-fab-group">
       {PANEL_TABS.map((tab) => <button key={tab.id} className={`mobile-fab-btn ${activePanel === tab.id ? "active" : ""}`}
@@ -61,7 +60,7 @@ export function MobileShell({
       {activePanel === "filter" && <FilterPanel
         groups={mapProps.groups} dataGroups={mapProps.dataGroups} activeGroups={mapProps.activeGroups}
         onToggle={mapProps.onToggleGroup} onToggleAll={mapProps.onToggleAll}
-        venueFilter={mapProps.venueFilter} onVenueFilterChange={mapProps.onVenueFilterChange}
+        formCounts={mapProps.formCounts} formFilter={mapProps.formFilter} onFormFilterChange={mapProps.onFormFilterChange}
         onModeToggle={handleModeToggle} currentMode={displayMode} variant="pill"
       />}
       {activePanel === "stats" && <StatsPanelReact restaurants={mapProps.visibleRestaurants} />}

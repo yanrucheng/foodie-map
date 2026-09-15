@@ -1,6 +1,6 @@
 import { DialogSurface } from "./DialogSurface";
 import type { Restaurant } from "@/types/restaurant";
-import { getGroupStyle, getGroupLabel, type CuisineGroup } from "@/config/cuisineRegistry";
+import { getGroupLabel, type CuisineGroup } from "@/config/restaurantPresentation";
 import { type SpatialContext } from "@/data/contract";
 import { restaurantFacts } from "@/data/display";
 
@@ -17,8 +17,9 @@ interface MobilePopupCardProps {
  * Replaces Leaflet's built-in popup for a touch-friendly, spacious layout.
  */
 export function MobilePopupCard({ restaurant, onClose, groups, spatialContext, modal = true }: MobilePopupCardProps) {
-  const groupStyle = getGroupStyle(restaurant.cuisine_group);
   const facts = restaurantFacts(restaurant, getGroupLabel(restaurant.cuisine_group, groups), spatialContext);
+
+  const groupStyle = facts.groupStyle;
 
   return (
     <DialogSurface label={`餐厅详情：${facts.name}`} className={`mobile-popup-overlay ${modal ? "" : "desktop-detail"}`} onClose={onClose} modal={modal}>
@@ -37,6 +38,8 @@ export function MobilePopupCard({ restaurant, onClose, groups, spatialContext, m
 
         {/* Tags row */}
         <div className="mobile-popup-tags">
+          <span className="detail-symbol" style={{ background: groupStyle.color, color: groupStyle.textColor }}
+            dangerouslySetInnerHTML={{ __html: facts.form.svg }} />
           {facts.tags.map((tag, index) => (
             <span key={index} className="mobile-popup-tag"
               style={index === 0 ? { background: groupStyle.color, color: groupStyle.textColor } : undefined}>

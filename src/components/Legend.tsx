@@ -1,5 +1,5 @@
 import { useId, useState } from "react";
-import { type CuisineGroup, getGroupStyle } from "@/config/cuisineRegistry";
+import { type CuisineGroup, getGroupStyle } from "@/config/restaurantPresentation";
 
 interface LegendProps {
   /** Distinct cuisine_group keys present in the loaded data. */
@@ -34,6 +34,7 @@ export function Legend({ dataGroups, groups, totalCount, geocodedCount, compact 
     return (
       <section className="legend-card floating-card legend-card--compact">
         <div className="legend-scroll">
+          <span className="encoding-note">颜色：菜系与品类；图标：消费形式</span>
           {visibleGroups.map((group) => {
             const style = getGroupStyle(group.key);
             return (
@@ -64,6 +65,7 @@ export function Legend({ dataGroups, groups, totalCount, geocodedCount, compact 
 
   return (
     <section className="legend-card floating-card">
+      <p className="encoding-note">颜色：菜系与品类；图标：消费形式</p>
       <div className="legend-wrap">
         {visibleGroups.map((group) => {
           const style = getGroupStyle(group.key);

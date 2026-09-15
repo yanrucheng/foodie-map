@@ -1,3 +1,4 @@
+import { getGroupStyle, getServingForm } from "../config/restaurantPresentation.ts";
 import { getMapPosition, hasText, isGuideUrl, type Restaurant, type SpatialContext } from "./contract.ts";
 
 export function displayName(record: Restaurant): string {
@@ -28,8 +29,10 @@ export function restaurantFacts(record: Restaurant, groupLabel = record.cuisine_
   ];
   return {
     name,
+    groupStyle: getGroupStyle(record.cuisine_group),
+    form: getServingForm(record.serving_form),
     secondaryName: hasText(record.name_en) && record.name_en !== name ? record.name_en : null,
-    tags: [groupLabel, record.cuisine, `${record.edition_year} ${guide}`, record.star_rating ? `${record.star_rating} 星` : null, record.is_new === true ? `${record.edition_year} 新晋` : null].filter(hasText),
+    tags: [groupLabel, getServingForm(record.serving_form).label, record.cuisine, `${record.edition_year} ${guide}`, record.star_rating ? `${record.star_rating} 星` : null, record.is_new === true ? `${record.edition_year} 新晋` : null].filter(hasText),
     details: details.filter((entry): entry is [string, string] => hasText(entry[1])),
     guideUrl: hasText(record.guide_url) && isGuideUrl(record.guide_url) ? record.guide_url : null,
   };

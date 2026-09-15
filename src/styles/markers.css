@@ -3,9 +3,14 @@
    ───────────────────────────────────────────────── */
 /* Standard tile compositing also lets contrast audits resolve map overlays reliably. */
 #map img.leaflet-tile { mix-blend-mode: normal; }
-.marker-dot { width: 18px; height: 18px; border-radius: 999px; border: 2px solid rgba(255,255,255,0.92); box-shadow: 0 8px 18px rgba(0,0,0,0.32); position: relative; }
+.restaurant-marker { display: grid; place-items: center; border-radius: 50%; }
+.marker-dot { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #17212e; position: relative; }
+.restaurant-marker:focus-visible .marker-dot, .restaurant-marker--selected .marker-dot { outline: 3px solid #17212e; outline-offset: 3px; box-shadow: 0 0 0 3px #fff; }
+.restaurant-marker:focus-visible, .restaurant-marker--selected { z-index: 1000 !important; }
+.serving-icon, .detail-symbol { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.detail-symbol { width: 32px; height: 32px; border-radius: 50%; border: 1px solid #fff; }
+.serving-icon svg, .detail-symbol svg, .marker-dot svg { width: 20px; height: 20px; }
 .marker-dot.new::after { content: 'NEW'; position: absolute; left: 50%; top: -13px; transform: translateX(-50%); font-size: 8px; font-weight: 700; background: linear-gradient(135deg, #c89e39, #f5de9c); color: #3b2d00; padding: 1px 4px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.55); }
-.marker-dot.new { border-color: #f5d77d; box-shadow: 0 0 0 3px rgba(232, 194, 81, 0.18), 0 8px 18px rgba(0,0,0,0.32); }
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #101821; color: var(--text); }
 .popup { min-width: 250px; }
 .popup h2 { margin: 0 0 6px; font-size: 16px; }
@@ -24,7 +29,7 @@
 /* ─────────────────────────────────────────────────
    Cluster Badge
    ───────────────────────────────────────────────── */
-.cluster-badge { background: #1b2636; color: #fff; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-weight: 700; box-shadow: 0 12px 24px rgba(0,0,0,0.22); }
+.cluster-badge { background: #1b2636; color: #fff; border: 2px solid #fff; border-radius: 999px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-weight: 700; box-shadow: 0 12px 24px rgba(0,0,0,0.22); }
 
 /* ─────────────────────────────────────────────────
    User Location Marker
@@ -120,3 +125,6 @@
 
 .leaflet-control-attribution a { text-decoration: underline; }
 .leaflet-control-scale-line, .leaflet-container .leaflet-control-attribution { background: #fff; color: #333; text-shadow: none; }
+
+/* Desktop facts need room for category, form and complete raw labels. */
+@media (min-width: 768px) { .popup { min-width: 240px; } }

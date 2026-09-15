@@ -1,13 +1,5 @@
-import { type CuisineGroup, getGroupStyle } from "@/config/cuisineRegistry";
-import type { VenueFilter } from "@/hooks/useFilters";
-
-/** Venue filter segment options with display labels. */
-const VENUE_FILTER_OPTIONS: { value: VenueFilter; label: string }[] = [
-  { value: "all", label: "全部" },
-  { value: "restaurant", label: "仅餐厅" },
-  { value: "street_food", label: "仅街头小吃" },
-  { value: "dessert", label: "仅甜品" },
-];
+import { type CuisineGroup, getGroupStyle, servingForms, getServingForm, type FormCounts } from "@/config/restaurantPresentation";
+import type { FormFilter } from "@/hooks/useFilters";
 
 interface FilterPanelProps {
   /** Distinct cuisine_group keys present in the loaded data — controls which groups to render. */
@@ -16,8 +8,9 @@ interface FilterPanelProps {
   activeGroups: Set<string>;
   onToggle: (group: string) => void;
   onToggleAll: () => void;
-  venueFilter: VenueFilter;
-  onVenueFilterChange: (filter: VenueFilter) => void;
+  formFilter: FormFilter;
+  formCounts: FormCounts;
+  onFormFilterChange: (filter: FormFilter) => void;
   onModeToggle: () => void;
   currentMode: "marker" | "heat";
   /** "pill" renders touch-optimized pill buttons (mobile). Default: "checkbox". */
@@ -25,7 +18,7 @@ interface FilterPanelProps {
 }
 
 /**
- * React filter panel for cuisine group filtering, venue type isolation,
+ * React filter panel for cuisine group filtering, serving form filtering,
  * and display mode toggle. Groups are ordered by taxonomy sortOrder and
  * only displayed if present in the active dataset.
  */
@@ -35,8 +28,9 @@ export function FilterPanel({
   activeGroups,
   onToggle,
   onToggleAll,
-  venueFilter,
-  onVenueFilterChange,
+  formFilter,
+  formCounts,
+  onFormFilterChange,
   onModeToggle,
   currentMode,
   variant = "checkbox",
@@ -50,19 +44,29 @@ export function FilterPanel({
 
   const allActive = renderedGroups.every((g) => activeGroups.has(g.key));
 
+  const knownForms = (Object.keys(servingForms) as (keyof typeof servingForms)[]).filter((key) => formCounts[key] > 0);
+  const options: { value: FormFilter; label: string; count: number }[] = [
+    { value: "all", label: "全部", count: Object.values(formCounts).reduce((a, b) => a + b, 0) },
+    ...knownForms.map((value) => ({ value, label: servingForms[value].label, count: formCounts[value] })),
+    ...(knownForms.length && formCounts.unclassified ? [{ value: "unclassified" as const, label: "未标注", count: formCounts.unclassified }] : []),
+  ];
+
   return (
     <div className="floating-card control-block">
-      {/* Venue type segment control */}
-      {!isPill && <div className="control-title">类型筛选</div>}
-      <div className="venue-filter-segment" role="group" aria-label="类型筛选">
-        {VENUE_FILTER_OPTIONS.map(({ value, label }) => (
+      <div className="control-title">消费形式</div>
+      <p className="form-count-note">数量按本版全部收录（含无坐标）</p>
+      {!knownForms.length && <p className="form-count-note">类型未标注：{formCounts.unclassified} 家</p>}
+      <div className="form-filter-segment" role="group" aria-label="消费形式筛选">
+        {options.map(({ value, label, count }) => (
           <button
             key={value}
-            className={`venue-segment-btn ${venueFilter === value ? "venue-segment-btn--active" : ""}`}
-            onClick={() => onVenueFilterChange(value)}
-            aria-pressed={venueFilter === value}
+            data-form={value}
+            className={`form-segment-btn ${formFilter === value ? "form-segment-btn--active" : ""}`}
+            onClick={() => onFormFilterChange(value)}
+            aria-pressed={formFilter === value}
           >
-            {label}
+            {value !== "all" && <span className="serving-icon" dangerouslySetInnerHTML={{ __html: getServingForm(value === "unclassified" ? null : value).svg }} />}
+            <span>{label} {count}</span>
           </button>
         ))}
       </div>
@@ -70,7 +74,7 @@ export function FilterPanel({
       {/* Cuisine group filter */}
       {!isPill && (
         <div className="control-title-row" style={{ marginTop: 12 }}>
-          <span className="control-title">菜系筛选</span>
+          <span className="control-title">菜系与品类</span>
           <button className={`toggle-all-btn ${allActive ? "toggle-all-btn--active" : ""}`} onClick={onToggleAll}>
             {allActive ? "仅保留首项" : "全选"}
           </button>
@@ -78,13 +82,14 @@ export function FilterPanel({
       )}
       {isPill && (
         <div className="filter-section-divider-row">
+          <span className="control-title">菜系与品类</span>
           <div className="filter-section-divider" />
           <button className={`toggle-all-pill ${allActive ? "toggle-all-pill--active" : ""}`} onClick={onToggleAll}>
             {allActive ? "仅保留首项" : "全选"}
           </button>
         </div>
       )}
-      <div role="group" aria-label="菜系筛选" className={isPill ? "filter-pills" : "filter-list"}>
+      <div role="group" aria-label="菜系与品类" className={isPill ? "filter-pills" : "filter-list"}>
         {renderedGroups.map((group) => {
           const style = getGroupStyle(group.key);
           const active = activeGroups.has(group.key);

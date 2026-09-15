@@ -35,6 +35,9 @@ function main(): void {
     for (const item of result.diagnostics) process.stderr.write(`${item.severity.toUpperCase()} ${item.code} ${item.file} id=${item.record_id ?? "-"} ${item.field}: ${item.reason}\n`);
     const sum = (key: "listed" | "locatable" | "missing_cuisine" | "unmapped" | "explicit_other") => result.datasets.reduce((count, item) => count + (item.counts?.[key] ?? 0), 0);
     process.stdout.write(`${result.valid ? "PASS" : "FAIL"}: ${result.datasets.length} datasets, ${sum("listed")} listed, ${sum("locatable")} locatable, ${sum("missing_cuisine")} missing cuisine, ${sum("unmapped")} unmapped, ${sum("explicit_other")} explicit OTHER.\n`);
+    for (const form of ["meal", "snack", "dessert", "drink", "unclassified"] as const) {
+      process.stdout.write(`serving_form.${form}: ${result.datasets.reduce((count, dataset) => count + (dataset.counts?.serving_form[form] ?? 0), 0)}\n`);
+    }
   }
   process.exitCode = result.valid ? 0 : 1;
 }

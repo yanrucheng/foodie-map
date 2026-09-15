@@ -1,13 +1,14 @@
 import { useState, useCallback, useMemo } from "react";
 import { getMapPosition, type SpatialContext } from "@/data/contract";
-import type { Restaurant, VenueType } from "@/types/restaurant";
+import { formKey, countServingForms, type FormCounts, type FormFilter } from "@/config/restaurantPresentation";
+import type { Restaurant } from "@/types/restaurant";
 
-/** Venue type filter mode: "all" shows everything, others isolate a specific type. */
-export type VenueFilter = "all" | VenueType;
+export type { FormFilter } from "@/config/restaurantPresentation";
 
 interface UseFiltersResult {
   /** Set of distinct cuisine_group keys present in the loaded restaurant data. */
   dataGroups: Set<string>;
+  formCounts: FormCounts;
   visibleRestaurants: Restaurant[];
   mappableRestaurants: Restaurant[];
   reveal: (restaurant: Restaurant) => void;
@@ -15,12 +16,12 @@ interface UseFiltersResult {
   toggle: (group: string) => void;
   toggleAll: () => void;
   enableGroup: (group: string) => void;
-  venueFilter: VenueFilter;
-  setVenueFilter: (filter: VenueFilter) => void;
+  formFilter: FormFilter;
+  setFormFilter: (filter: FormFilter) => void;
 }
 
 /**
- * Manages active cuisine group and venue type filter state.
+ * Manages active cuisine group and serving form filter state.
  * Groups are derived from the distinct cuisine_group values in the loaded restaurant data.
  */
 export function useFilters(restaurants: Restaurant[], datasetKey = "", spatialContext?: SpatialContext): UseFiltersResult {
@@ -30,13 +31,13 @@ export function useFilters(restaurants: Restaurant[], datasetKey = "", spatialCo
   );
 
   const [activeGroups, setActiveGroups] = useState<Set<string>>(() => new Set(allGroups));
-  const [venueFilter, setVenueFilter] = useState<VenueFilter>("all");
+  const [formFilter, setFormFilter] = useState<FormFilter>("all");
 
   const [source, setSource] = useState({ restaurants, datasetKey });
   if (source.restaurants !== restaurants || source.datasetKey !== datasetKey) {
     setSource({ restaurants, datasetKey });
     setActiveGroups(new Set(allGroups));
-    setVenueFilter("all");
+    setFormFilter("all");
   }
 
   const toggle = useCallback((group: string) => {
@@ -78,12 +79,14 @@ export function useFilters(restaurants: Restaurant[], datasetKey = "", spatialCo
   const reveal = useCallback((restaurant: Restaurant) => {
     if (!restaurants.includes(restaurant)) return;
     enableGroup(restaurant.cuisine_group);
-    setVenueFilter((previous) => previous === "all" || previous === restaurant.venue_type ? previous : "all");
+    setFormFilter((previous) => previous === "all" || previous === formKey(restaurant) ? previous : "all");
   }, [restaurants, enableGroup]);
   const visibleRestaurants = useMemo(() => restaurants.filter((record) =>
-    activeGroups.has(record.cuisine_group) && (venueFilter === "all" || record.venue_type === venueFilter)
-  ), [restaurants, activeGroups, venueFilter]);
+    activeGroups.has(record.cuisine_group) && (formFilter === "all" || formKey(record) === formFilter)
+  ), [restaurants, activeGroups, formFilter]);
   const mappableRestaurants = useMemo(() => visibleRestaurants.filter((record) => getMapPosition(record, spatialContext) !== null), [visibleRestaurants, spatialContext]);
 
-  return { visibleRestaurants, mappableRestaurants, reveal, dataGroups: new Set(allGroups), activeGroups, toggle, toggleAll, enableGroup, venueFilter, setVenueFilter };
+  const formCounts = useMemo(() => countServingForms(restaurants), [restaurants]);
+
+  return { formCounts, visibleRestaurants, mappableRestaurants, reveal, dataGroups: new Set(allGroups), activeGroups, toggle, toggleAll, enableGroup, formFilter, setFormFilter };
 }

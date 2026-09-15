@@ -24,11 +24,11 @@
 
 ## Impact
 
-- 主要实现位置：src/data/contract.ts、validation.ts、display.ts，现有 cuisineRegistry 展示模块，useFilters 与地图/筛选/图例/详情组件，相关测试。
+- 主要实现位置：src/data/contract.ts、validation.ts、display.ts，restaurantPresentation 共享展示模块（替代 cuisineRegistry），useFilters 与地图/筛选/图例/详情组件，相关测试。
 - taxonomy/mappings 的现有结构和完整 raw 精确映射继续使用；普通新城接入不要求颜色、图标或全局注册代码。
 - 正式餐厅数据补标、菜系重分类、同义 key 清理由独立数据任务负责，不是本包开发的前置。
 - 保留既有 JSON 字段、地址和页面链接；不新增兼容框架或退役旧公开接口。
-- 本次为设计交付，业务开发、提交、部署和最终验收均尚未执行。
+- 本地框架实现已完成，开发证据与验证结果见 [tasks](tasks.md)。提交、部署、独立验收与归档均未执行。
 
 ## Handoff
 

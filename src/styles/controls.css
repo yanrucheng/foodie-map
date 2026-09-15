@@ -66,12 +66,12 @@
 .filter-pill-label { white-space: nowrap; }
 .filter-section-divider { height: 1px; background: var(--border); margin: 12px 0; }
 
-/* Venue type segmented control */
-.venue-filter-segment { display: flex; gap: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 12px; }
-.venue-segment-btn { flex: 1; padding: 8px 4px; font-size: 12px; font-weight: 500; background: transparent; border: none; color: var(--muted); cursor: pointer; transition: all 0.18s ease; white-space: nowrap; }
-.venue-segment-btn:not(:last-child) { border-right: 1px solid var(--border); }
-.venue-segment-btn--active { background: var(--accent, #4386D6); color: #fff; }
-.venue-segment-btn:active { transform: scale(0.96); }
+/* Serving form control */
+.form-filter-segment { display: flex; gap: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 12px; }
+.form-segment-btn { flex: 1; padding: 8px 4px; font-size: 12px; font-weight: 500; background: transparent; border: none; color: var(--muted); cursor: pointer; transition: all 0.18s ease; white-space: nowrap; }
+.form-segment-btn:not(:last-child) { border-right: 1px solid var(--border); }
+.form-segment-btn--active { background: var(--accent, #4386D6); color: #fff; }
+.form-segment-btn:active { transform: scale(0.96); }
 
 /* ─────────────────────────────────────────────────
    Compact Legend (Phase 3 — Track C)
@@ -94,10 +94,10 @@
 .search-dropdown-item { overflow-wrap: anywhere; }
 .search-dropdown-item.highlighted { box-shadow: inset 4px 0 var(--accent); }
 .search-feedback { padding: 10px 14px; font-size: 14px; }
-.venue-filter-segment { flex-wrap: wrap; overflow: visible; }
-.venue-segment-btn { min-width: 44px; min-height: 44px; white-space: normal; overflow-wrap: anywhere; }
-.venue-segment-btn--active { color: #101821; }
-.venue-segment-btn--active::before, .filter-pill--active::before { content: '✓'; margin-right: 4px; }
+.form-filter-segment { flex-wrap: wrap; overflow: visible; }
+.form-segment-btn { min-width: 44px; min-height: 44px; white-space: normal; overflow-wrap: anywhere; }
+.form-segment-btn--active { color: #101821; }
+.form-segment-btn--active::before, .filter-pill--active::before { content: '✓'; margin-right: 4px; }
 .toggle-all-btn, .toggle-all-pill, .legend-info-btn { min-width: 44px; min-height: 44px; }
 .filter-pill { max-width: 100%; }
 .filter-pill-label, .stat-label { white-space: normal; overflow-wrap: anywhere; }
@@ -108,3 +108,14 @@
 .search-wrap input::placeholder { color: var(--muted); opacity: 1; }
 /* Cache feedback shares the existing live dataset status and wraps on narrow screens. */
 .release-status:not(:empty) { display: block; }
+
+/* P08: forms wrap independently of the number present in a dataset. */
+.form-filter-segment { gap: 4px; border: 0; }
+.form-segment-btn { flex: 1 0 30%; display: flex; align-items: center; justify-content: center; gap: 4px; border: 1px solid var(--border); border-radius: 6px; }
+.form-count-note, .encoding-note { font-size: 12px; line-height: 1.5; color: var(--muted); margin: 4px 0 8px; }
+.legend-scroll .encoding-note { flex-shrink: 0; }
+
+.form-segment-btn, .form-segment-btn:not(:last-child), .filter-pill { border-color: #8e9baf; }
+.swatch, .filter-pill-dot, .legend-chip-dot { border: 1px solid #a8b4c2; }
+.filter-pill-dot { opacity: 1; }
+.legend-card > .encoding-note { margin: 0; padding: 8px 16px 0; }

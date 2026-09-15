@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import { createRef } from "react";
-import { act, cleanup, render } from "@testing-library/react";
+import { createRef, useState } from "react";
+import { act, cleanup, fireEvent, render } from "@testing-library/react";
 import { beforeEach, afterEach, describe, expect, it, vi } from "vitest";
 import L from "@/lib/leaflet";
 import { MapShell, type MapShellHandle, type MapShellProps } from "@/components/MapShell";
@@ -33,8 +33,8 @@ beforeEach(() => {
 afterEach(() => { cleanup(); createdMaps.forEach((map) => { if (!removedMaps.has(map)) map.remove(); map.getContainer().remove(); }); vi.useRealTimers(); vi.restoreAllMocks(); });
 
 function props(records: MapShellProps["restaurants"], spatialContext?: SpatialContext): MapShellProps {
-  return { restaurants: records, visibleRestaurants: records, spatialContext, groups: [], dataGroups: new Set(["OTHER"]), activeGroups: new Set(["OTHER"]),
-    onToggleAll() {}, onToggleGroup() {}, venueFilter: "all", onVenueFilterChange() {}, center: [22.3, 114.17], zoom: 12 };
+  return { selection: null, onRestaurantSelect() {}, onRestaurantClose() {}, restaurants: records, visibleRestaurants: records, spatialContext, groups: [], dataGroups: new Set(["OTHER"]), activeGroups: new Set(["OTHER"]),
+    onToggleAll() {}, onToggleGroup() {}, formCounts: { meal: 0, snack: 0, dessert: 0, drink: 0, unclassified: 0 }, formFilter: "all", onFormFilterChange() {}, center: [22.3, 114.17], zoom: 12 };
 }
 
 describe("P05-R1/R2/R3 shared coordinate interpretation", () => {
@@ -136,8 +136,8 @@ describe("P05-R1/R2/R3 shared coordinate interpretation", () => {
   it("context switches rebuild valid layers, invalidate old callbacks and notify heat -> marker", () => {
     const hk = restaurant({ lat: 22.3, lon: 114.17 }); const mo = restaurant({ lat: 22.166, lon: 113.559 });
     const ref = createRef<MapShellHandle>(), onModeChange = vi.fn();
-    const open = vi.spyOn(L.Map.prototype, "openPopup");
-    const view = render(<MapShell ref={ref} {...props([hk])} onModeChange={onModeChange} />);
+    const open = vi.spyOn(L.Popup.prototype, "openOn");
+    const view = render(<MapShell ref={ref} {...props([hk])} selection={{ record: hk }} onModeChange={onModeChange} />);
     act(() => { ref.current!.toggleMode(); ref.current!.flyToRestaurant(hk); });
     expect(onModeChange.mock.calls.map(([mode]) => mode)).toEqual(["heat", "marker"]);
     view.rerender(<MapShell ref={ref} {...props([mo], { coordinateSystem: "unknown" })} center={[22.166, 113.559]} onModeChange={onModeChange} />);
@@ -161,6 +161,79 @@ describe("P05-R1/R2/R3 shared coordinate interpretation", () => {
       const user = new UserLocationMarker(map); user.update({ lat: 22.3, lon: 114.17, accuracy: 10, heading: null }, context); expect(user.isActive()).toBe(false);
       heat.remove();
     }
+  });
+
+  it.each([false, true])("P08 selection alone drives marker rings and popup dismissal (mobile=%s)", (mobileDetails) => {
+    const a = restaurant({ id: 1, name: "A", lat: 22.3, lon: 114.17 });
+    const b = restaurant({ id: 2, name: "B", lat: 22.31, lon: 114.18 });
+    const records = [a, b], onRestaurantClose = vi.fn(), onRestaurantSelect = vi.fn();
+    const options = { ...props(records), onRestaurantClose, onRestaurantSelect, mobileDetails };
+    const view = render(<MapShell {...options} selection={{ record: a }} />);
+    const map = createdMaps[0]!;
+    let markers: L.Marker[] = [];
+    map.eachLayer((layer) => { if (layer instanceof L.MarkerClusterGroup) markers = layer.getLayers() as L.Marker[]; });
+    const [markerA, markerB] = markers;
+    // Model cluster add/remove with real Leaflet elements; add must read current selection.
+    act(() => { markerA!.addTo(map); markerB!.addTo(map); });
+    expect(markerA!.getElement()?.classList.contains("restaurant-marker--selected")).toBe(true);
+    expect(markerB!.getElement()?.classList.contains("restaurant-marker--selected")).toBe(false);
+    view.rerender(<MapShell {...options} selection={{ record: b }} />);
+    expect(markerA!.getElement()?.classList.contains("restaurant-marker--selected")).toBe(false);
+    expect(markerB!.getElement()?.classList.contains("restaurant-marker--selected")).toBe(true);
+    expect(onRestaurantClose).not.toHaveBeenCalled(); // replacing A's popup cannot clear B
+    act(() => { markerB!.remove(); markerB!.addTo(map); });
+    expect(markerB!.getElement()?.classList.contains("restaurant-marker--selected")).toBe(true);
+    if (!mobileDetails) {
+      expect(view.container.querySelector(".popup h2")?.textContent).toBe("B");
+      act(() => { map.closePopup(); });
+      expect(onRestaurantClose).toHaveBeenCalledExactlyOnceWith(b);
+    }
+    view.rerender(<MapShell {...options} selection={null} />);
+    expect(view.container.querySelector(".restaurant-marker--selected")).toBeNull();
+    expect(view.container.querySelector(".popup")).toBeNull();
+    act(() => markerA!.fire("click"));
+    expect(onRestaurantSelect).toHaveBeenCalledExactlyOnceWith(a);
+    expect(markerA!.getElement()?.classList.contains("restaurant-marker--selected")).toBe(false); // waits for App state
+    view.unmount();
+  });
+
+  it("P08 real mouse preclick/close/click can reactivate the same selected record", () => {
+    const record = restaurant({ name: "A", lat: 22.3, lon: 114.17 });
+    const options = props([record]); // Stable inputs must not accidentally trigger resynchronization.
+    function Harness() {
+      const [selection, setSelection] = useState<{ record: typeof record } | null>(null);
+      return <>
+        <button onClick={() => setSelection({ record })}>Search A</button>
+        <MapShell {...options} selection={selection}
+          onRestaurantSelect={(record) => setSelection({ record })}
+          onRestaurantClose={(record) => setSelection((current) => current?.record === record ? null : current)} />
+      </>;
+    }
+    const view = render(<Harness />);
+    const map = createdMaps[0]!;
+    let marker: L.Marker | undefined;
+    map.eachLayer((layer) => { if (layer instanceof L.MarkerClusterGroup) marker = layer.getLayers()[0] as L.Marker; });
+    act(() => { marker!.addTo(map); });
+    const expectOpen = () => {
+      expect(view.container.querySelectorAll(".popup")).toHaveLength(1);
+      expect(view.container.querySelector(".popup h2")?.textContent).toBe("A");
+      expect(view.container.querySelectorAll(".restaurant-marker--selected")).toHaveLength(1);
+    };
+    for (let click = 0; click < 3; click++) { fireEvent.click(marker!.getElement()!); expectOpen(); }
+    fireEvent.click(view.getByText("Search A")); expectOpen();
+    fireEvent.click(view.container.querySelector(".leaflet-popup-close-button")!);
+    expect(view.container.querySelector(".popup")).toBeNull();
+    expect(view.container.querySelector(".restaurant-marker--selected")).toBeNull();
+    fireEvent.click(marker!.getElement()!); expectOpen();
+  });
+
+  it("P08 cancels a pending Leaflet zoom completion before dataset/layout teardown", () => {
+    const view = render(<MapShell {...props([restaurant({ lat: 22.3, lon: 114.17 })])} />);
+    const map = createdMaps[0]! as L.Map & { _animateZoom: (center: L.LatLng, zoom: number, start: boolean) => void };
+    // Exercise Leaflet's actual 250ms transition fallback, which remove() does not cancel.
+    act(() => map._animateZoom(map.getCenter(), 13, true));
+    view.unmount();
+    expect(() => vi.runOnlyPendingTimers()).not.toThrow();
   });
 
   it("10 real MapShell mounts/layout/center changes clean maps, controls and timers", () => {

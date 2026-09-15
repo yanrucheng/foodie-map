@@ -12,7 +12,7 @@ afterEach(() => temporary.splice(0).forEach((directory) => rmSync(directory, { r
 function directory(): string { const dir = mkdtempSync(join(tmpdir(), "foodie-data-")); temporary.push(dir); return dir; }
 function writeJson(file: string, value: unknown) { mkdirSync(resolve(file, ".."), { recursive: true }); writeFileSync(file, JSON.stringify(value)); }
 
-function boardingFixture(records: unknown = [{ id: 1, name: "raw", cuisine: "粵菜", venue_type: "street_food", avg_price_hkd: "約 200–400", source: { notes: ["keep", { number: 123 }] } }]) {
+function boardingFixture(records: unknown = [{ id: 1, name: "raw", cuisine: "粵菜", serving_form: "meal", venue_type: "street_food", avg_price_hkd: "約 200–400", source: { notes: ["keep", { number: 123 }] } }]) {
   const dir = directory();
   const files = { input: join(dir, "input.json"), output: join(dir, "output.json"), taxonomy: join(dir, "taxonomy.json"), mappings: join(dir, "mappings.json") };
   writeJson(files.input, records); writeJson(files.taxonomy, taxonomy); writeJson(files.mappings, mappings); writeFileSync(files.output, "existing output\n");
@@ -97,13 +97,14 @@ describe("validation command (P02-R6)", () => {
     expect(first.status).toBe(0); expect(second.status).toBe(0); expect(first.stdout).toBe(second.stdout); expect(readFileSync(file, "utf8")).toBe(before);
     expect(JSON.parse(first.stdout).datasets).toHaveLength(cities.flatMap((city) => city.guides).length);
   });
-  it.each(["json", "payload", "duplicate", "group", "position", "field", "missing-file", "unregistered", "mapping"])("returns failure and useful diagnostics for %s", (failure) => {
+  it.each(["json", "payload", "duplicate", "group", "position", "field", "serving-form", "missing-file", "unregistered", "mapping"])("returns failure and useful diagnostics for %s", (failure) => {
     const { root, file, row, run } = validationFixture();
     if (failure === "json") writeFileSync(file, "[");
     if (failure === "payload") writeJson(file, {});
     if (failure === "duplicate") writeJson(file, [row, row]);
     if (failure === "group") writeJson(file, [{ ...row, cuisine_group: "ABSENT" }]);
     if (failure === "position") writeJson(file, [{ ...row, lat: 0, lon: 0, geocode_success: true }]);
+    if (failure === "serving-form") writeJson(file, [{ ...row, serving_form: "unknown" }]);
     if (failure === "field") writeJson(file, [{ ...row, is_new: "yes" }]);
     if (failure === "missing-file") rmSync(file);
     if (failure === "unregistered") writeJson(join(root, "hong-kong/unregistered.json"), []);

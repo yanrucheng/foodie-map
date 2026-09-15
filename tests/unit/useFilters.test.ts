@@ -24,7 +24,7 @@ function mockRestaurant(cuisineGroup: string): Restaurant {
     cuisine: "Test Cuisine",
     cuisine_group: cuisineGroup,
     is_new: false,
-    venue_type: "restaurant",
+    serving_form: "meal",
     area: "Test Area",
     primary_area: "Test Area",
     major_region: "Test Region",
@@ -62,9 +62,9 @@ describe("useFilters", () => {
       expect(result.current.dataGroups.size).toBe(3);
     });
 
-    it("should have 'all' as default venueFilter", () => {
+    it("should have 'all' as default formFilter", () => {
       const { result } = renderHook(() => useFilters(mockRestaurants));
-      expect(result.current.venueFilter).toBe("all");
+      expect(result.current.formFilter).toBe("all");
     });
   });
 
@@ -169,15 +169,45 @@ describe("useFilters", () => {
     });
   });
 
-  describe("setVenueFilter", () => {
-    it("should update venueFilter", () => {
+  describe("setFormFilter", () => {
+    it("should update formFilter", () => {
       const { result } = renderHook(() => useFilters(mockRestaurants));
 
       act(() => {
-        result.current.setVenueFilter("street_food");
+        result.current.setFormFilter("snack");
       });
 
-      expect(result.current.venueFilter).toBe("street_food");
+      expect(result.current.formFilter).toBe("snack");
     });
+  });
+});
+
+describe("P08 form intersections and missing annotations", () => {
+  it("counts whole-dataset forms, filters map eligibility after intersection, reveals unknown and resets", () => {
+    const rows = [
+      { id: 1, cuisine_group: "A", serving_form: "meal", lat: 22.3, lon: 114.1 },
+      { id: 2, cuisine_group: "A", serving_form: "snack" },
+      { id: 3, cuisine_group: "B", serving_form: "meal" },
+      { id: 4, cuisine_group: "B", serving_form: null },
+      { id: 5, cuisine_group: "A", venue_type: "restaurant" },
+    ].map((row) => ({ name: "test", city: "fixture-city", guide_type: "michelin-bib-gourmand", edition_year: 2026, ...row } as Restaurant));
+    const { result, rerender } = renderHook(({ key }) => useFilters(rows, key), { initialProps: { key: "A" } });
+    expect(result.current.formCounts).toEqual({ meal: 2, snack: 1, dessert: 0, drink: 0, unclassified: 2 });
+    act(() => { result.current.setFormFilter("meal"); result.current.toggle("B"); });
+    expect(result.current.visibleRestaurants.map((r) => r.id)).toEqual([1]);
+    expect(result.current.mappableRestaurants.map((r) => r.id)).toEqual([1]);
+    expect(result.current.formCounts.meal).toBe(2);
+    act(() => result.current.setFormFilter("unclassified"));
+    expect(result.current.visibleRestaurants.map((r) => r.id)).toEqual([5]);
+    expect(result.current.mappableRestaurants).toEqual([]);
+    act(() => result.current.reveal(rows[3]!));
+    expect(result.current.formFilter).toBe("unclassified");
+    expect(result.current.visibleRestaurants.map((r) => r.id)).toEqual([4, 5]);
+    act(() => result.current.reveal(rows[1]!));
+    expect(result.current.formFilter).toBe("all");
+    act(() => result.current.setFormFilter("drink"));
+    rerender({ key: "B" });
+    expect(result.current.formFilter).toBe("all");
+    expect(result.current.visibleRestaurants).toEqual(rows);
   });
 });

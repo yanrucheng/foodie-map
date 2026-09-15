@@ -13,8 +13,8 @@ import { createPortal } from "react-dom";
 import { focusBookmark } from "@/utils/focus";
 import L from "@/lib/leaflet";
 import type { Restaurant } from "@/types/restaurant";
-import type { CuisineGroup } from "@/config/cuisineRegistry";
-import type { VenueFilter } from "@/hooks/useFilters";
+import type { CuisineGroup, FormCounts } from "@/config/restaurantPresentation";
+import type { FormFilter } from "@/hooks/useFilters";
 import type { Map as LeafletMap, Marker, MarkerClusterGroup } from "leaflet";
 import { createRestaurantMarker, popupHtml } from "./RestaurantMarker";
 import { HeatLayerManager } from "./HeatLayer";
@@ -35,8 +35,9 @@ export interface MapShellProps {
   activeGroups: Set<string>;
   onToggleGroup: (group: string) => void;
   onToggleAll: () => void;
-  venueFilter: VenueFilter;
-  onVenueFilterChange: (filter: VenueFilter) => void;
+  formFilter: FormFilter;
+  formCounts: FormCounts;
+  onFormFilterChange: (filter: FormFilter) => void;
   center: [number, number];
   spatialContext?: SpatialContext;
   basemap?: BasemapId;
@@ -45,8 +46,12 @@ export interface MapShellProps {
   hideControls?: boolean;
   /** Called whenever the display mode changes between marker and heat. */
   onModeChange?: (mode: "marker" | "heat") => void;
-  /** When provided (mobile), marker taps call this instead of opening Leaflet popup. */
-  onMarkerTap?: (restaurant: Restaurant) => void;
+  /** App owns selection across marker clicks, search, both detail layouts and dismissal. */
+  /** A new selection object also represents reactivation of the same record. */
+  selection: { record: Restaurant } | null;
+  onRestaurantSelect: (restaurant: Restaurant) => void;
+  onRestaurantClose: (restaurant: Restaurant) => void;
+  mobileDetails?: boolean;
 }
 
 /** Imperative handle exposed by MapShell for external map interactions. */
@@ -62,9 +67,10 @@ export interface MapShellHandle {
  */
 export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
   function MapShell(
-    { restaurants, visibleRestaurants, groups, dataGroups, activeGroups, onToggleGroup, onToggleAll, venueFilter, onVenueFilterChange, center, zoom, spatialContext, basemap, hideControls, onModeChange, onMarkerTap },
+    { restaurants, visibleRestaurants, groups, dataGroups, activeGroups, onToggleGroup, onToggleAll, formFilter, formCounts, onFormFilterChange, center, zoom, spatialContext, basemap, hideControls, onModeChange, selection, onRestaurantSelect, onRestaurantClose, mobileDetails },
     ref,
   ) {
+    const selectedRestaurant = selection?.record ?? null;
     const mapRef = useRef<LeafletMap | null>(null);
     const clusterRef = useRef<MarkerClusterGroup | null>(null);
     const heatRef = useRef<HeatLayerManager | null>(null);
@@ -83,8 +89,13 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
     // Stable refs for callbacks that need current values without re-creation
     const visibleRef = useRef(visibleRestaurants);
     visibleRef.current = visibleRestaurants;
-    const onMarkerTapRef = useRef(onMarkerTap);
-    onMarkerTapRef.current = onMarkerTap;
+    const selectedRef = useRef(selectedRestaurant);
+    selectedRef.current = selectedRestaurant && visibleRestaurants.includes(selectedRestaurant) ? selectedRestaurant : null;
+    const onSelectRef = useRef(onRestaurantSelect);
+    onSelectRef.current = onRestaurantSelect;
+    const onCloseRef = useRef(onRestaurantClose);
+    onCloseRef.current = onRestaurantClose;
+    const detailPopupRef = useRef<{ record: Restaurant; popup: L.Popup } | null>(null);
 
     const { attachTo, locationMessage } = useLocationTracking();
     const tileRef = useRef<TileService | null>(null);
@@ -92,6 +103,32 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
     const context = spatialContext;
     const centerLat = center[0], centerLon = center[1];
     const projectedCenter = useMemo(() => projectMapPosition({ lat: centerLat, lon: centerLon }, context, basemap), [centerLat, centerLon, context, basemap]);
+
+    // Clear ownership before removal: replacing a popup is not a user dismissal.
+    const removeDetailPopup = useCallback(() => {
+      const previous = detailPopupRef.current;
+      detailPopupRef.current = null;
+      previous?.popup.remove();
+    }, []);
+
+    const syncSelection = useCallback(() => {
+      const selected = selectedRef.current;
+      for (const [id, marker] of markersRef.current) {
+        marker.getElement()?.classList.toggle("restaurant-marker--selected", selected?.id === id);
+      }
+      const map = mapRef.current;
+      if (!map) return;
+      if (detailPopupRef.current?.record === selected && detailPopupRef.current.popup.isOpen() && !mobileDetails) return;
+      removeDetailPopup();
+      if (!selected || mobileDetails) return;
+      const position = projectMapPosition(selected, context, basemap);
+      if (!position) return;
+      // A spiderfied marker has a temporary display position; keep its popup beside it.
+      const anchor = markersRef.current.get(selected.id)?.getLatLng() ?? position;
+      const popup = L.popup({ autoPan: false, offset: [0, -22] }).setLatLng(anchor).setContent(popupHtml(selected, groups, context));
+      detailPopupRef.current = { record: selected, popup };
+      popup.openOn(map);
+    }, [groups, context, basemap, mobileDetails, removeDetailPopup]);
 
     /** Refreshes visible markers/heat based on current filter and mode. */
     const refreshLayers = useCallback(() => {
@@ -151,11 +188,16 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
         const close = popupElement?.querySelector<HTMLElement>(".leaflet-popup-close-button");
         close?.setAttribute("aria-label", "关闭餐厅详情");
       };
-      const closePopup = () => {
+      const closePopup = (event: L.PopupEvent) => {
+        const current = detailPopupRef.current;
+        if (current?.popup === event.popup) {
+          detailPopupRef.current = null;
+          if (selectedRef.current === current.record) onCloseRef.current(current.record);
+        }
         const restore = popupReturn;
         const ownedFocus = popupElement?.contains(document.activeElement) || document.activeElement === document.body;
         popupReturn = undefined; popupElement = undefined;
-        if (ownedFocus) queueMicrotask(() => { if (!document.querySelector("dialog[open]")) restore?.(); });
+        if (ownedFocus) queueMicrotask(() => { if (!popupElement && !document.querySelector("dialog[open]")) restore?.(); });
       };
       const popupKey = (event: KeyboardEvent) => {
         if (event.key === "Escape" && popupElement?.contains(event.target as Node)) {
@@ -175,12 +217,13 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
         showCoverageOnHover: false,
         spiderfyOnMaxZoom: true,
         maxClusterRadius: 48,
-        disableClusteringAtZoom: 17,
+        // Keep coincident points expandable at max zoom, with room for 44px targets.
+        spiderfyDistanceMultiplier: 1.6,
         iconCreateFunction: (c) =>
           L.divIcon({
-            html: `<div class="cluster-badge">${c.getChildCount()}</div>`,
+            html: `<div class="cluster-badge" aria-label="${c.getChildCount()} 家餐厅，展开查看">${c.getChildCount()}</div>`,
             className: "",
-            iconSize: [42, 42],
+            iconSize: [44, 44],
           }),
       });
 
@@ -225,6 +268,10 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
         cluster.clearLayers();
         markers.clear();
         map.stop();
+        // Leaflet 1.9.4 remove() leaves its 250ms zoom-transition fallback alive.
+        // Retire that transition before it can read a pane deleted by this teardown.
+        (map as LeafletMap & { _animatingZoom?: boolean })._animatingZoom = false;
+        removeDetailPopup();
         map.closePopup();
         map.off("popupopen", openPopup); map.off("popupclose", closePopup);
         map.getContainer().removeEventListener("keydown", popupKey);
@@ -235,32 +282,43 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
         setFilterContainer(null);
         setStatsContainer(null);
       };
-    }, [projectedCenter, zoom, hideControls, attachTo, context, basemap]);
+    }, [projectedCenter, zoom, hideControls, attachTo, context, basemap, removeDetailPopup]);
 
     // Withdraw old Leaflet content before a new title/data render can be painted.
     useLayoutEffect(() => {
       mapRef.current?.stop();
-      mapRef.current?.closePopup();
+      removeDetailPopup();
       clusterRef.current?.clearLayers();
       heatRef.current?.remove();
-    }, [restaurants]);
+    }, [restaurants, removeDetailPopup]);
 
     // Keep every restaurant in the list; create markers only for usable positions.
     useEffect(() => {
-      mapRef.current?.closePopup();
+      removeDetailPopup();
       markersRef.current.clear();
       restaurants.forEach((item) => {
-        const opts = { onClick: onMarkerTapRef.current, groups, spatialContext: context, basemap };
+        const opts = { onClick: (record: Restaurant) => onSelectRef.current(record), groups, spatialContext: context, basemap };
         const marker = createRestaurantMarker(item, opts);
-        if (marker) markersRef.current.set(item.id, marker);
+        if (marker) {
+          // Cluster expansion recreates marker elements; always reapply the current selection.
+          marker.on("add", () => marker.getElement()?.classList.toggle("restaurant-marker--selected", selectedRef.current === item));
+          marker.on("move", () => {
+            const current = detailPopupRef.current;
+            if (current?.record === item) current.popup.setLatLng(marker.getLatLng());
+          });
+          markersRef.current.set(item.id, marker);
+        }
       });
       refreshLayers();
-    }, [restaurants, groups, refreshLayers, projectedCenter, zoom, hideControls, context, basemap]);
+      syncSelection();
+    }, [restaurants, groups, refreshLayers, projectedCenter, zoom, hideControls, context, basemap, removeDetailPopup, syncSelection]);
 
     // Apply the shared filtered list before painting changed counts.
     useLayoutEffect(() => {
       refreshLayers();
     }, [visibleRestaurants, refreshLayers]);
+
+    useLayoutEffect(() => { syncSelection(); }, [selection, visibleRestaurants, syncSelection]);
 
     /** Exposes flyToRestaurant and toggleMode for external integration. */
     useImperativeHandle(
@@ -281,16 +339,10 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
           }
 
           map.flyTo(position, 15, { duration: 0.8 });
-          // P04 already selected the mobile detail. Desktop opens the selected fact at its
-          // coordinate without markercluster's uncancellable moveend/spiderfy continuation.
-          // This also works when several restaurants share one coordinate.
-          if (!onMarkerTapRef.current && visibleRef.current.includes(restaurant)) {
-            map.openPopup(popupHtml(restaurant, groups, context), position, { autoPan: false });
-          }
         },
         toggleMode: handleModeToggle,
       }),
-      [refreshLayers, handleModeToggle, context, onModeChange, groups, basemap],
+      [refreshLayers, handleModeToggle, context, onModeChange, basemap],
     );
 
     return (
@@ -304,8 +356,9 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
               activeGroups={activeGroups}
               onToggle={onToggleGroup}
               onToggleAll={onToggleAll}
-              venueFilter={venueFilter}
-              onVenueFilterChange={onVenueFilterChange}
+              formFilter={formFilter}
+              formCounts={formCounts}
+              onFormFilterChange={onFormFilterChange}
               onModeToggle={handleModeToggle}
               currentMode={mode}
             />,

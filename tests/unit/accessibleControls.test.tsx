@@ -4,7 +4,6 @@ import { cleanup, fireEvent, render } from "@testing-library/react";
 import { SearchBar } from "@/components/SearchBar";
 import { BottomSheet } from "@/components/BottomSheet";
 import { restaurant } from "./dataFixtures";
-import { cuisineStyleMap } from "@/config/cuisineRegistry";
 
 afterEach(cleanup);
 describe("P06 search input contract", () => {
@@ -50,16 +49,4 @@ it("P06 dialog lock restores the existing body style after unmount and leaves cl
   view.rerender(<BottomSheet isOpen={false} title="筛选" onClose={() => {}}>隐藏内容</BottomSheet>);
   expect(view.queryByRole("dialog")).toBeNull(); expect(document.body.style.overflow).toBe("clip");
   document.body.style.overflow = "";
-});
-it("P06 every solid cuisine label foreground reaches 4.5:1", () => {
-  const luminance = (hex: string) => {
-    let raw = hex.slice(1); if (raw.length === 3) raw = raw.split("").map((c) => c + c).join("");
-    return [0, 2, 4].map((offset) => parseInt(raw.slice(offset, offset + 2), 16) / 255)
-      .map((v) => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4)
-      .reduce((sum, v, index) => sum + v * [0.2126, 0.7152, 0.0722][index]!, 0);
-  };
-  for (const [key, pair] of Object.entries(cuisineStyleMap)) {
-    const [low, high] = [luminance(pair.color), luminance(pair.textColor)].sort((a, b) => a - b);
-    expect((high! + 0.05) / (low! + 0.05), key).toBeGreaterThanOrEqual(4.5);
-  }
 });

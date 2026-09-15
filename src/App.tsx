@@ -38,7 +38,13 @@ function App({ registry = cities }: { registry?: CityConfig[] }) {
   const [detail, setDetail] = useState<{ requestKey: string; record: Restaurant } | null>(null);
   const [pendingLocate, setPendingLocate] = useState<{ requestKey: string; record: Restaurant } | null>(null);
   const popupRestaurant = detail?.requestKey === requestKey && visibleRestaurants.includes(detail.record) ? detail.record : null;
-  const closeDetail = useCallback(() => setDetail(null), []);
+  const closeDetail = useCallback(() => { setDetail(null); setPendingLocate(null); }, []);
+  const closeMapDetail = useCallback((record: Restaurant) => {
+    setDetail((current) => current?.record === record ? null : current);
+  }, []);
+  useEffect(() => {
+    if (detail && !popupRestaurant) setDetail(null);
+  }, [detail, popupRestaurant]);
   const showDetail = useCallback((record: Restaurant) => {
     if (data.includes(record)) setDetail({ requestKey, record });
   }, [data, requestKey]);
@@ -73,7 +79,7 @@ function App({ registry = cities }: { registry?: CityConfig[] }) {
     data-coverage={guide.coverage?.status} data-build={release?.buildId} data-revision={release?.resources[guide.dataPath]?.sha256} data-delivery={resource.delivery}
     title={release ? `Foodie Map ${release.version} · 构建 ${release.buildId.slice(0, 12)} · 数据 ${release.dataRevision.slice(0, 12)}` : undefined}
     role={status === "error" ? "alert" : "status"}>
-    {subtitle}{guide.coverage && (status === "ready" || status === "empty") && <span title={`${city.scope?.description ?? ""} ${guide.coverage.note}`}> · {({ verified: "名单已核验", partial: "部分名单", unverified: "名单未核验", "not-collected": "尚未采集" })[guide.coverage.status]}{status === "empty" && guide.coverage.status !== "verified" && "（空文件不代表官方零收录）"}</span>}{status === "ready" && visibleRestaurants.length === 0 && "。当前筛选没有餐厅，请调整类型或菜系筛选。"} {(status === "error" || resource.offline) && <button onClick={retry}>重试</button>}
+    {subtitle}{guide.coverage && (status === "ready" || status === "empty") && <span title={`${city.scope?.description ?? ""} ${guide.coverage.note}`}> · {({ verified: "名单已核验", partial: "部分名单", unverified: "名单未核验", "not-collected": "尚未采集" })[guide.coverage.status]}{status === "empty" && guide.coverage.status !== "verified" && "（空文件不代表官方零收录）"}</span>}{status === "ready" && visibleRestaurants.length === 0 && "。当前筛选没有餐厅，请调整消费形式或菜系与品类。"} {(status === "error" || resource.offline) && <button onClick={retry}>重试</button>}
     {release && <span className="release-status">{offline && status !== "error" ? "离线浏览 · 使用已缓存版次" : resource.delivery === "cache" ? "使用已验证缓存" : ""}{connectivity.waiting && " · 更新已就绪，关闭本应用所有页面后重新打开。"}</span>}
   </div>;
   const titleElement = <DynamicTitle key={selection.datasetKey}
@@ -83,9 +89,10 @@ function App({ registry = cities }: { registry?: CityConfig[] }) {
   />;
   const sharedMapProps = {
     restaurants: data, visibleRestaurants, groups,
+    selection: popupRestaurant ? detail : null, onRestaurantSelect: showDetail, onRestaurantClose: closeMapDetail,
     dataGroups: filters.dataGroups, activeGroups: filters.activeGroups,
     onToggleGroup: filters.toggle, onToggleAll: filters.toggleAll,
-    venueFilter: filters.venueFilter, onVenueFilterChange: filters.setVenueFilter,
+    formCounts: filters.formCounts, formFilter: filters.formFilter, onFormFilterChange: filters.setFormFilter,
     center: city.center, zoom: city.zoom, spatialContext: city.spatialContext, basemap: city.basemap,
   };
   const geocodedCount = data.filter((record) => getMapPosition(record, city.spatialContext) !== null).length;
@@ -94,7 +101,7 @@ function App({ registry = cities }: { registry?: CityConfig[] }) {
     return <Suspense fallback={<div role="status">正在加载移动视图…</div>}>
       <MobileShell
         headerContent={titleElement} statusContent={statusContent}
-        mapRef={mapRef} mapProps={sharedMapProps} onLocate={handleLocate} onMarkerTap={showDetail}
+        mapRef={mapRef} mapProps={sharedMapProps} onLocate={handleLocate}
         popupRestaurant={popupRestaurant} onClosePopup={closeDetail}
         searchKey={requestKey} totalCount={data.length} geocodedCount={geocodedCount}
       />
