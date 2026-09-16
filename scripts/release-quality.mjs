@@ -4,9 +4,9 @@ import { readFile, writeFile, mkdir, mkdtemp, rm, stat } from "node:fs/promises"
 import { resolve, join, relative } from "node:path";
 import { tmpdir } from "node:os";
 import { parseArgs } from "node:util";
-import { sha256, sourceIdentity, artifactIdentity } from "./release-artifact.ts";
+import { sha256, sourceIdentity, artifactIdentity, verifyReleaseArtifact } from "./release-artifact.ts";
 
-const { values, positionals } = parseArgs({ allowPositionals: true, options: { output: { type: "string" }, receipt: { type: "string" }, dist: { type: "string", default: "dist" } } });
+const { values, positionals } = parseArgs({ allowPositionals: true, options: { output: { type: "string" }, receipt: { type: "string" }, dist: { type: "string", default: "dist" }, "artifact-only": { type: "boolean" }, "expected-head": { type: "string" } } });
 const mode = positionals[0] ?? "check";
 const evidence = resolve(values.output ?? "test-results/release");
 const receiptPath = resolve(values.receipt ?? join(evidence, "verified.json"));
@@ -15,15 +15,8 @@ const git = (...args) => spawnSync("git", args, { encoding: "utf8" });
 
 async function verify() {
   const receipt = JSON.parse(await readFile(receiptPath, "utf8"));
-  assert.equal(receipt.passed, true, "A failed/incomplete check cannot authorize artifact upload");
-  const required = ["check", "test", "check:coverage", "build", "test:e2e", "test:performance"];
-  assert.deepEqual(receipt.steps.map((step) => step.script), required, "Every required gate ran in order");
-  assert.ok(receipt.steps.every((step) => step.exitCode === 0), "All gates succeeded");
-  assert.equal((await sourceIdentity(process.cwd())).sha256, receipt.source.sha256, "Source changed after checking");
-  assert.deepEqual(await artifactIdentity(dist), receipt.artifact, "Artifact differs from the one that browsers checked");
-  const release = JSON.parse(await readFile(join(dist, "release.json"), "utf8"));
-  assert.equal(release.sourceSha256, receipt.source.sha256, "Build and checked source match");
-  assert.equal(release.lockSha256, receipt.source.lockSha256, "Build and checked lockfile match");
+  if (!values["artifact-only"]) assert.equal((await sourceIdentity(process.cwd())).sha256, receipt.source.sha256, "Source changed after checking");
+  const release = await verifyReleaseArtifact(dist, receipt, values["expected-head"]);
   console.log(`Verified unchanged artifact ${receipt.artifact.sha256} (build ${release.buildId})`);
 }
 

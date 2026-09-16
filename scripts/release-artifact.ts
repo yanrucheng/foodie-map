@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { readdir, readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join, relative } from "node:path";
+import assert from "node:assert/strict";
 
 export const sha256 = (bytes: string | Uint8Array) => createHash("sha256").update(bytes).digest("hex");
 export async function fileManifest(directory: string, excluded: (path: string) => boolean = () => false): Promise<Record<string, string>> {
@@ -52,4 +53,27 @@ export async function sourceIdentity(root: string) {
 export async function artifactIdentity(directory: string) {
   const files = await fileManifest(directory);
   return { sha256: sha256(JSON.stringify(files)), files };
+}
+
+export const releaseGates = ["check", "test", "check:coverage", "build", "test:e2e", "test:performance"];
+
+export interface ReleaseReceipt {
+  passed: boolean;
+  head: string | null;
+  source: { sha256: string; lockSha256: string };
+  artifact: { sha256: string; files: Record<string, string> };
+  steps: { script: string; exitCode: number }[];
+}
+
+/** A retained release is checked against its original receipt, without rebuilding it. */
+export async function verifyReleaseArtifact(directory: string, receipt: ReleaseReceipt, expectedHead?: string) {
+  assert.equal(receipt.passed, true, "A failed/incomplete check cannot authorize deployment");
+  assert.deepEqual(receipt.steps.map((step) => step.script), releaseGates, "Every required gate ran in order");
+  assert.ok(receipt.steps.every((step) => step.exitCode === 0), "All gates succeeded");
+  if (expectedHead) assert.equal(receipt.head, expectedHead, "Receipt must belong to the selected GitHub run");
+  assert.deepEqual(await artifactIdentity(directory), receipt.artifact, "Artifact differs from the one that browsers checked");
+  const release = JSON.parse(await readFile(join(directory, "release.json"), "utf8"));
+  assert.equal(release.sourceSha256, receipt.source.sha256, "Build and checked source match");
+  assert.equal(release.lockSha256, receipt.source.lockSha256, "Build and checked lockfile match");
+  return release;
 }

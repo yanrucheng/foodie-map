@@ -75,10 +75,7 @@ async function choose(page, dimension, label) {
   await page.waitForFunction(() => !document.querySelector(".seg-dropdown, .seg-sheet-list"));
 }
 async function search(page, query) {
-  const input = await page.$(".search-wrap input");
-  await input.click({ clickCount: 3 });
-  await page.keyboard.press("Backspace");
-  await input.type(query);
+  await page.locator(".search-wrap input").fill(query);
   await page.waitForSelector(".search-dropdown-item", { visible: true });
   await page.click(".search-dropdown-item");
 }

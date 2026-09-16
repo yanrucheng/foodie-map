@@ -24,6 +24,7 @@
     "dev": "vite",
     "check": "npm run check:types && npm run check:lint && npm run validate:data",
     "check:repository": "node scripts/check-repository.mjs",
+    "check:dependencies": "npm audit --audit-level=high",
     "validate:data": "node scripts/data-contract.ts",
     "check:types": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.node.json",
     "check:lint": "eslint . --max-warnings 0",
@@ -37,6 +38,7 @@
     "test:performance": "node tests/e2e/performance.mjs",
     "release:check": "node scripts/release-quality.mjs check",
     "release:verify": "node scripts/release-quality.mjs verify",
+    "release:smoke": "node scripts/release-smoke.ts",
     "release:snapshot": "node scripts/release-quality.mjs snapshot",
     "test:gates": "node tests/e2e/fault-injection.mjs",
     "check:coverage": "python3 scripts/render-coverage-table.py --check",
@@ -68,10 +70,10 @@
     "globals": "^16.0.0",
     "jsdom": "^29.1.1",
     "playwright": "1.63.0",
-    "puppeteer": "^24.42.0",
+    "puppeteer": "^25.11.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.70.0",
-    "vite": "^6.3.4",
-    "vitest": "^4.1.5"
+    "vite": "^6.4.3",
+    "vitest": "^4.1.11"
   }
 }

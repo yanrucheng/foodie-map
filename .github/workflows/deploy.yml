@@ -3,62 +3,186 @@ name: Release quality and GitHub Pages
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, 'ci/**']
+  schedule:
+    - cron: '17 3 * * 1'
   workflow_dispatch:
+    inputs:
+      action:
+        description: Verify only, deploy current main, or restore a retained release
+        type: choice
+        options: [verify, deploy, rollback]
+        default: verify
+      rollback-run-id:
+        description: Original successful deployment run ID (rollback only)
+        type: string
 
 permissions:
   contents: read
 
-concurrency:
-  group: release-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   quality:
-    runs-on: ubuntu-latest
+    name: Release quality
+    if: inputs.action != 'rollback'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    concurrency:
+      group: quality-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+    outputs:
+      artifact-id: ${{ steps.bundle.outputs.artifact-id }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
+          persist-credentials: false
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
           cache: npm
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
 
       - run: npm run check:repository
         env:
           REPOSITORY_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
 
-      - run: npm ci
+      - run: npm ci --no-audit
+      - run: npm run check:dependencies
       - run: npx playwright install-deps chromium webkit
+
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            node_modules/.cache/puppeteer
+            node_modules/.cache/playwright
+          key: browsers-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('package-lock.json') }}
+
       - run: npm run browser:install
+
+      - name: Allow Chrome's sandbox on Ubuntu
+        run: |
+          chrome_path=$(node --input-type=module -e 'import puppeteer from "puppeteer"; console.log(await puppeteer.executablePath({headless: "shell"}))')
+          sudo tee /etc/apparmor.d/foodie-map-chrome >/dev/null <<EOF
+          abi <abi/4.0>,
+          include <tunables/global>
+          profile foodie-map-chrome "$chrome_path" flags=(unconfined) {
+            userns,
+          }
+          EOF
+          sudo apparmor_parser -r /etc/apparmor.d/foodie-map-chrome
+
       - run: npm run release:check
       - run: npm run release:verify
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
-          name: release-evidence-${{ github.sha }}
+          name: release-evidence-${{ github.run_attempt }}
           path: test-results/release
           retention-days: 7
-          if-no-files-found: error
+          if-no-files-found: warn
 
-      - uses: actions/upload-pages-artifact@v3
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+      - name: Prepare the verified release bundle
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.action == 'deploy')
+        run: |
+          mkdir -p test-results/release-bundle
+          cp -R dist test-results/release-bundle/dist
+          cp test-results/release/verified.json test-results/release-bundle/verified.json
+
+      - id: bundle
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.action == 'deploy')
         with:
-          path: dist
+          name: release-${{ github.run_attempt }}
+          path: test-results/release-bundle
+          retention-days: 30
+          if-no-files-found: error
+          include-hidden-files: true
 
   deploy:
+    name: Deploy GitHub Pages
     needs: quality
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    if: >-
+      always() && !cancelled() && github.ref == 'refs/heads/main' &&
+      ((needs.quality.result == 'success' && (github.event_name == 'push' || inputs.action == 'deploy')) ||
+       (github.event_name == 'workflow_dispatch' && inputs.action == 'rollback' && needs.quality.result == 'skipped'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    # Keep publishing and public verification together; never interrupt an active release.
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
     permissions:
+      contents: read
+      actions: read
       pages: write
       id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.pages.outputs.url }}
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Select a verified main release
+        id: release
+        run: node scripts/release-pages.ts prepare
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_ACTION: ${{ inputs.action || 'deploy' }}
+          ROLLBACK_RUN_ID: ${{ inputs.rollback-run-id }}
+          RELEASE_ARTIFACT_ID: ${{ needs.quality.outputs.artifact-id }}
+
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          artifact-ids: ${{ steps.release.outputs.artifact-id }}
+          run-id: ${{ steps.release.outputs.run-id }}
+          github-token: ${{ github.token }}
+          path: release-bundle
+          merge-multiple: true
+
+      - name: Verify the retained artifact without rebuilding
+        run: >-
+          node scripts/release-quality.mjs verify --artifact-only
+          --dist release-bundle/dist --receipt release-bundle/verified.json
+          --expected-head "$EXPECTED_HEAD"
+        env:
+          EXPECTED_HEAD: ${{ steps.release.outputs.expected-head }}
+
+      - name: Verify Pages configuration and HTTPS enforcement
+        id: pages
+        run: node scripts/release-pages.ts configure
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: release-bundle/dist
+          retention-days: 1
+          include-hidden-files: true
+
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+
+      - name: Verify public HTTPS and deployed files
+        run: >-
+          node scripts/release-smoke.ts
+          --dist release-bundle/dist --receipt release-bundle/verified.json
+
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: deployment-evidence-${{ github.run_attempt }}
+          path: test-results/deployment
+          retention-days: 30
+          if-no-files-found: warn

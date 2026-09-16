@@ -106,7 +106,7 @@ async function navigate(page, city) {
   await ready(page, city);
 }
 async function search(page, name) {
-  const input = await page.$(".search-wrap input"); await input.click({ clickCount: 3 }); await page.keyboard.press("Backspace"); await input.type(name);
+  await page.locator(".search-wrap input").fill(name);
   await page.waitForSelector(".search-dropdown-item", { visible: true }); await page.click(".search-dropdown-item");
 }
 async function capture(page, name) {

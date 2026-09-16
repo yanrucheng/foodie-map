@@ -48,6 +48,7 @@ npm run preview -- --host 127.0.0.1 --port 4173
 | npm 入口 | Make 入口 | 职责与失败语义 |
 |---|---|---|
 | `npm run check:repository` | npm 直接运行 | 检查当前工作区/暂存内容的 1,000,000 字节上限与输出目录；CI 另检查本次新增历史对象。 |
+| `npm run check:dependencies` | npm 直接运行 | 检查 npm 全部依赖的已知漏洞；high/critical 或审计服务错误均阻止 CI。需要网络。 |
 | `npm run check` | `make check` | 顺序执行类型、规范与数据检查；任一步失败即非零退出。 |
 | `npm run check:types` | 经 `make check` | 检查应用、数据工具、快速测试和 Vite/Vitest 配置，不生成 JS、声明或 tsbuildinfo。 |
 | `npm run check:lint` | 经 `make check` | ESLint 的 JS/TS 规则、Hooks 调用与依赖规则；警告也失败。 |
@@ -63,6 +64,7 @@ npm run preview -- --host 127.0.0.1 --port 4173
 | `npm run rehearse:catalog` | npm 直接运行 | 经正式 parser/校验器重放隔离新城、两版、覆盖对账、同版修订与恢复；保存输入及命令。 |
 | `npm run release:check` | `make release:check` | 顺序运行 check、完整快速集、P03 覆盖检查、build、已有产物浏览器集和性能预算；成功后保存产物凭据。 |
 | `npm run release:verify` | `make release:verify` | 比较凭据、源码/锁文件和全部产物字节；任何变化均失败。 |
+| `npm run release:smoke` | npm 直接运行 | 按本地产物及凭据核对线上 HTTPS 跳转、首页、JS/CSS、Worker 和数据文件；不一致时非零退出。 |
 | `npm run release:snapshot` | `make release:snapshot` | 导出 Git 登记及未跟踪的当前源码候选和逐文件哈希，不把工作树冒充为 HEAD。 |
 | `npm run dev` / `npm run preview` | `make dev` / `make preview` | 开发服务 / 本地生产预览。需要额外 CLI 参数时直接调用 npm。 |
 | `npm run readme` | `make readme` | 使用 Python 更新现有数据覆盖表，会修改接入指南。 |
@@ -194,9 +196,64 @@ npm run release:verify
 
 `release:check` 的证据写入 `test-results/release/`，可用 `-- --output <目录>` 改位置，后续 verify 使用同一位置。只有 check、test、check:coverage、build、test:e2e、test:performance 六阶段全部退出 0 才生成 `verified.json`；失败时删除旧凭据。`dist/release.json` 记录 VERSION、源码输入摘要、锁文件摘要、正式发现/数据修订及最终 JS/CSS/HTML 字节摘要。源码摘要包含覆盖文档、递归 catalog 本地来源引用和快速集执行的 boarding 脚本。`verified.json` 记录完整产物清单和实际命令；verify 确认浏览器检查前后的 `dist` 没有变化。通过本地自动门禁不表示独立验收完成，也不授权部署。
 
-GitHub Actions 的 PR/main 检查一致。Pages 上传位于检查成功之后，deploy job 只消费该次上传的产物，不再构建。不要为测试门禁触发生产部署。远端 CI 是否执行成功必须单独记录，本地演练不能代替远端结果。
+### GitHub Pages 发布
 
-维护者发布时保留通过检查的整个 `dist` 和对应凭据，包括 `release.json`、`sw.js`、全部 assets、不可变数据和旧 JSON 路径。以这份完整产物作为 A；下一份完整产物作为 B。恢复 A 时复用原产物，不重新编译，也不拼接两份目录。若发布平台无法原子替换目录，安装摘要不一致的新 Worker 会失败，已安装客户端保留旧壳；初次访问者仍可能受不完整部署影响，因此先完成产物上传再切换发布指针。
+[deploy.yml](../.github/workflows/deploy.yml) 是检查、发布和回滚的统一入口。应用部署在 [foodie-map.cyanru.com](https://foodie-map.cyanru.com/) 的根路径，域名权威来源是 [public/CNAME](../public/CNAME)；Vite 的 `base: "/"` 与之对应。
+
+| 触发方式 | 执行行为 |
+|---|---|
+| Pull request | 完整检查，不发布。 |
+| 推送到 GitHub `ci/**` 分支 | 远端 CI 演练，不发布；适用于尚未打开 PR 的发布流程维护。 |
+| 推送到 GitHub `main` | 完整检查后保存发布包、部署并验证线上字节。 |
+| 手动 `action=verify`（默认） | 只验证选中分支，不发布。 |
+| 手动 `action=deploy` | 只允许当前 `main`，重新检查后发布。 |
+| 手动 `action=rollback` | 只允许当前 `main`，取指定历史运行的原始产物恢复，不重新构建。 |
+| 每周一定时运行 | 完整检查和依赖审计，不发布，用于发现环境及依赖漂移。 |
+
+仓库通常同时配置两个远端：`benx-repos` 是本机镜像，`gh` 是 `git@github.com:yanrucheng/foodie-map.git`。`main` 跟踪本机镜像时，普通 `git push` 不更新 GitHub。发布必须显式指定 GitHub 远端；不把本机备份成功当作线上更新。
+
+推荐先推功能分支并打开 PR，等待 `Release quality` 成功，再合并到 GitHub `main`。以下命令中的分支名应替换为本次工作分支：
+
+```sh
+git remote -v
+git push gh HEAD:refs/heads/ci/pages-release
+# 在 GitHub 打开该分支到 main 的 PR，检查通过后合并。
+```
+
+合并会触发真正部署。日常排障使用 `workflow_dispatch` 的默认 `verify`，不要靠推送 `main` 来试跑门禁。远端 CI 成功必须记录具体运行 URL，本机 macOS 通过不能代替 Ubuntu 验证。
+
+GitHub 设置要求：由仓库管理员在 Settings → Pages 将 Source 设为 **GitHub Actions**，Custom domain 与 CNAME 一致，域名 DNS 及证书可用，并一次性勾选 **Enforce HTTPS**。发布任务只读核对这些设置，域名不匹配或 HTTPS 未启用会在部署前终止。修改 Pages 设置需要 Administration 权限；日常工作流不保存管理员令牌，也不尝试用普通 `GITHUB_TOKEN` 修改设置。`github-pages` 环境应仅允许 `main` 发布；建议在仓库规则中要求 PR 和 `Release quality` 检查，按维护者的协作方式配置。
+
+CI 固定 Ubuntu 24.04、Node `.nvmrc` 与 Python 3.13。浏览器缓存按 OS、架构和锁文件隔离，命中缓存仍执行安装命令校验所需版本。Ubuntu 为本次 Chrome 可执行文件安装 user-namespace AppArmor 配置，保留浏览器沙箱。PR 的旧检查可取消，正在发布和核验的任务不会被新提交中断；发布前再次确认运行属于当前 `main`。
+
+### 发布包与线上核验
+
+`Release quality` 成功后，`release-<run_attempt>` artifact 保存完整 `dist/` 和原始 `verified.json`，保留 **30 天**。部署任务按 artifact ID 下载并重新核对全部字节及源码提交，不安装应用依赖、不重新构建。供 Pages 接收的 `github-pages` 临时传输包保留 1 天；它不承担回滚留存职责。
+
+部署后运行 `release:smoke`，确认 HTTP 跳转到同一域名的 HTTPS，并逐文件比较首页、`release.json`、`sw.js`、JS/CSS、图标、manifest、原始和不可变数据与凭据中的 SHA-256。CNAME 只作为托管配置核对，不要求服务器对外提供它。检查允许最多约 10 分钟的 CDN 传播等待，再明确报错；不会把旧页面、返回 200 的错误页或部分部署记为通过。线上核验失败时站点可能已经改变，需要维护者检查报告并决定回滚。`deployment-evidence-<run_attempt>` 保存结果 30 天。
+
+需要在本地复查某份发布包的线上状态时：
+
+```sh
+npm run release:smoke -- --dist /tmp/release-bundle/dist --receipt /tmp/release-bundle/verified.json
+```
+
+### 恢复历史发布
+
+在 Actions → **Release quality and GitHub Pages** → **Run workflow** 中选择 `main`、`action=rollback`，填入原始成功部署的运行编号 `rollback-run-id`（运行 URL 最后的数字）。也可使用已认证的 GitHub CLI：
+
+```sh
+gh workflow run deploy.yml --repo yanrucheng/foodie-map --ref main \
+  -f action=rollback -f rollback-run-id=123456789
+```
+
+只接受本仓库、同一工作流、`main` 上已通过部署及线上核验的运行。PR、其他工作流、只验证的运行、失败或已过期产物都会被拒绝。恢复时使用原始完整产物与凭据；检查 receipt 的提交、全部文件和构建身份后重新上传，随后执行同样的线上核验。原运行即使曾只重跑失败部署，也能找到先前通过的质量检查包。再次回滚仍填写最初产生发布包的运行编号。
+
+30 天是本项目回滚窗口。超过窗口后不能承诺恢复原字节，需要从相应源码重新走检查和新发布流程。需要更长保留期时，在过期前调整工作流和仓库 artifact 保留上限，或下载原始发布包；不要依赖浏览器缓存保存回滚版本。
+
+回滚不移动 Git 的 `main`；后续合并或推送 `main` 会按最新源码重新发布。应先修复或撤回导致回滚的源码改动，再恢复正常发布。
+
+### 缓存升级与本地回放
 
 本地重放使用既有浏览器入口：
 
@@ -235,7 +292,7 @@ npm run test:gates -- --positive --output /tmp/foodie-gate-complete
 - 当前数据所引用的来源材料和校准夹具是正式输入，随源码维护。地图抽检夹具为 [map-anchors.json](../tests/fixtures/map-anchors.json)，不包含旧地图截图或测量结果。
 - E2E、发布检查和性能结果默认写入 `test-results/`；采集任务原始输出放入被忽略的 `eval/sessions/<session>/outputs/` 或临时目录。完成本轮排障后可删除，下一次检查会重新生成。
 - `openspec/changes/*/evidence/` 已退役并被忽略；规格目录保存要求和任务状态。不要把历史输出写回规格目录，也不要把候选源码重复打包进 Git。
-- GitHub Actions 的运行 artifacts 保留 7 天，供本轮排障；无长期归档要求。`verified.json` 仅用于核对同次检查的产物，清理它之后再次发布需要重新运行检查。
+- GitHub Actions 的测试证据保留 7 天，生产发布包及线上核验证据保留 30 天，具体职责见上面的发布流程。开发候选无需长期归档；仍在回滚窗口内的原始生产包与凭据不可提前删除。
 - 入库单文件上限为 **1,000,000 字节**。`npm run check:repository` 检查工作区、暂存内容；`npm run check:repository -- --staged` 可用于提交前检查。CI 还检查本次新增历史对象，防止“大文件先提交、随后删除”留在 Git 历史。被忽略的原始输出也不能通过强制添加入库。
 
 临时需要把尚未提交的当前源码放到隔离目录检查时，可使用现有 `release:snapshot`；完成当次检查后删除快照，不维护历史候选库：
