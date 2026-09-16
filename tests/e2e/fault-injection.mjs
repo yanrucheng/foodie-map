@@ -38,7 +38,7 @@ async function run(root, command, args, log, env = {}) {
 try {
   const cases = [
     { name: "p08-invalid-form", file: "public/data/hong-kong/2026/michelin-starred.json", mutate: (body) => { const data = JSON.parse(body); data[0].serving_form = "unknown"; return JSON.stringify(data); }, diagnostic: "serving_form" },
-    { name: "p08-missing-icon", file: "src/config/restaurantPresentation.ts", mutate: (body) => body.replace(/ {2}drink: \{ label:[\s\S]*?\n\};/u, "};"), diagnostic: "TS2741" },
+    { name: "missing-dining-icon", file: "src/config/restaurantPresentation.ts", mutate: (body) => body.replace(/^ {2}other: \{ label:.*\n/mu, ""), diagnostic: "TS2741" },
     { name: "p08-invalid-svg", file: "src/config/restaurantPresentation.ts", mutate: (body) => body.replace("<svg xmlns=", "<broken xmlns="), diagnostic: "has valid local SVG" },
     { name: "p08-broken-color", file: "src/config/restaurantPresentation.ts", mutate: (body) => body.replace("62% 28%", "0% 28%"), diagnostic: "INVALID_PRESENTATION" },
     { name: "bad-data", file: "public/data/hong-kong/2026/michelin-starred.json", mutate: (body) => { const data = JSON.parse(body); data[0].edition_year = 1900; return JSON.stringify(data); }, diagnostic: "DATASET_MISMATCH" },

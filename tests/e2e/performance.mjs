@@ -202,7 +202,12 @@ try {
   result.summary = { datasets: result.datasets.map((dataset) => {
     const samples = result.samples.filter((sample) => sample.kind === dataset.kind);
     return { kind: dataset.kind, lcpMedianMs: median(samples.map((sample) => sample.lcpMs)), clsMedian: median(samples.map((sample) => sample.cls)), jsGzipMaxBytes: Math.max(...samples.map((sample) => sample.jsGzipBytes)) };
-  }), interactionCount: latency.length, interactionP95Ms: latency[Math.ceil(latency.length * 0.95) - 1] };
+  }), interactionCount: latency.length, interactionP95Ms: latency[Math.ceil(latency.length * 0.95) - 1],
+    interactions: ["search", "filter"].map((type) => {
+      const samples = result.interactions.filter((item) => item.type === type).map((item) => item.latencyMs).sort((a, b) => a - b);
+      return { type, count: samples.length, p95Ms: samples[Math.ceil(samples.length * 0.95) - 1] };
+    }),
+  };
   result.passed = result.summary.datasets.every((dataset) => dataset.lcpMedianMs <= 2500 && dataset.clsMedian <= 0.1 && dataset.jsGzipMaxBytes <= 400 * 1024) && latency.length >= 20 && result.summary.interactionP95Ms <= 200;
   console.log(JSON.stringify(result.summary));
   if (!result.passed) process.exitCode = 1;

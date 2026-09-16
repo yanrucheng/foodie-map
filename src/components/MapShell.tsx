@@ -142,10 +142,8 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
       if (modeRef.current === "marker") {
         heat.remove();
         cluster.clearLayers();
-        visible.forEach((item) => {
-          const marker = markersRef.current.get(item.id);
-          if (marker) cluster.addLayer(marker);
-        });
+        // Bulk insertion recalculates bounds and cluster icons once per filter change.
+        cluster.addLayers(visible.map((item) => markersRef.current.get(item.id)).filter((marker): marker is Marker => marker !== undefined));
         if (!map.hasLayer(cluster)) map.addLayer(cluster);
       } else {
         if (map.hasLayer(cluster)) map.removeLayer(cluster);
