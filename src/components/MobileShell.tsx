@@ -59,9 +59,11 @@ export function MobileShell({
     <BottomSheet key={searchKey} id="mobile-panel" isOpen={activePanel !== null} title={activePanel ? panelTitles[activePanel] : undefined} onClose={close}>
       {activePanel === "filter" && <FilterPanel
         groups={mapProps.groups} dataGroups={mapProps.dataGroups} activeGroups={mapProps.activeGroups}
-        onToggle={mapProps.onToggleGroup} onToggleAll={mapProps.onToggleAll}
+        onToggle={mapProps.onToggleGroup} onSelectAll={mapProps.onSelectAll} onDeselectAll={mapProps.onDeselectAll}
+        filtersReady={mapProps.filtersReady} showStarFilter={mapProps.showStarFilter}
+        starFilter={mapProps.starFilter} onStarFilterChange={mapProps.onStarFilterChange}
         diningCounts={mapProps.diningCounts} diningFilter={mapProps.diningFilter} onDiningFilterChange={mapProps.onDiningFilterChange}
-        onModeToggle={handleModeToggle} currentMode={displayMode} variant="pill"
+        onModeToggle={handleModeToggle} currentMode={displayMode}
       />}
       {activePanel === "stats" && <StatsPanelReact restaurants={mapProps.visibleRestaurants} />}
       {activePanel === "legend" && <Legend groups={mapProps.groups} dataGroups={mapProps.dataGroups}

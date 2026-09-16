@@ -85,6 +85,8 @@
 
 ### Requirement: P09-R5 One dining filter and consistent consumers
 
+2026-09-16 后续合同：[筛选区 B 定稿](../../../../../docs/prd/prd-260916-1400-filter-panel-experience.md)负责新控件布局、星级组合与去掉按钮数量的要求。以下 R5 场景保留为 P09 初始验收记录，其中按钮数字和“全部 N／其他料理 N”展示由新合同接替；类别语义、未标注处理和诊断计数继续沿用。后续开发按新合同更新相关 UI 断言，历史验收结果保留原义。
+
 新 UI SHALL 用主打体验替代四类消费形式筛选，并与菜系过滤组合。所有展示类别数量 SHALL 按当前整份城市/年度/榜单数据计算，包含无坐标记录。地图、统计、热力图、图例与详情 MUST 消费一致的记录和语义。
 
 #### Scenario: P09-R5-S1 Other filter and complete-dataset counts

@@ -4,6 +4,7 @@ import { diningKey, countDiningCategories, type DiningCounts, type DiningFilter 
 import type { Restaurant } from "@/types/restaurant";
 
 export type { DiningFilter } from "@/config/restaurantPresentation";
+export type StarFilter = "all" | 1 | 2 | 3;
 
 interface UseFiltersResult {
   /** Set of distinct cuisine_group keys present in the loaded restaurant data. */
@@ -14,10 +15,13 @@ interface UseFiltersResult {
   reveal: (restaurant: Restaurant) => void;
   activeGroups: Set<string>;
   toggle: (group: string) => void;
-  toggleAll: () => void;
+  selectAll: () => void;
+  deselectAll: () => void;
   enableGroup: (group: string) => void;
   diningFilter: DiningFilter;
   setDiningFilter: (filter: DiningFilter) => void;
+  starFilter: StarFilter;
+  setStarFilter: (filter: StarFilter) => void;
 }
 
 /**
@@ -32,12 +36,14 @@ export function useFilters(restaurants: Restaurant[], datasetKey = "", spatialCo
 
   const [activeGroups, setActiveGroups] = useState<Set<string>>(() => new Set(allGroups));
   const [diningFilter, setDiningFilter] = useState<DiningFilter>("all");
+  const [starFilter, setStarFilter] = useState<StarFilter>("all");
 
   const [source, setSource] = useState({ restaurants, datasetKey });
   if (source.restaurants !== restaurants || source.datasetKey !== datasetKey) {
     setSource({ restaurants, datasetKey });
     setActiveGroups(new Set(allGroups));
     setDiningFilter("all");
+    setStarFilter("all");
   }
 
   const toggle = useCallback((group: string) => {
@@ -45,8 +51,6 @@ export function useFilters(restaurants: Restaurant[], datasetKey = "", spatialCo
       const next = new Set(prev);
       if (next.has(group)) {
         next.delete(group);
-        // Prevent empty filter — keep at least one group active
-        if (next.size === 0) next.add(group);
       } else {
         next.add(group);
       }
@@ -54,18 +58,8 @@ export function useFilters(restaurants: Restaurant[], datasetKey = "", spatialCo
     });
   }, []);
 
-  /** Toggles between select-all and deselect-all (keeps at least one active). */
-  const toggleAll = useCallback(() => {
-    setActiveGroups((prev) => {
-      const allSet = new Set(allGroups);
-      // If all are already active, deselect all except the first
-      if (prev.size === allSet.size && [...allSet].every((g) => prev.has(g))) {
-        const first = allGroups[0];
-        return first ? new Set<string>([first]) : new Set<string>();
-      }
-      return allSet;
-    });
-  }, [allGroups]);
+  const selectAll = useCallback(() => setActiveGroups(new Set(allGroups)), [allGroups]);
+  const deselectAll = useCallback(() => setActiveGroups(new Set()), []);
 
   const enableGroup = useCallback((group: string) => {
     setActiveGroups((prev) => {
@@ -80,13 +74,15 @@ export function useFilters(restaurants: Restaurant[], datasetKey = "", spatialCo
     if (!restaurants.includes(restaurant)) return;
     enableGroup(restaurant.cuisine_group);
     setDiningFilter((previous) => previous === "all" || previous === diningKey(restaurant) ? previous : "all");
+    setStarFilter((previous) => previous === "all" || previous === restaurant.star_rating ? previous : "all");
   }, [restaurants, enableGroup]);
   const visibleRestaurants = useMemo(() => restaurants.filter((record) =>
     activeGroups.has(record.cuisine_group) && (diningFilter === "all" || diningKey(record) === diningFilter)
-  ), [restaurants, activeGroups, diningFilter]);
+      && (starFilter === "all" || record.star_rating === starFilter)
+  ), [restaurants, activeGroups, diningFilter, starFilter]);
   const mappableRestaurants = useMemo(() => visibleRestaurants.filter((record) => getMapPosition(record, spatialContext) !== null), [visibleRestaurants, spatialContext]);
 
   const diningCounts = useMemo(() => countDiningCategories(restaurants), [restaurants]);
 
-  return { diningCounts, visibleRestaurants, mappableRestaurants, reveal, dataGroups: new Set(allGroups), activeGroups, toggle, toggleAll, enableGroup, diningFilter, setDiningFilter };
+  return { diningCounts, visibleRestaurants, mappableRestaurants, reveal, dataGroups: new Set(allGroups), activeGroups, toggle, selectAll, deselectAll, enableGroup, diningFilter, setDiningFilter, starFilter, setStarFilter };
 }

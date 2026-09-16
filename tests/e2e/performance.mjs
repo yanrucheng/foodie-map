@@ -180,7 +180,7 @@ try {
           }
           await page.keyboard.press("Escape");
           await page.click('[aria-label="筛选"]');
-          await page.waitForSelector(".filter-pill", { visible: true });
+          await page.waitForSelector(".filter-item", { visible: true });
           for (let index = 0; index < 10; index++) {
             const selector = index % 2 === 0 ? '.dining-segment-btn[data-dining="meat"]' : '.dining-segment-btn[data-dining="all"]';
             const count = index % 2 === 0 ? 500 : 1000;

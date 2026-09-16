@@ -14,15 +14,12 @@
   .header { padding: 18px 24px 14px; }
   .title { font-size: 24px; }
   .top-search { top: 18px; width: min(460px, calc(100vw - 32px)); }
-  .control-block { min-width: 260px; }
   .stats-panel { min-width: 240px; }
   .legend-card { width: calc(100vw - 390px); left: 290px; bottom: 18px; }
   .leaflet-control-container .leaflet-top.leaflet-left { margin-top: 88px; }
   .leaflet-control-container .leaflet-top.leaflet-right { margin-top: 88px; }
 
   /* Revert touch-target sizing for desktop — match original compact appearance */
-  .filter-item { min-height: 0; }
-  .filter-item input { width: initial; height: initial; }
   .search-wrap input { min-height: 0; }
   .search-wrap button, .mode-btn { min-height: 0; }
 }
@@ -318,7 +315,10 @@
 @media (min-width: 768px) {
   .top-search { width: min(400px, calc(100vw - 32px)); }
   .leaflet-control-container .leaflet-top.leaflet-left, .leaflet-control-container .leaflet-top.leaflet-right { margin-top: 88px; }
-  .leaflet-control-container .control-block { max-height: calc(100vh - 280px); max-width: 280px; overflow-y: auto; }
+  .leaflet-control-container .leaflet-top.leaflet-left { bottom: 12px; display: flex; flex-direction: column; align-items: flex-start; }
+  .leaflet-top.leaflet-left .leaflet-control-zoom { flex-shrink: 0; }
+  .leaflet-top.leaflet-left .filter-control { display: flex; min-height: 0; }
+  .leaflet-control-container .control-block { max-width: 280px; overflow-y: auto; }
   .leaflet-control-container .stats-panel { max-width: 240px; max-height: calc(100vh - 280px); overflow-y: auto; }
   .search-wrap input, .search-wrap button, .mode-btn { min-height: 44px; }
 }

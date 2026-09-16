@@ -159,10 +159,10 @@ for (const viewport of [desktop, mobile]) {
         window.L.Map.prototype.flyTo = function (...args) { window.p04Flights.push(args); return original.apply(this, args); };
       });
       if (compact) await page.click('[aria-label="筛选"]');
-      const cuisineSelector = compact ? ".filter-pill" : ".filter-item";
+      const cuisineSelector = ".filter-item";
       await page.waitForSelector(cuisineSelector, { visible: true });
       await clickText(page, cuisineSelector, "测试城新菜系");
-      await clickText(page, ".dining-segment-btn", "肉食主打 1");
+      await clickText(page, ".dining-segment-btn .dining-label", "肉食主打");
       await page.waitForFunction(() => document.querySelector(".dataset-status").textContent.includes("筛选结果 1"));
       if (compact) {
         await page.click(".bottom-sheet-backdrop", { offset: { x: 10, y: 100 } });

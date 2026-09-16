@@ -9,8 +9,9 @@ import { tmpdir } from "node:os";
 import puppeteer from "puppeteer";
 import { p08Fixture } from "../fixtures/p08Catalog.ts";
 import { buildReleaseFixture } from "./release.helpers.mjs";
-const dining = process.argv.includes("--dining");
-const initialUrl = dining ? "/?city=second-fixture&year=2026&guide=michelin-bib-gourmand" : accessibleUrl;
+const filters = process.argv.includes("--filters");
+const dining = filters || process.argv.includes("--dining");
+const initialUrl = filters ? "/?city=second-fixture&year=2026&guide=michelin-starred" : dining ? "/?city=second-fixture&year=2026&guide=michelin-bib-gourmand" : accessibleUrl;
 import { createBrowserHarness } from "./helpers.mjs";
 
 const artifacts = process.env.E2E_ARTIFACT_DIR;
@@ -27,7 +28,7 @@ else await build({ logLevel: "error", define: { __FOODIE_RELEASE__: "null" }, pl
 const harness = await createBrowserHarness({ outDir });
 let browser;
 try {
-  browser = await puppeteer.launch({ headless: false, defaultViewport: null, args: [`--disable-extensions-except=${temporary}`, `--load-extension=${temporary}`, "--window-size=1280,887"] });
+  browser = await puppeteer.launch({ headless: false, executablePath: process.env.ZOOM_CHROME_EXECUTABLE, defaultViewport: null, args: [`--disable-extensions-except=${temporary}`, `--load-extension=${temporary}`, "--window-size=1280,887"] });
   const page = (await browser.pages())[0];
   const target = await browser.waitForTarget((target) => target.type() === "service_worker");
   const worker = await target.worker();
@@ -47,7 +48,7 @@ try {
   const client = await page.createCDPSession();
   const { windowId } = await client.send("Browser.getWindowForTarget");
   const evidence = [];
-  for (const viewport of [{ width: 1280, height: 800 }, { width: 768, height: 1024 }]) {
+  for (const viewport of [{ width: 1280, height: 800 }, { width: filters ? 820 : 768, height: filters ? 1000 : 1024 }]) {
     await page.goto(harness.baseUrl + initialUrl);
     await worker.evaluate(async () => { const [tab] = await chrome.tabs.query({ active: true, currentWindow: true }); await chrome.tabs.setZoom(tab.id, 1); });
     await page.waitForFunction(() => devicePixelRatio === 2);
@@ -68,6 +69,30 @@ try {
     assert.ok(Math.abs(after.width * 2 - before.width) < 3);
     const prefix = `${dining ? "p09" : "p06"}-native-200-${viewport.width}`;
     await page.screenshot({ path: join(artifacts, `${prefix}-default.png`) });
+    if (filters) {
+      await page.waitForSelector('.mobile-shell .search-wrap input', { visible: true });
+      await page.click('[aria-label="筛选"]');
+      await page.waitForSelector('.bottom-sheet-container[open]');
+      const controls = await page.$eval('.control-block', (node) => ({
+        labels: [...node.querySelectorAll('.dining-label')].map((label) => label.textContent),
+        columns: getComputedStyle(node.querySelector('.dining-filter-segment')).gridTemplateColumns.split(' ').length,
+        fit: [...node.querySelectorAll('.dining-segment-btn')].every((button) => button.querySelector('.dining-label').getBoundingClientRect().right <= button.querySelector('.selection-mark').getBoundingClientRect().left),
+        targets: [...node.querySelectorAll('.dining-segment-btn, .star-segment-btn, .toggle-all-btn, .filter-item')].map((button) => ({ width: button.getBoundingClientRect().width, height: button.getBoundingClientRect().height })),
+      }));
+      assert.equal(controls.columns, 2); assert.equal(controls.labels.length, 9); assert.equal(controls.fit, true);
+      assert.ok(controls.targets.every((r) => r.width >= 44 && r.height >= 44));
+      await page.locator('.toggle-all-btn:not(:disabled)').click();
+      await page.waitForFunction(() => document.querySelector('.dataset-status').textContent.includes('筛选结果 0'));
+      await page.$eval('.mode-btn', (button) => button.focus());
+      const focus = await page.evaluate(() => { const r = document.activeElement.getBoundingClientRect(); return { top: r.top, bottom: r.bottom, height: innerHeight }; });
+      assert.ok(focus.top >= 0 && focus.bottom <= focus.height);
+      await page.keyboard.press('Enter');
+      await page.$eval('.bottom-sheet-content', (node) => { node.scrollTop = 0; });
+      await page.screenshot({ path: join(artifacts, `filter-native-200-${viewport.width}.png`) });
+      evidence.push({ requestedViewport: viewport, heightCapped: before.height !== viewport.height, before, after, actualZoom, controls, focus });
+      await writeFile(join(artifacts, 'filter-native-zoom.json'), JSON.stringify({ browser: await browser.version(), mechanism: 'Chrome tabs.setZoom / tabs.getZoom', evidence }, null, 2));
+      continue;
+    }
     if (dining) {
       await page.waitForSelector('.mobile-shell .search-wrap input', { visible: true });
       await page.click('.search-wrap input'); await page.keyboard.type('餐食测试'); await page.keyboard.press('ArrowDown'); await page.keyboard.press('Enter');

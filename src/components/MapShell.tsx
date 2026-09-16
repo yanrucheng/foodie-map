@@ -14,7 +14,7 @@ import { focusBookmark } from "@/utils/focus";
 import L from "@/lib/leaflet";
 import type { Restaurant } from "@/types/restaurant";
 import type { CuisineGroup, DiningCounts } from "@/config/restaurantPresentation";
-import type { DiningFilter } from "@/hooks/useFilters";
+import type { DiningFilter, StarFilter } from "@/hooks/useFilters";
 import type { Map as LeafletMap, Marker, MarkerClusterGroup } from "leaflet";
 import { createRestaurantMarker, popupHtml } from "./RestaurantMarker";
 import { HeatLayerManager } from "./HeatLayer";
@@ -34,7 +34,12 @@ export interface MapShellProps {
   dataGroups: Set<string>;
   activeGroups: Set<string>;
   onToggleGroup: (group: string) => void;
-  onToggleAll: () => void;
+  onSelectAll: () => void;
+  onDeselectAll: () => void;
+  filtersReady: boolean;
+  showStarFilter: boolean;
+  starFilter: StarFilter;
+  onStarFilterChange: (filter: StarFilter) => void;
   diningFilter: DiningFilter;
   diningCounts: DiningCounts;
   onDiningFilterChange: (filter: DiningFilter) => void;
@@ -67,7 +72,7 @@ export interface MapShellHandle {
  */
 export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
   function MapShell(
-    { restaurants, visibleRestaurants, groups, dataGroups, activeGroups, onToggleGroup, onToggleAll, diningFilter, diningCounts, onDiningFilterChange, center, zoom, spatialContext, basemap, hideControls, onModeChange, selection, onRestaurantSelect, onRestaurantClose, mobileDetails },
+    { restaurants, visibleRestaurants, groups, dataGroups, activeGroups, onToggleGroup, onSelectAll, onDeselectAll, filtersReady, showStarFilter, starFilter, onStarFilterChange, diningFilter, diningCounts, onDiningFilterChange, center, zoom, spatialContext, basemap, hideControls, onModeChange, selection, onRestaurantSelect, onRestaurantClose, mobileDetails },
     ref,
   ) {
     const selectedRestaurant = selection?.record ?? null;
@@ -234,7 +239,7 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
         const FilterPlaceholder = L.Control.extend({
           options: { position: "topleft" as const },
           onAdd() {
-            const el = L.DomUtil.create("div");
+            const el = L.DomUtil.create("div", "filter-control");
             L.DomEvent.disableClickPropagation(el);
             L.DomEvent.disableScrollPropagation(el);
             setFilterContainer(el);
@@ -353,7 +358,9 @@ export const MapShell = forwardRef<MapShellHandle, MapShellProps>(
               dataGroups={dataGroups}
               activeGroups={activeGroups}
               onToggle={onToggleGroup}
-              onToggleAll={onToggleAll}
+              onSelectAll={onSelectAll} onDeselectAll={onDeselectAll}
+              filtersReady={filtersReady} showStarFilter={showStarFilter}
+              starFilter={starFilter} onStarFilterChange={onStarFilterChange}
               diningFilter={diningFilter}
               diningCounts={diningCounts}
               onDiningFilterChange={onDiningFilterChange}

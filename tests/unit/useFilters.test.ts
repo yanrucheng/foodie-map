@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 /**
  * Unit tests for useFilters hook.
- * Tests toggle, toggleAll, and enableGroup functionality.
+ * Tests cuisine actions, category/star intersections and search reveal.
  */
 
 import { afterEach, describe, it, expect } from "vitest";
@@ -95,7 +95,7 @@ describe("useFilters", () => {
       expect(result.current.activeGroups.size).toBe(3);
     });
 
-    it("should prevent empty filter — keep at least one group active", () => {
+    it("allows the last cuisine to be unchecked, producing zero results", () => {
       const singleRestaurant = [mockRestaurant("CANTONESE")];
       const { result } = renderHook(() => useFilters(singleRestaurant));
 
@@ -103,21 +103,22 @@ describe("useFilters", () => {
         result.current.toggle("CANTONESE");
       });
 
-      // Should still have CANTONESE active (prevented from becoming empty)
-      expect(result.current.activeGroups.has("CANTONESE")).toBe(true);
+      expect(result.current.activeGroups.size).toBe(0);
+      expect(result.current.visibleRestaurants).toEqual([]);
+      expect(result.current.mappableRestaurants).toEqual([]);
     });
   });
 
-  describe("toggleAll", () => {
-    it("should deselect all except first when all groups are active", () => {
+  describe("bulk actions", () => {
+    it("deselects every cuisine when all groups are active", () => {
       const { result } = renderHook(() => useFilters(mockRestaurants));
 
       act(() => {
-        result.current.toggleAll();
+        result.current.deselectAll();
       });
 
-      expect(result.current.activeGroups.size).toBe(1);
-      expect(result.current.activeGroups.has("CANTONESE")).toBe(true);
+      expect(result.current.activeGroups.size).toBe(0);
+      expect(result.current.visibleRestaurants).toEqual([]);
     });
 
     it("should select all groups when not all are active", () => {
@@ -129,9 +130,9 @@ describe("useFilters", () => {
       });
       expect(result.current.activeGroups.size).toBe(2);
 
-      // Then toggleAll should activate all
+      // Select all restores the complete cuisine group.
       act(() => {
-        result.current.toggleAll();
+        result.current.selectAll();
       });
 
       expect(result.current.activeGroups.size).toBe(3);
@@ -208,6 +209,74 @@ describe("P09 dining intersections and missing annotations", () => {
     act(() => result.current.setDiningFilter("dessert_drink"));
     rerender({ key: "B" });
     expect(result.current.diningFilter).toBe("all");
+    expect(result.current.visibleRestaurants).toEqual(rows);
+  });
+});
+
+
+describe("star and cuisine filter contract", () => {
+  const rows = [
+    { id: 1, cuisine_group: "A", dining_category: "french", star_rating: 2, lat: 22.3, lon: 114.1, geocode_success: true },
+    { id: 2, cuisine_group: "B", dining_category: "french", star_rating: 2 },
+    { id: 3, cuisine_group: "A", dining_category: "meat", star_rating: 1 },
+    { id: 4, cuisine_group: "A", dining_category: "french", star_rating: 3 },
+    { id: 5, cuisine_group: "B", dining_category: null, star_rating: null },
+    { id: 6, cuisine_group: "B", dining_category: "french" },
+  ].map((row) => ({ ...mockRestaurant(row.cuisine_group), guide_type: "michelin-starred", ...row } as Restaurant));
+
+  it("matches exact stars including unknown only in all, and intersects all three groups", () => {
+    const { result } = renderHook(() => useFilters(rows));
+    expect(result.current.visibleRestaurants).toEqual(rows);
+    for (const star of [1, 2, 3] as const) {
+      act(() => result.current.setStarFilter(star));
+      expect(result.current.visibleRestaurants).toEqual(rows.filter((r) => r.star_rating === star));
+    }
+    act(() => { result.current.setStarFilter(2); result.current.setDiningFilter("french"); result.current.toggle("B"); });
+    expect(result.current.visibleRestaurants).toEqual([rows[0]]);
+    expect(result.current.mappableRestaurants).toEqual([rows[0]]);
+    act(() => result.current.deselectAll());
+    expect(result.current.visibleRestaurants).toEqual([]);
+    act(() => result.current.toggle("B"));
+    expect(result.current.visibleRestaurants).toEqual([rows[1]]);
+    expect(result.current.mappableRestaurants).toEqual([]);
+    act(() => result.current.selectAll());
+    expect(result.current.visibleRestaurants).toEqual(rows.slice(0, 2));
+    expect(result.current.starFilter).toBe(2);
+    expect(result.current.diningFilter).toBe("french");
+    expect(result.current.dataGroups).toEqual(new Set(["A", "B"]));
+    expect(result.current.diningCounts.french).toBe(4);
+  });
+
+  it("search opens only necessary groups, preserves compatible constraints and ignores stale records", () => {
+    const { result } = renderHook(() => useFilters(rows));
+    act(() => { result.current.setStarFilter(2); result.current.setDiningFilter("french"); result.current.deselectAll(); });
+    act(() => result.current.reveal(rows[1]!));
+    expect(result.current.activeGroups).toEqual(new Set(["B"]));
+    expect(result.current.starFilter).toBe(2);
+    expect(result.current.diningFilter).toBe("french");
+    act(() => result.current.reveal(rows[2]!));
+    expect(result.current.starFilter).toBe("all");
+    expect(result.current.diningFilter).toBe("all");
+    act(() => { result.current.setStarFilter(3); result.current.reveal(rows[4]!); });
+    expect(result.current.starFilter).toBe("all");
+    act(() => { result.current.deselectAll(); result.current.setStarFilter(1); result.current.reveal({ ...rows[0]! }); });
+    expect(result.current.activeGroups.size).toBe(0);
+    expect(result.current.starFilter).toBe(1);
+  });
+
+  it("preserves filters across layout renders and resets on edition changes or newly loaded data", () => {
+    const { result, rerender } = renderHook(({ data, key }) => useFilters(data, key), { initialProps: { data: rows, key: "city/2026/starred" } });
+    act(() => { result.current.setStarFilter(2); result.current.setDiningFilter("french"); result.current.deselectAll(); });
+    rerender({ data: rows, key: "city/2026/starred" });
+    expect(result.current.visibleRestaurants).toEqual([]);
+    expect(result.current.starFilter).toBe(2);
+    rerender({ data: rows, key: "city/2027/starred" });
+    expect(result.current.starFilter).toBe("all");
+    expect(result.current.diningFilter).toBe("all");
+    expect(result.current.visibleRestaurants).toEqual(rows);
+    rerender({ data: [], key: "city/2027/bib" });
+    expect(result.current.dataGroups.size).toBe(0);
+    rerender({ data: rows, key: "city/2027/bib" });
     expect(result.current.visibleRestaurants).toEqual(rows);
   });
 });

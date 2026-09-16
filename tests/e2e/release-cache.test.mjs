@@ -164,7 +164,7 @@ for (const engine of ["chromium", "webkit"]) {
       assert.match(await s.page.locator(".mobile-popup-card").textContent(), /暂无可靠坐标/);
       await s.page.keyboard.press("Escape");
       await s.page.getByRole("button", { name: "筛选", exact: true }).click();
-      await s.page.getByRole("button", { name: "鱼鲜主打 1", exact: true }).click();
+      await s.page.getByRole("button", { name: "鱼鲜主打", exact: true }).click();
       await s.page.waitForFunction(() => document.querySelector(".dataset-status").textContent.includes("筛选结果 1"));
       await s.page.keyboard.press("Escape");
       await snapshot(s.page, `p07-${engine}-offline-search-filter-detail`, release, records);

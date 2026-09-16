@@ -28,7 +28,7 @@
 ## Implementation and ownership
 
 - `package.json` 仍是命令权威。`release:check` 顺序复用 check、test、正式 P03 `check:coverage`、build、`test:e2e -- --prebuilt`、test:performance。六步成功才生成凭据，失败移除旧凭据；未来任一必需命令缺失仍返回 78。故障演练直接修改正式覆盖表，已不使用 coverage-consumer 替身。
-- 同一 job 验证并上传 `dist`；deploy job 依赖 quality 且只消费上传产物。`release:verify` 对比检查前后源码、锁文件、构建和完整产物清单；测试中替换 JS 的负例必须失败。当前没有实际触发远端 CI 或生产部署。
+- 同一 job 验证并上传 `dist`；deploy job 依赖 quality 且只消费上传产物。`release:verify` 对比检查前后源码、锁文件、构建和完整产物清单；测试中替换 JS 的负例必须失败。后续远端 CI 与正式发布已有执行证据，见[发布交接实例](../../../readme/development.md#已确认的交接实例2026-09-16)。
 - `scripts/release-build.ts` 读取 `public/data/catalog.json`，调用 P03 `validateCatalogRoot`/`catalogCities` 及 P02 `validateDataset`/taxonomy 合同。生成 `/_foodie/data/<sha256>/data/...`、`release.json` 和 Worker 常量。旧 JSON 地址固定派生自各自年度源，目录扫描只找遗漏，身份始终归 catalog。
 - `ReleaseDiscovery` 只提供可选 dataRoot。隔离重放将原始 catalog/年度/taxonomy/证据文件写入临时目录，经过与正式产物相同的 parser、adapter、校验和构建；不新增登记或替换城市适配器。正式候选直接使用实际 catalog 与年度文件。
 - 源码身份纳入 readme 覆盖文档、catalog 的递归本地来源引用及快速集实际执行的 boarding 工具，既有 Python 虚拟环境不属于输入。故障副本复用这份输入清单，解压后的候选无需 Git 即可重放四种故障及健康管线；不会出现只有在原仓库才找到来源文件的假干净验证。
@@ -48,7 +48,7 @@
 
 P03 缺失与正式发现联调阻塞已解决。当前来源仍如实标为 11 份 unverified、东京两份 partial，不能把管线成功写成所有官方名单完整。P05 已通过 26 个名单/布局组合及 unknown 负向场景；大陆/香港/澳门独立数值 ≤10m、真实端到端 ≤200m 未证实。东京随后由上游改接 GSI 标准图，新增实际非纯色瓦片、3 点独立数值与地图参考预算，限定范围见 P05 basemap-260914 记录；不推定所有域/所有餐厅/实地 GPS 已通过。P06 读屏专项按用户最新范围跳过，不记为通过、不再要求执行；完整 Safari、真机软键盘及完整 768×1024 原生 200% 缩放仍待证据。
 
-Safari 26.4 历史桌面抽检只对应其旧构建和列明步骤，不代表当前正式 catalog 候选完整 Safari 流程通过。远端 CI 未执行，不能由本地门禁推定。开发者提供 G1–G4 自测和干净重放环境，独立重放、4.2 判定及 4.3 归档交给验收负责人。
+Safari 26.4 历史桌面抽检只对应其旧构建和列明步骤，不代表当前正式 catalog 候选完整 Safari 流程通过。远端 CI 与部署结论须引用具体运行，不能由本地门禁推定；后续执行证据由发布说明承载。开发者提供 G1–G4 自测和干净重放环境，独立重放、4.2 判定及 4.3 归档交给验收负责人。
 
 发布、回滚、故障注入、快照和干净重放的操作入口统一放在[开发与运行](../../../readme/development.md)，本包的状态放在 [tasks](tasks.md)，本轮运行输出写入 test-results/ 或临时目录。
 

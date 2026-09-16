@@ -83,7 +83,8 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
 .bottom-sheet-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 4px 12px 8px; flex-shrink: 0; }
 .bottom-sheet-title { flex: 1; margin: 0; text-align: left; overflow-wrap: anywhere; }
 .bottom-sheet-content { min-height: 0; }
-.bottom-sheet-content .filter-list { max-height: none; }
+.bottom-sheet-content .control-block { width: 100%; }
+.bottom-sheet-content .filter-item { min-height: 44px; }
 .mobile-popup-card { max-height: 90vh; max-height: 90dvh; max-height: calc(var(--visible-height, 100dvh) * 0.9); background: #121b26; padding-top: 12px; }
 .mobile-popup-close { position: sticky; top: 0; margin-left: auto; width: 44px; height: 44px; z-index: 1; }
 .mobile-popup-name { padding-right: 0; }

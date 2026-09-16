@@ -153,20 +153,54 @@ describe("P04-R3/R4 shared filters and city taxonomy", () => {
   });
 
   it("P08 keeps an entirely unclassified dataset browsable without eight empty category buttons", () => {
-    const view = render(<FilterPanel groups={[]} dataGroups={new Set()} activeGroups={new Set()} onToggle={() => {}} onToggleAll={() => {}}
+    const view = render(<FilterPanel groups={[]} dataGroups={new Set()} activeGroups={new Set()} onToggle={() => {}} onSelectAll={() => {}} onDeselectAll={() => {}} filtersReady showStarFilter={false} starFilter="all" onStarFilterChange={() => {}}
       diningCounts={{ staple: 0, meat: 0, seafood: 0, dessert_drink: 0, french: 0, chinese: 0, japanese_course: 0, other: 0, unclassified: 7 }} diningFilter="all"
       onDiningFilterChange={() => {}} onModeToggle={() => {}} currentMode="marker" />);
-    expect(view.getByRole("button", { name: /^其他料理 7$/ })).toBeTruthy();
+    expect(view.getByRole("button", { name: /^其他料理$/ })).toBeTruthy();
     expect(view.queryByText(/未标注/)).toBeNull();
     expect(view.container.querySelectorAll(".dining-segment-btn")).toHaveLength(2);
-    expect(view.getByRole("button", { name: "全部 7" }).getAttribute("aria-pressed")).toBe("true");
+    expect(view.getByRole("button", { name: "全部" }).getAttribute("aria-pressed")).toBe("true");
+  });
+
+  it("keeps bulk actions and keyboard focus in the cuisine group, including zero and unavailable data", () => {
+    const records = [restaurant({ cuisine_group: "CANTONESE" }), restaurant({ id: 2, cuisine_group: "NEW_GROUP" })];
+    function Panel({ ready = true }: { ready?: boolean }) {
+      const filters = useFilters(records);
+      return <FilterPanel groups={fixture.taxonomies["/data/taxonomy/fixture-city.json"].groups}
+        dataGroups={filters.dataGroups} activeGroups={filters.activeGroups} onToggle={filters.toggle}
+        onSelectAll={filters.selectAll} onDeselectAll={filters.deselectAll} filtersReady={ready}
+        showStarFilter starFilter={filters.starFilter} onStarFilterChange={filters.setStarFilter}
+        diningCounts={filters.diningCounts} diningFilter={filters.diningFilter} onDiningFilterChange={filters.setDiningFilter}
+        onModeToggle={() => {}} currentMode="marker" />;
+    }
+    const view = render(<Panel />);
+    const all = view.getByRole("button", { name: "全选" }) as HTMLButtonElement;
+    const none = view.getByRole("button", { name: "全不选" }) as HTMLButtonElement;
+    expect(all.disabled).toBe(true);
+    expect(none.disabled).toBe(false);
+    none.focus(); fireEvent.click(none);
+    expect(document.activeElement).toBe(all);
+    expect(none.disabled).toBe(true);
+    expect(view.getAllByRole("checkbox").every((node) => !(node as HTMLInputElement).checked)).toBe(true);
+    expect(view.getByText(/尚未选择菜系/)).toBeTruthy();
+    fireEvent.click(view.getAllByRole("checkbox")[0]!);
+    expect(all.disabled).toBe(false);
+    expect(none.disabled).toBe(false);
+    fireEvent.click(view.getAllByRole("checkbox")[0]!);
+    expect(none.disabled).toBe(true);
+    all.focus(); fireEvent.click(all);
+    expect(document.activeElement).toBe(none);
+    view.rerender(<Panel ready={false} />);
+    expect(all.disabled).toBe(true);
+    expect(none.disabled).toBe(true);
+    expect(view.queryByText(/尚未选择菜系/)).toBeNull();
   });
 
   it("renders and filters a new group in city sort order", () => {
     const groups = fixture.taxonomies["/data/taxonomy/fixture-city.json"].groups;
     const toggle = vi.fn();
     const view = render(<FilterPanel groups={groups} dataGroups={new Set(["NEW_GROUP", "CANTONESE"])}
-      activeGroups={new Set(["NEW_GROUP", "CANTONESE"])} onToggle={toggle} onToggleAll={() => {}}
+      activeGroups={new Set(["NEW_GROUP", "CANTONESE"])} onToggle={toggle} onSelectAll={() => {}} onDeselectAll={() => {}} filtersReady showStarFilter={false} starFilter="all" onStarFilterChange={() => {}}
       diningCounts={{ staple: 0, meat: 1, seafood: 0, dessert_drink: 1, french: 0, chinese: 0, japanese_course: 0, other: 0, unclassified: 0 }} diningFilter="all" onDiningFilterChange={() => {}} onModeToggle={() => {}} currentMode="marker" />);
     expect(view.getAllByRole("checkbox").map((element) => element.parentElement?.textContent)).toEqual(["测试城新菜系", "测试城粤菜"]);
     fireEvent.click(view.getAllByRole("checkbox")[0]!);
