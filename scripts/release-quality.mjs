@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { spawn, spawnSync } from "node:child_process";
-import { readFile, writeFile, mkdir, mkdtemp, rm, stat } from "node:fs/promises";
+import { appendFile, readFile, writeFile, mkdir, mkdtemp, rm, stat } from "node:fs/promises";
 import { resolve, join, relative } from "node:path";
 import { tmpdir } from "node:os";
 import { parseArgs } from "node:util";
@@ -45,7 +45,13 @@ async function check() {
       const log = join(evidence, `${script.replace(/:/gu, "-")}.log`);
       await writeFile(log, output);
       report.steps.push({ script, command: ["npm", ...commandArgs].join(" "), startedAt, finishedAt: new Date().toISOString(), exitCode, log: relative(evidence, log) });
-      if (exitCode !== 0) throw new Error(`Required gate failed: ${script} (exit ${exitCode}); no release artifact is authorized.`);
+      if (exitCode !== 0) {
+        if (process.env.GITHUB_ACTIONS === "true") {
+          const detail = output.slice(-12_000).replace(/%/gu, "%25").replace(/\r/gu, "%0D").replace(/\n/gu, "%0A");
+          console.log(`::error title=Release gate ${script} failed::${detail}`);
+        }
+        throw new Error(`Required gate failed: ${script} (exit ${exitCode}); no release artifact is authorized.`);
+      }
       if (script === "build") report.artifact = await artifactIdentity(dist);
     }
     assert.equal((await sourceIdentity(process.cwd())).sha256, source.sha256, "Source changed during release checks");
@@ -61,6 +67,14 @@ async function check() {
   } finally {
     report.finishedAt = new Date().toISOString();
     await writeFile(join(evidence, "result.json"), JSON.stringify(report, null, 2) + "\n");
+    if (process.env.GITHUB_STEP_SUMMARY) {
+      await appendFile(process.env.GITHUB_STEP_SUMMARY, [
+        `Release checks: **${report.passed ? "passed" : "failed"}**`, "",
+        "| Gate | Exit code |", "| --- | --- |",
+        ...report.steps.map((step) => `| ${step.script} | ${step.exitCode} |`), "",
+        "Full logs, browser evidence and performance measurements are in the release-evidence artifact.", "",
+      ].join("\n"));
+    }
   }
 }
 
