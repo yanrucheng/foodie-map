@@ -476,3 +476,23 @@ rtk proxy node --test --test-name-pattern='P09 R1–R7 webkit 390px' tests/e2e/v
 证据：[独立最终复核](outputs/gate-fix/independent-review.json)、[完整成功运行](outputs/gate-fix/release/result.json)、[匹配发布凭据](outputs/gate-fix/release/verified.json)。最新实际预览仍为[49665北京星级](http://127.0.0.1:49665/?city=beijing&year=2026&guide=michelin-starred)。
 
 此前“新版缺少完整发布凭据”的阻断至此解除。后续由开发继续提交、推送、上线与线上核验，orchestrator按既定流程交接。此处记录的是可发布结论，不声称部署已完成；上线结果仍由实际发布与线上核验记录证明。
+
+## 正式发布与线上核验完成（2026-09-25）
+
+用户最后本地验收及设计者最终复核均已明确通过，orchestrator正式交接执行。本任务48份应跟踪文件已提交为`8b217bf75f2956e5df8378499e557cdeb27947a5`（`fix: correct official restaurant names and simplify detail copy`），并成功推送`gh HEAD:refs/heads/main`，GitHub远端由`34763f4`快进至`8b217bf`。运行产物及其他两项任务的`__pycache__`均未纳入；提交内容与已验收快照逐文件核对，独立验收结论的report追加除外。文件清单见[commit-files.json](outputs/publication/commit-files.json)。
+
+对应[GitHub发布运行36116064043](https://github.com/yanrucheng/foodie-map/actions/runs/36116064043)为本提交的`push/main`，总状态Success。网页显示Release quality成功（7m22s），[Deploy GitHub Pages](https://github.com/yanrucheng/foodie-map/actions/runs/36116064043/job/108012566717)明确succeeded（16s），正式URL为 **https://foodie-map.cyanru.com/**。保留了[运行网页](outputs/publication/run-page.html)和[部署任务网页](outputs/publication/deploy-page.html)。现有工作流完整检查、保留已验证发布包、Pages部署及线上文件检查路径均未修改或绕过。
+
+### 实际线上结果
+
+- 正式域名返回的[release.json](outputs/publication/live-release.json)与本次已验收构建描述完全一致：source `919d63342f2aec183a1917bea234c40e89d56eb6a23239735eef980aec20731e`，buildId `8a08b9b12cda8a23b8c2add747a05afa0e53acc272b77da8bddde77fdaab07c7`，可见版本`v0.3.0`仍来自VERSION。
+- 本机对正式域名执行原`release:smoke`，**85个文件逐字节一致，HTTP正确跳转到同域HTTPS**。比较基准是本次原有已验收产物与凭据，没有为线上核验另建一个包。见[online-smoke.json](outputs/publication/online-smoke.json)、[日志](outputs/publication/online-smoke.log)。一致的产物SHA-256为`d96834268b3e2219c10b2e486908e05c396ce61932c38d9d5e00ec99d267939d`。
+- 新浏览器直接访问正式URL，桌面1440px和手机390px分别搜索并打开Jing、京艳 ‧ 翰林书院、富春居，共6个场景通过、0页面运行异常。实际页面data-build及北京榜单revision匹配目标发布；富春居显示“中餐／粤菜”和简洁“价位 ¥¥¥”，无原价格解析尾注；坐标来源、官方链接及可见真实版本保留。见[online-browser.json](outputs/publication/online-browser.json)、[桌面京艳](outputs/publication/screenshots/1440-beijing-11.png)、[手机Jing](outputs/publication/screenshots/390-beijing-2.png)、[手机富春居](outputs/publication/screenshots/390-beijing-3.png)。
+
+### 证据可达性与收尾
+
+GitHub REST匿名额度曾耗尽（403、remaining=0），中途恢复后读到了本次run/head及早期步骤状态，之后再次限流。未改认证配置，未将限流当作发布失败。最终通过可访问的GitHub网页核对运行和部署成功，并自行完成上述线上字节及浏览器检查。
+
+网页列出了4份产物，其中`release-1`的ZIP摘要为`sha256:3e3892d535b7a505d09be98896d90400f55ab85d723218da00a81f67ab6879d2`，`deployment-evidence-1`为`sha256:ae01c52ccf364cd404950ad95bf9e056b947242dc08a27ee7a4b87e8cc004bcb`。这些是网页可见元数据，**不是已下载、逐项读取的CI原始ZIP或日志**；受API限流影响，本地尚未留存它们。工作流自身保留的发布包与部署证据仍可从该运行查阅，此项本地归档限制不改变已完成的线上核验事实。
+
+名称399条核实、3条按用户指示保留未核实的边界不变；没有再次补证或变更餐厅事实。实际应用发布及本轮要求的线上验证均已完成，无需用户再确认。此段结果作为报告归档提交；报告不在构建输入中，归档不改变上述应用源码、构建或产物身份。归档提交若触发既有工作流，将继续核对其结果，不以本段文字代替实际运行。
