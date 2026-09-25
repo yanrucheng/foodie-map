@@ -38,12 +38,17 @@
                 "kind": "membership",
                 "ref": "repo:eval/sessions/260915-2006-regional-dining/hong-kong-evidence.json",
                 "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json",
+                "note": "用户确认范围内已有门店的正式名称逐条依据；不补证年度完整性，不提升coverage。"
               }
             ],
             "revision": {
-              "id": "p09-dining-hong-kong-20260915",
-              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
-              "evidence": "repo:eval/sessions/260915-2006-regional-dining/hong-kong-evidence.json"
+              "id": "chinese-names-domestic-20260925",
+              "reason": "按用户确认的完整正式门店名口径逐条核实名称；仅有依据的name_zh及组合name修订，其余事实和coverage保持。",
+              "evidence": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json"
             }
           }
         },
@@ -74,12 +79,17 @@
                 "kind": "membership",
                 "ref": "repo:eval/sessions/260915-2006-regional-dining/hong-kong-evidence.json",
                 "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json",
+                "note": "用户确认范围内已有门店的正式名称逐条依据；不补证年度完整性，不提升coverage。"
               }
             ],
             "revision": {
-              "id": "p09-dining-hong-kong-20260915",
-              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
-              "evidence": "repo:eval/sessions/260915-2006-regional-dining/hong-kong-evidence.json"
+              "id": "chinese-names-domestic-20260925",
+              "reason": "按用户确认的完整正式门店名口径逐条核实名称；仅有依据的name_zh及组合name修订，其余事实和coverage保持。",
+              "evidence": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json"
             }
           }
         }
@@ -133,12 +143,17 @@
                 "kind": "membership",
                 "ref": "repo:eval/sessions/260915-2006-regional-dining/beijing-evidence.json",
                 "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json",
+                "note": "用户确认范围内已有门店的正式名称逐条依据；不补证年度完整性，不提升coverage。"
               }
             ],
             "revision": {
-              "id": "p09-dining-beijing-20260915",
-              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
-              "evidence": "repo:eval/sessions/260915-2006-regional-dining/beijing-evidence.json"
+              "id": "chinese-names-domestic-20260925",
+              "reason": "按用户确认的完整正式门店名口径逐条核实名称；仅有依据的name_zh及组合name修订，其余事实和coverage保持。",
+              "evidence": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json"
             }
           }
         },
@@ -169,12 +184,17 @@
                 "kind": "membership",
                 "ref": "repo:eval/sessions/260915-2006-regional-dining/beijing-evidence.json",
                 "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json",
+                "note": "用户确认范围内已有门店的正式名称逐条依据；不补证年度完整性，不提升coverage。"
               }
             ],
             "revision": {
-              "id": "p09-dining-beijing-20260915",
-              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
-              "evidence": "repo:eval/sessions/260915-2006-regional-dining/beijing-evidence.json"
+              "id": "chinese-names-domestic-20260925",
+              "reason": "按用户确认的完整正式门店名口径逐条核实名称；仅有依据的name_zh及组合name修订，其余事实和coverage保持。",
+              "evidence": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json"
             }
           }
         }
@@ -228,12 +248,17 @@
                 "kind": "membership",
                 "ref": "repo:eval/sessions/260915-2006-regional-dining/guangzhou-shenzhen-evidence.json",
                 "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json",
+                "note": "用户确认范围内已有门店的正式名称逐条依据；不补证年度完整性，不提升coverage。"
               }
             ],
             "revision": {
-              "id": "p09-dining-guangzhou-shenzhen-20260915",
-              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
-              "evidence": "repo:eval/sessions/260915-2006-regional-dining/guangzhou-shenzhen-evidence.json"
+              "id": "chinese-names-domestic-20260925",
+              "reason": "按用户确认的完整正式门店名口径逐条核实名称；仅有依据的name_zh及组合name修订，其余事实和coverage保持。",
+              "evidence": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json"
             }
           }
         },
@@ -264,12 +289,17 @@
                 "kind": "membership",
                 "ref": "repo:eval/sessions/260915-2006-regional-dining/guangzhou-shenzhen-evidence.json",
                 "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json",
+                "note": "用户确认范围内已有门店的正式名称逐条依据；不补证年度完整性，不提升coverage。"
               }
             ],
             "revision": {
-              "id": "p09-dining-guangzhou-shenzhen-20260915",
-              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
-              "evidence": "repo:eval/sessions/260915-2006-regional-dining/guangzhou-shenzhen-evidence.json"
+              "id": "chinese-names-domestic-20260925",
+              "reason": "按用户确认的完整正式门店名口径逐条核实名称；仅有依据的name_zh及组合name修订，其余事实和coverage保持。",
+              "evidence": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json"
             }
           }
         }
@@ -324,12 +354,17 @@
                 "kind": "membership",
                 "ref": "repo:eval/sessions/260915-2006-regional-dining/shanghai-evidence.json",
                 "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json",
+                "note": "用户确认范围内已有门店的正式名称逐条依据；不补证年度完整性，不提升coverage。"
               }
             ],
             "revision": {
-              "id": "p09-dining-shanghai-20260915",
-              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
-              "evidence": "repo:eval/sessions/260915-2006-regional-dining/shanghai-evidence.json"
+              "id": "chinese-names-domestic-20260925",
+              "reason": "按用户确认的完整正式门店名口径逐条核实名称；仅有依据的name_zh及组合name修订，其余事实和coverage保持。",
+              "evidence": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json"
             }
           }
         },
@@ -360,12 +395,17 @@
                 "kind": "membership",
                 "ref": "repo:eval/sessions/260915-2006-regional-dining/shanghai-evidence.json",
                 "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json",
+                "note": "用户确认范围内已有门店的正式名称逐条依据；不补证年度完整性，不提升coverage。"
               }
             ],
             "revision": {
-              "id": "p09-dining-shanghai-20260915",
-              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
-              "evidence": "repo:eval/sessions/260915-2006-regional-dining/shanghai-evidence.json"
+              "id": "chinese-names-domestic-20260925",
+              "reason": "按用户确认的完整正式门店名口径逐条核实名称；仅有依据的name_zh及组合name修订，其余事实和coverage保持。",
+              "evidence": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json"
             }
           }
         }
@@ -419,12 +459,17 @@
                 "kind": "membership",
                 "ref": "repo:eval/sessions/260915-2006-regional-dining/chengdu-evidence.json",
                 "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json",
+                "note": "用户确认范围内已有门店的正式名称逐条依据；不补证年度完整性，不提升coverage。"
               }
             ],
             "revision": {
-              "id": "p09-dining-chengdu-20260915",
-              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
-              "evidence": "repo:eval/sessions/260915-2006-regional-dining/chengdu-evidence.json"
+              "id": "chinese-names-domestic-20260925",
+              "reason": "按用户确认的完整正式门店名口径逐条核实名称；仅有依据的name_zh及组合name修订，其余事实和coverage保持。",
+              "evidence": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json"
             }
           }
         }
@@ -478,12 +523,17 @@
                 "kind": "membership",
                 "ref": "repo:eval/sessions/260915-2006-regional-dining/macau-evidence.json",
                 "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json",
+                "note": "用户确认范围内已有门店的正式名称逐条依据；不补证年度完整性，不提升coverage。"
               }
             ],
             "revision": {
-              "id": "p09-dining-macau-20260915",
-              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
-              "evidence": "repo:eval/sessions/260915-2006-regional-dining/macau-evidence.json"
+              "id": "chinese-names-domestic-20260925",
+              "reason": "按用户确认的完整正式门店名口径逐条核实名称；仅有依据的name_zh及组合name修订，其余事实和coverage保持。",
+              "evidence": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json"
             }
           }
         },
@@ -514,12 +564,17 @@
                 "kind": "membership",
                 "ref": "repo:eval/sessions/260915-2006-regional-dining/macau-evidence.json",
                 "note": "同一已收录门店的 P09 字段依据及未决缺口；不补证年度完整身份集合，不提升 coverage。"
+              },
+              {
+                "kind": "membership",
+                "ref": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json",
+                "note": "用户确认范围内已有门店的正式名称逐条依据；不补证年度完整性，不提升coverage。"
               }
             ],
             "revision": {
-              "id": "p09-dining-macau-20260915",
-              "reason": "按 P09 逐店核实主打体验；只补 dining_category，其他餐厅事实、价格、coverage 及采集/完整性核验日期不变。",
-              "evidence": "repo:eval/sessions/260915-2006-regional-dining/macau-evidence.json"
+              "id": "chinese-names-domestic-20260925",
+              "reason": "按用户确认的完整正式门店名口径逐条核实名称；仅有依据的name_zh及组合name修订，其余事实和coverage保持。",
+              "evidence": "repo:eval/sessions/260925-0915-chinese-restaurant-names/full-source-evidence.json"
             }
           }
         }

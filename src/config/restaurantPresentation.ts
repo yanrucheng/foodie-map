@@ -100,7 +100,7 @@ export function parsePriceGrade(raw: Restaurant["price_range"]): PriceGrade {
   }
   return { status: "unrecognized", tier: null, badge: null };
 }
-export const encodingExplanation = "颜色：菜系与品类；图标：主打体验；角标：价格等级。¥ 数量表示价格等级，非金额；跨城市不代表相同预算。";
+export const encodingExplanation = "颜色看菜系，图标看主打；¥越多价位越高，不表示金额，不同城市不宜直接比较。";
 
 /** Stable group ordering also resolves ties; ratios use all listed records. */
 export function diningDistribution(records: readonly Pick<Restaurant, "dining_category" | "price_range">[]) {

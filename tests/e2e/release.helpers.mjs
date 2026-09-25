@@ -164,7 +164,7 @@ export async function search(page, term) {
   await page.locator(".mobile-popup-card, .leaflet-popup-content").waitFor();
 }
 export async function snapshot(page, name, release, records) {
-  const observation = await page.evaluate(() => ({ url: location.href, title: document.title, dataset: { ...document.querySelector(".dataset-status")?.dataset }, status: document.querySelector(".dataset-status")?.textContent, version: document.querySelector(".dataset-status")?.title, detail: document.querySelector(".mobile-popup-card, .leaflet-popup-content")?.textContent, online: navigator.onLine }));
+  const observation = await page.evaluate(() => ({ url: location.href, title: document.title, dataset: { ...document.querySelector(".dataset-status")?.dataset }, status: document.querySelector(".dataset-status")?.textContent, version: document.querySelector(".dynamic-title-version")?.textContent, detail: document.querySelector(".mobile-popup-card, .leaflet-popup-content")?.textContent, online: navigator.onLine }));
   assert.equal(observation.dataset.build, release.buildId);
   records.push({ name, ...observation, expected: { buildId: release.buildId, dataRevision: release.dataRevision } });
   const artifacts = process.env.E2E_ARTIFACT_DIR;

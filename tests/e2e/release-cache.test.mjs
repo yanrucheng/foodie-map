@@ -55,7 +55,7 @@ test("P07-R1/R2 exact deployment artifact boots and caches its real registered d
     await s.page.reload(); await controlled(s.page);
     assert.equal(await s.page.locator(".dataset-status").getAttribute("data-dataset"), selected);
     assert.equal(await s.page.locator(".dataset-status").getAttribute("data-revision"), resource.sha256);
-    assert.match(await s.page.locator(".dataset-status").textContent(), /离线.*缓存/u);
+    assert.match(await s.page.locator(".dataset-status").textContent(), /离线浏览 · 使用已保存内容/u);
     await snapshot(s.page, "p07-exact-deployment-artifact", deployment, records);
     assert.deepEqual(s.errors, []);
   } finally { actualServer.state.offline = false; await s.close(); await browser.close(); await actualHarness.close(); }
@@ -159,7 +159,7 @@ for (const engine of ["chromium", "webkit"]) {
       assert.deepEqual(cachedPaths.sort(), [release.resources[dataPath].url, release.resources["/data/taxonomy/fixture-city.json"].url, release.resources["/data/taxonomy/fixture-city-mappings.json"].url].sort(), "only visited dataset/taxonomy/mappings cached");
       if (engine === "chromium") await s.context.setOffline(true); server.state.offline = true;
       await s.page.reload(); await ready(s.page);
-      assert.match(await s.page.locator(".dataset-status").textContent(), /离线.*缓存/);
+      assert.match(await s.page.locator(".dataset-status").textContent(), /离线浏览 · 使用已保存内容/);
       await search(s.page, "无坐标");
       assert.match(await s.page.locator(".mobile-popup-card").textContent(), /暂无可靠坐标/);
       await s.page.keyboard.press("Escape");
@@ -186,7 +186,7 @@ for (const engine of ["chromium", "webkit"]) {
       await s.page.close();
       const reopened = await s.context.newPage();
       await reopened.goto(server.baseUrl + "/saved/place" + initialSelection.slice(1)); await ready(reopened);
-      assert.match(await reopened.locator(".dataset-status").textContent(), /离线.*缓存/);
+      assert.match(await reopened.locator(".dataset-status").textContent(), /离线浏览 · 使用已保存内容/);
       await snapshot(reopened, `p07-${engine}-cold-offline-navigation-fallback`, release, records);
       assert.deepEqual(s.errors, []);
     } finally { server.state.offline = false; await s.close(); }

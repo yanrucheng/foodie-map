@@ -64,12 +64,46 @@ export async function search(page, term) {
 }
 export async function audit(page, name) {
   if (artifacts) await mkdir(artifacts, { recursive: true });
-  // Read the settled expanded state, not a transient opacity midway through opening.
-  await page.evaluate(async () => {
-    await Promise.all(document.getAnimations().filter((animation) => animation.effect.getComputedTiming().iterations !== Infinity).map((animation) => animation.finished.catch(() => {})));
-    await new Promise((resolve) => requestAnimationFrame(resolve));
-  });
   if (!await page.evaluate(() => !!window.axe)) await page.addScriptTag({ path: axePath });
+  // Re-enumerate: Leaflet can create another cluster fade after an earlier animation ends.
+  const stability = await page.evaluate(() => new Promise((resolve) => {
+    const started = performance.now();
+    let previous, quietSince = started, frames = 0, frame, last;
+    const changes = [];
+    const visible = (node) => {
+      const rect = node.getBoundingClientRect(), style = getComputedStyle(node);
+      return rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.right > 0 && rect.top < innerHeight && rect.left < innerWidth && style.visibility !== "hidden" && style.display !== "none";
+    };
+    const describe = (node) => `${node.tagName}.${node.getAttribute("class") ?? ""}`;
+    const finish = (settled) => {
+      clearTimeout(timer); cancelAnimationFrame(frame);
+      resolve({ settled, elapsedMs: performance.now() - started, stableFrames: frames, last, changes });
+    };
+    const timer = setTimeout(() => finish(false), 3000);
+    const sample = () => {
+      const targets = [...document.querySelectorAll("button, a, input, [role], .header, .floating-card, .bottom-sheet, .mobile-popup-card, .leaflet-marker-icon, .leaflet-popup, .dataset-status, .loc-error-toast, .search-wrap, .search-dropdown")].filter(visible).map((node) => {
+        const rect = node.getBoundingClientRect(), style = getComputedStyle(node);
+        return { target: describe(node), rect: [rect.x, rect.y, rect.width, rect.height].map((n) => Math.round(n * 100) / 100), opacity: style.opacity, transform: style.transform };
+      });
+      const animations = document.getAnimations().filter((animation) => animation.effect?.getComputedTiming().iterations !== Infinity && !["finished", "idle"].includes(animation.playState) && animation.effect?.target instanceof Element && visible(animation.effect.target)).map((animation) => ({ target: describe(animation.effect.target), state: animation.playState, time: animation.currentTime, name: animation.animationName ?? animation.transitionProperty }));
+      const mapTransitions = [...document.querySelectorAll(".leaflet-zoom-anim, .leaflet-cluster-anim, .leaflet-pan-anim")].map(describe);
+      const signature = JSON.stringify(targets), now = performance.now();
+      const changed = signature !== previous;
+      if (changed || animations.length || mapTransitions.length) { quietSince = now; frames = 0; }
+      else frames++;
+      if (changed || animations.length || mapTransitions.length) {
+        changes.push({ elapsedMs: now - started, changed, animations, mapTransitions });
+        if (changes.length > 12) changes.shift();
+      }
+      previous = signature; last = { targets, animations, mapTransitions };
+      if (frames >= 4 && now - quietSince >= 200) finish(true);
+      else frame = requestAnimationFrame(sample);
+    };
+    frame = requestAnimationFrame(sample);
+  }));
+  records.push({ name: `${name}-visual-stability`, ...stability });
+  if (artifacts) await writeFile(join(artifacts, `${name}.stability.json`), JSON.stringify(stability, null, 2));
+  assert.equal(stability.settled, true, `${name}: visual state did not settle within 3000ms`);
   const results = await page.evaluate(async () => window.axe.run(document, { runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21aa", "best-practice"] } }));
   const geometry = await page.evaluate(() => ({
     viewport: { width: innerWidth, height: innerHeight, visualWidth: visualViewport.width, visualHeight: visualViewport.height, scale: visualViewport.scale },

@@ -77,10 +77,9 @@ function App({ registry = cities }: { registry?: CityConfig[] }) {
     : `收录 ${data.length} · 筛选结果 ${visibleRestaurants.length} · 筛选内可定位 ${mappableRestaurants.length}`;
   const statusContent = <div className="dataset-status" data-state={status} data-dataset={selection.datasetKey}
     data-coverage={guide.coverage?.status} data-build={release?.buildId} data-revision={release?.resources[guide.dataPath]?.sha256} data-delivery={resource.delivery}
-    title={release ? `Foodie Map ${release.version} · 构建 ${release.buildId.slice(0, 12)} · 数据 ${release.dataRevision.slice(0, 12)}` : undefined}
     role={status === "error" ? "alert" : "status"}>
-    {subtitle}{guide.coverage && (status === "ready" || status === "empty") && <span title={`${city.scope?.description ?? ""} ${guide.coverage.note}`}> · {({ verified: "名单已核验", partial: "部分名单", unverified: "名单未核验", "not-collected": "尚未采集" })[guide.coverage.status]}{status === "empty" && guide.coverage.status !== "verified" && "（空文件不代表官方零收录）"}</span>}{status === "ready" && visibleRestaurants.length === 0 && (filters.activeGroups.size === 0 ? "。尚未选择菜系，请勾选菜系或全选。" : `。当前筛选没有餐厅，请调整${guide.id === "michelin-starred" ? "星级、" : ""}主打体验或菜系与品类。`)} {(status === "error" || resource.offline) && <button onClick={retry}>重试</button>}
-    {release && <span className="release-status">{offline && status !== "error" ? "离线浏览 · 使用已缓存版次" : resource.delivery === "cache" ? "使用已验证缓存" : ""}{connectivity.waiting && " · 更新已就绪，关闭本应用所有页面后重新打开。"}</span>}
+    {subtitle}{guide.coverage && (status === "ready" || status === "empty") && <span> · {({ verified: "名单已核验", partial: "该年度名单尚未收齐", unverified: "该榜单的年份、范围及完整性尚未核实，请以官方指南为准", "not-collected": "暂未收录" })[guide.coverage.status]}{status === "empty" && guide.coverage.status !== "verified" && "（这里暂未收录，不代表官方没有收录）"}</span>}{status === "ready" && visibleRestaurants.length === 0 && (filters.activeGroups.size === 0 ? "。尚未选择菜系，请勾选菜系或全选。" : `。当前筛选没有餐厅，请调整${guide.id === "michelin-starred" ? "星级、" : ""}主打体验或菜系与品类。`)} {(status === "error" || resource.offline) && <button onClick={retry}>重试</button>}
+    {release && <span className="release-status">{offline && status !== "error" ? "离线浏览 · 使用已保存内容" : resource.delivery === "cache" ? "使用已保存内容" : ""}{connectivity.waiting && " · 更新已就绪，关闭本应用所有页面后重新打开。"}</span>}
   </div>;
   const titleElement = <DynamicTitle key={selection.datasetKey}
     years={selection.years} cityOptions={selection.cityOptions} guideOptions={selection.guideOptions}

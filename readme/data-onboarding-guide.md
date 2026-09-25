@@ -99,7 +99,7 @@ rtk proxy node --test tests/e2e/catalog.test.mjs tests/e2e/release-cache.test.mj
 
 <!-- COVERAGE_TABLE_START -->
 
-<!-- catalog-and-inputs-sha256: d2e12846611e905d4916e752062c030b8a571b4d1670fb7b016d292d046bc9c8 -->
+<!-- catalog-and-inputs-sha256: 07d579d5b1deb80bb37d5c5e974f356012d1d03c8b32404505e9a86a32e657ae -->
 
 | 城市 / 实际范围 | 榜单 | 年度 | 收录 | 可定位 | 名单状态 | 官方总数 |
 |---|---|---:|---:|---:|---|---:|

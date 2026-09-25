@@ -23,7 +23,7 @@ export function popupHtml(item: Restaurant, groups?: CuisineGroup[], spatialCont
       <h2>${escapeHtml(facts.name)}</h2>
       ${facts.secondaryName ? `<div class="en">${escapeHtml(facts.secondaryName)}</div>` : ""}
       <div class="tags"><span class="detail-symbol" style="background:${facts.groupStyle.color};color:${facts.groupStyle.textColor}">${facts.category.svg}</span>${facts.tags.map((tag, index) => `<span class="tag"${index === 0 ? ` style="background:${facts.groupStyle.color};color:${facts.groupStyle.textColor}"` : ""}>${escapeHtml(tag)}</span>`).join("")}</div>
-      ${facts.details.map(([label, value]) => `<div class="line"><strong>${escapeHtml(label)}：</strong>${escapeHtml(value)}</div>`).join("")}
+      ${facts.details.map(([label, value]) => `<div class="line"><strong>${escapeHtml(label)}：</strong>${label === "价位" && facts.priceGrade.tier ? `<span aria-hidden="true">${escapeHtml(value)}</span><span class="sr-only">第${facts.priceGrade.tier}档</span>` : escapeHtml(value)}</div>`).join("")}
       ${facts.guideUrl ? `<div class="line"><a href="${escapeHtml(facts.guideUrl)}" target="_blank" rel="noopener noreferrer">查看米其林官方页面</a></div>` : ""}
     </div>`;
 }
@@ -52,7 +52,7 @@ export function createRestaurantMarker(
   const [lat, lng] = position;
 
   const marker = L.marker([lat, lng], {
-    title: `${facts.name} · ${getGroupLabel(item.cuisine_group, options?.groups)} · ${facts.category.label}${facts.priceGrade.tier ? ` · 价格等级 ${facts.priceGrade.tier}，共 4 档` : ""}${item.is_new ? ` · ${item.edition_year} 新晋` : ""}`,
+    title: facts.markerLabel,
     icon: L.divIcon({
       className: "restaurant-marker",
       html: `<div class="${className}" style="background:${groupStyle.color};color:${groupStyle.textColor}">${facts.category.svg}${facts.priceGrade.badge ? `<span class="price-badge" aria-hidden="true">${facts.priceGrade.badge}</span>` : ""}</div>`,

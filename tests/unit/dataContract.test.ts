@@ -109,7 +109,7 @@ describe("cuisine and price (P02-R3/R5)", () => {
     expect(parseRestaurantArray([japanese])[0]).toEqual(japanese);
     expect(displayPrice(japanese)).toBe("JPY 12,000–18,000（税・サービス料込）");
     expect(searchNames(japanese)).toEqual(["日本語の店名", "Official English Name"]);
-    expect(displayPrice(restaurant({ currency: "MOP", price: null, price_range: "$$" }))).toBe("价格等级 $$");
+    expect(displayPrice(restaurant({ currency: "MOP", price: null, price_range: "$$" }))).toBe("价位 ¥¥");
     expect(displayPrice(restaurant({ price: " ", price_range: "" }))).toBeNull();
     expect(displayName(restaurant({ name_zh: " ", name_en: null }))).toBe("测试餐厅");
     expect(searchNames(restaurant({ name_en: null }))).toEqual(["测试餐厅"]);

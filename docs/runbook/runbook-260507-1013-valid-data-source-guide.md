@@ -4,7 +4,7 @@ title: "Operational Guide - Finding Valid Restaurant Data Sources"
 type: runbook
 status: active
 created: 2026-05-07
-updated: 2026-09-15
+updated: 2026-09-25
 timezone: "Asia/Shanghai"
 parent: "index-runbook"
 depends-on:
@@ -51,6 +51,16 @@ source: "readme/data-onboarding-guide.md; eval/data-quality-audit-260506.md"
 | cuisine_group | 本地 taxonomy/mappings 确定性派生 | 完整 raw 精确匹配；未知 OTHER，不造来源菜系。 |
 
 中文/英文名、地址、价格、官网均允许按合同缺失，不为凑齐模板制造值。保留 listing URL 但记录其失效事实；KIBUN 当前下架不能推断停业，也不能删除其历史入选。
+
+### 正式门店名称
+
+名称使用餐厅对外的完整正式门店名，不是工商主体名。首选餐厅/所属酒店的官方门店页、菜单或官方账号原始材料；同一门店的 Michelin 中文 listing 也可直接支持收录名称。读取目标主标题或明确门店名称及地址，不采用相关推荐、搜索摘要、模型译名，也不把中文 URL 或 HTTP 成功视作中文名称证据。
+
+同店核对保留完整地域、城市、分店 slug，并比较地址上下文。已知语言 URL 对只去除各自语言前缀及 query/fragment；不能误删地域或分店限定，更不能将同品牌不同店合并。现有 `listingIdentity` 的单段 `/en/` 与双段中文 locale 处理尚不一致，使用显式 URL 对时须核实去除各自已知前缀后的完整路径，不能直接将该 helper 的不等返回值当作不同店。失效/更换 listing 须有明确一对一证据，不进行模糊同名配对。
+
+保留来源汉字、品牌文字与有含义的标点。可披露后统一分店括号为全角并去掉括号前空格；不替换同音字、随意省略分店限定或批量简繁转换。只有正式外文品牌证据时保留已证实的外文写法，不创造中文。来源冲突、地址身份不清或页面不可读时记录未决并补证；无证据不得自动覆盖或清空旧名称，清空回退须有明确授权。
+
+逐条依据保存在已有任务材料，记录稳定 listing/dataset key、原值与候选、来源主标题与地址、URL、实际读取时间、保存材料及哈希、同店依据和未决限制。当前页面支持当前观察到的名称，不证明全年持续使用、历史获奖集合或新评级；真实改名、迁址、身份冲突需另述，不能冒充错字修正。名称修订不顺带改地址、坐标、英文名或其他事实；相应字段变化须有独立依据及授权。年度源和 catalog revision 继续承载正式事实及追溯，逐店证据不参与运行时名称选择。
 
 <a id="p08-labeling"></a>
 <a id="p09-labeling"></a>

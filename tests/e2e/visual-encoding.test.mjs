@@ -80,9 +80,75 @@ after(async () => {
   assert.deepEqual(businessAfter, businessBefore, "new city/forms need no business source changes");
 });
 async function closeDetail(page) {
-  await page.locator('.mobile-popup-close, .leaflet-popup-close-button').click();
-  await page.locator('.mobile-popup-card, .leaflet-popup-content').waitFor({ state: "hidden" });
-  await page.waitForFunction(() => !document.querySelector('.restaurant-marker--selected'));
+  if (!page.p09CloseTrace) {
+    const trace = { name: page.p09Scenario, kind: "detail-close", segments: [], attempts: [] };
+    page.p09CloseTrace = trace; records.push(trace);
+    await page.exposeFunction("p09RecordClose", (event) => {
+      let segment = trace.segments.find((item) => item.documentId === event.documentId);
+      if (!segment) { segment = { documentId: event.documentId, url: event.url, events: [] }; trace.segments.push(segment); }
+      segment.events.push(event);
+    });
+    const observe = () => {
+      const documentId = `${performance.timeOrigin}-${Math.random()}`;
+      const describe = (node) => node instanceof Element ? `${node.tagName}#${node.id}.${node.getAttribute("class") ?? ""}` : null;
+      const send = (event) => window.p09RecordClose({ documentId, url: location.href, time: performance.now(), ...event });
+      const names = () => [...document.querySelectorAll(".mobile-popup-card h2, .leaflet-popup-content h2")].map((node) => node.textContent);
+      for (const type of ["pointerdown", "pointerup", "mousedown", "mouseup", "touchstart", "touchend", "click"]) {
+        document.addEventListener(type, (event) => {
+          const point = event.changedTouches?.[0] ?? event;
+          void send({ type, target: describe(event.target), hit: describe(document.elementFromPoint(point.clientX, point.clientY)), x: point.clientX, y: point.clientY, trusted: event.isTrusted, restaurants: names() });
+        }, true);
+      }
+      let prior;
+      const recordDialog = () => {
+        const restaurants = names(), state = JSON.stringify(restaurants);
+        if (state !== prior) { prior = state; void send({ type: "dialog-change", restaurants }); }
+      };
+      new MutationObserver(recordDialog).observe(document, { subtree: true, childList: true, characterData: true });
+      recordDialog();
+      window.p09CloseState = () => {
+        const button = document.querySelector(".mobile-popup-close, .leaflet-popup-close-button");
+        const rect = button?.getBoundingClientRect(), hit = rect ? document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2) : null;
+        const animations = document.getAnimations().filter((animation) => animation.effect?.target instanceof Element && button && (animation.effect.target.contains(button) || button.contains(animation.effect.target)) && animation.effect.getComputedTiming().iterations !== Infinity && !["finished", "idle"].includes(animation.playState)).map((animation) => ({ target: describe(animation.effect.target), name: animation.animationName ?? animation.transitionProperty, state: animation.playState, time: animation.currentTime }));
+        return { documentId, time: performance.now(), restaurants: names(), button: describe(button), rect: rect ? { x: rect.x, y: rect.y, width: rect.width, height: rect.height } : null,
+          hit: describe(hit), hitButton: !!button && button.contains(hit), animations, transform: button ? getComputedStyle(button).transform : null,
+          selected: [...document.querySelectorAll(".restaurant-marker--selected")].map((node) => node.getAttribute("aria-label")) };
+      };
+    };
+    await page.addInitScript(observe);
+    await page.evaluate(observe);
+  }
+  const attempt = { before: await page.evaluate(() => window.p09CloseState()) };
+  page.p09CloseTrace.attempts.push(attempt);
+  try {
+    attempt.readiness = await page.evaluate(() => new Promise((resolve) => {
+      const started = performance.now();
+      let previous, quietSince = started, frames = 0, frame, last;
+      const finish = (settled) => { clearTimeout(timer); cancelAnimationFrame(frame); resolve({ settled, elapsedMs: performance.now() - started, stableFrames: frames, last }); };
+      const timer = setTimeout(() => finish(false), 3000);
+      const sample = () => {
+        last = window.p09CloseState();
+        const signature = JSON.stringify(last.rect), now = performance.now();
+        if (signature !== previous || !last.hitButton || last.animations.length || !last.rect?.width || !last.rect?.height) { quietSince = now; frames = 0; }
+        else frames++;
+        previous = signature;
+        if (frames >= 4 && now - quietSince >= 100) finish(true);
+        else frame = requestAnimationFrame(sample);
+      };
+      frame = requestAnimationFrame(sample);
+    }));
+    assert.equal(attempt.readiness.settled, true, "Detail close button must settle and receive the click within 3000ms");
+    await page.locator('.mobile-popup-close, .leaflet-popup-close-button').click();
+    attempt.afterClick = await page.evaluate(() => window.p09CloseState());
+    await page.locator('.mobile-popup-card, .leaflet-popup-content').waitFor({ state: "hidden" });
+    await page.waitForFunction(() => !document.querySelector('.restaurant-marker--selected'));
+    attempt.passed = true;
+  } catch (error) {
+    attempt.error = String(error.stack ?? error);
+    throw error;
+  } finally {
+    attempt.after = await page.evaluate(() => window.p09CloseState()).catch((error) => ({ unavailable: String(error) }));
+  }
 }
 async function filterPanel(page, mobile) { if (mobile) await page.getByRole("button", { name: "筛选", exact: true }).click(); }
 async function closePanel(page, mobile) { if (mobile) { await page.keyboard.press("Escape"); await page.locator(".bottom-sheet-container").waitFor({ state: "hidden" }); } }
@@ -91,10 +157,11 @@ async function count(page, total, mapped) {
 }
 
 for (const engine of ["chromium", "webkit"]) for (const width of [1280, 390]) {
-  test(`P09 R1–R7 ${engine} ${width}px: raw catalog, forms, dense targets, context stability and offline icons`, async () => {
+  test(`P09 R1–R7 ${engine} ${width}px: raw catalog, forms, dense targets, context stability and offline icons`, async (context) => {
     if (engine === "webkit") safari ??= await webkit.launch({ headless: true });
     const s = await pwaSession(engine === "chromium" ? chrome : safari, server, { width, height: 844 });
     const page = s.page, mobile = width < 768;
+    page.p09Scenario = context.name;
     page.on("pageerror", (error) => { records.push({ name: `${engine}-${width}-page-error`, stack: error.stack }); console.error(error.stack); });
     const observedRequests = []; page.on("request", (request) => observedRequests.push(request.url()));
     try {
@@ -125,12 +192,14 @@ for (const engine of ["chromium", "webkit"]) for (const width of [1280, 390]) {
       await closePanel(page, mobile);
       await search(page, "小食测试"); await count(page, 11, 10);
       const detail = page.locator('.mobile-popup-card, .leaflet-popup-content');
-      assert.match(await detail.textContent(), /新发酵品类.*面饭面点.*发酵谷物，现代料理/s);
+      assert.match(await detail.textContent(), /面饭面点.*发酵谷物，现代料理/s);
+      assert.doesNotMatch(await detail.textContent(), /新发酵品类|共 4 档|主打体验未标注/);
       assert.equal(await detail.locator('.detail-symbol svg').innerHTML(), paths);
       assert.equal(await detail.locator('.detail-symbol').evaluate((el) => getComputedStyle(el).backgroundColor), color);
       await closeDetail(page);
       await search(page, "空值无坐标");
-      assert.match(await page.locator('.mobile-popup-card').textContent(), /主打体验未标注.*暂无可靠坐标/s);
+      assert.match(await page.locator('.mobile-popup-card').textContent(), /暂无可靠坐标/s);
+      assert.doesNotMatch(await page.locator('.mobile-popup-card').textContent(), /主打体验未标注|其他料理/);
       await closeDetail(page);
       await choose(page, "年份", "2027"); await ready(page, 2027, city); await count(page, 12, 11);
       assert.equal(await page.locator('.mobile-popup-card, .leaflet-popup-content').count(), 0);
@@ -142,7 +211,8 @@ for (const engine of ["chromium", "webkit"]) for (const width of [1280, 390]) {
       assert.equal(await page.locator('.dining-segment-btn').count(), 2);
       await closePanel(page, mobile);
       await search(page, "小食测试");
-      assert.match(await detail.textContent(), /同类异名.*主打体验未标注/s);
+      assert.match(await detail.textContent(), /发酵谷物，现代料理/s);
+      assert.doesNotMatch(await detail.textContent(), /同类异名|主打体验未标注|其他料理/);
       assert.equal(await detail.locator('.detail-symbol').evaluate((el) => getComputedStyle(el).backgroundColor), color);
       await closeDetail(page);
       // Reload restores initial full dataset at max zoom, with a mixed neutral cluster.
@@ -157,6 +227,7 @@ for (const engine of ["chromium", "webkit"]) for (const width of [1280, 390]) {
         return { title: node.getAttribute('aria-label'), x: rect.x, y: rect.y, width: rect.width, height: rect.height, dot: dot.width, svg: node.querySelector('svg').getBoundingClientRect().width };
       }));
       assert.ok(bounds.every((b) => b.width === 44 && b.height === 44 && b.dot === 36 && b.svg === 21));
+      assert.ok(bounds.every((b) => !/主打体验未标注|共 4 档/.test(b.title)));
       for (let i = 0; i < bounds.length; i++) for (let j = i + 1; j < bounds.length; j++) assert.ok(Math.abs(bounds[i].x - bounds[j].x) >= 44 || Math.abs(bounds[i].y - bounds[j].y) >= 44, "expanded targets do not overlap");
       records.push({ name: `${engine}-${width}-dense-targets`, bounds });
       await snapshot(page, `p09-${engine}-${width}-dense`, release, records);
@@ -214,10 +285,11 @@ for (const engine of ["chromium", "webkit"]) for (const width of [1280, 390]) {
 }
 
 for (const engine of ["chromium", "webkit"]) for (const width of [1280, 390]) {
-  test(`P09 selection ${engine} ${width}px: click A, close, search B and dismiss share one selection`, async () => {
+  test(`P09 selection ${engine} ${width}px: click A, close, search B and dismiss share one selection`, async (context) => {
     if (engine === "webkit") safari ??= await webkit.launch({ headless: true });
     const s = await pwaSession(engine === "chromium" ? chrome : safari, server, { width, height: 844 });
     const page = s.page, mobile = width < 768;
+    page.p09Scenario = context.name;
     const selected = page.locator('.restaurant-marker--selected');
     const detail = page.locator('.mobile-popup-card, .leaflet-popup-content');
     async function assertSelection(name) {
@@ -274,10 +346,11 @@ for (const engine of ["chromium", "webkit"]) for (const width of [1280, 390]) {
 }
 
 for (const engine of ["chromium", "webkit"]) {
-  test(`P09 mouse reactivation ${engine}: repeated A clicks, search A, close and reopen`, async () => {
+  test(`P09 mouse reactivation ${engine}: repeated A clicks, search A, close and reopen`, async (context) => {
     if (engine === "webkit") safari ??= await webkit.launch({ headless: true });
     const s = await pwaSession(engine === "chromium" ? chrome : safari, server, { width: 1280, height: 844 });
     const page = s.page;
+    page.p09Scenario = context.name;
     const marker = page.locator('.restaurant-marker[aria-label^="餐食测试 · "]');
     const detail = page.locator('.leaflet-popup-content');
     async function expectOpen() {

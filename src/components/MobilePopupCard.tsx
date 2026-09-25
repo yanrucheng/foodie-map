@@ -53,7 +53,9 @@ export function MobilePopupCard({ restaurant, onClose, groups, spatialContext, m
           {facts.details.map(([label, value]) => (
             <div className="mobile-popup-row" key={label}>
               <span className="mobile-popup-label">{label}</span>
-              <span className="mobile-popup-value">{value}</span>
+              <span className="mobile-popup-value">{label === "价位" && facts.priceGrade.tier
+                ? <><span aria-hidden="true">{value}</span><span className="sr-only">第{facts.priceGrade.tier}档</span></>
+                : value}</span>
             </div>
           ))}
         </div>

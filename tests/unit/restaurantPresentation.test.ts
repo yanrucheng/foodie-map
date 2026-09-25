@@ -108,7 +108,8 @@ describe("P09 source category and price contracts", () => {
     const row = restaurant({ price_range: raw, price: "150 起", currency: "MOP" });
     const facts = restaurantFacts(row);
     expect(facts.details).toContainEqual(["价格", "MOP 150 起"]);
-    expect(facts.details.find(([label]) => label === "价格等级")?.[1]).toContain(`原文 ${raw}`);
+    expect(facts.details).toContainEqual(["价位", "¥".repeat(tier)]);
+    expect(facts.markerLabel).toContain(`价位第${tier}档`);
     expect(row.price_range).toBe(raw);
   });
   it.each([undefined, null, "", " \t\n", "　"])("has no badge for missing %j", (raw) => {
@@ -121,7 +122,7 @@ describe("P09 source category and price contracts", () => {
     const result = validateDataset([row], context, "prices.json");
     expect(result.records).toEqual([row]);
     expect(result.diagnostics).toContainEqual(expect.objectContaining({ severity: "warning", code: "UNRECOGNIZED_PRICE_GRADE", file: "prices.json", record_id: 1, field: "/0/price_range", raw }));
-    expect(restaurantFacts(row).details).toContainEqual(["价格等级", `${raw}（未识别等级）`]);
+    expect(restaurantFacts(row).details).toContainEqual(["价位", raw]);
   });
   it("reconciles explicit other, absent/null and no-badge combinations with listed denominators", () => {
     const rows = [
@@ -141,5 +142,11 @@ describe("P09 source category and price contracts", () => {
     expect(getDiningCategory(null).label).not.toBe(getDiningCategory("other").label);
     const missing = restaurantFacts(restaurant());
     expect(missing.categoryAnnotated).toBe(false);
+    expect(missing.tags).not.toContain("主打体验未标注");
+    expect(missing.tags).not.toContain("其他料理");
+    expect(missing.markerLabel).not.toMatch(/未标注|其他料理/);
+    const duplicate = restaurantFacts(restaurant({ dining_category: "chinese", cuisine: "中餐" }), "内部分类");
+    expect(duplicate.tags.filter((tag) => tag === "中餐")).toHaveLength(1);
+    expect(duplicate.tags).not.toContain("内部分类");
   });
 });
